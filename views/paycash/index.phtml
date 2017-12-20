@@ -1,0 +1,1643 @@
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
+
+<?php
+$url_order = 'ASC';
+if ($order_by == 'payment_id')
+    $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+elseif ($order_by == 'payment_number')
+    $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+elseif ($order_by == 'payment_date')
+    $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+elseif ($order_by == 'payment_document_date')
+    $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+elseif ($order_by == 'payment_document_number')
+  $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+
+    $i = $sonews*$page-($sonews-1);
+
+?>
+
+<div id="loading"></div>
+<div id="winpopup"></div>
+<section class="content-header">
+    <h1>PHIẾU CHI</h1>
+  <ol class="breadcrumb">
+    <li><a href="<?php echo $this->url('admin') ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li class="active"><a href="<?php echo $this->url('paycash') ?>">Phiếu chi</a></li>
+  </ol>
+</section>
+<div id="content" style="padding:5px;">
+
+    <div class="search-box">
+        
+        <input type="search" id="search-input" name="s" value="<?php echo isset($keyword)?$keyword:null; ?>" placeholder="Tìm kiếm">
+        <input type="button" name="" id="search-submit" class="button-search" value="Tìm kiếm" onclick="searchall('<?php echo $page ?>','<?php echo $order_by ?>','<?php echo $order ?>');">
+        <?php if(!isset($disable_control)){ ?>
+        <div class="add-box"><a class="add_button" id="btnExport" ><i class="fa fa-download"></i> Xuất</a></div>
+        <div class="add-box"><a class="add_button" id="import_excel" href="<?= $this->url('paycash/import')?>"><i class="fa fa-upload"></i> Nhập</a></div>
+        <div class="add-box"><a class="add_button" onClick="add_click();"><i class="fa fa-plus"></i> Thêm mới</a></div>
+        <?php } ?>
+    </div>
+    <div class="tablenav top">
+        <?php if(!isset($disable_control)){ ?>
+        <div class="alignleft actions">
+            <select name="action" id="action">
+                <option value="-1" selected="selected">Chọn</option>
+                
+                <option value="delete">Xóa</option>
+            </select>
+            <input type="button" name="" id="doaction" class="button action" value="Áp dụng" onclick="action();">
+        </div>
+        <?php } ?>
+        <div class="alignleft actions">
+        <select name="m" id="chonloc">
+          <option  value="18446744073709">Hiển thị tất cả</option>
+          <option value="50">Hiển thị 50 giá trị</option>
+                <option value="100">Hiển thị 100 giá trị</option>
+                <option value="150">Hiển thị 150 giá trị</option>
+                <option selected="selected" value="200">Hiển thị 200 giá trị</option>
+        </select>
+        <input type="button" name="" id="post-query-submit" class="button" value="Chọn lọc" onclick="searchall('<?php echo $page ?>','<?php echo $order_by ?>','<?php echo $order ?>');">                               
+        </div>
+
+      </div>
+
+</div>
+
+
+<table class="table_data" id="tblExport">
+<thead>
+    <tr>
+        <th class="fix"><input type="checkbox" onclick="checkall('checkbox', this)" name="checkall"/></th>
+        <th  class="fix" >
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','payment_id','<?php echo $url_order ?>')">STT <?php if ($order_by == 'payment_id'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th  class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','payment_document_number','<?php echo $url_order ?>')">Số CT <?php if ($order_by == 'payment_document_number'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th  class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','payment_document_date','<?php echo $url_order ?>')">Ngày CT <?php if ($order_by == 'payment_document_date'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th  class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','payment_additional_date','<?php echo $url_order ?>')">Ngày hạch toán <?php if ($order_by == 'payment_additional_date'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th  class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','payment_comment','<?php echo $url_order ?>')">Nội dung <?php if ($order_by == 'payment_comment'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th  class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','payment_money','<?php echo $url_order ?>')">Số tiền <?php if ($order_by == 'payment_money'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        
+        <?php if(!isset($disable_control)){ ?>
+        <th class="fix"></th>
+        <?php } ?>
+    </tr>
+    
+   </thead>
+   <tbody>
+    <?php $tongtien=0; 
+    foreach ($payments as $payment) : 
+      $tongtien += $payment->payment_money;
+    ?>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" id="<?php echo $payment->payment_id ?>" class="edit_tr" >
+            
+            <td>
+                <input name="check[]" type="checkbox" class="checkbox" value="<?php echo $payment->payment_id ?>">
+            </td>
+            
+            <td  class="fix"><?php echo $i++; ?></td>
+            <td class="fix" id="payment_document_number_<?php echo $payment->payment_id; ?>"><?php echo $payment->payment_document_number; ?></td>
+            <td class="fix" id="payment_document_date2_<?php echo $payment->payment_id; ?>"><?php echo $lib->hien_thi_ngay_thang($payment->payment_document_date); ?></td>
+            <td class="fix" id="payment_additional_date2_<?php echo $payment->payment_id; ?>"><?php echo $lib->hien_thi_ngay_thang($payment->payment_additional_date); ?></td>
+            <td class="fix" id="payment_comment_<?php echo $payment->payment_id; ?>"><?php echo $payment->payment_comment; ?></td>
+            <td class="fix text-right" id="payment_money_<?php echo $payment->payment_id; ?>"><?php echo $lib->formatMoney($payment->payment_money); ?></td>
+            <td style="display:none" class="fix" id="payment_person_<?php echo $payment->payment_id; ?>"><?php echo $payment->payment_person; ?></td>
+            <td style="display:none" class="fix" id="payment_origin_doc_<?php echo $payment->payment_id; ?>"><?php echo $payment->payment_origin_doc; ?></td>
+            <td style="display:none" class="fix" id="payment_document_date_<?php echo $payment->payment_id; ?>"><?php echo date('Y-m-d',$payment->payment_document_date); ?></td>
+            <td style="display:none" class="fix" id="payment_additional_date_<?php echo $payment->payment_id; ?>"><?php echo date('Y-m-d',$payment->payment_additional_date); ?></td>
+            
+            <?php if(!isset($disable_control)){ ?>
+            <td class="fix text-right">
+                <i class="fa fa-print print_service" title="In" onClick="javascript:window.open('<?php echo $this->url('paycash/printview/'.$payment->payment_id) ?>','_blank')"></i>
+                <i class="fa fa-edit edit_service" title="Sửa" data="<?php echo $payment->payment_id ?>"></i>
+                <i class="fa fa-trash" title="Xóa" onclick="del(<?php echo $payment->payment_id ?>)"></i>
+            </td>
+            <?php } ?>
+        </tr>
+
+
+    <?php endforeach; ?>
+        <tr style="font-weight:bold">
+          <td colspan="6" class="fix">Tổng cộng</td>
+          <td  class="fix text-right"><?php echo $lib->formatMoney($tongtien); ?></td>
+          <td  class="fix"></td>
+        </tr>
+     
+   </tbody>
+</table>
+<?php
+$this->helper('slidePaginator');
+?>
+
+<div id="show_item"></div>
+<div class="add-field">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+          <!-- general form elements -->
+          <div class="box box-primary">
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form id="add_payment" role="form" method="post" action="" enctype="multipart/form-data">
+              <div class="row">
+                <div class="col-md-8 col-xs-6">
+                  <fieldset class="groupbox">
+                    <legend class="nopadding"><span><h6>Thông tin chung</h3></span></legend>
+                    <div class="box-body nopadding">
+                      <div class="form-group nopadding">
+                        <label for="payment_person">Người nhận tiền </label>
+                        <input style="width:50%" type="text" id="payment_person"  name="payment_person" tabindex="1"  autocomplete="off" >
+                      </div>
+                    </div>
+                    <div class="box-body nopadding">
+                      <div class="form-group nopadding">
+                        <label for="payment_comment">Diễn giải </label>
+                        <input style="width:93%" type="text" id="payment_comment"  name="payment_comment" tabindex="2"  required="required" autocomplete="off" >
+                      </div>
+                    </div>
+                    <div class="box-body nopadding">
+                      <div class="form-group nopadding">
+                        <label for="payment_origin_doc">Kèm theo </label>
+                        <input style="width:70%" type="text" id="payment_origin_doc"  name="payment_origin_doc" tabindex="3" autocomplete="off" > chứng từ gốc
+                      </div>
+                    </div>
+                  </fieldset>
+                  
+                  <!-- /.box-body -->
+                  
+                </div>
+                <div class="col-md-4 col-xs-6">
+                  <fieldset class="groupbox">
+                    <legend class="nopadding"><span><h6>Chứng từ</h3></span></legend>
+                    <div class="box-body nopadding">
+                      <div class="form-group col-xs-4 nopadding">
+                        <label for="payment_document_date">Ngày chứng từ </label>
+                      </div>
+                      <div class="form-group col-xs-8 nopadding">
+                        <input type="date" id="payment_document_date"  name="payment_document_date" tabindex="4" required="required" autocomplete="off" >
+                      </div>
+                    </div>
+                    <div class="box-body nopadding">
+                      <div class="form-group col-xs-4 nopadding">
+                        <label for="payment_additional_date">Ngày hạch toán </label>
+                      </div>
+                      <div class="form-group col-xs-8 nopadding">
+                        <input type="date" id="payment_additional_date"  name="payment_additional_date" tabindex="5" required="required" autocomplete="off" >
+                      </div>
+                    </div>
+                    <div class="box-body nopadding">
+                      <div class="form-group col-xs-4 nopadding">
+                        <label for="payment_document_number">Số chứng từ </label>
+                      </div>
+                      <div class="form-group col-xs-8 nopadding">
+                        <input type="text" id="payment_document_number"  name="payment_document_number" tabindex="6" required="required" autocomplete="off" >
+                      </div>
+                    </div>
+                  </fieldset>
+                  <!-- /.box-body -->
+                </div>
+                
+              </div>
+              <div class="col-md-12 nopadding">
+                <div class="left">
+                  <table class="table_data">
+                    <tr>
+                      <td>Tổng cộng: </td>
+                      <th><span id="money">0</span></th>
+                      
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              <div class="col-md-12 nopadding">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                  <li class="nav-item active">
+                    <a class="nav-link active" data-toggle="tab" href="#item" role="tab">1. Hạch toán</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#tax" role="tab">2. Thuế</a>
+                  </li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                  <div class="tab-pane active" id="item" role="tabpanel">
+                    <div class="table-container">
+                      <table id="dataTable0" class="dataTable">
+                        <thead>
+                          <tr>
+                            <th class="width-3">STT</th>
+                            <th class="width-7">Số CT</th>
+                            <th class="width-7">Ngày CT</th>
+                            <th class="width-7">Số HĐ</th>
+                            <th class="width-7">Mã đối tượng</th>
+                            <th>Tên đối tượng</th>
+                            <th class="width-10">Phải trả</th>
+                            <th class="width-10">Đã trả</th>
+                            <th class="width-10">Số tiền</th>
+                            <th>Nội dung</th>
+                            <th class="width-5">TK nợ</th>
+                            <th class="width-5">TK có</th>
+                            <th style="width:4px"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="width-3">1</td>
+                            <td class="width-7">
+                              <input type="text" name="payment_item_invoice[]" class="payment_item_invoice left" placeholder="Nhập mã" autocomplete="off">
+                              <button type="button" class="find_item right" title="Danh mục"><i class="fa fa-search"></i></button>
+                            </td>
+                            <td class="width-7"><input disabled type="text" name="payment_item_document_date[]" class="payment_item_document_date" required="required" autocomplete="off"></td>
+                            <td class="width-7"><input disabled type="text" name="payment_item_invoice_number2[]" class="payment_item_invoice_number2" required="required" autocomplete="off"></td>
+                            <td class="width-7">
+                              <input type="text" name="payment_item_customer[]" class="payment_item_customer" autocomplete="off">
+                              <ul class="name_list_id_3"></ul>
+                            </td>
+                            <td><input disabled type="text" name="payment_item_customer_name[]" class="payment_item_customer_name" required="required" autocomplete="off"></td>
+                            <td class="width-10"><input disabled type="text" name="payment_item_receivable_money[]" class="payment_item_receivable_money numbers text-right" required="required" autocomplete="off"></td>
+                            <td class="width-10"><input disabled type="text" name="payment_item_pay_money[]" class="payment_item_pay_money numbers text-right" required="required" autocomplete="off"></td>
+                            <td class="width-10"><input type="text" name="payment_item_money[]" class="payment_item_money numbers text-right" required="required" autocomplete="off"></td>
+                            <td><input type="text" name="payment_item_comment[]" class="payment_item_comment" required="required" autocomplete="off"></td>
+                            <td class="width-5">
+                              <input type="text" name="payment_item_debit[]" class="payment_item_debit keep-val" required="required" autocomplete="off">
+                              <ul class="name_list_id"></ul>
+                            </td>
+                            <td class="width-5">
+                              <input type="text" name="payment_item_credit[]" class="payment_item_credit keep-val" required="required" autocomplete="off">
+                              <ul class="name_list_id_2"></ul>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <i class="fa fa-plus" title="Thêm dòng mới"></i> F2: Thêm dòng
+                    <i class="fa fa-minus" title="Xóa dòng cuối cùng"></i> F3: Xóa dòng
+                    
+                  </div>
+                  <div class="tab-pane" id="tax" role="tabpanel">
+                    <div class="table-container">
+                      <table id="dataTable1" class="dataTable">
+                        <thead>
+                          <tr>
+                            <th class="width-3">STT</th>
+                            <th>Đối tượng</th>
+                            <th>Thuế GTGT</th>
+                            <th>Tiền thuế GTGT</th>
+                            <th>TK thuế GTGT</th>
+                            <th>Số hóa đơn</th>
+                            <th>Ngày HĐ</th>
+                            <th>Ký hiệu</th>
+                            <th style="width:4px"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="width-3">1</td>
+                            <td>
+                              <input type="text" disabled name="payment_item_customer_name2[]" class="payment_item_customer_name2" autocomplete="off">
+                            </td>
+                            <td><input type="text" name="payment_item_tax_percent[]" class="payment_item_tax_percent text-right" autocomplete="off"></td>
+                            <td><input type="text" name="payment_item_tax[]" class="payment_item_tax numbers text-right" autocomplete="off"></td>
+                            <td>
+                              <input type="text" name="payment_item_tax_debit[]" class="payment_item_tax_debit keep-val" autocomplete="off">
+                              <ul class="name_list_id_4"></ul>
+                            </td>
+                            <td><input type="text" name="payment_item_invoice_number[]" class="payment_item_invoice_number" autocomplete="off"></td>
+                            <td><input type="date" name="payment_item_invoice_date[]" class="payment_item_invoice_date" autocomplete="off"></td>
+                            <td><input type="text" name="payment_item_invoice_symbol[]" class="payment_item_invoice_symbol" autocomplete="off"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <i class="fa fa-plus" title="Thêm dòng mới"></i> F2: Thêm dòng
+                    <i class="fa fa-minus" title="Xóa dòng cuối cùng"></i> F3: Xóa dòng
+                  </div>
+                  
+                </div>
+              </div>
+              
+              <?php if(!isset($disable_control)){ ?>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="box-footer">
+                    <input type="hidden" readonly id="yes" name="yes" required="required" >
+                    <button type="submit" class="btn btn-primary" tabindex="16"><i class="fa fa-save"></i> Hoàn thành</button>
+                    <button type="reset" class="btn" tabindex="17"><i class="fa fa-undo"></i>  Nhập lại</button>
+                  </div>
+                  <div class="box-footer">
+                    <div id="error" class="error"><?php echo isset($error) ? $error : null; ?></div>
+                  </div>
+                </div>
+              </div>
+              <?php } ?>
+            </form>
+          </div>
+          <!-- /.box -->
+
+        </div>
+        <!--/.col (left) -->
+        
+      </div>
+      <!-- /.row -->
+       
+</div>
+
+<div style="display:none" id="lasted"></div>
+
+<script type="text/javascript">
+$('.add-field').hide();  
+
+$('html').click(function(e) {
+  $('.name_list_id').slideUp(200);
+  $('.name_list_id_2').slideUp(200);
+  $('.name_list_id_3').slideUp(200);
+  $('.name_list_id_4').slideUp(200);
+
+});
+
+$('.edit_service').click(function(e){
+    var id = $(this).attr('data');
+
+    $('.add-field input').each(function(){
+      var name = $(this).attr('id');
+      $(this).val($('#'+name+'_'+id).text());
+      $(this).attr('data',$('#'+name+'_'+id).attr('data'));
+    });
+
+    $('.add-field select').each(function(){
+      var name = $(this).attr('id');
+      var sl = $('#'+name+'_'+id).text();
+      $("#"+name+" option[value=" + sl + "]").attr('selected', 'selected');
+    });
+
+    $('#money').html($('#payment_money_'+id).text());
+    
+    //alert(cost_code);
+    $('#yes').val(id);
+
+    $('#dataTable0 tbody tr').remove();
+    $('#dataTable1 tbody tr').remove();
+    $.ajax({
+      url: '<?php echo BASE_URL ?>/paycash/getitemadd',
+      type: 'POST',
+      data: {payment:id},
+      success:function(answer){
+          ////alert(answer);
+          //var data = JSON.parse(answer);
+          var data = JSON.parse(answer);
+          $('#dataTable0 tbody').append(data.hang);
+          $('#dataTable1 tbody').append(data.thue);
+
+          $('input').keyup(function (e) {
+              if (e.which == 39) { // right arrow
+                $(this).closest('td').next().find('input').focus();
+
+              } else if (e.which == 37) { // left arrow
+                $(this).closest('td').prev().find('input').focus();
+
+              } else if (e.which == 40) { // down arrow
+                $(this).closest('tr').next().find('td:eq(' + $(this).closest('td').index() + ')').find('input').focus();
+
+              } else if (e.which == 38) { // up arrow
+                $(this).closest('tr').prev().find('td:eq(' + $(this).closest('td').index() + ')').find('input').focus();
+              }
+            });
+
+          $('.numbers').keyup(function(event) {
+              // skip for arrow keys
+            if(event.which >= 37 && event.which <= 40) return;
+            // format number
+            $(this).val(function(index, value) {
+              return value
+                .replace(/[^0-9-.]/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+              ;
+            });
+          });
+
+          $(".payment_item_money").keyup(function(){
+  
+            var tongtienhang = 0;
+            $('.payment_item_money').each(function(){
+              tongtienhang += parseFloat(get_number(this)) || 0;
+            });
+            $('.payment_item_tax').each(function(){
+              tongtienhang += parseFloat(get_number(this)) || 0;
+            });
+
+            $('#money').html(tongtienhang);
+            
+            $('#money').html(function(index, value) {
+              return value
+                .replace(/[^0-9-.]/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+              ;
+            });
+            
+            $('.numbers').val(function(index, value) {
+              return value
+                .replace(/[^0-9-.]/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+              ;
+            });
+          });
+          $(".payment_item_tax_percent").keyup(function(){
+            var rowIndex=$(this).closest('tr').index();
+            var val = parseFloat($(this).val()) || 0;
+            var money = parseFloat(get_number('.payment_item_money:eq('+rowIndex+')')) || 0;
+
+            var gtgt = roundDecimal(val/100*money,0);
+            $('.payment_item_tax:eq('+rowIndex+')').val(gtgt);
+
+            var tongtienhang = gtgt;
+            $('.payment_item_money').each(function(){
+              tongtienhang += parseFloat(get_number(this)) || 0;
+            });
+
+            $('#money').html(tongtienhang);
+            
+            $('#money').html(function(index, value) {
+              return value
+                .replace(/[^0-9-.]/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+              ;
+            });
+            
+            $('.numbers').val(function(index, value) {
+              return value
+                .replace(/[^0-9-.]/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+              ;
+            });
+          });
+          $('.payment_item_customer').keyup(function(){
+              var row = $(this).parent().parent();
+              var rowIndex = (row[0].rowIndex)-1;
+              var keyword = $(this).val();
+              if(keyword != ""){
+                $.ajax({
+                    url: '<?php echo BASE_URL ?>/paycash/getCustomer',
+                    type: 'POST',
+                    data: {keyword:keyword, offset:rowIndex, name:name},
+                    success:function(data){
+                        $('.name_list_id_3:eq('+rowIndex+')').slideDown(200);
+                        $('.name_list_id_3:eq('+rowIndex+')').html(data);
+                    }
+                });
+              }
+
+              if ($('.payment_item_customer:eq('+rowIndex+')').val() == "" || $('.payment_item_customer:eq('+rowIndex+')').attr('data') == "") {
+                $('.payment_item_customer:eq('+rowIndex+')').attr('data',"");
+              }
+          });
+          $('.payment_item_debit').keyup(function(){
+              var row = $(this).parent().parent();
+              var rowIndex = (row[0].rowIndex)-1;
+              var keyword = $(this).val();
+              var name = ".payment_item_debit";
+              if(keyword != ""){
+                $.ajax({
+                    url: '<?php echo BASE_URL ?>/paycash/getAccount',
+                    type: 'POST',
+                    data: {keyword:keyword, offset:rowIndex, name:name},
+                    success:function(data){
+                        $('.name_list_id:eq('+rowIndex+')').slideDown(200);
+                        $('.name_list_id:eq('+rowIndex+')').html(data);
+                    }
+                });
+              }
+
+              if ($('.payment_item_debit:eq('+rowIndex+')').val() == "" || $('.payment_item_debit:eq('+rowIndex+')').attr('data') == "") {
+                $('.payment_item_debit:eq('+rowIndex+')').attr('data',"");
+              }
+          });
+          $('.payment_item_credit').keyup(function(){
+              var row = $(this).parent().parent();
+              var rowIndex = (row[0].rowIndex)-1;
+              var keyword = $(this).val();
+              var name = ".payment_item_credit";
+              if(keyword != ""){
+                $.ajax({
+                    url: '<?php echo BASE_URL ?>/paycash/getAccount',
+                    type: 'POST',
+                    data: {keyword:keyword, offset:rowIndex, name:name},
+                    success:function(data){
+                        $('.name_list_id_2:eq('+rowIndex+')').slideDown(200);
+                        $('.name_list_id_2:eq('+rowIndex+')').html(data);
+                    }
+                });
+              }
+
+              if ($('.payment_item_credit:eq('+rowIndex+')').val() == "" || $('.payment_item_credit:eq('+rowIndex+')').attr('data') == "") {
+                $('.payment_item_credit:eq('+rowIndex+')').attr('data',"");
+              }
+          });
+          $('.payment_item_tax_debit').keyup(function(){
+              var row = $(this).parent().parent();
+              var rowIndex = (row[0].rowIndex)-1;
+              var keyword = $(this).val();
+              var name = ".payment_item_tax_debit";
+              if(keyword != ""){
+                $.ajax({
+                    url: '<?php echo BASE_URL ?>/paycash/getAccount',
+                    type: 'POST',
+                    data: {keyword:keyword, offset:rowIndex, name:name},
+                    success:function(data){
+                        $('.name_list_id_4:eq('+rowIndex+')').slideDown(200);
+                        $('.name_list_id_4:eq('+rowIndex+')').html(data);
+                    }
+                });
+              }
+
+              if ($('.payment_item_tax_debit:eq('+rowIndex+')').val() == "" || $('.payment_item_tax_debit:eq('+rowIndex+')').attr('data') == "") {
+                $('.payment_item_tax_debit:eq('+rowIndex+')').attr('data',"");
+              }
+          });
+          
+          function set_item_account(value,code,name,vitri) {
+              $(name+':eq('+vitri+')').val(code);
+              $(name+':eq('+vitri+')').attr("data",value);
+              $('.name_list_id').hide();
+              $('.name_list_id_2').hide();
+              $('.name_list_id_4').hide();
+              $(name+':eq('+vitri+')').focus();
+          }
+          function set_item_customer(value,code,name,vitri){
+            $('.payment_item_customer:eq('+vitri+')').val(code);
+            $('.payment_item_customer:eq('+vitri+')').attr("data",value);
+            $('.payment_item_customer_name:eq('+vitri+')').val(name);
+            $('.payment_item_customer_name2:eq('+vitri+')').val(name);
+            $('.name_list_id_3').hide();
+            $('.payment_item_customer_name:eq('+vitri+')').focus();
+          }
+          
+
+
+          $(".find_item").click(function(){
+            var rowIndex=$(this).closest('tr').index();
+            $('#rowIndex_item').val(rowIndex);
+              $.ajax({
+                  url: '<?php echo BASE_URL ?>/paycash/getItem',
+                  type: 'POST',
+                  data: {rowIndex:rowIndex},
+                  success:function(data){
+                    $('#show_item').html(data);
+                    $("#show_item" ).dialog( "open" );
+
+                    $('#tblExport2').DataTable({
+                        "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Tất cả"]],
+                        "order": [[ 1, "asc" ], [ 2, "asc" ]],
+                        "columnDefs": [ {
+                          "targets": 0,
+                          "orderable": false
+                        } ],
+                        "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+                          var index = iDisplayIndex +1;
+                            $('.tr td:eq(0)',nRow).html(index);
+                            return nRow
+                        }
+                    });
+
+                    $('.tr').click(function(){
+                      $(this).find('input').each(function () {
+                        if ($(this).is(':checked')) {
+                          $(this).prop('checked',false);
+                        }
+                        else{
+                          $(this).prop('checked',true);
+                        }
+                      });
+                    });
+
+                    $('.numbers').keyup(function(event) {
+                          // skip for arrow keys
+                      if(event.which >= 37 && event.which <= 40) return;
+                      // format number
+                      $(this).val(function(index, value) {
+                        return value
+                          .replace(/[^0-9-.]/g, "")
+                          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                        ;
+                      });
+                    });
+                    
+                    $('.money_add').keyup(function(){
+                      var rowIndex=$(this).closest('tr').index();
+                      var max = parseFloat($(this).attr('max')) || 0;
+                      var val_new = parseFloat(get_number(this)) || 0;
+                      if (val_new>max) {
+                        $(this).val(max);
+                        $(this).val(function(index, value) {
+                          return value
+                            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                          ;
+                        });
+                      }
+                      var val = $(this).val() || 0;
+                      $('input[name="check_i[]"]:eq('+rowIndex+')').attr('data-money',val);
+
+                    });
+                  }
+
+              });
+          });
+        }
+    });
+
+
+    $( ".add-field" ).dialog( "open" );
+      
+});
+
+function add_click(){
+    $('#yes').val("");
+    $('.add-field').slideDown(500);
+     $("html, body").animate({ scrollTop: $('.add-field').offset().top }, 300);   
+     
+        $('.add-field input').val("");
+        $('.add-field input').attr("data","");
+        $('.add-field input').attr("alt","");
+        $('.add-field input[type=date]').val("<?php echo date('Y-m-d') ?>");
+        $('#payment_document_number').val('<?php echo ++$lastID ?>');
+                
+        $('.numbers').focus(function(){
+            if ( $(this).val() == '0') {
+               $(this).val(""); 
+            };
+            
+        });
+        $('.numbers').blur(function(){
+            if ( $(this).val() == "") {
+                $(this).val(0);
+            };
+            
+        });
+
+    $( ".add-field" ).dialog( "open" );
+}
+
+$(document).ready(function(){
+  // Validate form
+  $("#add_payment").validate({
+      errorElement: "span", // Định dạng cho thẻ HTML hiện thông báo lỗi
+      rules: {
+
+      },
+      submitHandler: function(form) {
+        var payment_person = $('#payment_person').val();
+        var payment_comment = $('#payment_comment').val();
+        var payment_origin_doc = $('#payment_origin_doc').val();
+        var payment_document_date = $('#payment_document_date').val();
+        var payment_document_number = $('#payment_document_number').val();
+        var payment_additional_date = $('#payment_additional_date').val();
+        var payment_bank = 0;
+        var payment_bank_type = 1;
+        var payment_type = 2;
+        var payment_check = 1;
+        var payment_in_ex = 1;
+        
+        var item = [];
+        var payment_item_id = [];
+        var payment_item_invoice = [];
+        var payment_item_customer = [];
+        var payment_item_debit = [];
+        var payment_item_credit = [];
+        var payment_item_money = [];
+        var payment_item_receivable_money = [];
+        var payment_item_pay_money = [];
+        var payment_item_comment = [];
+        var payment_item_tax_percent = [];
+        var payment_item_tax = [];
+        var payment_item_tax_debit = [];
+        var payment_item_invoice_number = [];
+        var payment_item_invoice_date = [];
+        var payment_item_invoice_symbol = [];
+
+        $('.payment_item_invoice').each(function(){
+          payment_item_invoice.push($(this).attr('data'));
+          payment_item_id.push($(this).attr('alt') || "");
+        });
+        $('.payment_item_debit').each(function(){
+          payment_item_debit.push($(this).attr('value'));
+        });
+        $('.payment_item_credit').each(function(){
+          payment_item_credit.push($(this).attr('value'));
+        });
+        $('.payment_item_customer').each(function(){
+          payment_item_customer.push($(this).attr('data'));
+        });
+        $('.payment_item_money').each(function(){
+          payment_item_money.push($(this).attr('value'));
+        });
+        $('.payment_item_receivable_money').each(function(){
+          payment_item_receivable_money.push($(this).attr('value'));
+        });
+        $('.payment_item_pay_money').each(function(){
+          payment_item_pay_money.push($(this).attr('value'));
+        });
+        $('.payment_item_comment').each(function(){
+          payment_item_comment.push($(this).attr('value'));
+        });
+        $('.payment_item_tax_percent').each(function(){
+          payment_item_tax_percent.push($(this).attr('value'));
+        });
+        $('.payment_item_tax').each(function(){
+          payment_item_tax.push($(this).attr('value'));
+        });
+        $('.payment_item_tax_debit').each(function(){
+          payment_item_tax_debit.push($(this).attr('value'));
+        });
+        $('.payment_item_invoice_number').each(function(){
+          payment_item_invoice_number.push($(this).attr('value'));
+        });
+        $('.payment_item_invoice_date').each(function(){
+          payment_item_invoice_date.push($(this).attr('value'));
+        });
+        $('.payment_item_invoice_symbol').each(function(){
+          payment_item_invoice_symbol.push($(this).attr('value'));
+        });
+        
+        for (var i = 0; i < payment_item_money.length; i++) {
+          item.push({'payment_item_id':payment_item_id[i], 'payment_item_invoice':payment_item_invoice[i], 'payment_item_debit':payment_item_debit[i], 'payment_item_credit':payment_item_credit[i], 'payment_item_customer':payment_item_customer[i], 'payment_item_money':payment_item_money[i], 'payment_item_receivable_money':payment_item_receivable_money[i], 'payment_item_pay_money':payment_item_pay_money[i], 'payment_item_comment':payment_item_comment[i], 'payment_item_tax_percent':payment_item_tax_percent[i], 'payment_item_tax':payment_item_tax[i], 'payment_item_tax_debit':payment_item_tax_debit[i], 'payment_item_invoice_number':payment_item_invoice_number[i], 'payment_item_invoice_date':payment_item_invoice_date[i], 'payment_item_invoice_symbol':payment_item_invoice_symbol[i]});
+                
+        };
+
+        var yes = $('#yes').val();
+
+        $.ajax({
+          url: '<?php echo BASE_URL ?>/paycash/add',
+          type: 'POST',
+          data: {
+            yes: yes,
+            payment_person: payment_person,
+            payment_comment: payment_comment,
+            payment_origin_doc: payment_origin_doc,
+            payment_document_date: payment_document_date,
+            payment_document_number: payment_document_number,
+            payment_additional_date: payment_additional_date,
+            payment_bank: payment_bank,
+            payment_bank_type: payment_bank_type,
+            payment_type: payment_type,
+            payment_check: payment_check,
+            payment_in_ex: payment_in_ex,
+            item: item,
+          },
+          success:function(answer){
+              //alert(answer);
+              $('#error').hide();
+              $('#error').slideToggle(100); // hiển thị thẻ div success
+              $('#error').html('<div class="successbox">'+answer+'</div>'); // đặt kết quả trả về từ test.php vào thẻ div success
+              $('#error').fadeOut(10000);
+
+              if (yes != "") {
+                  if (answer.trim() == "Cập nhật thành công" ) {
+                      setTimeout(function() {
+                        sapxep('<?php echo $page ?>','<?php echo $order_by ?>','<?php echo $order ?>');
+                      }, 200);
+                      
+                  }
+              }
+              else{
+                  if (answer.trim() == "Thêm thành công" ) {
+                      setTimeout(function() {
+                        sapxep('<?php echo $page ?>','<?php echo $order_by ?>','<?php echo $order ?>');
+                      }, 200);
+                      
+                  }
+              }
+          }
+        });
+
+      }
+    });
+});
+</script>
+
+<script type="text/javascript">
+
+function get_number(id){
+  return $(id).val().replace(/\,/g,'');
+}
+
+$( ".add-field" ).dialog({
+    autoOpen: false,
+    modal: true,
+    width: "90%",
+    title: "Phiếu chi",
+    hide: 'fold',
+    show: 'blind',
+    position: ['center',5],
+});
+
+
+$("#import_excel").click(function(){
+        $("#winpopup").dialog({
+            draggable:true,
+            modal: true,
+            autoOpen: false,
+            height:300,
+            width:400,
+            resizable: false,
+            title:'Import Excel',
+            
+        });
+        $("#winpopup").load($(this).attr('href'));
+        $("#winpopup").dialog("open");
+         
+        return false;
+    });
+
+
+ 
+var x = "<?php echo $limit ?>";
+$('#chonloc option[value='+x+']').attr('selected','selected');
+
+$('.numbers').keyup(function(event) {
+      // skip for arrow keys
+  if(event.which >= 37 && event.which <= 40) return;
+  // format number
+  $(this).val(function(index, value) {
+    return value
+      .replace(/[^0-9-.]/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    ;
+  });
+});
+
+$(".payment_item_money").keyup(function(){
+  
+  var tongtienhang = 0;
+  $('.payment_item_money').each(function(){
+    tongtienhang += parseFloat(get_number(this)) || 0;
+  });
+  $('.payment_item_tax').each(function(){
+    tongtienhang += parseFloat(get_number(this)) || 0;
+  });
+
+  $('#money').html(tongtienhang);
+  
+  $('#money').html(function(index, value) {
+    return value
+      .replace(/[^0-9-.]/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    ;
+  });
+  
+  $('.numbers').val(function(index, value) {
+    return value
+      .replace(/[^0-9-.]/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    ;
+  });
+});
+$(".payment_item_tax_percent").keyup(function(){
+  var rowIndex=$(this).closest('tr').index();
+  var val = parseFloat($(this).val()) || 0;
+  var money = parseFloat(get_number('.payment_item_money:eq('+rowIndex+')')) || 0;
+
+  var gtgt = roundDecimal(val/100*money,0);
+  $('.payment_item_tax:eq('+rowIndex+')').val(gtgt);
+
+  var tongtienhang = gtgt;
+  $('.payment_item_money').each(function(){
+    tongtienhang += parseFloat(get_number(this)) || 0;
+  });
+
+  $('#money').html(tongtienhang);
+  
+  $('#money').html(function(index, value) {
+    return value
+      .replace(/[^0-9-.]/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    ;
+  });
+  
+  $('.numbers').val(function(index, value) {
+    return value
+      .replace(/[^0-9-.]/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    ;
+  });
+});
+
+$('.payment_item_customer').keyup(function(){
+    var row = $(this).parent().parent();
+    var rowIndex = (row[0].rowIndex)-1;
+    var keyword = $(this).val();
+    if(keyword != ""){
+      $.ajax({
+          url: '<?php echo BASE_URL ?>/paycash/getCustomer',
+          type: 'POST',
+          data: {keyword:keyword, offset:rowIndex, name:name},
+          success:function(data){
+              $('.name_list_id_3:eq('+rowIndex+')').slideDown(200);
+              $('.name_list_id_3:eq('+rowIndex+')').html(data);
+          }
+      });
+    }
+
+    if ($('.payment_item_customer:eq('+rowIndex+')').val() == "" || $('.payment_item_customer:eq('+rowIndex+')').attr('data') == "") {
+      $('.payment_item_customer:eq('+rowIndex+')').attr('data',"");
+    }
+});
+$('.payment_item_debit').keyup(function(){
+    var row = $(this).parent().parent();
+    var rowIndex = (row[0].rowIndex)-1;
+    var keyword = $(this).val();
+    var name = ".payment_item_debit";
+    if(keyword != ""){
+      $.ajax({
+          url: '<?php echo BASE_URL ?>/paycash/getAccount',
+          type: 'POST',
+          data: {keyword:keyword, offset:rowIndex, name:name},
+          success:function(data){
+              $('.name_list_id:eq('+rowIndex+')').slideDown(200);
+              $('.name_list_id:eq('+rowIndex+')').html(data);
+          }
+      });
+    }
+
+    if ($('.payment_item_debit:eq('+rowIndex+')').val() == "" || $('.payment_item_debit:eq('+rowIndex+')').attr('data') == "") {
+      $('.payment_item_debit:eq('+rowIndex+')').attr('data',"");
+    }
+});
+$('.payment_item_credit').keyup(function(){
+    var row = $(this).parent().parent();
+    var rowIndex = (row[0].rowIndex)-1;
+    var keyword = $(this).val();
+    var name = ".payment_item_credit";
+    if(keyword != ""){
+      $.ajax({
+          url: '<?php echo BASE_URL ?>/paycash/getAccount',
+          type: 'POST',
+          data: {keyword:keyword, offset:rowIndex, name:name},
+          success:function(data){
+              $('.name_list_id_2:eq('+rowIndex+')').slideDown(200);
+              $('.name_list_id_2:eq('+rowIndex+')').html(data);
+          }
+      });
+    }
+
+    if ($('.payment_item_credit:eq('+rowIndex+')').val() == "" || $('.payment_item_credit:eq('+rowIndex+')').attr('data') == "") {
+      $('.payment_item_credit:eq('+rowIndex+')').attr('data',"");
+    }
+});
+$('.payment_item_tax_debit').keyup(function(){
+    var row = $(this).parent().parent();
+    var rowIndex = (row[0].rowIndex)-1;
+    var keyword = $(this).val();
+    var name = ".payment_item_tax_debit";
+    if(keyword != ""){
+      $.ajax({
+          url: '<?php echo BASE_URL ?>/paycash/getAccount',
+          type: 'POST',
+          data: {keyword:keyword, offset:rowIndex, name:name},
+          success:function(data){
+              $('.name_list_id_4:eq('+rowIndex+')').slideDown(200);
+              $('.name_list_id_4:eq('+rowIndex+')').html(data);
+          }
+      });
+    }
+
+    if ($('.payment_item_tax_debit:eq('+rowIndex+')').val() == "" || $('.payment_item_tax_debit:eq('+rowIndex+')').attr('data') == "") {
+      $('.payment_item_tax_debit:eq('+rowIndex+')').attr('data',"");
+    }
+});
+
+function set_item_account(value,code,name,vitri) {
+    $(name+':eq('+vitri+')').val(code);
+    $(name+':eq('+vitri+')').attr("data",value);
+    $('.name_list_id').hide();
+    $('.name_list_id_2').hide();
+    $('.name_list_id_4').hide();
+    $(name+':eq('+vitri+')').focus();
+}
+function set_item_customer(value,code,name,vitri){
+  $('.payment_item_customer:eq('+vitri+')').val(code);
+  $('.payment_item_customer:eq('+vitri+')').attr("data",value);
+  $('.payment_item_customer_name:eq('+vitri+')').val(name);
+  $('.payment_item_customer_name2:eq('+vitri+')').val(name);
+  $('.name_list_id_3').hide();
+  $('.payment_item_customer_name:eq('+vitri+')').focus();
+}
+
+$(".find_item").click(function(){
+  var rowIndex=$(this).closest('tr').index();
+  $('#rowIndex_item').val(rowIndex);
+    $.ajax({
+        url: '<?php echo BASE_URL ?>/paycash/getItem',
+        type: 'POST',
+        data: {rowIndex:rowIndex},
+        success:function(data){
+          $('#show_item').html(data);
+          $("#show_item" ).dialog( "open" );
+
+          $('#tblExport2').DataTable({
+              "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Tất cả"]],
+              "order": [[ 1, "asc" ], [ 2, "asc" ]],
+              "columnDefs": [ {
+                "targets": 0,
+                "orderable": false
+              } ],
+              "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+                var index = iDisplayIndex +1;
+                  $('.tr td:eq(0)',nRow).html(index);
+                  return nRow
+              }
+          });
+
+          $('.tr').click(function(){
+            $(this).find('input').each(function () {
+              if ($(this).is(':checked')) {
+                $(this).prop('checked',false);
+              }
+              else{
+                $(this).prop('checked',true);
+              }
+            });
+          });
+
+          $('.numbers').keyup(function(event) {
+                // skip for arrow keys
+            if(event.which >= 37 && event.which <= 40) return;
+            // format number
+            $(this).val(function(index, value) {
+              return value
+                .replace(/[^0-9-.]/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+              ;
+            });
+          });
+
+          $('.money_add').keyup(function(){
+            var rowIndex=$(this).closest('tr').index();
+            var max = parseFloat($(this).attr('max')) || 0;
+            var val_new = parseFloat(get_number(this)) || 0;
+            if (val_new>max) {
+              $(this).val(max);
+              $(this).val(function(index, value) {
+                return value
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                ;
+              });
+            }
+            var val = $(this).val() || 0;
+            $('input[name="check_i[]"]:eq('+rowIndex+')').attr('data-money',val);
+
+          });
+
+        }
+
+    });
+});
+
+$( "#show_item" ).dialog({
+    autoOpen: false,
+    modal: true,
+    width: "70%",
+    maxHeight: $(window).height()-50,
+    title: "Công nợ phải trả",
+    hide: 'fold',
+    show: 'blind',
+    position: ['center',5],
+    buttons: 
+    [
+      {
+        text: "Chọn",
+        icons: { primary: "ui-icon-check" },
+        click: function(){
+          var i=1;
+          var rowIndex = -1;
+          $('input[name="check_i[]"]:checked').each(function () {
+            
+            if (rowIndex == -1) {
+              rowIndex = $(this).attr('data');
+            }
+            console.log(rowIndex);
+            
+            var check = 0;
+            $('.payment_item_invoice[data='+$(this).attr('value')+']').each(function(){
+              check ++;
+            });
+
+            if (check==0) {
+              if(i>1){
+                $('.dataTable').each(function(){
+                  addRow($(this).attr('id'));
+                });
+              }
+
+              $('.payment_item_invoice:eq('+rowIndex+')').val($(this).attr('data-doc'));
+              $('.payment_item_invoice:eq('+rowIndex+')').attr('data',$(this).attr('value'));
+              $('.payment_item_document_date:eq('+rowIndex+')').val($(this).attr('data-date'));
+              $('.payment_item_invoice_number2:eq('+rowIndex+')').val($(this).attr('data-invoice'));
+              $('.payment_item_customer:eq('+rowIndex+')').val($(this).attr('data-cuscode'));
+              $('.payment_item_customer:eq('+rowIndex+')').attr('data',$(this).attr('data-cus'));
+              $('.payment_item_customer_name:eq('+rowIndex+')').val($(this).attr('data-cusname'));
+              $('.payment_item_customer_name2:eq('+rowIndex+')').val($(this).attr('data-cusname'));
+              $('.payment_item_receivable_money:eq('+rowIndex+')').val($(this).attr('data-rece'));
+              $('.payment_item_pay_money:eq('+rowIndex+')').val($(this).attr('data-pay'));
+              $('.payment_item_money:eq('+rowIndex+')').val($(this).attr('data-money'));
+
+              i++;
+              rowIndex++;
+            }
+            
+          });
+
+          var tongtienhang = 0;
+          $('.payment_item_money').each(function(){
+            tongtienhang += Math.round(get_number(this));
+          });
+
+          $('#money').html(tongtienhang);
+          
+          
+          $('#money').html(function(index, value) {
+            return value
+              .replace(/[^0-9-.]/g, "")
+              .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            ;
+          });
+
+          $( "#show_item" ).dialog( "close" );
+        }
+      },
+      {
+        text: "Đóng",
+        icons: { primary: "ui-icon-close" },
+        click: function(){
+          $( "#show_item" ).dialog( "close" );
+        }
+      },
+
+    ]
+});
+
+
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+ 
+      $('input').keyup(function (e) {
+        if (e.which == 39) { // right arrow
+          $(this).closest('td').next().find('input').focus();
+    
+        } else if (e.which == 37) { // left arrow
+          $(this).closest('td').prev().find('input').focus();
+ 
+        } else if (e.which == 40) { // down arrow
+          $(this).closest('tr').next().find('td:eq(' + $(this).closest('td').index() + ')').find('input').focus();
+ 
+        } else if (e.which == 38) { // up arrow
+          $(this).closest('tr').prev().find('td:eq(' + $(this).closest('td').index() + ')').find('input').focus();
+        }
+      });
+ 
+    // un-comment to display key code
+    // $("input").keydown(function (e) {
+    //   console.log(e.which);
+    // });
+    });
+
+
+document.addEventListener("keydown", function(event) {
+  var index = 0;
+  var rowIndex=$('#dataTable'+index+' input:focus').closest('tr').index();
+  if ($('#dataTable'+index+' input').is(':focus')) {
+    if (event.keyCode == 113) { //F8
+      //addRow('dataTable'+index);
+      $('.dataTable').each(function(){
+        addRow($(this).attr('id'));
+      });
+    }
+    if (event.keyCode == 114) { //F9
+      //delRow('dataTable'+index);
+      $('.dataTable').each(function(){
+        delRow($(this).attr('id'),rowIndex);
+      });
+    }
+    if (event.keyCode == 13) {
+        
+        event.preventDefault();
+        return false;
+    }
+  }
+});
+
+function addRow(id){
+  var table=document.getElementById(id);
+  var rowCount=table.rows.length;
+  var row=table.insertRow(rowCount);
+  var colCount=table.rows[1].cells.length;
+  for(var i=0;i<colCount;i++){
+      var newcell=row.insertCell(i);
+      newcell.innerHTML=table.rows[1].cells[i].innerHTML;
+      newcell.className=table.rows[1].cells[i].className;
+      /*switch(newcell.childNodes[0].type){
+          case"text":newcell.childNodes[0].value="";
+          break;
+          case"checkbox":newcell.childNodes[0].checked=false;
+          break;
+          case"select-one":newcell.childNodes[0].selectedIndex=0;
+          break;
+      }*/
+  }
+  $('#'+id+' tr:last td input').val("");
+  $('#'+id+' tr:last td input.keep-val').each(function(){
+    $(this).val($(this).closest('tr').prev().find('td:eq(' + $(this).closest('td').index() + ')').find('input').val());
+  });
+  $('#'+id+' tr:last td input').attr("data","");
+  $('#'+id+' tr:last td input').attr("alt","");
+  $('#'+id+' tr:last td input:first').focus();
+  var i=1;
+  $('#'+id+' tbody tr td:first-child').each(function() {
+    $(this).text(i);
+    i++;
+  });
+  $('input').keyup(function (e) {
+      if (e.which == 39) { // right arrow
+        $(this).closest('td').next().find('input').focus();
+
+      } else if (e.which == 37) { // left arrow
+        $(this).closest('td').prev().find('input').focus();
+
+      } else if (e.which == 40) { // down arrow
+        $(this).closest('tr').next().find('td:eq(' + $(this).closest('td').index() + ')').find('input').focus();
+
+      } else if (e.which == 38) { // up arrow
+        $(this).closest('tr').prev().find('td:eq(' + $(this).closest('td').index() + ')').find('input').focus();
+      }
+    });
+  
+
+  $('.numbers').keyup(function(event) {
+      // skip for arrow keys
+    if(event.which >= 37 && event.which <= 40) return;
+    // format number
+    $(this).val(function(index, value) {
+      return value
+        .replace(/[^0-9-.]/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      ;
+    });
+  });
+
+  $(".payment_item_money").keyup(function(){
+  
+    var tongtienhang = 0;
+    $('.payment_item_money').each(function(){
+      tongtienhang += parseFloat(get_number(this)) || 0;
+    });
+    $('.payment_item_tax').each(function(){
+      tongtienhang += parseFloat(get_number(this)) || 0;
+    });
+
+    $('#money').html(tongtienhang);
+    
+    $('#money').html(function(index, value) {
+      return value
+        .replace(/[^0-9-.]/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      ;
+    });
+    
+    $('.numbers').val(function(index, value) {
+      return value
+        .replace(/[^0-9-.]/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      ;
+    });
+  });
+  $(".payment_item_tax_percent").keyup(function(){
+    var rowIndex=$(this).closest('tr').index();
+    var val = parseFloat($(this).val()) || 0;
+    var money = parseFloat(get_number('.payment_item_money:eq('+rowIndex+')')) || 0;
+
+    var gtgt = roundDecimal(val/100*money,0);
+    $('.payment_item_tax:eq('+rowIndex+')').val(gtgt);
+
+    var tongtienhang = gtgt;
+    $('.payment_item_money').each(function(){
+      tongtienhang += parseFloat(get_number(this)) || 0;
+    });
+
+    $('#money').html(tongtienhang);
+    
+    $('#money').html(function(index, value) {
+      return value
+        .replace(/[^0-9-.]/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      ;
+    });
+    
+    $('.numbers').val(function(index, value) {
+      return value
+        .replace(/[^0-9-.]/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      ;
+    });
+  });
+  $('.payment_item_customer').keyup(function(){
+      var row = $(this).parent().parent();
+      var rowIndex = (row[0].rowIndex)-1;
+      var keyword = $(this).val();
+      if(keyword != ""){
+        $.ajax({
+            url: '<?php echo BASE_URL ?>/paycash/getCustomer',
+            type: 'POST',
+            data: {keyword:keyword, offset:rowIndex, name:name},
+            success:function(data){
+                $('.name_list_id_3:eq('+rowIndex+')').slideDown(200);
+                $('.name_list_id_3:eq('+rowIndex+')').html(data);
+            }
+        });
+      }
+
+      if ($('.payment_item_customer:eq('+rowIndex+')').val() == "" || $('.payment_item_customer:eq('+rowIndex+')').attr('data') == "") {
+        $('.payment_item_customer:eq('+rowIndex+')').attr('data',"");
+      }
+  });
+  $('.payment_item_debit').keyup(function(){
+      var row = $(this).parent().parent();
+      var rowIndex = (row[0].rowIndex)-1;
+      var keyword = $(this).val();
+      var name = ".payment_item_debit";
+      if(keyword != ""){
+        $.ajax({
+            url: '<?php echo BASE_URL ?>/paycash/getAccount',
+            type: 'POST',
+            data: {keyword:keyword, offset:rowIndex, name:name},
+            success:function(data){
+                $('.name_list_id:eq('+rowIndex+')').slideDown(200);
+                $('.name_list_id:eq('+rowIndex+')').html(data);
+            }
+        });
+      }
+
+      if ($('.payment_item_debit:eq('+rowIndex+')').val() == "" || $('.payment_item_debit:eq('+rowIndex+')').attr('data') == "") {
+        $('.payment_item_debit:eq('+rowIndex+')').attr('data',"");
+      }
+  });
+  $('.payment_item_credit').keyup(function(){
+      var row = $(this).parent().parent();
+      var rowIndex = (row[0].rowIndex)-1;
+      var keyword = $(this).val();
+      var name = ".payment_item_credit";
+      if(keyword != ""){
+        $.ajax({
+            url: '<?php echo BASE_URL ?>/paycash/getAccount',
+            type: 'POST',
+            data: {keyword:keyword, offset:rowIndex, name:name},
+            success:function(data){
+                $('.name_list_id_2:eq('+rowIndex+')').slideDown(200);
+                $('.name_list_id_2:eq('+rowIndex+')').html(data);
+            }
+        });
+      }
+
+      if ($('.payment_item_credit:eq('+rowIndex+')').val() == "" || $('.payment_item_credit:eq('+rowIndex+')').attr('data') == "") {
+        $('.payment_item_credit:eq('+rowIndex+')').attr('data',"");
+      }
+  });
+  $('.payment_item_tax_debit').keyup(function(){
+      var row = $(this).parent().parent();
+      var rowIndex = (row[0].rowIndex)-1;
+      var keyword = $(this).val();
+      var name = ".payment_item_tax_debit";
+      if(keyword != ""){
+        $.ajax({
+            url: '<?php echo BASE_URL ?>/paycash/getAccount',
+            type: 'POST',
+            data: {keyword:keyword, offset:rowIndex, name:name},
+            success:function(data){
+                $('.name_list_id_4:eq('+rowIndex+')').slideDown(200);
+                $('.name_list_id_4:eq('+rowIndex+')').html(data);
+            }
+        });
+      }
+
+      if ($('.payment_item_tax_debit:eq('+rowIndex+')').val() == "" || $('.payment_item_tax_debit:eq('+rowIndex+')').attr('data') == "") {
+        $('.payment_item_tax_debit:eq('+rowIndex+')').attr('data',"");
+      }
+  });
+  
+  function set_item_account(value,code,name,vitri) {
+      $(name+':eq('+vitri+')').val(code);
+      $(name+':eq('+vitri+')').attr("data",value);
+      $('.name_list_id').hide();
+      $('.name_list_id_2').hide();
+      $('.name_list_id_4').hide();
+      $(name+':eq('+vitri+')').focus();
+  }
+  function set_item_customer(value,code,name,vitri){
+    $('.payment_item_customer:eq('+vitri+')').val(code);
+    $('.payment_item_customer:eq('+vitri+')').attr("data",value);
+    $('.payment_item_customer_name:eq('+vitri+')').val(name);
+    $('.payment_item_customer_name2:eq('+vitri+')').val(name);
+    $('.name_list_id_3').hide();
+    $('.payment_item_customer_name:eq('+vitri+')').focus();
+  }
+
+
+  $(".find_item").click(function(){
+    var rowIndex=$(this).closest('tr').index();
+    $('#rowIndex_item').val(rowIndex);
+      $.ajax({
+          url: '<?php echo BASE_URL ?>/paycash/getItem',
+          type: 'POST',
+          data: {rowIndex:rowIndex},
+          success:function(data){
+            $('#show_item').html(data);
+            $("#show_item" ).dialog( "open" );
+
+            $('#tblExport2').DataTable({
+                "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Tất cả"]],
+                "order": [[ 1, "asc" ], [ 2, "asc" ]],
+                "columnDefs": [ {
+                  "targets": 0,
+                  "orderable": false
+                } ],
+                "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+                  var index = iDisplayIndex +1;
+                    $('.tr td:eq(0)',nRow).html(index);
+                    return nRow
+                }
+            });
+
+            $('.tr').click(function(){
+              $(this).find('input').each(function () {
+                if ($(this).is(':checked')) {
+                  $(this).prop('checked',false);
+                }
+                else{
+                  $(this).prop('checked',true);
+                }
+              });
+            });
+
+            $('.numbers').keyup(function(event) {
+                // skip for arrow keys
+            if(event.which >= 37 && event.which <= 40) return;
+            // format number
+            $(this).val(function(index, value) {
+              return value
+                .replace(/[^0-9-.]/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+              ;
+            });
+          });
+          
+          $('.money_add').keyup(function(){
+            var rowIndex=$(this).closest('tr').index();
+            var max = parseFloat($(this).attr('max')) || 0;
+            var val_new = parseFloat(get_number(this)) || 0;
+            if (val_new>max) {
+              $(this).val(max);
+              $(this).val(function(index, value) {
+                return value
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                ;
+              });
+            }
+            var val = $(this).val() || 0;
+            $('input[name="check_i[]"]:eq('+rowIndex+')').attr('data-money',val);
+
+          });
+          }
+
+      });
+  });
+}
+function delRow(id,rowIndex){
+  try{
+      var table=document.getElementById(id);
+      var rowCount=table.rows.length;
+      if(rowCount<=2){
+        alert("Cannot delete all the rows.");
+      }
+      else{
+        table.deleteRow(rowIndex+1);
+      }
+      
+      $('#'+id+' tr:last td input:first').focus();
+      var i=1;
+      $('#'+id+' tbody tr td:first-child').each(function() {
+        $(this).text(i);
+        i++;
+      });
+
+      
+      var tongtienhang = 0;
+      $('.payment_item_money').each(function(){
+        tongtienhang += Math.round(get_number(this));
+      });
+      $('.payment_item_tax').each(function(){
+        tongtienhang += Math.round(get_number(this));
+      });
+
+      $('#money').html(tongtienhang);
+      
+      
+      $('#money').html(function(index, value) {
+        return value
+          .replace(/[^0-9-.]/g, "")
+          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+        ;
+      });
+
+      $('.numbers').val(function(index, value) {
+        return value
+          .replace(/[^0-9-.]/g, "")
+          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+        ;
+      });
+      
+  }
+  catch(e){
+      alert(e);
+  }
+}
+</script>
+<style type="text/css">
+.table-container {
+    height: 10em;
+    font-size: 11px;
+}
+.table-container table {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    width: 100%;
+}
+.table-container table thead {
+    /* head takes the height it requires, 
+    and it's not scaled when table is resized */
+    flex: 0 0 auto;
+    width: calc(100% - 0.9em);
+}
+.table-container table tbody {
+    /* body takes all the remaining available space */
+    flex: 1 1 auto;
+    display: block;
+    overflow-y: scroll;
+}
+.table-container table tbody tr {
+    width: 100%;
+}
+.table-container table thead,
+.table-container table tbody tr {
+    display: table;
+    table-layout: fixed;
+}
+/* decorations */
+
+.table-container table {
+    border: 1px solid lightgrey;
+}
+.table-container table td, .table-container table th {
+    text-align: center;
+    padding: 0;
+    border: 1px solid lightgrey;
+}
+.table-container table th {
+    border: 1px solid grey;
+}
+.width-3 {
+    width: 3%;
+}
+.width-5 {
+    width: 5%;
+}
+.width-7 {
+    width: 7%;
+}
+.width-10 {
+    width: 10%;
+}
+.table-container table td input{
+  width: 90%;
+  margin: 0;
+}
+
+.right {
+    margin-left: -50px;
+    height: auto;
+    width: auto;
+    background: rgba(0, 0, 0, 0.08);
+    border: 0;
+}
+</style>

@@ -1,0 +1,527 @@
+<?php
+$url_order = 'ASC';
+if ($order_by == 'invoice_id')
+    $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+elseif ($order_by == 'invoice_number')
+    $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+elseif ($order_by == 'invoice_name')
+    $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+
+    $i = $sonews*$page-($sonews-1);
+
+?>
+<div id="loading"></div>
+<div id="winpopup"></div>
+<section class="content-header">
+    <h1>TỜ KHAI THUẾ GTGT</h1>
+  <ol class="breadcrumb">
+    <li><a href="<?php echo $this->url('admin') ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li class="active"><a href="<?php echo $this->url('invoicetax') ?>">Tờ khai thuế GTGT</a></li>
+  </ol>
+</section>
+<div id="content" style="padding:5px;">
+
+    <div class="search-box">
+        
+        <input type="search" id="search-input" name="s" value="<?php echo isset($keyword)?$keyword:null; ?>" placeholder="Tìm kiếm">
+        <input type="button" name="" id="search-submit" class="button-search" value="Tìm kiếm" onclick="searchall('<?php echo $page ?>','<?php echo $order_by ?>','<?php echo $order ?>');">
+        <?php if(!isset($disable_control)){ ?>
+        <div class="add-box"><a class="add_button" id="btnExport" ><i class="fa fa-download"></i> Xuất</a></div>
+        <?php } ?>
+    </div>
+    <div class="tablenav top">
+        <div class="add-box">
+                  
+            Từ  <input style="width:100px" type="search" name="batdau" id="batdau" placeholder="Chọn ngày" <?php if(isset($batdau)) echo "value='$batdau'"; ?> >  
+            Đến  <input style="width:100px" type="search" name="ketthuc" id="ketthuc" placeholder="Chọn ngày" <?php if(isset($ketthuc)) echo "value='$ketthuc'"; ?> >  
+             <input type="button" name="xem" id="xem" value="Xem" onclick="searchall('<?php echo $page ?>','<?php echo $order_by ?>','<?php echo $order ?>');">  
+            
+        </div>
+        <div class="add-box">
+            Từ tháng <input class="monthPicker" style="width:90px" type="search" name="chonngaytao" id="chonngaytao" placeholder="Chọn tháng" <?php if(isset($ngaytao)) echo "value='$ngaytao'"; ?> >    
+            Đến tháng <input class="monthPicker" style="width:90px" type="search" name="chonngaytaobatdau" id="chonngaytaobatdau" placeholder="Chọn tháng" <?php if(isset($ngaytaobatdau)) echo "value='$ngaytaobatdau'"; ?> >  
+
+            <input type="button" name="chon" id="chon" class="button" value="Chọn" onclick="searchall('<?php echo $page ?>','<?php echo $order_by ?>','<?php echo $order ?>');">        
+                                        
+        </div>
+        
+        <div class="alignleft actions">
+        <select name="m" id="chonloc">
+          <option  value="18446744073709">Hiển thị tất cả</option>
+          <option value="50">Hiển thị 50 giá trị</option>
+                <option value="100">Hiển thị 100 giá trị</option>
+                <option value="150">Hiển thị 150 giá trị</option>
+                <option selected="selected" value="200">Hiển thị 200 giá trị</option>
+        </select>
+        <input type="button" name="" id="post-query-submit" class="button" value="Chọn lọc" onclick="searchall('<?php echo $page ?>','<?php echo $order_by ?>','<?php echo $order ?>');">                               
+        </div>
+
+      </div>
+
+</div>
+
+<table class="table_data" id="tblExport">
+<thead>
+    <tr>
+        <th class="fix">
+            <a class="sort">STT</a>
+        </th>
+        <th class="fix" colspan="2">
+            <a class="sort">Chỉ tiêu</a>
+        </th>
+        <th class="fix" colspan="2">
+            <a class="sort">Giá trị HHDV</a>
+        </th>
+        <th class="fix" colspan="2">
+            <a class="sort">Thuế GTGT</a>
+        </th>
+    </tr>
+    
+   </thead>
+   <tbody>
+    <?php $tongcon=0;$tongvaocon=0;$tongracon=0;$tongmuavaocon=0;$tongbanracon=0;$tong0con=0;$tong5con=0;$tong10con=0;$tongmua0con=0;$tongmua5con=0;$tongmua10con=0;
+    $tongvao=0;$tongra=0;$tongmuavao=0;$tongbanra=0;$tong0=0;$tong5=0;$tong10=0;$tongmua0=0;$tongmua5=0;$tongmua10=0;
+    foreach ($invoice_befores as $invoice) {
+        if ($invoice->invoice_type==1) {
+            $tongvaocon += $invoice->invoice_tax;
+            $tongmuavaocon += $invoice->invoice_money;
+        }
+        else{
+            $tongracon += $invoice->invoice_tax;
+            $tongbanracon += $invoice->invoice_money;
+            $percent = round($invoice->invoice_tax/$invoice->invoice_money*100);
+            switch ($percent) {
+                case 5:
+                    $tong5con += $invoice->invoice_tax;
+                    $tongmua5con += $invoice->invoice_money;
+                    break;
+                case 10:
+                    $tong10con += $invoice->invoice_tax;
+                    $tongmua10con += $invoice->invoice_money;
+                    break;
+                
+                default:
+                    $tong0con += $invoice->invoice_tax;
+                    $tongmua0con += $invoice->invoice_money;
+                    break;
+            }
+        }
+    }
+    $tongmua28con=$tong0con+$tong5con+$tong10con;
+    $tong36con=$tongmua28con-$tongvaocon;
+    $tong41con=0-($tong36con<0?$tong36con:0);
+    $tongcon = $tong41con;
+
+    foreach ($invoices as $invoice) {
+        if ($invoice->invoice_type==1) {
+            $tongvao += $invoice->invoice_tax;
+            $tongmuavao += $invoice->invoice_money;
+        }
+        else{
+            $tongra += $invoice->invoice_tax;
+            $tongbanra += $invoice->invoice_money;
+            $percent = round($invoice->invoice_tax/$invoice->invoice_money*100);
+            switch ($percent) {
+                case 5:
+                    $tong5 += $invoice->invoice_tax;
+                    $tongmua5 += $invoice->invoice_money;
+                    break;
+                case 10:
+                    $tong10 += $invoice->invoice_tax;
+                    $tongmua10 += $invoice->invoice_money;
+                    break;
+                
+                default:
+                    $tong0 += $invoice->invoice_tax;
+                    $tongmua0 += $invoice->invoice_money;
+                    break;
+            }
+        }
+    }
+    ?>
+        <tr style="font-weight:bold" >
+            <td class="fix text-center">A</td>
+            <td class="fix">Không phát sinh hoạt động mua, bán trong kỳ (đánh dấu "X")</td>
+            <td class="fix text-center">[21]</td>
+            <td class="fix text-right" colspan="2"><?php echo $tongvao==$tongra && $tongra==0?"X":null ?></td>
+            <td class="fix text-right" colspan="2"><?php echo $tongvao==$tongra && $tongra==0?"X":null ?></td>
+        </tr>
+        <tr style="font-weight:bold" >
+            <td class="fix text-center">B</td>
+            <td class="fix"  colspan="4">Thuế GTGT còn được khấu trừ kỳ trước chuyển sang</td>
+            <td class="fix text-center">[22]</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($tongcon) ?></td>
+        </tr>
+        <tr style="font-weight:bold" >
+            <td class="fix text-center">C</td>
+            <td class="fix" colspan="6">Kê khai thuế GTGT phải nộp Ngân sách nhà nước</td>
+            
+        </tr>
+        <tr style="font-weight:bold" >
+            <td class="fix text-center">I</td>
+            <td class="fix" colspan="6">Hàng hoá, dịch vụ (HHDV) mua vào trong kỳ</td>
+            
+        </tr>
+        <tr >
+            <td class="fix text-center" style="font-weight:bold">1</td>
+            <td class="fix" colspan="2">Giá trị và thuế GTGT của hàng hoá, dịch vụ mua vào</td>
+            <td class="fix text-center">[23]</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($tongmuavao) ?></td>
+            <td class="fix text-center">[24]</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($tongvao) ?></td>
+        </tr>
+        <tr >
+            <td class="fix text-center" style="font-weight:bold">2</td>
+            <td class="fix" colspan="4">Tổng số thuế GTGT  được khấu trừ kỳ này</td>
+            <td class="fix text-center">[25]</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($tongvao) ?></td>
+        </tr>
+        <tr style="font-weight:bold" >
+            <td class="fix text-center">II</td>
+            <td class="fix" colspan="6">Hàng hoá, dịch vụ bán ra trong kỳ</td>
+            
+        </tr>
+        <tr style="font-weight:bold">
+            <td class="fix text-center">1</td>
+            <td class="fix" colspan="2">Hàng hóa, dịch vụ bán ra không chịu thuế GTGT</td>
+            <td class="fix text-center">[26]</td>
+            <td class="fix text-right"></td>
+            <td class="fix" colspan="2"></td>
+        </tr>
+        <tr style="font-weight:bold">
+            <td class="fix text-center">2</td>
+            <td class="fix" colspan="2">Hàng hóa, dịch vụ bán ra chịu thuế GTGT ([27]=[29]+[30]+[32]+[32a]; [28]=[31]+[33])</td>
+            <td class="fix text-center">[27]</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($tongmua27=$tongmua0+$tongmua5+$tongmua10) ?></td>
+            <td class="fix text-center">[28]</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($tongmua28=$tong0+$tong5+$tong10) ?></td>
+        </tr>
+        <tr >
+            <td class="fix text-center">a</td>
+            <td class="fix" colspan="2">Hàng hoá, dịch vụ bán ra chịu thuế suất 0%</td>
+            <td class="fix text-center">[29]</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($tongmua0) ?></td>
+            <td class="fix" colspan="2"></td>
+        </tr>
+        <tr >
+            <td class="fix text-center" >b</td>
+            <td class="fix" colspan="2">Hàng hoá, dịch vụ bán ra chịu thuế suất 5%</td>
+            <td class="fix text-center">[30]</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($tongmua5) ?></td>
+            <td class="fix text-center">[31]</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($tong5) ?></td>
+        </tr>
+        <tr >
+            <td class="fix text-center" >c</td>
+            <td class="fix" colspan="2">Hàng hoá, dịch vụ bán ra chịu thuế suất 10%</td>
+            <td class="fix text-center">[32]</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($tongmua10) ?></td>
+            <td class="fix text-center">[33]</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($tong10) ?></td>
+        </tr>
+        <tr >
+            <td class="fix text-center">d</td>
+            <td class="fix" colspan="2">Hàng hoá, dịch vụ bán ra không tính thuế</td>
+            <td class="fix text-center">[32a]</td>
+            <td class="fix text-right"></td>
+            <td class="fix" colspan="2"></td>
+        </tr>
+        <tr style="font-weight:bold">
+            <td class="fix text-center">3</td>
+            <td class="fix" colspan="2">Tổng doanh thu và thuế GTGT của HHDV bán  ra ([34] = [26] + [27]; [35] = [28])</td>
+            <td class="fix text-center">[34]</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($tongmua27) ?></td>
+            <td class="fix text-center">[35]</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($tongmua28) ?></td>
+        </tr>
+        <tr style="font-weight:bold">
+            <td class="fix text-center">III</td>
+            <td class="fix" colspan="4">Thuế GTGT phát sinh trong kỳ ([36] = [35] - [25])</td>
+            <td class="fix text-center">[36]</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($tong36=$tongmua28-$tongvao) ?></td>
+        </tr>
+        <tr style="font-weight:bold">
+            <td class="fix text-center">IV</td>
+            <td class="fix" colspan="6">Điều chỉnh tăng, giảm thuế GTGT còn được khấu trừ của các kỳ trước</td>
+        </tr>
+        <tr >
+            <td class="fix text-center">1</td>
+            <td class="fix" colspan="4">Điều chỉnh giảm</td>
+            <td class="fix text-center">[37]</td>
+            <td class="fix text-right"></td>
+        </tr>
+        <tr >
+            <td class="fix text-center">2</td>
+            <td class="fix" colspan="4">Điều chỉnh tăng</td>
+            <td class="fix text-center">[38]</td>
+            <td class="fix text-right"></td>
+        </tr>
+        <tr style="font-weight:bold">
+            <td class="fix text-center">V</td>
+            <td class="fix" colspan="4">Thuế GTGT đã nộp ở địa phương khác của hoạt động kinh doanh xây dựng, lắp đặt, bán hàng, bất động sản ngoại tỉnh</td>
+            <td class="fix text-center">[39]</td>
+            <td class="fix text-right"></td>
+        </tr>
+        <tr style="font-weight:bold">
+            <td class="fix text-center">VI</td>
+            <td class="fix" colspan="6">Xác định nghĩa vụ thuế GTGT phải nộp trong kỳ:</td>
+        </tr>
+        <tr >
+            <td class="fix text-center">1</td>
+            <td class="fix" colspan="4">Thuế GTGT phải nộp của hoạt động sản xuất kinh doanh trong kỳ ([40a]=[36]-[22]+[37]-[38] - [39]≥ 0)</td>
+            <td class="fix text-center">[40a]</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($tong40a=($tong36-$tongcon>0?($tong36-$tongcon):0)) ?></td>
+        </tr>
+        <tr >
+            <td class="fix text-center">2</td>
+            <td class="fix" colspan="4">Thuế GTGT mua vào của dự án đầu tư được bù trừ với thuế GTGT còn phải nộp của hoạt động sản xuất kinh doanh cùng kỳ tính thuế</td>
+            <td class="fix text-center">[40b]</td>
+            <td class="fix text-right"></td>
+        </tr>
+        <tr >
+            <td class="fix text-center">3</td>
+            <td class="fix" colspan="4">Thuế GTGT còn phải nộp trong kỳ ([40]=[40a]-[40b])</td>
+            <td class="fix text-center">[40]</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($tong40a) ?></td>
+        </tr>
+        <tr style="font-weight:bold">
+            <td class="fix text-center">4</td>
+            <td class="fix" colspan="4">Thuế GTGT chưa khấu trừ hết kỳ này (nếu ([41] = [36] - [22] + [37] - [38] -[39] <0)</td>
+            <td class="fix text-center">[41]</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($tong41=0-($tong36-$tongcon<0?($tong36-$tongcon):0)) ?></td>
+        </tr>
+        <tr >
+            <td class="fix text-center">4.1</td>
+            <td class="fix" colspan="4">Tổng số thuế GTGT đề nghị hoàn</td>
+            <td class="fix text-center">[42]</td>
+            <td class="fix text-right"></td>
+        </tr>
+        <tr >
+            <td class="fix text-center">4.2</td>
+            <td class="fix" colspan="4">Thuế GTGT còn được khấu trừ chuyển kỳ sau ([43] = [41] - [42])</td>
+            <td class="fix text-center">[43]</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($tong41) ?></td>
+        </tr>
+   </tbody>
+</table>
+<?php
+$this->helper('slidePaginator');
+?>
+
+<script type="text/javascript">
+
+var x = "<?php echo $limit ?>";
+$('#chonloc option[value='+x+']').attr('selected','selected');
+
+
+</script>
+
+
+<script type="text/javascript">
+
+var pickerOpay2 = {
+        closeText: "Đóng",
+        currentText: "Hiện tại",
+        nextText: "Tiếp",
+        prevText: "Quay lại",
+        monthNames: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        monthNamesShort: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        dayNames: ["Chủ nhật", "Thứ hai", "Thứ ba", "Thứ tư", "Thứ năm", "Thứ sáu", "Thứ bảy"],
+        dayNamesShort: ["CN", "T2", "T3", "T4", "T5", "T6", "T7"],
+        dayNamesMin: ["CN", "T2", "T3", "T4", "T5", "T6", "T7"],
+        dateFormat: 'dd-mm-yy',
+        changeMonth: true,
+        changeYear: true,
+        yearRange: "-100:+0",
+        firstDay: 1,
+        isRTL: false,
+        showButtonPanel: true
+    }; 
+    $(".ngay").datepicker(pickerOpay2);
+
+
+var pickerOpts3 = {
+        closeText: "Đóng",
+        currentText: "Hiện tại",
+        nextText: "Tiếp",
+        prevText: "Quay lại",
+        monthNames: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+        "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        monthNamesShort: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+        "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        dayNames: ["Chủ nhật", "Thứ hai", "Thứ ba", "Thứ tư", "Thứ năm",
+        "Thứ sáu", "Thứ bảy"],
+        dayNamesShort: ["CN", "T2", "T3", "T4", "T5",
+        "T6", "T7"],
+        dayNamesMin: ["CN", "T2", "T3", "T4", "T5",
+        "T6", "T7"],
+        //defaultDate: "+1w",
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: 'dd-mm-yy',
+        firstDay: 1,
+        showWeek: true,
+        weekHeader: 'Tuần',
+        isRTL: false,
+        showButtonPanel: true,
+        onClose: function(selectedDate) {
+                
+                $( "#ketthuc" ).datepicker( "option", "minDate", selectedDate );
+
+         },
+         
+    };  
+    $("#batdau").datepicker(pickerOpts3);
+
+    var pickerOpts4 = {
+        closeText: "Đóng",
+        currentText: "Hiện tại",
+        nextText: "Tiếp",
+        prevText: "Quay lại",
+        monthNames: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+        "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        monthNamesShort: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+        "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        dayNames: ["Chủ nhật", "Thứ hai", "Thứ ba", "Thứ tư", "Thứ năm",
+        "Thứ sáu", "Thứ bảy"],
+        dayNamesShort: ["CN", "T2", "T3", "T4", "T5",
+        "T6", "T7"],
+        dayNamesMin: ["CN", "T2", "T3", "T4", "T5",
+        "T6", "T7"],
+        //defaultDate: "+1w",
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: 'dd-mm-yy',
+        firstDay: 1,
+        showWeek: true,
+        weekHeader: 'Tuần',
+        isRTL: false,
+        showButtonPanel: true,
+        onClose: function(selectedDate) {
+                
+                $( "#batdau" ).datepicker( "option", "maxDate", selectedDate );
+                
+         },
+         
+    };  
+    $("#ketthuc").datepicker(pickerOpts4);
+
+    var pickerOpts = {
+        closeText: "Đóng",
+        currentText: "Hiện tại",
+        nextText: "Tiếp",
+        prevText: "Quay lại",
+        monthNames: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+        "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        monthNamesShort: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+        "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        dayNames: ["Chủ nhật", "Thứ hai", "Thứ ba", "Thứ tư", "Thứ năm",
+        "Thứ sáu", "Thứ bảy"],
+        dayNamesShort: ["CN", "T2", "T3", "T4", "T5",
+        "T6", "T7"],
+        dayNamesMin: ["CN", "T2", "T3", "T4", "T5",
+        "T6", "T7"],
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: 'mm/yy',
+        firstDay: 1,
+        isRTL: false,
+        showButtonPanel: true,
+        onClose: function() {
+                $("#chonngaytao").change();
+         },
+         
+    };  
+    $("#chonngaytao").datepicker(pickerOpts);
+
+    $("#chonngaytao").change(function(){
+        var month = parseInt($("#ui-datepicker-div .ui-datepicker-month :selected").val());
+        var year = parseInt($("#ui-datepicker-div .ui-datepicker-year :selected").val());
+        $(this).datepicker('setDate', new Date(year, month, 1));
+
+        var firstDay = new Date(year, month, 1);
+
+        $('#batdau').datepicker("setDate", firstDay );
+    });
+
+    var pickerOpts5 = {
+        closeText: "Đóng",
+        currentText: "Hiện tại",
+        nextText: "Tiếp",
+        prevText: "Quay lại",
+        monthNames: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+        "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        monthNamesShort: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+        "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        dayNames: ["Chủ nhật", "Thứ hai", "Thứ ba", "Thứ tư", "Thứ năm",
+        "Thứ sáu", "Thứ bảy"],
+        dayNamesShort: ["CN", "T2", "T3", "T4", "T5",
+        "T6", "T7"],
+        dayNamesMin: ["CN", "T2", "T3", "T4", "T5",
+        "T6", "T7"],
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: 'mm/yy',
+        firstDay: 1,
+        isRTL: false,
+        showButtonPanel: true,
+        onClose: function() {
+                $("#chonngaytaobatdau").change();
+         },
+         
+    };  
+    $("#chonngaytaobatdau").datepicker(pickerOpts5);
+
+    $("#chonngaytaobatdau").change(function(){
+        var month = parseInt($("#ui-datepicker-div .ui-datepicker-month :selected").val());
+        var year = parseInt($("#ui-datepicker-div .ui-datepicker-year :selected").val());
+        $(this).datepicker('setDate', new Date(year, month, 1));
+
+        var lastDay = new Date(year, month+1, 0);
+        $('#ketthuc').datepicker("setDate", lastDay );
+    });
+
+
+    var pickerOpts4 = {
+        closeText: "Đóng",
+        currentText: "Hiện tại",
+        nextText: "Tiếp",
+        prevText: "Quay lại",
+        monthNames: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+        "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        monthNamesShort: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+        "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        dayNames: ["Chủ nhật", "Thứ hai", "Thứ ba", "Thứ tư", "Thứ năm",
+        "Thứ sáu", "Thứ bảy"],
+        dayNamesShort: ["CN", "T2", "T3", "T4", "T5",
+        "T6", "T7"],
+        dayNamesMin: ["CN", "T2", "T3", "T4", "T5",
+        "T6", "T7"],
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: 'mm/yy',
+        firstDay: 1,
+        isRTL: false,
+        showButtonPanel: true,
+        onClose: function() {
+            var month = parseInt($("#ui-datepicker-div .ui-datepicker-month :selected").val());
+            var year = parseInt($("#ui-datepicker-div .ui-datepicker-year :selected").val());
+            $(this).datepicker('setDate', new Date(year, month, 1));
+         },
+         
+    };  
+    $("#ngaycapnhat").datepicker(pickerOpts4);
+
+
+    $(".monthPicker").focus(function () {
+        $(".ui-datepicker-calendar").hide();
+        $("#ui-datepicker-div").position({
+            my: "center top",
+            at: "center bottom",
+            of: $(this)
+        });    
+    });
+
+
+</script>
+

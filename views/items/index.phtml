@@ -1,0 +1,500 @@
+<?php
+$url_order = 'ASC';
+if ($order_by == 'items_id')
+    $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+elseif ($order_by == 'items_code')
+    $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+elseif ($order_by == 'items_name')
+    $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+elseif ($order_by == 'items_unit')
+    $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+  elseif ($order_by == 'items_tax')
+    $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+
+    $i = $sonews*$page-($sonews-1);
+
+?>
+
+<div id="loading"></div>
+<div id="winpopup"></div>
+<section class="content-header">
+    <h1>HÀNG HÓA - DỊCH VỤ</h1>
+  <ol class="breadcrumb">
+    <li><a href="<?php echo $this->url('admin') ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li class="active"><a href="<?php echo $this->url('items') ?>">Hàng hóa, dịch vụ</a></li>
+  </ol>
+</section>
+<div id="content" style="padding:5px;">
+
+    <div class="search-box">
+        
+        <input type="search" id="search-input" name="s" value="<?php echo isset($keyword)?$keyword:null; ?>" placeholder="Tìm kiếm">
+        <input type="button" name="" id="search-submit" class="button-search" value="Tìm kiếm" onclick="searchall('<?php echo $page ?>','<?php echo $order_by ?>','<?php echo $order ?>');">
+        <?php if(!isset($disable_control)){ ?>
+        <div class="add-box"><a class="add_button" id="btnExport" ><i class="fa fa-download"></i> Xuất</a></div>
+        <div class="add-box"><a class="add_button" onClick="add_click();"><i class="fa fa-plus"></i> Thêm mới</a></div>
+        <?php } ?>
+    </div>
+    <div class="tablenav top">
+        <?php if(!isset($disable_control)){ ?>
+        <div class="alignleft actions">
+            <select name="action" id="action">
+                <option value="-1" selected="selected">Chọn</option>
+                
+                <option value="delete">Xóa</option>
+            </select>
+            <input type="button" name="" id="doaction" class="button action" value="Áp dụng" onclick="action();">
+        </div>
+        <?php } ?>
+        <div class="alignleft actions">
+        <select name="m" id="chonloc">
+          <option  value="18446744073709">Hiển thị tất cả</option>
+          <option value="50">Hiển thị 50 giá trị</option>
+                <option value="100">Hiển thị 100 giá trị</option>
+                <option value="150">Hiển thị 150 giá trị</option>
+                <option selected="selected" value="200">Hiển thị 200 giá trị</option>
+        </select>
+        <input type="button" name="" id="post-query-submit" class="button" value="Chọn lọc" onclick="searchall('<?php echo $page ?>','<?php echo $order_by ?>','<?php echo $order ?>');">                               
+        </div>
+
+      </div>
+
+</div>
+
+
+<table class="table_data" id="tblExport">
+<thead>
+    <tr>
+        <th class="fix"><input type="checkbox" onclick="checkall('checkbox', this)" name="checkall"/></th>
+        <th  class="fix" >
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','items_id','<?php echo $url_order ?>')">STT <?php if ($order_by == 'items_id'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th  class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','items_code','<?php echo $url_order ?>')">Mã <?php if ($order_by == 'items_code'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th  class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','items_name','<?php echo $url_order ?>')">Tên <?php if ($order_by == 'items_name'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th  class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','items_unit','<?php echo $url_order ?>')">ĐVT <?php if ($order_by == 'items_unit'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th  class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','items_tax','<?php echo $url_order ?>')">Thuế suất <?php if ($order_by == 'items_tax'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th  class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','items_type','<?php echo $url_order ?>')">Loại <?php if ($order_by == 'items_type'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th  class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','items_stuff','<?php echo $url_order ?>')">Hệ số <?php if ($order_by == 'items_stuff'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th  class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','items_number_dauky','<?php echo $url_order ?>')">Tồn đầu kỳ <?php if ($order_by == 'items_number_dauky'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th  class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','items_price_dauky','<?php echo $url_order ?>')">GT đầu kỳ <?php if ($order_by == 'items_price_dauky'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <?php if(!isset($disable_control)){ ?>
+        <th class="fix"></th>
+        <?php } ?>
+    </tr>
+    
+   </thead>
+   <tbody>
+    <?php foreach ($itemss as $items) : ?>
+    
+        
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" id="<?php echo $items->items_id ?>" class="edit_tr" >
+            
+            <td>
+                <input name="check[]" type="checkbox" class="checkbox" value="<?php echo $items->items_id ?>">
+            </td>
+            
+            <td  class="fix"><?php echo $i++; ?></td>
+            <td class="fix" id="items_code_<?php echo $items->items_id; ?>"><?php echo $items->items_code; ?></td>
+            <td class="fix" id="items_name_<?php echo $items->items_id; ?>"><?php echo $items->items_name; ?></td>
+            <td class="fix" id="items_unit_<?php echo $items->items_id; ?>"><?php echo $items->items_unit; ?></td>
+            <td class="fix" id="items_tax_<?php echo $items->items_id; ?>"><?php echo $items->items_tax; ?></td>
+            <td class="fix" id="items_type_<?php echo $items->items_id; ?>"><?php echo $items->items_type==1?"Vật tư hàng hóa":($items->items_type==2?"Dịch vụ":($items->items_type==3?"Diễn giải":null)); ?></td>
+            <td class="fix" id="items_stuff_<?php echo $items->items_id; ?>"><?php echo $items->items_stuff; ?></td>
+            <td class="fix" id="items_number_dauky_<?php echo $items->items_id; ?>"><?php echo $items->items_number_dauky; ?></td>
+            <td class="fix text-right" id="items_price_dauky_<?php echo $items->items_id; ?>"><?php echo $lib->formatMoney($items->items_price_dauky); ?></td>
+            
+            <?php if(!isset($disable_control)){ ?>
+            <td class="pull-right">
+                <button class="btn btn-sm btn-flat btn-primary"><i class="fa fa-edit"></i> Sửa</button>
+                <button class="btn btn-sm btn-flat btn-danger" onclick="del(<?php echo $items->items_id ?>)" ><i class="fa fa-remove"></i> Xóa</button>
+            </td>
+            <?php } ?>
+        </tr>
+
+
+    <?php endforeach; ?>
+     
+   </tbody>
+</table>
+<?php
+$this->helper('slidePaginator');
+?>
+
+<div class="add-field">
+    <section class="content">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+          <!-- general form elements -->
+          <div class="box box-primary">
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form id="add_items" role="form" method="post" action="" enctype="multipart/form-data">
+              <div class="row">
+                <div class="col-md-3 col-xs-6">
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label for="items_type">Danh mục</label>
+                      <select id="items_type"  name="items_type" tabindex="1" required="required" >
+                        <option value="1">Vật tư hàng hóa</option>
+                        <option value="2">Dịch vụ</option>
+                        <option value="3">Diễn giải</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="items_number_dauky">Tồn đầu kỳ</label>
+                      <input class="numbers" type="text" id="items_number_dauky"  name="items_number_dauky" tabindex="5" >
+                    </div>
+                  </div>
+                  
+                  <!-- /.box-body -->
+                  
+                </div>
+                <div class="col-md-3 col-xs-6">
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label for="items_code">Mã</label>
+                      <input  type="text" id="items_code"  name="items_code" tabindex="2"  required="required" >
+                    </div>
+                    <div class="form-group">
+                      <label for="items_number_dauky">Giá trị đầu kỳ</label>
+                      <input class="numbers" type="text" id="items_price_dauky"  name="items_price_dauky" tabindex="6" >
+                    </div>
+                  </div>
+                  <!-- /.box-body -->
+                  
+                </div>
+                <div class="col-md-3 col-xs-6">
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label for="items_name">Tên</label>
+                      <input  type="text" id="items_name"  name="items_name" tabindex="3" required="required"  >
+                    </div>
+                    <div class="form-group">
+                      <label for="items_tax">Thuế suất</label>
+                      <input   type="text" id="items_tax"  name="items_tax" tabindex="7"   >
+                    </div>
+                  </div>
+                  <!-- /.box-body -->
+                  
+                </div>
+                <div class="col-md-3 col-xs-6">
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label for="items_unit">Đơn vị tính</label>
+                      <input   type="text" id="items_unit"  name="items_unit" tabindex="4"   >
+                    </div>
+                    <div class="form-group">
+                      <label for="items_stuff">Hệ số <i class="fa fa-question-circle" title="Hệ số được áp dụng khi phân bổ chi phí, doanh thu.."></i></label>
+                      <input   type="text" id="items_stuff"  name="items_stuff" tabindex="8"   >
+                    </div>
+                  </div>
+                  <!-- /.box-body -->
+                  
+                </div>
+                
+                
+
+              </div>
+              <?php if(!isset($disable_control)){ ?>
+              <div class="row">
+                <div class="col-md-12">
+                    <div class="box-footer">
+                    <input type="hidden" readonly id="yes" name="yes" required="required" >
+                    <button type="submit" class="btn btn-primary" tabindex="9"><i class="fa fa-save"></i> Hoàn thành</button>
+                    <button type="reset" class="btn" tabindex="10"><i class="fa fa-undo"></i> Nhập lại</button>
+                  </div>
+                  <div class="box-footer">
+                    <div id="error" class="error"><?php echo isset($error) ? $error : null; ?></div>
+                  </div>
+                </div>
+              </div>
+              <?php } ?>
+            </form>
+          </div>
+          <!-- /.box -->
+
+        </div>
+        <!--/.col (left) -->
+        
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+       
+</div>
+
+<script type="text/javascript">
+
+
+  
+$('.add-field').hide();  
+
+
+
+    $('.edit_tr').click(function(e){
+        if(e.target != '[object HTMLButtonElement]' && e.target != '[object HTMLSpanElement]' && !$('.checkbox').is(':focus')) { 
+            if(!$('.checkbox').is(':focus')){
+                $("html, body").animate({ scrollTop: $('.add-field').offset().top }, 300);
+            }
+            
+            var items_code = $(this).find("#items_code_"+$(this).attr('id')).text();
+            var items_name = $(this).find("#items_name_"+$(this).attr('id')).text();
+            var items_unit = $(this).find("#items_unit_"+$(this).attr('id')).text();
+            var items_type = $(this).find("#items_type_"+$(this).attr('id')).text();
+            var items_tax = $(this).find("#items_tax_"+$(this).attr('id')).text();
+            var items_stuff = $(this).find("#items_stuff_"+$(this).attr('id')).text();
+            var items_number_dauky = $(this).find("#items_number_dauky_"+$(this).attr('id')).text();
+            var items_price_dauky = $(this).find("#items_price_dauky_"+$(this).attr('id')).text();
+
+            //alert(cost_code);
+            $('#yes').val($(this).attr('id'));
+            $('#items_code').val(items_code);
+            $('#items_name').val(items_name);
+            $('#items_unit').val(items_unit);
+            $('#items_tax').val(items_tax);
+            $('#items_stuff').val(items_stuff);
+            $('#items_number_dauky').val(items_number_dauky);
+            $('#items_price_dauky').val(items_price_dauky);
+            $('#items_type option:contains('+items_type+')').attr('selected','selected');
+
+            $( ".add-field" ).dialog( "open" );
+        }
+
+        
+        
+    });
+
+
+</script>
+<script type="text/javascript">
+
+function add_click(){
+    $('#yes').val("");
+    $('.add-field').slideDown(500);
+     $("html, body").animate({ scrollTop: $('.add-field').offset().top }, 300);   
+     
+        $('#items_code').val("");
+        $('#items_name').val("");
+        $('#items_unit').val("");
+        $('#items_tax').val(0);
+        $('#items_stuff').val("");
+        $('#items_number_dauky').val("");
+        $('#items_price_dauky').val("");
+                
+        $('.numbers').focus(function(){
+            if ( $(this).val() == '0') {
+               $(this).val(""); 
+            };
+            
+        });
+        $('.numbers').blur(function(){
+            if ( $(this).val() == "") {
+                $(this).val(0);
+            };
+            
+        });
+
+    $( ".add-field" ).dialog( "open" );
+}
+
+
+$(document).ready(function(){
+            // Validate form
+            $("#add_items").validate({
+                errorElement: "span", // Định dạng cho thẻ HTML hiện thông báo lỗi
+                rules: {
+                    
+                },
+                submitHandler: function(form) {
+                
+                    var items_code = $('#items_code').attr('value');
+                    var items_name = $('#items_name').attr('value');
+                    var items_unit = $('#items_unit').attr('value');
+                    var items_type = $('#items_type').attr('value');
+                    var items_tax = $('#items_tax').attr('value');
+                    var items_stuff = $('#items_stuff').attr('value');
+                    var items_number_dauky = $('#items_number_dauky').attr('value');
+                    var items_price_dauky = $('#items_price_dauky').attr('value');
+                    
+                    var yes = $('#yes').attr('value');
+                    
+                    var action      = "them";
+                 
+                    $.ajax({
+                        type: "POST", // phương thức gởi đi
+                        url: "<?php echo BASE_URL ?>/items/add", // nơi mà dữ liệu sẽ chuyển đến khi submit
+                        data: {
+                            
+                            items_code: items_code,
+                            items_name: items_name,
+                            items_unit: items_unit,
+                            items_type: items_type,
+                            items_tax: items_tax,
+                            items_stuff: items_stuff,
+                            items_number_dauky: items_number_dauky,
+                            items_price_dauky: items_price_dauky,
+                            yes: yes,
+
+                            }, // giá trị post
+                        success: function(answer){ // if everything goes well
+                            //alert(answer);
+                            $('#error').hide();
+                            $('#error').slideToggle(100); // hiển thị thẻ div success
+                            $('#error').html('<div class="successbox">'+answer+'</div>'); // đặt kết quả trả về từ test.php vào thẻ div success
+                            $('#error').fadeOut(10000);
+
+                            if (yes != "") {
+                                if (answer.trim() != "Thông tin đã tồn tại") {
+                                    setTimeout(function() {
+                                            sapxep('<?php echo $page ?>','<?php echo $order_by ?>','<?php echo $order ?>');
+                                          }, 200);
+                                }
+                            }
+                            else{
+                                if (answer.trim() != "Thông tin đã tồn tại") {
+                                    setTimeout(function() {
+                                        sapxep('<?php echo $page ?>','<?php echo $order_by ?>','<?php echo $order ?>');
+                                      }, 200);
+                                }
+                                
+                            }
+                        }
+                    });
+                    return false;
+                     
+                 }
+            });
+
+
+
+
+   $('.numbers').keyup(function(event) {
+
+          // skip for arrow keys
+      if(event.which >= 37 && event.which <= 40) return;
+
+      // format number
+      $(this).val(function(index, value) {
+        return value
+          .replace(/[^0-9-.]/g, "")
+          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+        ;
+      });
+    });
+
+    $('.number').keyup(function(event) {
+
+          // skip for arrow keys
+      if(event.which >= 37 && event.which <= 40) return;
+
+      // format number
+      $(this).val(function(index, value) {
+        return value
+          .replace(/[^0-9-]/g, "")
+        ;
+      });
+    });
+    
+
+});
+
+function get_number(id){
+    return $(id).val().replace(/\,/g,'');
+}
+function set_item(item,name) {
+    // change input value
+    $('#work_code').val(item);
+    $("#work_code").attr("data",name);
+    
+    $('#code_list_id').hide();
+    $('#work_code').focus();
+}
+
+</script>
+<div style="display:none" id="lasted"></div>
+<script type="text/javascript">
+    var count = parseInt(<?php echo $lastID ?>);
+    $('#lasted').html(count);
+
+$("#import_excel").click(function(){
+        $("#winpopup").dialog({
+            draggable:true,
+            modal: true,
+            autoOpen: false,
+            height:300,
+            width:400,
+            resizable: false,
+            title:'Import Excel',
+            
+        });
+        $("#winpopup").load($(this).attr('href'));
+        $("#winpopup").dialog("open");
+         
+        return false;
+    });
+
+
+ 
+var x = "<?php echo $limit ?>";
+$('#chonloc option[value='+x+']').attr('selected','selected');
+
+
+</script>
+</div>
+
+<script type="text/javascript">
+
+
+$( ".add-field" ).dialog({
+    autoOpen: false,
+    modal: true,
+    width: "auto",
+    title: "Danh mục hàng hóa dịch vụ",
+    hide: 'fold',
+    show: 'blind'
+});
+
+
+
+$(".show").click(function(){
+    $("#winpopup").dialog({
+        draggable:true,
+        modal: true,
+        autoOpen: false,
+        width: "90%",
+        resizable: false,
+        position: "top",
+        title:'Chi tiết',
+        buttons: {
+            OK: function() {
+                $( this ).dialog( "close" );
+            },
+            Cancel: function() {
+                $( this ).dialog( "close" );
+            }
+        }
+    });
+    $("#winpopup").load($(this).attr('href'));
+    $("#winpopup").dialog("open");
+    return false;
+});
+
+</script>
+

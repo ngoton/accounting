@@ -1,0 +1,182 @@
+
+<?php
+$url_order = 'ASC';
+if ($order_by == 'customer_id')
+    $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+elseif ($order_by == 'customer_code')
+    $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+elseif ($order_by == 'customer_name')
+    $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+elseif ($order_by == 'customer_mst')
+    $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+elseif ($order_by == 'customer_address')
+    $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+elseif ($order_by == 'customer_phone')
+    $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+elseif ($order_by == 'customer_mobile')
+    $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+elseif ($order_by == 'customer_email')
+    $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+elseif ($order_by == 'customer_career')
+    $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+elseif ($order_by == 'type_customer')
+    $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+
+    $i = $sonews*$page-($sonews-1);
+
+?>
+
+<div id="loading"></div>
+<div id="winpopup"></div>
+<section class="content-header">
+    <h1>KHÁCH HÀNG</h1>
+  <ol class="breadcrumb">
+    <li><a href="<?php echo $this->url('admin') ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li class="active"><a href="<?php echo $this->url('customer') ?>">Khách hàng</a></li>
+  </ol>
+</section>
+<div id="content" style="padding:5px;">
+
+    <div class="search-box">
+        
+        <input type="search" id="search-input" name="s" value="<?php echo isset($keyword)?$keyword:null; ?>" placeholder="Tìm kiếm">
+        <input type="button" name="" id="search-submit" class="button-search" value="Tìm kiếm" onclick="searchall('<?php echo $page ?>','<?php echo $order_by ?>','<?php echo $order ?>');">
+        <?php if(!isset($disable_control)){ ?>
+        <div class="add-box"><a class="add_button" id="btnExport" ><i class="fa fa-download"></i> Xuất</a></div>
+        <div class="add-box"><a class="add_button" href="<?php echo $this->url('customer/newcus') ?>"><i class="fa fa-plus"></i> Thêm mới</a></div>
+        <?php } ?>
+    </div>
+    <div class="tablenav top">
+        <?php if(!isset($disable_control)){ ?>
+        <div class="alignleft actions">
+            <select name="action" id="action">
+                <option value="-1" selected="selected">Chọn</option>
+                
+                <option value="delete">Xóa</option>
+            </select>
+            <input type="button" name="" id="doaction" class="button action" value="Áp dụng" onclick="action();">
+        </div>
+        <?php } ?>
+        <div class="alignleft actions">
+        <select name="m" id="chonloc">
+            <option  value="18446744073709">Hiển thị tất cả</option>
+            <option value="50">Hiển thị 50 giá trị</option>
+            <option value="100">Hiển thị 100 giá trị</option>
+            <option value="150">Hiển thị 150 giá trị</option>
+            <option selected="selected" value="200">Hiển thị 200 giá trị</option>
+        </select>
+        <input type="button" name="" id="post-query-submit" class="button" value="Chọn lọc" onclick="searchall('<?php echo $page ?>','<?php echo $order_by ?>','<?php echo $order ?>');">                               
+        </div>
+
+      </div>
+
+</div>
+
+
+<table class="table_data" id="tblExport">
+<thead>
+    <tr>
+    	<th class="fix"><input type="checkbox" onclick="checkall('checkbox', this)" name="checkall"/></th>
+        <th class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','customer_id','<?php echo $url_order ?>')">STT <?php if ($order_by == 'customer_id'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th  class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','customer_code','<?php echo $url_order ?>')">Mã <?php if ($order_by == 'customer_code'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th  class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','customer_company','<?php echo $url_order ?>')">Tên <?php if ($order_by == 'customer_company'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th  class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','customer_mst','<?php echo $url_order ?>')">Mã số thuế <?php if ($order_by == 'customer_mst'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th  class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','customer_address','<?php echo $url_order ?>')">Địa chỉ <?php if ($order_by == 'customer_address'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th  class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','customer_phone','<?php echo $url_order ?>')">SĐT <?php if ($order_by == 'customer_phone'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th  class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','customer_mobile','<?php echo $url_order ?>')">Di động <?php if ($order_by == 'customer_mobile'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th  class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','customer_email','<?php echo $url_order ?>')">Email <?php if ($order_by == 'customer_email'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th  class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','type_customer','<?php echo $url_order ?>')">Loại <?php if ($order_by == 'type_customer'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th  class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','customer_debit_dauky','<?php echo $url_order ?>')">Nợ ĐK <?php if ($order_by == 'customer_debit_dauky'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th  class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','customer_credit_dauky','<?php echo $url_order ?>')">Có ĐK <?php if ($order_by == 'customer_credit_dauky'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        
+        <th  class="fix">&nbsp;</th>
+    </tr>
+    
+   </thead>
+   <tbody>
+    <?php foreach ($customers as $customer) : 
+    ?>
+    <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" id="<?php echo $customer->customer_id ?>" class="edit_tr">
+        <td><input name="check[]" type="checkbox" class="checkbox" value="<?php echo $customer->customer_id ?>"></td>
+        <td class="fix"><?php echo $i++; ?></td>
+        <td class="fix" id="customer_code_<?php echo $customer->customer_id; ?>"><?php echo $customer->customer_code ?></td>
+        <td class="fix" id="customer_company_<?php echo $customer->customer_id; ?>"><?php echo $customer->customer_company ?></td>
+        <td class="fix" id="customer_mst_<?php echo $customer->customer_id; ?>"><?php echo $customer->customer_mst ?></td>
+        <td class="fix" id="customer_address_<?php echo $customer->customer_id; ?>"><?php echo $customer->customer_address ?></td>
+        <td class="fix" id="customer_phone_<?php echo $customer->customer_id; ?>"><?php echo $customer->customer_phone ?></td>
+        <td class="fix" id="customer_mobile_<?php echo $customer->customer_id; ?>"><?php echo $customer->customer_mobile ?></td>
+        <td class="fix" id="customer_email_<?php echo $customer->customer_id; ?>"><?php echo $customer->customer_email ?></td>
+        <td class="fix" id="type_customer_<?php echo $customer->customer_id; ?>"><?php echo $customer->type_customer==1?"Khách hàng":($customer->type_customer==2?"Đối tác":($customer->type_customer==3?"Nhân viên":"Khác")) ?></td>
+        <td class="fix text-right" id="customer_debit_dauky_<?php echo $customer->customer_id; ?>"><?php echo $lib->formatMoney($customer->customer_debit_dauky) ?></td>
+        <td class="fix text-right" id="customer_credit_dauky_<?php echo $customer->customer_id; ?>"><?php echo $lib->formatMoney($customer->customer_credit_dauky) ?></td>
+        <td style="display:none" class="fix" id="customer_sub_<?php echo $customer->customer_id; ?>"><?php echo $customer->customer_sub ?></td>
+         
+        <td class="pull-right">
+            <button class="btn btn-sm btn-flat btn-success" onclick="javascript:window.location.href='<?php echo $this->url("customer/editcus/".$customer->customer_id) ?>'" ><i class="fa fa-eye"></i> Xem</button>
+            <?php if(!isset($disable_control)){ ?>  
+            <button class="btn btn-sm btn-flat btn-primary" onclick="javascript:window.location.href='<?php echo $this->url("customer/editcus/".$customer->customer_id) ?>'" ><i class="fa fa-edit"></i> Sửa</button>
+            <button class="btn btn-sm btn-flat btn-danger" onclick="del(<?php echo $customer->customer_id ?>)" ><i class="fa fa-remove"></i> Xóa</button>
+            <?php } ?>
+        </td>
+        
+    </tr>
+     
+    <?php endforeach; ?>
+   </tbody>
+</table>
+<?php
+$this->helper('slidePaginator');
+?>
+
+
+<div style="display:none" id="lasted"></div>
+<script type="text/javascript">
+    var count = parseInt(<?php echo $lastID ?>);
+    $('#lasted').html(count);
+
+$("#import_excel").click(function(){
+        $("#winpopup").dialog({
+            draggable:true,
+            modal: true,
+            autoOpen: false,
+            height:300,
+            width:400,
+            resizable: false,
+            title:'Import Excel',
+            
+        });
+        $("#winpopup").load($(this).attr('href'));
+        $("#winpopup").dialog("open");
+         
+        return false;
+    });
+</script>
+</div>
+
+<script type="text/javascript">
+var l = "<?php echo $limit ?>";
+$('#chonloc option[value='+l+']').attr('selected','selected');
+
+</script>

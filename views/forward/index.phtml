@@ -1,0 +1,459 @@
+<?php 
+foreach ($accounts as $account) {
+  $nodauky = isset($data_additional[$account->account_id]['no']['dauky'])?$data_additional[$account->account_id]['no']['dauky']:0;
+  $codauky = isset($data_additional[$account->account_id]['co']['dauky'])?$data_additional[$account->account_id]['co']['dauky']:0;
+  
+ $no_dauky[$account->account_number] = isset($no_dauky[$account->account_number])?$no_dauky[$account->account_number]+max(0,$nodauky-$codauky):max(0,$nodauky-$codauky);
+ $co_dauky[$account->account_number] = isset($co_dauky[$account->account_number])?$co_dauky[$account->account_number]+max(0,$codauky-$nodauky):max(0,$codauky-$nodauky);
+     
+  switch ($account->account_number) {
+    case '413':
+      $acc_413 = $account->account_id;
+      break;
+    case '5111':
+      $acc_5111 = $account->account_id;
+      break;
+    case '5112':
+      $acc_5112 = $account->account_id;
+      break;
+    case '5113':
+      $acc_5113 = $account->account_id;
+      break;
+    case '5118':
+      $acc_5118 = $account->account_id;
+      break;
+    case '515':
+      $acc_515 = $account->account_id;
+      break;
+    case '632':
+      $acc_632 = $account->account_id;
+      break;
+    case '635':
+      $acc_635 = $account->account_id;
+      break;
+    case '6421':
+      $acc_6421 = $account->account_id;
+      break;
+    case '6422':
+      $acc_6422 = $account->account_id;
+      break;
+    case '711':
+      $acc_711 = $account->account_id;
+      break;
+    case '811':
+      $acc_811 = $account->account_id;
+      break;
+    case '821':
+      $acc_821 = $account->account_id;
+      break;
+    case '911':
+      $acc_911 = $account->account_id;
+      break;
+    case '4212':
+      $acc_4212 = $account->account_id;
+      break;
+    default:
+      # code...
+      break;
+  }
+  
+ }
+
+$co_dauky['515'] += $co_dauky['413'];
+$no_dauky['635'] += $no_dauky['413'];
+$no_dauky['515'] = max(0,$no_dauky['515']-$co_dauky['515']);
+$co_dauky['515'] = max(0,$co_dauky['515']-$no_dauky['515']);
+$no_dauky['635'] = max(0,$no_dauky['635']-$co_dauky['635']);
+$co_dauky['635'] = max(0,$co_dauky['635']-$no_dauky['635']);
+
+$co_dauky['911'] += $co_dauky['5111'];
+$co_dauky['911'] += $co_dauky['5112'];
+$co_dauky['911'] += $co_dauky['5113'];
+$co_dauky['911'] += $co_dauky['5118'];
+$co_dauky['911'] += $co_dauky['515'];
+$no_dauky['911'] += $no_dauky['632'];
+$no_dauky['911'] += $no_dauky['635'];
+$no_dauky['911'] += $no_dauky['6421'];
+$no_dauky['911'] += $no_dauky['6422'];
+$co_dauky['911'] += $co_dauky['711'];
+$no_dauky['911'] += $no_dauky['811'];
+$no_dauky['911'] += $no_dauky['821'];
+
+if ($co_dauky['911']>$no_dauky['911']) {
+  $co_dauky['911'] = $co_dauky['911']-$no_dauky['911'];
+  $no_dauky['911'] = 0;
+}
+else{
+  $no_dauky['911'] = $no_dauky['911']-$co_dauky['911'];
+  $co_dauky['911'] = 0;
+}
+?>
+<center>
+  <select id="sl_round" name="sl_round" style="width:90px; margin-left:5px;">
+   <?php 
+      for ($i=1; $i < 13; $i++) { 
+          echo '<option value="'.$i.'">Tháng '.$i.'</option>';
+      }
+   ?>
+  </select>
+  <select id="sl_trangthai" name="sl_trangthai" style="width:100px">
+   <?php 
+      $nam = date('Y');
+      for ($i=($nam-5); $i < ($nam+5); $i++) { 
+          echo '<option value="'.$i.'">Năm '.$i.'</option>';
+      }
+   ?>
+  </select>
+  <button type="button" id="show" class="btn">Lấy dữ liệu</button>
+</center>
+
+
+<form id="add" name="add" action="" method="post">
+  Ngày chứng từ: <input type="date" id="document_date"  name="document_date" tabindex="1" required="required" autocomplete="off" >
+  Ngày hạch toán: <input type="date" id="additional_date"  name="additional_date" tabindex="2" required="required" autocomplete="off" >
+  Số chứng từ: <input type="text" id="document_number"  name="document_number" tabindex="3" required="required" autocomplete="off" >
+  <button type="submit" class="btn"><i class="fa fa-check"></i> Kết chuyển</button>
+  <button type="button" id="remove" class="btn"><i class="fa fa-times"></i> Xóa</button>
+  <table class="table_data">
+    <thead>
+      <tr>
+        <th class="fix">Thứ tự</th>
+        <th class="fix">Kết chuyển từ</th>
+        <th class="fix">Kết chuyển đến</th>
+        <th class="fix">Diễn giải</th>
+        <th class="fix">Số tiền</th>
+        <th class="fix">Kết quả</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="fix text-center">1</td>
+        <td class="fix text-center">413</td>
+        <td class="fix text-center">515</td>
+        <td class="fix"><input style="width:100%" type="text" id="comment_413_515"  name="comment_413_515" required="required" autocomplete="off" value="Kết chuyển lãi chênh lệch tỷ giá hối đoái" ></td>
+        <td class="fix" style="width:10%"><input type="text" class="numbers text-right" id="money_413_515"  name="money_413_515" required="required" autocomplete="off" value="<?php echo $lib->formatMoney($co_dauky['413']) ?>" ></td>
+        <td class="fix"><span id="result_413_515"></span></td>
+      </tr>
+      <tr>
+        <td class="fix text-center">2</td>
+        <td class="fix text-center">413</td>
+        <td class="fix text-center">635</td>
+        <td class="fix"><input style="width:100%" type="text" id="comment_413_635"  name="comment_413_635" required="required" autocomplete="off" value="Kết chuyển lỗ chênh lệch tỷ giá hối đoái" ></td>
+        <td class="fix" style="width:10%"><input type="text" class="numbers text-right" id="money_413_635"  name="money_413_635" required="required" autocomplete="off" value="<?php echo $lib->formatMoney($no_dauky['413']) ?>" ></td>
+        <td class="fix"><span id="result_413_635"></span></td>
+      </tr>
+      <tr>
+        <td class="fix text-center">3</td>
+        <td class="fix text-center">511</td>
+        <td class="fix text-center">911</td>
+        <td class="fix"><input style="width:100%" type="text" id="comment_511_911"  name="comment_511_911" required="required" autocomplete="off" value="Kết chuyển doanh thu bán hàng và cung cấp dịch vụ" ></td>
+        <td class="fix" style="width:10%"><input type="text" class="numbers text-right" id="money_511_911"  name="money_511_911" required="required" autocomplete="off" value="<?php echo $lib->formatMoney($co_dauky['5111']+$co_dauky['5112']+$co_dauky['5113']+$co_dauky['5118']) ?>" ></td>
+        <td class="fix"><span id="result_511_911"></span></td>
+        <input type="hidden" class="numbers text-right" id="money_5111_911"  name="money_5111_911" autocomplete="off" value="<?php echo $lib->formatMoney($co_dauky['5111']) ?>" >
+        <input type="hidden" class="numbers text-right" id="money_5112_911"  name="money_5112_911" autocomplete="off" value="<?php echo $lib->formatMoney($co_dauky['5112']) ?>" >
+        <input type="hidden" class="numbers text-right" id="money_5113_911"  name="money_5113_911" autocomplete="off" value="<?php echo $lib->formatMoney($co_dauky['5113']) ?>" >
+        <input type="hidden" class="numbers text-right" id="money_5118_911"  name="money_5118_911" autocomplete="off" value="<?php echo $lib->formatMoney($co_dauky['5118']) ?>" >
+      </tr>
+      <tr>
+        <td class="fix text-center">4</td>
+        <td class="fix text-center">515</td>
+        <td class="fix text-center">911</td>
+        <td class="fix"><input style="width:100%" type="text" id="comment_515_911"  name="comment_515_911" required="required" autocomplete="off" value="Kết chuyển doanh thu hoạt động tài chính" ></td>
+        <td class="fix" style="width:10%"><input type="text" class="numbers text-right" id="money_515_911"  name="money_515_911" required="required" autocomplete="off" value="<?php echo $lib->formatMoney($co_dauky['515']) ?>" ></td>
+        <td class="fix"><span id="result_515_911"></span></td>
+      </tr>
+      <tr>
+        <td class="fix text-center">5</td>
+        <td class="fix text-center">632</td>
+        <td class="fix text-center">911</td>
+        <td class="fix"><input style="width:100%" type="text" id="comment_632_911"  name="comment_632_911" required="required" autocomplete="off" value="Kết chuyển giá vốn hàng bán" ></td>
+        <td class="fix" style="width:10%"><input type="text" class="numbers text-right" id="money_632_911"  name="money_632_911" required="required" autocomplete="off" value="<?php echo $lib->formatMoney($no_dauky['632']) ?>" ></td>
+        <td class="fix"><span id="result_632_911"></span></td>
+      </tr>
+      <tr>
+        <td class="fix text-center">6</td>
+        <td class="fix text-center">635</td>
+        <td class="fix text-center">911</td>
+        <td class="fix"><input style="width:100%" type="text" id="comment_635_911"  name="comment_635_911" required="required" autocomplete="off" value="Kết chuyển chi phí hoạt động tài chính" ></td>
+        <td class="fix" style="width:10%"><input type="text" class="numbers text-right" id="money_635_911"  name="money_635_911" required="required" autocomplete="off" value="<?php echo $lib->formatMoney($no_dauky['635']) ?>" ></td>
+        <td class="fix"><span id="result_635_911"></span></td>
+      </tr>
+      <tr>
+        <td class="fix text-center">7</td>
+        <td class="fix text-center">642</td>
+        <td class="fix text-center">911</td>
+        <td class="fix"><input style="width:100%" type="text" id="comment_642_911"  name="comment_642_911" required="required" autocomplete="off" value="Kết chuyển chi phí quản lý doanh nghiệp" ></td>
+        <td class="fix" style="width:10%"><input type="text" class="numbers text-right" id="money_642_911"  name="money_642_911" required="required" autocomplete="off" value="<?php echo $lib->formatMoney($no_dauky['6421']+$no_dauky['6422']) ?>" ></td>
+        <td class="fix"><span id="result_642_911"></span></td>
+        <input type="hidden" class="numbers text-right" id="money_6421_911"  name="money_6421_911" autocomplete="off" value="<?php echo $lib->formatMoney($no_dauky['6421']) ?>" >
+        <input type="hidden" class="numbers text-right" id="money_6422_911"  name="money_6422_911" autocomplete="off" value="<?php echo $lib->formatMoney($no_dauky['6422']) ?>" >
+      </tr>
+      <tr>
+        <td class="fix text-center">8</td>
+        <td class="fix text-center">711</td>
+        <td class="fix text-center">911</td>
+        <td class="fix"><input style="width:100%" type="text" id="comment_711_911"  name="comment_711_911" required="required" autocomplete="off" value="Kết chuyển thu nhập khác phát sinh trong kỳ" ></td>
+        <td class="fix" style="width:10%"><input type="text" class="numbers text-right" id="money_711_911"  name="money_711_911" required="required" autocomplete="off" value="<?php echo $lib->formatMoney($co_dauky['711']) ?>" ></td>
+        <td class="fix"><span id="result_711_911"></span></td>
+      </tr>
+      <tr>
+        <td class="fix text-center">9</td>
+        <td class="fix text-center">811</td>
+        <td class="fix text-center">911</td>
+        <td class="fix"><input style="width:100%" type="text" id="comment_811_911"  name="comment_811_911" required="required" autocomplete="off" value="Kết chuyển chi phí khác phát sinh trong kỳ" ></td>
+        <td class="fix" style="width:10%"><input type="text" class="numbers text-right" id="money_811_911"  name="money_811_911" required="required" autocomplete="off" value="<?php echo $lib->formatMoney($no_dauky['811']) ?>" ></td>
+        <td class="fix"><span id="result_811_911"></span></td>
+      </tr>
+      <tr>
+        <td class="fix text-center">10</td>
+        <td class="fix text-center">821</td>
+        <td class="fix text-center">911</td>
+        <td class="fix"><input style="width:100%" type="text" id="comment_821_911"  name="comment_821_911" required="required" autocomplete="off" value="Kết chuyển chi phí thuế TNDN" ></td>
+        <td class="fix" style="width:10%"><input type="text" class="numbers text-right" id="money_821_911"  name="money_821_911" required="required" autocomplete="off" value="<?php echo $lib->formatMoney($no_dauky['821']) ?>" ></td>
+        <td class="fix"><span id="result_821_911"></span></td>
+      </tr>
+      <tr>
+        <td class="fix text-center">11</td>
+        <td class="fix text-center">911</td>
+        <td class="fix text-center">4212</td>
+        <td class="fix"><input style="width:100%" type="text" id="comment_911_4212"  name="comment_911_4212" required="required" autocomplete="off" value="Kết chuyển kết quả hoạt động kinh doanh trong kỳ" ></td>
+        <td class="fix" style="width:10%"><input type="text" class="numbers text-right"  required="required" autocomplete="off" value="<?php echo $lib->formatMoney($no_dauky['911']+$co_dauky['911']) ?>" ></td>
+        <td class="fix"><span id="result_911_4212"></span></td>
+      </tr>
+    </tbody>
+  </table>
+  <input type="hidden" id="money_911_4212" value="<?php echo $lib->formatMoney($no_dauky['911']) ?>">
+  <input type="hidden" id="money_4212_911" value="<?php echo $lib->formatMoney($co_dauky['911']) ?>">
+</form>
+
+
+<script type="text/javascript">
+var month = "<?php echo (int)date('m',strtotime($ketthuc)) ?>";
+var year = "<?php echo date('Y',strtotime($ketthuc)) ?>";
+
+$('#sl_round option[value="'+month+'"]').attr('selected','selected');
+$('#sl_trangthai option[value="'+year+'"]').attr('selected','selected');
+$('#document_date').val("<?php echo date('Y-m-t',strtotime($ketthuc)) ?>");
+$('#additional_date').val("<?php echo date('Y-m-t',strtotime($ketthuc)) ?>");
+
+$("#add").validate({
+  errorElement: "span", // Định dạng cho thẻ HTML hiện thông báo lỗi
+  rules: {
+
+  },
+  submitHandler: function(form) {
+    var document_date = $('#document_date').val();
+    var additional_date = $('#additional_date').val();
+    var document_number = $('#document_number').val();
+    var comment_413_515 = $('#comment_413_515').val();
+    var money_413_515 = $('#money_413_515').val();
+    var comment_413_635 = $('#comment_413_635').val();
+    var money_413_635 = $('#money_413_635').val();
+    var comment_511_911 = $('#comment_511_911').val();
+    var money_5111_911 = $('#money_5111_911').val();
+    var money_5112_911 = $('#money_5112_911').val();
+    var money_5113_911 = $('#money_5113_911').val();
+    var money_5118_911 = $('#money_5118_911').val();
+    var comment_515_911 = $('#comment_515_911').val();
+    var money_515_911 = $('#money_515_911').val();
+    var comment_632_911 = $('#comment_632_911').val();
+    var money_632_911 = $('#money_632_911').val();
+    var comment_635_911 = $('#comment_635_911').val();
+    var money_635_911 = $('#money_635_911').val();
+    var comment_642_911 = $('#comment_642_911').val();
+    var money_6421_911 = $('#money_6421_911').val();
+    var money_6422_911 = $('#money_6422_911').val();
+    var comment_711_911 = $('#comment_711_911').val();
+    var money_711_911 = $('#money_711_911').val();
+    var comment_811_911 = $('#comment_811_911').val();
+    var money_811_911 = $('#money_811_911').val();
+    var comment_821_911 = $('#comment_821_911').val();
+    var money_821_911 = $('#money_821_911').val();
+    var comment_911_4212 = $('#comment_911_4212').val();
+    var money_911_4212 = $('#money_911_4212').val();
+    var money_4212_911 = $('#money_4212_911').val();
+
+    $.ajax({
+      url: '<?php echo BASE_URL ?>/forward/complete',
+      type: 'POST',
+      data: {
+        document_date: document_date,
+        additional_date: additional_date,
+        document_number: document_number,
+        comment_413_515: comment_413_515,
+        money_413_515: money_413_515,
+        comment_413_635: comment_413_635,
+        money_413_635: money_413_635,
+        comment_511_911: comment_511_911,
+        money_5111_911: money_5111_911,
+        money_5112_911: money_5112_911,
+        money_5113_911: money_5113_911,
+        money_5118_911: money_5118_911,
+        comment_515_911: comment_515_911,
+        money_515_911: money_515_911,
+        comment_632_911: comment_632_911,
+        money_632_911: money_632_911,
+        comment_635_911: comment_635_911,
+        money_635_911: money_635_911,
+        comment_642_911: comment_642_911,
+        money_6421_911: money_6421_911,
+        money_6422_911: money_6422_911,
+        comment_711_911: comment_711_911,
+        money_711_911: money_711_911,
+        comment_811_911: comment_811_911,
+        money_811_911: money_811_911,
+        comment_821_911: comment_821_911,
+        money_821_911: money_821_911,
+        comment_911_4212: comment_911_4212,
+        money_911_4212: money_911_4212,
+        money_4212_911: money_4212_911,
+        acc_413: "<?php echo $acc_413 ?>",
+        acc_5111: "<?php echo $acc_5111 ?>",
+        acc_5112: "<?php echo $acc_5112 ?>",
+        acc_5113: "<?php echo $acc_5113 ?>",
+        acc_5118: "<?php echo $acc_5118 ?>",
+        acc_515: "<?php echo $acc_515 ?>",
+        acc_632: "<?php echo $acc_632 ?>",
+        acc_635: "<?php echo $acc_635 ?>",
+        acc_6421: "<?php echo $acc_6421 ?>",
+        acc_6422: "<?php echo $acc_6422 ?>",
+        acc_711: "<?php echo $acc_711 ?>",
+        acc_811: "<?php echo $acc_811 ?>",
+        acc_821: "<?php echo $acc_821 ?>",
+        acc_911: "<?php echo $acc_911 ?>",
+        acc_4212: "<?php echo $acc_4212 ?>",
+      },
+      success:function(answer){
+        var data = JSON.parse(answer);
+        $('#result_413_515').html(data.result_413_515);
+        $('#result_413_635').html(data.result_413_635);
+        $('#result_511_911').html(data.result_511_911);
+        $('#result_515_911').html(data.result_515_911);
+        $('#result_632_911').html(data.result_632_911);
+        $('#result_635_911').html(data.result_635_911);
+        $('#result_642_911').html(data.result_642_911);
+        $('#result_711_911').html(data.result_711_911);
+        $('#result_811_911').html(data.result_811_911);
+        $('#result_821_911').html(data.result_821_911);
+        $('#result_911_4212').html(data.result_911_4212);
+      }
+    });
+  }
+});
+
+$('.numbers').keyup(function(event) {
+    // skip for arrow keys
+  if(event.which >= 37 && event.which <= 40) return;
+  // format number
+  $(this).val(function(index, value) {
+    return value
+      .replace(/[^0-9-.]/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    ;
+  });
+});
+$('.numbers').focus(function(){
+    if ( $(this).val() == '0') {
+       $(this).val(""); 
+    };
+    
+});
+$('.numbers').blur(function(){
+    if ( $(this).val() == "") {
+        $(this).val(0);
+    };
+    
+});
+$('#sl_round').change(function(){
+      var m = $(this).val();
+      var y = $('#sl_trangthai').val();
+      var firstDay = new Date(y, m-1, 1);
+      var lastDay = new Date(y, m, 1).toISOString().slice(0,10);
+
+      $('#document_date').val(lastDay );
+      $('#additional_date').val(lastDay );
+
+  });
+
+  $('#sl_trangthai').change(function(){
+      var y = $(this).val();
+      var m = $('#sl_round').val();
+      var firstDay = new Date(y, m-1, 1);
+      var lastDay = new Date(y, m, 1).toISOString().slice(0,10);
+
+      $('#document_date').val(lastDay );
+      $('#additional_date').val(lastDay );
+
+  });
+
+  $('#remove').click(function(){
+    var r = confirm("Bạn có chắc chắn không?");
+      if (r == true){
+        var additional_date = $('#additional_date').val();
+        $.ajax({
+            url: '<?php echo BASE_URL ?>/forward/delete',
+            type: 'POST',
+            data: {
+              additional_date:additional_date,
+              acc_413: "<?php echo $acc_413 ?>",
+              acc_5111: "<?php echo $acc_5111 ?>",
+              acc_5112: "<?php echo $acc_5112 ?>",
+              acc_5113: "<?php echo $acc_5113 ?>",
+              acc_5118: "<?php echo $acc_5118 ?>",
+              acc_515: "<?php echo $acc_515 ?>",
+              acc_632: "<?php echo $acc_632 ?>",
+              acc_635: "<?php echo $acc_635 ?>",
+              acc_6421: "<?php echo $acc_6421 ?>",
+              acc_6422: "<?php echo $acc_6422 ?>",
+              acc_711: "<?php echo $acc_711 ?>",
+              acc_811: "<?php echo $acc_811 ?>",
+              acc_821: "<?php echo $acc_821 ?>",
+              acc_911: "<?php echo $acc_911 ?>",
+              acc_4212: "<?php echo $acc_4212 ?>",
+            },
+            success:function(data){
+              alert(data);
+                window.location.reload();
+            }
+        });
+      }
+  });
+
+$('#show').click(function(){
+  var additional_date = $('#additional_date').val();
+  $.ajax({
+      url: '<?php echo BASE_URL ?>/forward/index',
+      type: 'POST',
+      data: {
+        additional_date:additional_date,
+      },
+      success:function(answer){
+        $('body').html(answer); // đặt kết quả trả về từ test.php vào thẻ div success
+              
+
+        //Enable sidebar toggle
+          $(document).on('click', "[data-toggle='offcanvas']", function (e) {
+            e.preventDefault();
+
+            //Enable sidebar push menu
+            if ($(window).width() > (768 - 1)) {
+              if ($("body").hasClass('sidebar-collapse')) {
+                $("body").removeClass('sidebar-collapse').trigger('expanded.pushMenu');
+              } else {
+                $("body").addClass('sidebar-collapse').trigger('collapsed.pushMenu');
+              }
+            }
+            //Handle sidebar push menu for small screens
+            else {
+              if ($("body").hasClass('sidebar-open')) {
+                $("body").removeClass('sidebar-open').removeClass('sidebar-collapse').trigger('collapsed.pushMenu');
+              } else {
+                $("body").addClass('sidebar-open').trigger('expanded.pushMenu');
+              }
+            }
+          });
+      }
+  });
+});
+
+</script>

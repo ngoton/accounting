@@ -1,0 +1,620 @@
+<?php
+$url_order = 'ASC';
+if ($order_by == 'account_id')
+    $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+elseif ($order_by == 'account_number')
+    $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+elseif ($order_by == 'account_name')
+    $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+
+    $i = $sonews*$page-($sonews-1);
+
+?>
+<div id="loading"></div>
+<div id="winpopup"></div>
+<section class="content-header">
+    <h1>BẢNG CÂN ĐỐI KẾ TOÁN</h1>
+  <ol class="breadcrumb">
+    <li><a href="<?php echo $this->url('admin') ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li class="active"><a href="<?php echo $this->url('balanceaccounting') ?>">Cân đối kế toán</a></li>
+  </ol>
+</section>
+<div id="content" style="padding:5px;">
+
+    <div class="search-box">
+        
+        <input type="search" id="search-input" name="s" value="<?php echo isset($keyword)?$keyword:null; ?>" placeholder="Tìm kiếm">
+        <input type="button" name="" id="search-submit" class="button-search" value="Tìm kiếm" onclick="searchall('<?php echo $page ?>','<?php echo $order_by ?>','<?php echo $order ?>');">
+        <?php if(!isset($disable_control)){ ?>
+        <div class="add-box"><a class="add_button" id="btnExport" ><i class="fa fa-download"></i> Xuất</a></div>
+        <?php } ?>
+    </div>
+    <div class="tablenav top">
+        <div class="add-box">
+                  
+            Từ  <input style="width:100px" type="search" name="batdau" id="batdau" placeholder="Chọn ngày" <?php if(isset($batdau)) echo "value='$batdau'"; ?> >  
+            Đến  <input style="width:100px" type="search" name="ketthuc" id="ketthuc" placeholder="Chọn ngày" <?php if(isset($ketthuc)) echo "value='$ketthuc'"; ?> >  
+             <input type="button" name="xem" id="xem" value="Xem" onclick="searchall('<?php echo $page ?>','<?php echo $order_by ?>','<?php echo $order ?>');">  
+            
+        </div>
+        <div class="add-box">
+            Từ tháng <input class="monthPicker" style="width:90px" type="search" name="chonngaytao" id="chonngaytao" placeholder="Chọn tháng" <?php if(isset($ngaytao)) echo "value='$ngaytao'"; ?> >    
+            Đến tháng <input class="monthPicker" style="width:90px" type="search" name="chonngaytaobatdau" id="chonngaytaobatdau" placeholder="Chọn tháng" <?php if(isset($ngaytaobatdau)) echo "value='$ngaytaobatdau'"; ?> >  
+
+            <input type="button" name="chon" id="chon" class="button" value="Chọn" onclick="searchall('<?php echo $page ?>','<?php echo $order_by ?>','<?php echo $order ?>');">        
+                                        
+        </div>
+        
+        <div class="alignleft actions">
+        <select name="m" id="chonloc">
+          <option  value="18446744073709">Hiển thị tất cả</option>
+          <option value="50">Hiển thị 50 giá trị</option>
+                <option value="100">Hiển thị 100 giá trị</option>
+                <option value="150">Hiển thị 150 giá trị</option>
+                <option selected="selected" value="200">Hiển thị 200 giá trị</option>
+        </select>
+        <input type="button" name="" id="post-query-submit" class="button" value="Chọn lọc" onclick="searchall('<?php echo $page ?>','<?php echo $order_by ?>','<?php echo $order ?>');">                               
+        </div>
+
+      </div>
+
+</div>
+
+<table class="table_data" id="tblExport">
+<thead>
+    <tr>
+        
+        <th class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','account_name','<?php echo $url_order ?>')">Chỉ tiêu <?php if ($order_by == 'account_name'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','account_code','<?php echo $url_order ?>')">Mã số <?php if ($order_by == 'account_code'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th class="fix">
+            <a class="sort">Số cuối kỳ</a>
+        </th>
+        <th class="fix">
+            <a class="sort">Số đầu kỳ</a>
+        </th>
+        
+    </tr>
+    
+   </thead>
+   <?php
+   foreach ($accounts as $account) {
+    $nodauky = isset($data_additional[$account->account_id]['no']['dauky'])?$data_additional[$account->account_id]['no']['dauky']:0;
+    $codauky = isset($data_additional[$account->account_id]['co']['dauky'])?$data_additional[$account->account_id]['co']['dauky']:0;
+    $nophatsinh = isset($data_additional[$account->account_id]['no']['phatsinh'])?$data_additional[$account->account_id]['no']['phatsinh']:0;
+    $cophatsinh = isset($data_additional[$account->account_id]['co']['phatsinh'])?$data_additional[$account->account_id]['co']['phatsinh']:0;
+
+       $no_dauky[$account->account_code] = isset($no_dauky[$account->account_code])?$no_dauky[$account->account_code]+max(0,$nodauky-$codauky):max(0,$nodauky-$codauky);
+       $no_cuoiky[$account->account_code] = isset($no_cuoiky[$account->account_code])?$no_cuoiky[$account->account_code]+max(0,$nodauky+$nophatsinh-$codauky-$cophatsinh):max(0,$nodauky-$codauky);
+       $co_dauky[$account->account_code] = isset($co_dauky[$account->account_code])?$co_dauky[$account->account_code]+max(0,$codauky-$nodauky):max(0,$codauky-$nodauky);
+       $co_cuoiky[$account->account_code] = isset($co_cuoiky[$account->account_code])?$co_cuoiky[$account->account_code]+max(0,$codauky+$cophatsinh-$nodauky-$nophatsinh):max(0,$codauky+$cophatsinh-$nodauky-$nophatsinh);
+       
+   }
+
+   $no_cuoiky[132] = $no_cuoiky[311];
+   $no_dauky[132] = $no_dauky[311];
+   $co_cuoiky[312] = $co_cuoiky[131];
+   $co_dauky[312] = $co_dauky[131];
+
+   ?>
+   <tbody>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr" style="font-weight:bold">
+            <td class="fix text-center">TÀI SẢN</td>
+            <td class="fix text-right"></td>
+            <td class="fix text-right"></td>
+            <td class="fix text-right"></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr" style="font-weight:bold">
+            <td class="fix">I. Tiền và các khoản tương đương tiền</td>
+            <td class="fix text-center">110</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_cuoiky[110]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_dauky[110]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr" style="font-weight:bold">
+            <td class="fix">II. Đầu tư tài chính</td>
+            <td class="fix text-center">120</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_cuoiky[120] = $no_cuoiky[121]+$no_cuoiky[122]+$no_cuoiky[123]-$co_cuoiky[124]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_dauky[120] = $no_dauky[121]+$no_dauky[122]+$no_dauky[123]-$co_dauky[124]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix">1. Chứng khoán kinh doanh</td>
+            <td class="fix text-center">121</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_cuoiky[121]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_dauky[121]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix">2. Đầu tư nắm giữ đến ngày đáo hạn</td>
+            <td class="fix text-center">122</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_cuoiky[122]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_dauky[122]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix">3. Đầu tư góp vốn vào đơn vị khác</td>
+            <td class="fix text-center">123</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_cuoiky[123]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_dauky[123]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix">4. Dự phòng tổn thất đầu tư tài chính (*)</td>
+            <td class="fix text-center">124</td>
+            <td class="fix text-right">(<?php echo $lib->formatMoney($co_cuoiky[124]) ?>)</td>
+            <td class="fix text-right">(<?php echo $lib->formatMoney($co_dauky[124]) ?>)</td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr" style="font-weight:bold">
+            <td class="fix">III. Các khoản phải thu</td>
+            <td class="fix text-center">130</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_cuoiky[130] = $no_cuoiky[131]+$no_cuoiky[132]+$no_cuoiky[133]+$no_cuoiky[134]+$no_cuoiky[135]+$no_cuoiky[136]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_dauky[130] = $no_dauky[131]+$no_dauky[132]+$no_dauky[133]+$no_dauky[134]+$no_dauky[135]+$no_dauky[136]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix">1. Phải thu của khách hàng</td>
+            <td class="fix text-center">131</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_cuoiky[131]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_dauky[131]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix">2. Trả trước cho người bán</td>
+            <td class="fix text-center">132</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_cuoiky[132]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_dauky[132]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix">3. Vốn kinh doanh ở đơn vị trực thuộc</td>
+            <td class="fix text-center">133</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_cuoiky[133]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_dauky[133]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix">4. Phải thu khác</td>
+            <td class="fix text-center">134</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_cuoiky[134]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_dauky[134]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix">5. Tài sản thiếu chờ xử lý</td>
+            <td class="fix text-center">135</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_cuoiky[135]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_dauky[135]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix">6. Dự phòng phải thu khó đòi (*)</td>
+            <td class="fix text-center">136</td>
+            <td class="fix text-right">(<?php echo $lib->formatMoney($no_cuoiky[136]) ?>)</td>
+            <td class="fix text-right">(<?php echo $lib->formatMoney($no_dauky[136]) ?>)</td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr" style="font-weight:bold">
+            <td class="fix">IV. Hàng tồn kho</td>
+            <td class="fix text-center">140</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_cuoiky[140] = $no_cuoiky[141]+$no_cuoiky[142]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_dauky[140] = $no_dauky[141]+$no_dauky[142]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix">1. Hàng tồn kho</td>
+            <td class="fix text-center">141</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_cuoiky[141]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_dauky[141]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix">2. Dự phòng giảm giá hàng tồn kho (*)</td>
+            <td class="fix text-center">142</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_cuoiky[142]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_dauky[142]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr" style="font-weight:bold">
+            <td class="fix">V. Tài sản cố định</td>
+            <td class="fix text-center">150</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_cuoiky[150] = $no_cuoiky[151]+$no_cuoiky[152]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_dauky[150] = $no_dauky[151]+$no_dauky[152]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix">      - Nguyên giá</td>
+            <td class="fix text-center">151</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_cuoiky[151]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_dauky[151]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix">      - Giá trị hao mòn lũy kế (*)</td>
+            <td class="fix text-center">152</td>
+            <td class="fix text-right">(<?php echo $lib->formatMoney($no_cuoiky[152]) ?>)</td>
+            <td class="fix text-right">(<?php echo $lib->formatMoney($no_dauky[152]) ?>)</td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr" style="font-weight:bold">
+            <td class="fix">VI. Bất động sản đầu tư</td>
+            <td class="fix text-center">160</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_cuoiky[160] = $no_cuoiky[161]+$no_cuoiky[162]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_dauky[160] = $no_dauky[161]+$no_dauky[162]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix">      - Nguyên giá</td>
+            <td class="fix text-center">161</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_cuoiky[161]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_dauky[161]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix">      - Giá trị hao mòn lũy kế (*)</td>
+            <td class="fix text-center">162</td>
+            <td class="fix text-right">(<?php echo $lib->formatMoney($no_cuoiky[162]) ?>)</td>
+            <td class="fix text-right">(<?php echo $lib->formatMoney($no_dauky[162]) ?>)</td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr" style="font-weight:bold">
+            <td class="fix">VII. XDCB dở dang</td>
+            <td class="fix text-center">170</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_cuoiky[170]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_dauky[170]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr" style="font-weight:bold">
+            <td class="fix">VIII. Tài sản khác</td>
+            <td class="fix text-center">180</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_cuoiky[180] = $no_cuoiky[181]+$no_cuoiky[182]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_dauky[180] = $no_dauky[181]+$no_dauky[182]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix">1. Thuế GTGT được khấu trừ</td>
+            <td class="fix text-center">181</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_cuoiky[181]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_dauky[181]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix">2. Tài sản khác</td>
+            <td class="fix text-center">182</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_cuoiky[182]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_dauky[182]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr" style="font-weight:bold">
+            <td class="fix">TỔNG CỘNG TÀI SẢN (200 = 110 + 120 + 130 + 140 + 150 + 160 + 170 + 180)</td>
+            <td class="fix text-center">200</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_cuoiky[200] = $no_cuoiky[110]+$no_cuoiky[120]+$no_cuoiky[130]+$no_cuoiky[140]+$no_cuoiky[150]+$no_cuoiky[160]+$no_cuoiky[170]+$no_cuoiky[180]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($no_dauky[200] = $no_dauky[110]+$no_dauky[120]+$no_dauky[130]+$no_dauky[140]+$no_dauky[150]+$no_dauky[160]+$no_dauky[170]+$no_dauky[180]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr" style="font-weight:bold">
+            <td class="fix text-center">NGUỒN VỐN</td>
+            <td class="fix text-right"></td>
+            <td class="fix text-right"></td>
+            <td class="fix text-right"></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr" style="font-weight:bold">
+            <td class="fix">I. Nợ phải trả</td>
+            <td class="fix text-center">300</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_cuoiky[300] = $co_cuoiky[311]+$co_cuoiky[312]+$co_cuoiky[313]+$co_cuoiky[314]+$co_cuoiky[315]+$co_cuoiky[316]+$co_cuoiky[317]+$co_cuoiky[318]+$co_cuoiky[319]+$co_cuoiky[320]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_dauky[300] = $co_dauky[311]+$co_dauky[312]+$co_dauky[313]+$co_dauky[314]+$co_dauky[315]+$co_dauky[316]+$co_dauky[317]+$co_dauky[318]+$co_dauky[319]+$co_dauky[320]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix">1. Phải trả người bán</td>
+            <td class="fix text-center">311</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_cuoiky[311]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_dauky[311]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix">2. Người mua trả tiền trước</td>
+            <td class="fix text-center">312</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_cuoiky[312]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_dauky[312]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix">3. Thuế và các khoản phải nộp Nhà nước</td>
+            <td class="fix text-center">313</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_cuoiky[313]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_dauky[313]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix">4. Phải trả người lao động</td>
+            <td class="fix text-center">314</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_cuoiky[314]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_dauky[314]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix">5. Phải trả khác</td>
+            <td class="fix text-center">315</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_cuoiky[315]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_dauky[315]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix">6. Vay và nợ thuê tài chính</td>
+            <td class="fix text-center">316</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_cuoiky[316]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_dauky[316]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix">7. Phải trả nội bộ về vốn kinh doanh</td>
+            <td class="fix text-center">317</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_cuoiky[317]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_dauky[317]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix">8. Dự phòng phải trả</td>
+            <td class="fix text-center">318</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_cuoiky[318]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_dauky[318]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix">9. Quỹ khen thưởng, phúc lợi</td>
+            <td class="fix text-center">319</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_cuoiky[319]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_dauky[319]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix">10. Quỹ phát triển khoa học và công nghệ</td>
+            <td class="fix text-center">312</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_cuoiky[320]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_dauky[320]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr" style="font-weight:bold">
+            <td class="fix">II. Vốn chủ sở hữu</td>
+            <td class="fix text-center">400</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_cuoiky[400] = $co_cuoiky[411]+$co_cuoiky[412]+$co_cuoiky[413]+$co_cuoiky[414]+$co_cuoiky[415]+$co_cuoiky[416]+$co_cuoiky[417]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_dauky[400] = $co_dauky[411]+$co_dauky[412]+$co_dauky[413]+$co_dauky[414]+$co_dauky[415]+$co_dauky[416]+$co_dauky[417]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix">1. Vốn góp của chủ sở hữu</td>
+            <td class="fix text-center">411</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_cuoiky[411]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_dauky[411]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix">2. Thặng dư vốn cổ phần</td>
+            <td class="fix text-center">412</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_cuoiky[412]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_dauky[412]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix">3. Vốn khác của chủ sở hữu</td>
+            <td class="fix text-center">413</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_cuoiky[413]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_dauky[413]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix">4. Cổ phiếu quỹ (*)</td>
+            <td class="fix text-center">414</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_cuoiky[414]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_dauky[414]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix">5. Chênh lệch tỷ giá hối đoái</td>
+            <td class="fix text-center">415</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_cuoiky[415]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_dauky[415]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix">6. Các quỹ thuộc vốn chủ sở hữu</td>
+            <td class="fix text-center">416</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_cuoiky[416]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_dauky[416]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix">7. Lợi nhuận sau thuế chưa phân phối</td>
+            <td class="fix text-center">417</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_cuoiky[417]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_dauky[417]) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr" style="font-weight:bold">
+            <td class="fix">TỔNG CỘNG NGUỒN VỐN (500 = 300 + 400)</td>
+            <td class="fix text-center">500</td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_cuoiky[500] = $co_cuoiky[300]+$co_cuoiky[400]) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($co_dauky[500] = $co_dauky[300]+$co_dauky[400]) ?></td>
+        </tr>
+   </tbody>
+</table>
+<?php
+$this->helper('slidePaginator');
+?>
+
+<script type="text/javascript">
+
+var x = "<?php echo $limit ?>";
+$('#chonloc option[value='+x+']').attr('selected','selected');
+
+
+</script>
+
+
+<script type="text/javascript">
+
+var pickerOpay2 = {
+        closeText: "Đóng",
+        currentText: "Hiện tại",
+        nextText: "Tiếp",
+        prevText: "Quay lại",
+        monthNames: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        monthNamesShort: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        dayNames: ["Chủ nhật", "Thứ hai", "Thứ ba", "Thứ tư", "Thứ năm", "Thứ sáu", "Thứ bảy"],
+        dayNamesShort: ["CN", "T2", "T3", "T4", "T5", "T6", "T7"],
+        dayNamesMin: ["CN", "T2", "T3", "T4", "T5", "T6", "T7"],
+        dateFormat: 'dd-mm-yy',
+        changeMonth: true,
+        changeYear: true,
+        yearRange: "-100:+0",
+        firstDay: 1,
+        isRTL: false,
+        showButtonPanel: true
+    }; 
+    $(".ngay").datepicker(pickerOpay2);
+
+
+var pickerOpts3 = {
+        closeText: "Đóng",
+        currentText: "Hiện tại",
+        nextText: "Tiếp",
+        prevText: "Quay lại",
+        monthNames: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+        "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        monthNamesShort: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+        "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        dayNames: ["Chủ nhật", "Thứ hai", "Thứ ba", "Thứ tư", "Thứ năm",
+        "Thứ sáu", "Thứ bảy"],
+        dayNamesShort: ["CN", "T2", "T3", "T4", "T5",
+        "T6", "T7"],
+        dayNamesMin: ["CN", "T2", "T3", "T4", "T5",
+        "T6", "T7"],
+        //defaultDate: "+1w",
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: 'dd-mm-yy',
+        firstDay: 1,
+        showWeek: true,
+        weekHeader: 'Tuần',
+        isRTL: false,
+        showButtonPanel: true,
+        onClose: function(selectedDate) {
+                
+                $( "#ketthuc" ).datepicker( "option", "minDate", selectedDate );
+
+         },
+         
+    };  
+    $("#batdau").datepicker(pickerOpts3);
+
+    var pickerOpts4 = {
+        closeText: "Đóng",
+        currentText: "Hiện tại",
+        nextText: "Tiếp",
+        prevText: "Quay lại",
+        monthNames: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+        "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        monthNamesShort: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+        "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        dayNames: ["Chủ nhật", "Thứ hai", "Thứ ba", "Thứ tư", "Thứ năm",
+        "Thứ sáu", "Thứ bảy"],
+        dayNamesShort: ["CN", "T2", "T3", "T4", "T5",
+        "T6", "T7"],
+        dayNamesMin: ["CN", "T2", "T3", "T4", "T5",
+        "T6", "T7"],
+        //defaultDate: "+1w",
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: 'dd-mm-yy',
+        firstDay: 1,
+        showWeek: true,
+        weekHeader: 'Tuần',
+        isRTL: false,
+        showButtonPanel: true,
+        onClose: function(selectedDate) {
+                
+                $( "#batdau" ).datepicker( "option", "maxDate", selectedDate );
+                
+         },
+         
+    };  
+    $("#ketthuc").datepicker(pickerOpts4);
+
+    var pickerOpts = {
+        closeText: "Đóng",
+        currentText: "Hiện tại",
+        nextText: "Tiếp",
+        prevText: "Quay lại",
+        monthNames: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+        "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        monthNamesShort: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+        "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        dayNames: ["Chủ nhật", "Thứ hai", "Thứ ba", "Thứ tư", "Thứ năm",
+        "Thứ sáu", "Thứ bảy"],
+        dayNamesShort: ["CN", "T2", "T3", "T4", "T5",
+        "T6", "T7"],
+        dayNamesMin: ["CN", "T2", "T3", "T4", "T5",
+        "T6", "T7"],
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: 'mm/yy',
+        firstDay: 1,
+        isRTL: false,
+        showButtonPanel: true,
+        onClose: function() {
+                $("#chonngaytao").change();
+         },
+         
+    };  
+    $("#chonngaytao").datepicker(pickerOpts);
+
+    $("#chonngaytao").change(function(){
+        var month = parseInt($("#ui-datepicker-div .ui-datepicker-month :selected").val());
+        var year = parseInt($("#ui-datepicker-div .ui-datepicker-year :selected").val());
+        $(this).datepicker('setDate', new Date(year, month, 1));
+
+        var firstDay = new Date(year, month, 1);
+
+        $('#batdau').datepicker("setDate", firstDay );
+    });
+
+    var pickerOpts5 = {
+        closeText: "Đóng",
+        currentText: "Hiện tại",
+        nextText: "Tiếp",
+        prevText: "Quay lại",
+        monthNames: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+        "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        monthNamesShort: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+        "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        dayNames: ["Chủ nhật", "Thứ hai", "Thứ ba", "Thứ tư", "Thứ năm",
+        "Thứ sáu", "Thứ bảy"],
+        dayNamesShort: ["CN", "T2", "T3", "T4", "T5",
+        "T6", "T7"],
+        dayNamesMin: ["CN", "T2", "T3", "T4", "T5",
+        "T6", "T7"],
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: 'mm/yy',
+        firstDay: 1,
+        isRTL: false,
+        showButtonPanel: true,
+        onClose: function() {
+                $("#chonngaytaobatdau").change();
+         },
+         
+    };  
+    $("#chonngaytaobatdau").datepicker(pickerOpts5);
+
+    $("#chonngaytaobatdau").change(function(){
+        var month = parseInt($("#ui-datepicker-div .ui-datepicker-month :selected").val());
+        var year = parseInt($("#ui-datepicker-div .ui-datepicker-year :selected").val());
+        $(this).datepicker('setDate', new Date(year, month, 1));
+
+        var lastDay = new Date(year, month+1, 0);
+        $('#ketthuc').datepicker("setDate", lastDay );
+    });
+
+
+    var pickerOpts4 = {
+        closeText: "Đóng",
+        currentText: "Hiện tại",
+        nextText: "Tiếp",
+        prevText: "Quay lại",
+        monthNames: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+        "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        monthNamesShort: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+        "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        dayNames: ["Chủ nhật", "Thứ hai", "Thứ ba", "Thứ tư", "Thứ năm",
+        "Thứ sáu", "Thứ bảy"],
+        dayNamesShort: ["CN", "T2", "T3", "T4", "T5",
+        "T6", "T7"],
+        dayNamesMin: ["CN", "T2", "T3", "T4", "T5",
+        "T6", "T7"],
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: 'mm/yy',
+        firstDay: 1,
+        isRTL: false,
+        showButtonPanel: true,
+        onClose: function() {
+            var month = parseInt($("#ui-datepicker-div .ui-datepicker-month :selected").val());
+            var year = parseInt($("#ui-datepicker-div .ui-datepicker-year :selected").val());
+            $(this).datepicker('setDate', new Date(year, month, 1));
+         },
+         
+    };  
+    $("#ngaycapnhat").datepicker(pickerOpts4);
+
+
+    $(".monthPicker").focus(function () {
+        $(".ui-datepicker-calendar").hide();
+        $("#ui-datepicker-div").position({
+            my: "center top",
+            at: "center bottom",
+            of: $(this)
+        });    
+    });
+
+
+</script>
+

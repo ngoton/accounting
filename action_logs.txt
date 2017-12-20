@@ -1,0 +1,5619 @@
+﻿Time|User|Action|Id|Table|Fields
+06/10/2017 16:10:48|root|delete|42|user|
+
+06/10/2017 16:10:51|root|delete|41|user|
+
+10/10/2017 07:55:59|root|add|1|items|NANGHA-Phí nâng hạ cont-1-2-10
+
+10/10/2017 07:56:20|root|edit|1|items|NANGHA-Phí nâng hạ cont-Lần-2-10
+
+10/10/2017 07:57:17|root|add|2|items|BAOHIEM-Phí bảo hiểm-Chuyến-2-5
+
+10/10/2017 13:44:58|root|add|3|items|VC-Vận chuyển-Chuyến-2-10
+
+10/10/2017 13:53:49|root|add|4|items|BX-Bốc xếp-Cái-2-
+
+10/10/2017 14:14:23|root|add|5|items|HOAHONG-Hoa hồng-Lần-2-
+
+10/10/2017 14:48:54|root|add|1|customer|VINACO-VINA company-Công ty TNHH VINACO-030909884-Lầu 2, Hoàng Hoa Thám, Q1, TP HCM-083 988 4112-090 932 3535-vinaco@gmail.com----2-
+
+11/10/2017 23:21:27|root|add|1|service_buy|1507672800-HDDV001-1507672800-1-0000032-1507672800-AH/02-DH0001-HD0001-1-1-ABC-Vận chuyển cont hàng
+
+12/10/2017 10:17:30|root|edit|1|service_buy|1507672800-HDDV0012-1507672800-1-0000321-1507672800-AH/02-DH00012-HD00012-1-1-ABCD-Vận chuyển 2 cont hàng
+
+12/10/2017 11:31:37|root|edit|1|service_buy|1507672800-HDDV0012-1507672800-1-0000321-1507672800-AH/02-DH00012-HD00012-1-1-ABCD-Vận chuyển 2 cont hàng
+
+12/10/2017 13:53:03|root|add|6|items|AB_11.00R20_300-Amberstone 11.00R20 300-Bộ-1-10
+
+12/10/2017 13:53:56|root|add|7|items|AB_12R22.5_386-Amberstone 12R22.5 386-Cái-1-10
+
+12/10/2017 14:14:29|root|add|1|house|156-Kho hàng-Trụ sở công ty
+
+13/10/2017 08:02:36|root|edit|6|items|AB_11.00R20_300-Amberstone 11.00R20 300-Bộ-1-10-238
+
+13/10/2017 08:02:46|root|edit|7|items|AB_12R22.5_386-Amberstone 12R22.5 386-Cái-1-10-215
+
+13/10/2017 21:49:32|root|add|2|service_buy|1507845600-aa-1507845600-1-0000000-1507845600----1-1--a
+
+14/10/2017 10:10:40|root|edit|1|service_buy|1507672800-HDDV0012-1507672800-1-0000321-1507672800-AH/02-DH00012-HD00012-1-1-ABCD-Vận chuyển 2 cont hàng
+
+14/10/2017 11:23:05|root|add|1|invoice_buy|1507932000-MH002-1507932000-1-0000323-1507932000-AH/02-DH002-HD002-2-22670-PXK01-Mua hàng nhập kho-1
+
+14/10/2017 11:43:15|root|edit|1|invoice_buy|1507932000-MH002-1507932000-1-0000323-1507932000-AH/02-DH002-HD002-2-22670-PXK01-Mua hàng nhập kho-
+
+15/10/2017 19:42:45|root|edit|1|invoice_buy|1507932000-MH002-1507932000-1-0000323-1507932000-AH/02-DH002-HD002-2-22670-PXK01-Mua hàng nhập kho-2
+
+15/10/2017 19:52:57|root|edit|1|invoice_buy|1507932000-MH002-1507932000-1-0000323-1507932000-AH/02-DH002-HD002-2-22670-PXK01-Mua hàng nhập kho-2
+
+15/10/2017 20:03:31|root|edit|1|invoice_buy|1507932000-MH002-1507932000-1-0000323-1507932000-AH/02-DH002-HD002-2-22670-PXK01-Mua hàng nhập kho-2
+
+15/10/2017 21:18:58|root|add|2|customer|ABC-ABC Company-Công ty TNHH ABC-302013244-39, Phường 6, Q1, TP.HCM-------1-
+
+15/10/2017 21:21:43|root|add|1|invoice_sell|1508018400-HDBH0434-1508018400-2-0043453-1508018400-AH/12-DDH032-HD003-1-1-DD-Mua lốp xe-1-1508018400
+
+15/10/2017 21:29:34|root|edit|1|invoice_buy|1507932000-MH002-1507932000-1-0000323-1507932000-AH/02-DH002-HD002-2-22670-PXK01-Mua hàng nhập kho-2
+
+15/10/2017 21:37:51|root|edit|1|invoice_buy|1507932000-MH002-1507932000-1-0000323-1507932000-AH/02-DH002-HD002-2-22670-PXK01-Mua hàng nhập kho-2
+
+15/10/2017 21:40:14|root|edit|1|invoice_buy|1507932000-MH002-1507932000-1-0000323-1507932000-AH/02-DH002-HD002-2-22670-PXK01-Mua hàng nhập kho-2
+
+15/10/2017 21:41:39|root|edit|1|invoice_buy|1507932000-MH002-1507932000-1-0000323-1507932000-AH/02-DH002-HD002-2-22670-PXK01-Mua hàng nhập kho-2
+
+15/10/2017 22:55:05|root|edit|1|invoice_buy|1507932000-MH002-1507932000-1-0000323-1507932000-AH/02-DH002-HD002-2-22670-PXK01-Mua hàng nhập kho-2
+
+15/10/2017 22:59:20|root|edit|1|invoice_buy|1507932000-MH002-1507932000-1-0000323-1507932000-AH/02-DH002-HD002-2-22670-PXK01-Mua hàng nhập kho-2
+
+15/10/2017 23:02:23|root|edit|1|invoice_buy|1507932000-MH002-1507932000-1-0000323-1507932000-AH/02-DH002-HD002-2-22670-PXK01-Mua hàng nhập kho-2
+
+15/10/2017 23:09:45|root|edit|1|invoice_buy|1507932000-MH002-1507932000-1-0000323-1507932000-AH/02-DH002-HD002-2-22670-PXK01-Mua hàng nhập kho-2
+
+15/10/2017 23:22:10|root|edit|1|invoice_buy|1507932000-MH002-1507932000-1-0000323-1507932000-AH/02-DH002-HD002-2-22670-PXK01-Mua hàng nhập kho-2
+
+15/10/2017 23:58:08|root|edit|1|invoice_buy|1507932000-MH002-1507932000-1-0000323-1507932000-AH/02-DH002-HD002-2-22670-PXK01-Mua hàng nhập kho-2
+
+15/10/2017 23:58:56|root|edit|1|invoice_buy|1507932000-MH002-1507932000-1-0000323-1507932000-AH/02-DH002-HD002-2-22670-PXK01-Mua hàng nhập kho-2
+
+16/10/2017 15:13:05|root|add|1|bank|1111-Tiền mặt---
+
+17/10/2017 10:30:07|root|add|1|payment|1508191200-PT0002-1508191200-Nguyễn Văn A-A-Nộp tiền-----1-1508191200
+
+17/10/2017 10:43:40|root|edit|1|payment|1508191200-PT0002-1508191200-Nguyễn Văn A-A-Nộp tiền-0-1-1-1
+
+17/10/2017 10:47:06|root|edit|1|payment|1508191200-PT0002-1508191200-Nguyễn Văn A-A-Nộp tiền-0-1-1-1
+
+17/10/2017 10:49:06|root|edit|1|payment|1508191200-PT0002-1508191200-Nguyễn Văn A-A-Nộp tiền-0-1-1-1
+
+17/10/2017 10:50:11|root|edit|1|payment|1508191200-PT0002-1508191200-Nguyễn Văn A-A-Nộp tiền-0-1-1-1
+
+17/10/2017 11:21:20|root|add|2|payment|1508191200-PC032-1508191200-Nguyễn Văn A-B-Chi tiền-0-1-1-1-1-1508191200
+
+17/10/2017 11:27:24|root|edit|2|payment|1508191200-PC032-1508191200-Nguyễn Văn A-B-Chi tiền-0-1-2-1
+
+17/10/2017 11:27:50|root|edit|2|payment|1508191200-PC032-1508191200-Nguyễn Văn A-B-Chi tiền-0-1-2-1
+
+17/10/2017 11:32:25|root|edit|1|invoice_sell|1508018400-HDBH0434-1508018400-2-0043453-1508018400-AH/12-DDH032-HD003-1-1-DD-Mua lốp xe
+
+17/10/2017 13:27:53|root|edit|1|bank|VT_ACB-ACB Việt Trade-10003234564-ACB-Biên Hòa
+
+17/10/2017 13:32:35|root|add|3|payment|1508191200-PTNH0023-1508191200--A-Thanh toán mua lốp-1-2-1-1-1-1508191200
+
+17/10/2017 13:40:31|root|add|4|payment|1508191200-a-1508191200--a-A-1-2-1-1-1-1508191200
+
+17/10/2017 13:40:39|root|delete|4|payment|
+
+17/10/2017 13:48:39|root|add|5|payment|1508191200-TT0932-1508191200--a-Thank toán-1-2-2-1-1-1508191200
+
+17/10/2017 22:29:18|root|edit|1|invoice_buy|1507932000-MH002-1507932000-1-0000323-1507932000-AH/02-DH002-HD002-2-22670-PXK01-Mua hàng nhập kho-1
+
+17/10/2017 22:31:11|root|edit|1|invoice_buy|1507932000-MH002-1507932000-1-0000323-1507932000-AH/02-DH002-HD002-2-22670-PXK01-Mua hàng nhập kho-1
+
+17/10/2017 22:40:07|root|edit|1|invoice_buy|1507932000-MH002-1507932000-1-0000323-1507932000-AH/02-DH002-HD002-2-22670-PXK01-Mua hàng nhập kho-1
+
+17/10/2017 22:43:44|root|edit|1|invoice_buy|1507932000-MH002-1507932000-1-0000323-1507932000-AH/02-DH002-HD002-2-22670-PXK01-Mua hàng nhập kho-1
+
+17/10/2017 23:29:47|root|add|6|payment|1508191200-UNC002-1508191200--A-Nộp thuế-1-2-2-2-Kho bạc Q9 - TP. HCM-1-1508191200
+
+17/10/2017 23:31:41|root|delete|6|payment|
+
+17/10/2017 23:32:24|root|add|7|payment|1508191200-UNC003-1508191200--A-Nộp thuê-1-2-2-2-Kho bạc Q2 TP HCM-1-1508191200
+
+17/10/2017 23:51:17|root|add|8|payment|1508191200-UNC0002-1508191200--A-TT nước ngoài-1-2-2-1-2-1-1508191200
+
+18/10/2017 01:16:14|root|add|1|internal_transfer|1508191200-CTNB002-1508191200-Chuyển nội bộ-1-1508191200
+
+18/10/2017 01:19:12|root|edit|1|internal_transfer|1508191200-CTNB002-1508191200-Chuyển nội bộ
+
+18/10/2017 08:07:14|root|edit|1|info|CÔNG TY TNHH VIỆT TRA DE-3603295302-Số 545, Tổ 10, Ấp Hương Phước, Xã Phước Tân, TP. Biên Hòa, Tỉnh Đồng Nai-025 193 7677-it@viet-trade.org---
+
+18/10/2017 19:53:54|root|add|9|payment|1508277600-TTNH002-1508277600---thu-1-2-1-1-1-1-1508277600
+
+18/10/2017 23:39:50|root|edit|1|invoice_sell|1508018400-HDBH0434-1508018400-2-0043453-1508018400-AH/12-DDH032-HD003-1-1-DD-Mua lốp xe
+
+19/10/2017 00:46:24|root|add|1|invoice_purchase|1508277600-MH001-1508277600-1-0000111-1508277600-AH/2-AA-BB-1-1-A-Mua hàng-2-1-1508277600
+
+19/10/2017 00:48:58|root|delete|1|invoice_purchase|
+
+19/10/2017 00:50:09|root|add|2|invoice_purchase|1508277600-MH001-1508277600-1-0000111-1508277600-AH/1-DD-HH-1-1-A-Mua hàng-2-1-1508277600
+
+19/10/2017 09:14:03|root|edit|8|payment|1508191200-UNC0002-1508191200--A-TT nước ngoài-1-2-2-1-2--
+
+19/10/2017 09:15:57|root|edit|8|payment|1508191200-UNC0002-1508191200--A-TT nước ngoài-1-2-2-1-2-1-1
+
+19/10/2017 09:30:39|root|edit|2|invoice_purchase|1508277600-MH001-1508277600-1-0000111-1508277600-AH/1-DD-HH-1-1-A-Mua hàng-2
+
+19/10/2017 09:47:16|root|edit|2|invoice_purchase|1508277600-MH001-1508277600-1-0000111-1508277600-AH/1-DD-HH-1-1-A-Mua hàng-2
+
+19/10/2017 10:40:51|root|edit|3|payment|1508191200-PTNH0023-1508191200--A-Thanh toán mua lốp-1-2-1-1-1
+
+19/10/2017 11:06:29|root|add|10|payment|1508364000-TT0933-1508364000--a-TT tiền-1-2-2-1-1-1-1508364000
+
+20/10/2017 00:23:43|root|edit|1|invoice_buy|1507932000-MH002-1507932000-1-0000323-1507932000-AH/02-DH002-HD002-2-22670-PXK01-Mua hàng nhập kho-1
+
+20/10/2017 00:28:44|root|edit|8|payment|1508191200-UNC0002-1508191200--A-TT nước ngoài-1-2-2-1-2-2-22640
+
+20/10/2017 00:32:28|root|edit|8|payment|1508191200-UNC0002-1508191200--A-TT nước ngoài-1-2-2-1-2-2-22640
+
+20/10/2017 22:19:05|root|add|1|additional|MHD2-1508450400-1508450400-Mua HD-16-15-3000000-1--
+
+20/10/2017 22:23:47|root|edit|1|additional|MHD2-1508450400-1508450400-Mua HD-16-15-3000000-1-0-1
+
+20/10/2017 23:48:19|root|edit|1|invoice_buy|1507932000-MH002-1507932000-1-0000323-1507932000-AH/02-DH002-HD002-2-22670-PXK01-Mua hàng nhập kho-1
+
+22/10/2017 20:16:45|root|edit|2|service_buy|1507845600-aa-1507845600-1-0000000-1507845600-AA/3---1-1--a
+
+24/10/2017 15:47:54|root|edit|8|payment|1508191200-UNC0002-1508191200--A-TT nước ngoài-1-2-2-1-2-2-22640
+
+24/10/2017 15:52:47|root|edit|8|payment|1508191200-UNC0002-1508191200--A-TT nước ngoài-1-2-2-1-2-2-22640
+
+24/10/2017 16:06:29|root|edit|5|payment|1508191200-TT0932-1508191200--a-Thank toán-1-2-2-1-1
+
+24/10/2017 16:22:58|root|edit|7|payment|1508191200-UNC003-1508191200--A-Nộp thuê-1-2-2-2-Kho bạc Q2 TP HCM-1
+
+30/10/2017 22:37:02|root|edit|1|additional|MHD2-1508364000-1508364000-Mua HD-16-15-3000000-1-0-1
+
+01/11/2017 21:25:12|root|edit|1|invoice_buy|1507932000-MH002-1507932000-1-0000323-1507932000-AH/02-DH002-HD002-2-22670-PXK01-Mua hàng nhập kho-1-
+
+02/11/2017 14:23:22|root|edit|8|payment|1508191200-UNC0002-1508191200--A-TT nước ngoài-1-2-2-1-2-2-22640
+
+02/11/2017 14:24:37|root|edit|8|payment|1508191200-UNC0002-1508191200--A-TT nước ngoài-1-2-2-1-2-2-22640
+
+02/11/2017 14:26:29|root|edit|8|payment|1508191200-UNC0002-1508191200--A-TT nước ngoài-1-2-2-1-2-2-22640
+
+02/11/2017 14:31:07|root|edit|8|payment|1508191200-UNC0002-1508191200--A-TT nước ngoài-1-2-2-1-2-2-22640
+
+02/11/2017 14:38:48|root|edit|8|payment|1508191200-UNC0002-1508191200--A-TT nước ngoài-1-2-2-1-2-2-22640
+
+02/11/2017 15:17:53|root|edit|8|payment|1508191200-UNC0002-1508191200--A-TT nước ngoài-1-2-2-1-2-2-22640
+
+10/11/2017 13:18:56|root|edit|2|account|1111-Tiền Việt Nam-1--110-1000000-
+
+10/11/2017 13:20:06|root|edit|2|account|1111-Tiền Việt Nam-1--110-2000000-0
+
+10/11/2017 13:20:27|root|edit|2|account|1111-Tiền Việt Nam-1--110-2000000-1000000
+
+11/11/2017 08:05:45|root|edit|6|items|AB_11.00R20_300-Amberstone 11.00R20 300-Bộ-1-10-238-10-100000
+
+11/11/2017 08:08:17|root|edit|6|items|AB_11.00R20_300-Amberstone 11.00R20 300-Bộ-1-10-238-10-1000000
+
+11/11/2017 11:33:27|root|edit|6|items|AB_11.00R20_300-Amberstone 11.00R20 300-Bộ-1-10-238-10-1000000
+
+13/11/2017 08:52:22|root|edit|2|customer|ABC-ABC Company-Công ty TNHH ABC-302013244-39, Phường 6, Q1, TP.HCM----0---1-1000000-
+
+14/11/2017 10:02:01|root|edit|13|account|1331-Thuế GTGT được khấu trừ của hàng hóa, dịch vụ-12--181-10000000-
+
+14/11/2017 10:05:01|root|edit|13|account|1331-Thuế GTGT được khấu trừ của hàng hóa, dịch vụ-12--181-100000000-0
+
+15/11/2017 09:36:01|root|edit|1|invoice_buy|1507932000-MH002-1507932000-1-0000323-1507932000-AH/02-DH002-HD002-2-22670.00-PXK01-Mua hàng nhập kho-1-
+
+15/11/2017 14:29:10|root|edit|1|invoice_buy|1507932000-MH002-1507932000-1-0000323-1507932000-AH/02-DH002-HD002-2-22670.00-PXK01-Mua hàng nhập kho-1-
+
+20/11/2017 13:55:54|root|edit|1|invoice_buy|1507932000-MH002-1507932000-1-0000323-1507932000-AH/02-DH002-HD002-2-22670.00-PXK01-Mua hàng nhập kho-1-
+
+22/11/2017 00:47:15|root|edit|1|info|CÔNG TY TNHH VIỆT TRA DE-2147483647-Số 545, Tổ 10, Ấp Hương Phước, Xã Phước Tân, TP. Biên Hòa, Tỉnh Đồng Nai-025 193 7677-it@viet-trade.org-Nguyễn Hoàng Minh Long-Phạm Hoài Thương Ly-Hoàng Minh Vy
+
+22/11/2017 10:07:44|root|delete|1|invoice_sell|
+
+22/11/2017 10:07:49|root|delete|2|customer|
+
+22/11/2017 10:07:56|root|delete|1|customer|
+
+22/11/2017 11:04:19|root|delete|2|invoice_buy|
+
+22/11/2017 11:04:19|root|delete|3|invoice_buy|
+
+22/11/2017 11:04:20|root|delete|4|invoice_buy|
+
+22/11/2017 11:04:22|root|delete|5|invoice_buy|
+
+22/11/2017 11:04:23|root|delete|6|invoice_buy|
+
+22/11/2017 11:04:24|root|delete|7|invoice_buy|
+
+22/11/2017 11:04:24|root|delete|8|invoice_buy|
+
+22/11/2017 11:04:26|root|delete|9|invoice_buy|
+
+22/11/2017 11:04:27|root|delete|10|invoice_buy|
+
+22/11/2017 11:04:28|root|delete|11|invoice_buy|
+
+22/11/2017 11:04:29|root|delete|12|invoice_buy|
+
+22/11/2017 11:04:29|root|delete|13|invoice_buy|
+
+22/11/2017 11:04:31|root|delete|14|invoice_buy|
+
+22/11/2017 11:04:31|root|delete|15|invoice_buy|
+
+22/11/2017 11:04:32|root|delete|16|invoice_buy|
+
+22/11/2017 11:04:34|root|delete|17|invoice_buy|
+
+22/11/2017 11:04:36|root|delete|18|invoice_buy|
+
+22/11/2017 11:04:37|root|delete|19|invoice_buy|
+
+22/11/2017 11:04:37|root|delete|20|invoice_buy|
+
+22/11/2017 11:04:38|root|delete|21|invoice_buy|
+
+22/11/2017 11:07:33|root|delete|3|invoice_purchase|
+
+22/11/2017 11:07:36|root|delete|4|invoice_purchase|
+
+22/11/2017 11:07:39|root|delete|5|invoice_purchase|
+
+22/11/2017 11:07:40|root|delete|6|invoice_purchase|
+
+22/11/2017 11:07:41|root|delete|7|invoice_purchase|
+
+22/11/2017 11:07:41|root|delete|8|invoice_purchase|
+
+22/11/2017 11:07:42|root|delete|9|invoice_purchase|
+
+22/11/2017 11:09:06|root|delete|256|invoice_sell|
+
+22/11/2017 11:09:06|root|delete|257|invoice_sell|
+
+22/11/2017 11:09:06|root|delete|2|invoice_sell|
+
+22/11/2017 11:09:06|root|delete|258|invoice_sell|
+
+22/11/2017 11:09:06|root|delete|3|invoice_sell|
+
+22/11/2017 11:09:07|root|delete|259|invoice_sell|
+
+22/11/2017 11:09:07|root|delete|4|invoice_sell|
+
+22/11/2017 11:09:07|root|delete|260|invoice_sell|
+
+22/11/2017 11:09:07|root|delete|5|invoice_sell|
+
+22/11/2017 11:09:07|root|delete|261|invoice_sell|
+
+22/11/2017 11:09:07|root|delete|6|invoice_sell|
+
+22/11/2017 11:09:07|root|delete|262|invoice_sell|
+
+22/11/2017 11:09:07|root|delete|7|invoice_sell|
+
+22/11/2017 11:09:07|root|delete|263|invoice_sell|
+
+22/11/2017 11:09:07|root|delete|8|invoice_sell|
+
+22/11/2017 11:09:07|root|delete|264|invoice_sell|
+
+22/11/2017 11:09:07|root|delete|9|invoice_sell|
+
+22/11/2017 11:09:08|root|delete|265|invoice_sell|
+
+22/11/2017 11:09:08|root|delete|10|invoice_sell|
+
+22/11/2017 11:09:08|root|delete|266|invoice_sell|
+
+22/11/2017 11:09:08|root|delete|11|invoice_sell|
+
+22/11/2017 11:09:08|root|delete|267|invoice_sell|
+
+22/11/2017 11:09:08|root|delete|12|invoice_sell|
+
+22/11/2017 11:09:08|root|delete|268|invoice_sell|
+
+22/11/2017 11:09:08|root|delete|13|invoice_sell|
+
+22/11/2017 11:09:08|root|delete|269|invoice_sell|
+
+22/11/2017 11:09:08|root|delete|14|invoice_sell|
+
+22/11/2017 11:09:08|root|delete|270|invoice_sell|
+
+22/11/2017 11:09:09|root|delete|15|invoice_sell|
+
+22/11/2017 11:09:09|root|delete|271|invoice_sell|
+
+22/11/2017 11:09:09|root|delete|16|invoice_sell|
+
+22/11/2017 11:09:09|root|delete|272|invoice_sell|
+
+22/11/2017 11:09:09|root|delete|17|invoice_sell|
+
+22/11/2017 11:09:09|root|delete|273|invoice_sell|
+
+22/11/2017 11:09:09|root|delete|18|invoice_sell|
+
+22/11/2017 11:09:09|root|delete|19|invoice_sell|
+
+22/11/2017 11:09:09|root|delete|20|invoice_sell|
+
+22/11/2017 11:09:10|root|delete|21|invoice_sell|
+
+22/11/2017 11:09:10|root|delete|22|invoice_sell|
+
+22/11/2017 11:09:10|root|delete|23|invoice_sell|
+
+22/11/2017 11:09:10|root|delete|24|invoice_sell|
+
+22/11/2017 11:09:10|root|delete|25|invoice_sell|
+
+22/11/2017 11:09:10|root|delete|26|invoice_sell|
+
+22/11/2017 11:09:10|root|delete|27|invoice_sell|
+
+22/11/2017 11:09:10|root|delete|28|invoice_sell|
+
+22/11/2017 11:09:10|root|delete|29|invoice_sell|
+
+22/11/2017 11:09:11|root|delete|30|invoice_sell|
+
+22/11/2017 11:09:11|root|delete|31|invoice_sell|
+
+22/11/2017 11:09:11|root|delete|32|invoice_sell|
+
+22/11/2017 11:09:11|root|delete|33|invoice_sell|
+
+22/11/2017 11:09:11|root|delete|34|invoice_sell|
+
+22/11/2017 11:09:11|root|delete|35|invoice_sell|
+
+22/11/2017 11:09:11|root|delete|36|invoice_sell|
+
+22/11/2017 11:09:11|root|delete|37|invoice_sell|
+
+22/11/2017 11:09:11|root|delete|38|invoice_sell|
+
+22/11/2017 11:09:11|root|delete|39|invoice_sell|
+
+22/11/2017 11:09:11|root|delete|40|invoice_sell|
+
+22/11/2017 11:09:12|root|delete|41|invoice_sell|
+
+22/11/2017 11:09:12|root|delete|42|invoice_sell|
+
+22/11/2017 11:09:12|root|delete|43|invoice_sell|
+
+22/11/2017 11:09:12|root|delete|44|invoice_sell|
+
+22/11/2017 11:09:12|root|delete|45|invoice_sell|
+
+22/11/2017 11:09:12|root|delete|46|invoice_sell|
+
+22/11/2017 11:09:12|root|delete|47|invoice_sell|
+
+22/11/2017 11:09:12|root|delete|48|invoice_sell|
+
+22/11/2017 11:09:13|root|delete|49|invoice_sell|
+
+22/11/2017 11:09:13|root|delete|50|invoice_sell|
+
+22/11/2017 11:09:13|root|delete|51|invoice_sell|
+
+22/11/2017 11:09:13|root|delete|52|invoice_sell|
+
+22/11/2017 11:09:13|root|delete|53|invoice_sell|
+
+22/11/2017 11:09:13|root|delete|54|invoice_sell|
+
+22/11/2017 11:09:13|root|delete|55|invoice_sell|
+
+22/11/2017 11:09:13|root|delete|56|invoice_sell|
+
+22/11/2017 11:09:13|root|delete|57|invoice_sell|
+
+22/11/2017 11:09:13|root|delete|58|invoice_sell|
+
+22/11/2017 11:09:13|root|delete|59|invoice_sell|
+
+22/11/2017 11:09:14|root|delete|60|invoice_sell|
+
+22/11/2017 11:09:14|root|delete|61|invoice_sell|
+
+22/11/2017 11:09:14|root|delete|62|invoice_sell|
+
+22/11/2017 11:09:14|root|delete|63|invoice_sell|
+
+22/11/2017 11:09:14|root|delete|64|invoice_sell|
+
+22/11/2017 11:09:14|root|delete|65|invoice_sell|
+
+22/11/2017 11:09:14|root|delete|66|invoice_sell|
+
+22/11/2017 11:09:14|root|delete|67|invoice_sell|
+
+22/11/2017 11:09:14|root|delete|68|invoice_sell|
+
+22/11/2017 11:09:14|root|delete|69|invoice_sell|
+
+22/11/2017 11:09:14|root|delete|70|invoice_sell|
+
+22/11/2017 11:09:15|root|delete|71|invoice_sell|
+
+22/11/2017 11:09:15|root|delete|72|invoice_sell|
+
+22/11/2017 11:09:15|root|delete|73|invoice_sell|
+
+22/11/2017 11:09:15|root|delete|74|invoice_sell|
+
+22/11/2017 11:09:15|root|delete|75|invoice_sell|
+
+22/11/2017 11:09:15|root|delete|76|invoice_sell|
+
+22/11/2017 11:09:15|root|delete|77|invoice_sell|
+
+22/11/2017 11:09:15|root|delete|78|invoice_sell|
+
+22/11/2017 11:09:15|root|delete|79|invoice_sell|
+
+22/11/2017 11:09:16|root|delete|80|invoice_sell|
+
+22/11/2017 11:09:16|root|delete|81|invoice_sell|
+
+22/11/2017 11:09:16|root|delete|82|invoice_sell|
+
+22/11/2017 11:09:16|root|delete|83|invoice_sell|
+
+22/11/2017 11:09:16|root|delete|84|invoice_sell|
+
+22/11/2017 11:09:16|root|delete|85|invoice_sell|
+
+22/11/2017 11:09:16|root|delete|86|invoice_sell|
+
+22/11/2017 11:09:16|root|delete|87|invoice_sell|
+
+22/11/2017 11:09:16|root|delete|88|invoice_sell|
+
+22/11/2017 11:09:16|root|delete|89|invoice_sell|
+
+22/11/2017 11:09:16|root|delete|90|invoice_sell|
+
+22/11/2017 11:09:17|root|delete|91|invoice_sell|
+
+22/11/2017 11:09:17|root|delete|92|invoice_sell|
+
+22/11/2017 11:09:17|root|delete|93|invoice_sell|
+
+22/11/2017 11:09:17|root|delete|94|invoice_sell|
+
+22/11/2017 11:09:17|root|delete|95|invoice_sell|
+
+22/11/2017 11:09:17|root|delete|96|invoice_sell|
+
+22/11/2017 11:09:17|root|delete|97|invoice_sell|
+
+22/11/2017 11:09:17|root|delete|98|invoice_sell|
+
+22/11/2017 11:09:17|root|delete|99|invoice_sell|
+
+22/11/2017 11:09:17|root|delete|100|invoice_sell|
+
+22/11/2017 11:09:17|root|delete|101|invoice_sell|
+
+22/11/2017 11:09:17|root|delete|102|invoice_sell|
+
+22/11/2017 11:09:17|root|delete|103|invoice_sell|
+
+22/11/2017 11:09:18|root|delete|104|invoice_sell|
+
+22/11/2017 11:09:18|root|delete|105|invoice_sell|
+
+22/11/2017 11:09:18|root|delete|106|invoice_sell|
+
+22/11/2017 11:09:18|root|delete|107|invoice_sell|
+
+22/11/2017 11:09:18|root|delete|108|invoice_sell|
+
+22/11/2017 11:09:18|root|delete|109|invoice_sell|
+
+22/11/2017 11:09:18|root|delete|110|invoice_sell|
+
+22/11/2017 11:09:18|root|delete|111|invoice_sell|
+
+22/11/2017 11:09:18|root|delete|112|invoice_sell|
+
+22/11/2017 11:09:18|root|delete|113|invoice_sell|
+
+22/11/2017 11:09:18|root|delete|114|invoice_sell|
+
+22/11/2017 11:09:18|root|delete|115|invoice_sell|
+
+22/11/2017 11:09:19|root|delete|116|invoice_sell|
+
+22/11/2017 11:09:19|root|delete|117|invoice_sell|
+
+22/11/2017 11:09:19|root|delete|118|invoice_sell|
+
+22/11/2017 11:09:19|root|delete|119|invoice_sell|
+
+22/11/2017 11:09:19|root|delete|120|invoice_sell|
+
+22/11/2017 11:09:19|root|delete|121|invoice_sell|
+
+22/11/2017 11:09:19|root|delete|122|invoice_sell|
+
+22/11/2017 11:09:19|root|delete|123|invoice_sell|
+
+22/11/2017 11:09:19|root|delete|124|invoice_sell|
+
+22/11/2017 11:09:19|root|delete|125|invoice_sell|
+
+22/11/2017 11:09:19|root|delete|126|invoice_sell|
+
+22/11/2017 11:09:20|root|delete|127|invoice_sell|
+
+22/11/2017 11:09:20|root|delete|128|invoice_sell|
+
+22/11/2017 11:09:20|root|delete|129|invoice_sell|
+
+22/11/2017 11:09:20|root|delete|130|invoice_sell|
+
+22/11/2017 11:09:20|root|delete|131|invoice_sell|
+
+22/11/2017 11:09:20|root|delete|132|invoice_sell|
+
+22/11/2017 11:09:20|root|delete|133|invoice_sell|
+
+22/11/2017 11:09:20|root|delete|134|invoice_sell|
+
+22/11/2017 11:09:20|root|delete|135|invoice_sell|
+
+22/11/2017 11:09:20|root|delete|136|invoice_sell|
+
+22/11/2017 11:09:21|root|delete|137|invoice_sell|
+
+22/11/2017 11:09:21|root|delete|138|invoice_sell|
+
+22/11/2017 11:09:21|root|delete|139|invoice_sell|
+
+22/11/2017 11:09:21|root|delete|140|invoice_sell|
+
+22/11/2017 11:09:21|root|delete|141|invoice_sell|
+
+22/11/2017 11:09:21|root|delete|142|invoice_sell|
+
+22/11/2017 11:09:21|root|delete|143|invoice_sell|
+
+22/11/2017 11:09:21|root|delete|144|invoice_sell|
+
+22/11/2017 11:09:21|root|delete|145|invoice_sell|
+
+22/11/2017 11:09:21|root|delete|146|invoice_sell|
+
+22/11/2017 11:09:21|root|delete|147|invoice_sell|
+
+22/11/2017 11:09:22|root|delete|148|invoice_sell|
+
+22/11/2017 11:09:22|root|delete|149|invoice_sell|
+
+22/11/2017 11:09:22|root|delete|150|invoice_sell|
+
+22/11/2017 11:09:22|root|delete|151|invoice_sell|
+
+22/11/2017 11:09:22|root|delete|152|invoice_sell|
+
+22/11/2017 11:09:22|root|delete|153|invoice_sell|
+
+22/11/2017 11:09:22|root|delete|154|invoice_sell|
+
+22/11/2017 11:09:22|root|delete|155|invoice_sell|
+
+22/11/2017 11:09:22|root|delete|156|invoice_sell|
+
+22/11/2017 11:09:23|root|delete|157|invoice_sell|
+
+22/11/2017 11:09:23|root|delete|158|invoice_sell|
+
+22/11/2017 11:09:23|root|delete|159|invoice_sell|
+
+22/11/2017 11:09:23|root|delete|160|invoice_sell|
+
+22/11/2017 11:09:23|root|delete|161|invoice_sell|
+
+22/11/2017 11:09:23|root|delete|162|invoice_sell|
+
+22/11/2017 11:09:23|root|delete|163|invoice_sell|
+
+22/11/2017 11:09:23|root|delete|164|invoice_sell|
+
+22/11/2017 11:09:23|root|delete|165|invoice_sell|
+
+22/11/2017 11:09:23|root|delete|166|invoice_sell|
+
+22/11/2017 11:09:23|root|delete|167|invoice_sell|
+
+22/11/2017 11:09:24|root|delete|168|invoice_sell|
+
+22/11/2017 11:09:24|root|delete|169|invoice_sell|
+
+22/11/2017 11:09:24|root|delete|170|invoice_sell|
+
+22/11/2017 11:09:24|root|delete|171|invoice_sell|
+
+22/11/2017 11:09:24|root|delete|172|invoice_sell|
+
+22/11/2017 11:09:24|root|delete|173|invoice_sell|
+
+22/11/2017 11:09:24|root|delete|174|invoice_sell|
+
+22/11/2017 11:09:24|root|delete|175|invoice_sell|
+
+22/11/2017 11:09:24|root|delete|176|invoice_sell|
+
+22/11/2017 11:09:24|root|delete|177|invoice_sell|
+
+22/11/2017 11:09:25|root|delete|178|invoice_sell|
+
+22/11/2017 11:09:25|root|delete|179|invoice_sell|
+
+22/11/2017 11:09:25|root|delete|180|invoice_sell|
+
+22/11/2017 11:09:25|root|delete|181|invoice_sell|
+
+22/11/2017 11:09:25|root|delete|182|invoice_sell|
+
+22/11/2017 11:09:25|root|delete|183|invoice_sell|
+
+22/11/2017 11:09:25|root|delete|184|invoice_sell|
+
+22/11/2017 11:09:25|root|delete|185|invoice_sell|
+
+22/11/2017 11:09:25|root|delete|186|invoice_sell|
+
+22/11/2017 11:09:25|root|delete|187|invoice_sell|
+
+22/11/2017 11:09:25|root|delete|188|invoice_sell|
+
+22/11/2017 11:09:25|root|delete|189|invoice_sell|
+
+22/11/2017 11:09:26|root|delete|190|invoice_sell|
+
+22/11/2017 11:09:26|root|delete|191|invoice_sell|
+
+22/11/2017 11:09:26|root|delete|192|invoice_sell|
+
+22/11/2017 11:09:26|root|delete|193|invoice_sell|
+
+22/11/2017 11:09:26|root|delete|194|invoice_sell|
+
+22/11/2017 11:09:26|root|delete|195|invoice_sell|
+
+22/11/2017 11:09:26|root|delete|196|invoice_sell|
+
+22/11/2017 11:09:27|root|delete|197|invoice_sell|
+
+22/11/2017 11:09:27|root|delete|198|invoice_sell|
+
+22/11/2017 11:09:27|root|delete|199|invoice_sell|
+
+22/11/2017 11:09:27|root|delete|200|invoice_sell|
+
+22/11/2017 11:09:27|root|delete|201|invoice_sell|
+
+22/11/2017 11:09:27|root|delete|202|invoice_sell|
+
+22/11/2017 11:09:27|root|delete|203|invoice_sell|
+
+22/11/2017 11:09:27|root|delete|204|invoice_sell|
+
+22/11/2017 11:09:27|root|delete|205|invoice_sell|
+
+22/11/2017 11:09:28|root|delete|206|invoice_sell|
+
+22/11/2017 11:09:28|root|delete|207|invoice_sell|
+
+22/11/2017 11:09:28|root|delete|208|invoice_sell|
+
+22/11/2017 11:09:28|root|delete|209|invoice_sell|
+
+22/11/2017 11:09:28|root|delete|210|invoice_sell|
+
+22/11/2017 11:09:28|root|delete|211|invoice_sell|
+
+22/11/2017 11:09:28|root|delete|212|invoice_sell|
+
+22/11/2017 11:09:28|root|delete|213|invoice_sell|
+
+22/11/2017 11:09:28|root|delete|214|invoice_sell|
+
+22/11/2017 11:09:29|root|delete|215|invoice_sell|
+
+22/11/2017 11:09:29|root|delete|216|invoice_sell|
+
+22/11/2017 11:09:29|root|delete|217|invoice_sell|
+
+22/11/2017 11:09:29|root|delete|218|invoice_sell|
+
+22/11/2017 11:09:29|root|delete|219|invoice_sell|
+
+22/11/2017 11:09:29|root|delete|220|invoice_sell|
+
+22/11/2017 11:09:29|root|delete|221|invoice_sell|
+
+22/11/2017 11:09:29|root|delete|222|invoice_sell|
+
+22/11/2017 11:09:29|root|delete|223|invoice_sell|
+
+22/11/2017 11:09:30|root|delete|224|invoice_sell|
+
+22/11/2017 11:09:30|root|delete|225|invoice_sell|
+
+22/11/2017 11:09:30|root|delete|226|invoice_sell|
+
+22/11/2017 11:09:30|root|delete|227|invoice_sell|
+
+22/11/2017 11:09:30|root|delete|228|invoice_sell|
+
+22/11/2017 11:09:30|root|delete|229|invoice_sell|
+
+22/11/2017 11:09:30|root|delete|230|invoice_sell|
+
+22/11/2017 11:09:30|root|delete|231|invoice_sell|
+
+22/11/2017 11:09:30|root|delete|232|invoice_sell|
+
+22/11/2017 11:09:30|root|delete|233|invoice_sell|
+
+22/11/2017 11:09:30|root|delete|234|invoice_sell|
+
+22/11/2017 11:09:30|root|delete|235|invoice_sell|
+
+22/11/2017 11:09:31|root|delete|236|invoice_sell|
+
+22/11/2017 11:09:31|root|delete|237|invoice_sell|
+
+22/11/2017 11:09:31|root|delete|238|invoice_sell|
+
+22/11/2017 11:09:31|root|delete|239|invoice_sell|
+
+22/11/2017 11:09:31|root|delete|240|invoice_sell|
+
+22/11/2017 11:09:31|root|delete|241|invoice_sell|
+
+22/11/2017 11:09:31|root|delete|242|invoice_sell|
+
+22/11/2017 11:09:31|root|delete|243|invoice_sell|
+
+22/11/2017 11:09:31|root|delete|244|invoice_sell|
+
+22/11/2017 11:09:32|root|delete|245|invoice_sell|
+
+22/11/2017 11:09:32|root|delete|246|invoice_sell|
+
+22/11/2017 11:09:32|root|delete|247|invoice_sell|
+
+22/11/2017 11:09:32|root|delete|248|invoice_sell|
+
+22/11/2017 11:09:32|root|delete|249|invoice_sell|
+
+22/11/2017 11:09:32|root|delete|250|invoice_sell|
+
+22/11/2017 11:09:32|root|delete|251|invoice_sell|
+
+22/11/2017 11:09:32|root|delete|252|invoice_sell|
+
+22/11/2017 11:09:32|root|delete|253|invoice_sell|
+
+22/11/2017 11:09:32|root|delete|254|invoice_sell|
+
+22/11/2017 11:09:33|root|delete|255|invoice_sell|
+
+22/11/2017 11:09:33|root|delete|274|invoice_sell|
+
+22/11/2017 11:09:33|root|delete|275|invoice_sell|
+
+22/11/2017 11:09:33|root|delete|276|invoice_sell|
+
+22/11/2017 11:09:33|root|delete|277|invoice_sell|
+
+22/11/2017 11:09:33|root|delete|278|invoice_sell|
+
+22/11/2017 11:09:43|root|delete|279|invoice_sell|
+
+22/11/2017 11:09:43|root|delete|280|invoice_sell|
+
+22/11/2017 11:09:43|root|delete|281|invoice_sell|
+
+22/11/2017 11:09:43|root|delete|282|invoice_sell|
+
+22/11/2017 11:09:43|root|delete|283|invoice_sell|
+
+22/11/2017 11:09:44|root|delete|284|invoice_sell|
+
+22/11/2017 11:09:44|root|delete|285|invoice_sell|
+
+22/11/2017 11:09:44|root|delete|286|invoice_sell|
+
+22/11/2017 11:09:44|root|delete|287|invoice_sell|
+
+22/11/2017 11:09:44|root|delete|288|invoice_sell|
+
+22/11/2017 11:09:44|root|delete|289|invoice_sell|
+
+22/11/2017 11:09:44|root|delete|290|invoice_sell|
+
+22/11/2017 11:09:44|root|delete|291|invoice_sell|
+
+22/11/2017 11:09:44|root|delete|292|invoice_sell|
+
+22/11/2017 11:09:44|root|delete|293|invoice_sell|
+
+22/11/2017 11:09:44|root|delete|294|invoice_sell|
+
+22/11/2017 11:09:44|root|delete|295|invoice_sell|
+
+22/11/2017 11:09:45|root|delete|296|invoice_sell|
+
+22/11/2017 11:09:45|root|delete|297|invoice_sell|
+
+22/11/2017 11:09:45|root|delete|298|invoice_sell|
+
+22/11/2017 11:09:45|root|delete|299|invoice_sell|
+
+22/11/2017 11:09:45|root|delete|300|invoice_sell|
+
+22/11/2017 11:09:45|root|delete|301|invoice_sell|
+
+22/11/2017 11:09:45|root|delete|302|invoice_sell|
+
+22/11/2017 11:09:45|root|delete|303|invoice_sell|
+
+22/11/2017 11:09:45|root|delete|304|invoice_sell|
+
+22/11/2017 11:09:45|root|delete|305|invoice_sell|
+
+22/11/2017 11:09:45|root|delete|306|invoice_sell|
+
+22/11/2017 11:09:46|root|delete|307|invoice_sell|
+
+22/11/2017 11:09:46|root|delete|308|invoice_sell|
+
+22/11/2017 11:09:46|root|delete|309|invoice_sell|
+
+22/11/2017 11:09:46|root|delete|310|invoice_sell|
+
+22/11/2017 11:09:46|root|delete|311|invoice_sell|
+
+22/11/2017 11:09:46|root|delete|312|invoice_sell|
+
+22/11/2017 11:09:46|root|delete|313|invoice_sell|
+
+22/11/2017 11:09:46|root|delete|314|invoice_sell|
+
+22/11/2017 11:09:46|root|delete|315|invoice_sell|
+
+22/11/2017 11:09:46|root|delete|316|invoice_sell|
+
+22/11/2017 11:09:47|root|delete|317|invoice_sell|
+
+22/11/2017 11:09:47|root|delete|318|invoice_sell|
+
+22/11/2017 11:09:47|root|delete|319|invoice_sell|
+
+22/11/2017 11:09:47|root|delete|320|invoice_sell|
+
+22/11/2017 11:09:47|root|delete|321|invoice_sell|
+
+22/11/2017 11:09:47|root|delete|322|invoice_sell|
+
+22/11/2017 11:09:47|root|delete|323|invoice_sell|
+
+22/11/2017 11:09:47|root|delete|324|invoice_sell|
+
+22/11/2017 11:09:47|root|delete|325|invoice_sell|
+
+22/11/2017 11:09:47|root|delete|326|invoice_sell|
+
+22/11/2017 11:09:47|root|delete|327|invoice_sell|
+
+22/11/2017 11:09:48|root|delete|328|invoice_sell|
+
+22/11/2017 11:09:48|root|delete|329|invoice_sell|
+
+22/11/2017 11:09:48|root|delete|330|invoice_sell|
+
+22/11/2017 11:09:48|root|delete|331|invoice_sell|
+
+22/11/2017 11:09:48|root|delete|332|invoice_sell|
+
+22/11/2017 11:09:48|root|delete|333|invoice_sell|
+
+22/11/2017 11:09:48|root|delete|334|invoice_sell|
+
+22/11/2017 11:09:48|root|delete|335|invoice_sell|
+
+22/11/2017 11:09:48|root|delete|336|invoice_sell|
+
+22/11/2017 11:09:48|root|delete|337|invoice_sell|
+
+22/11/2017 11:09:49|root|delete|338|invoice_sell|
+
+22/11/2017 11:09:49|root|delete|339|invoice_sell|
+
+22/11/2017 11:09:49|root|delete|340|invoice_sell|
+
+22/11/2017 11:09:49|root|delete|341|invoice_sell|
+
+22/11/2017 11:09:49|root|delete|342|invoice_sell|
+
+22/11/2017 11:09:49|root|delete|343|invoice_sell|
+
+22/11/2017 11:09:49|root|delete|344|invoice_sell|
+
+22/11/2017 11:09:49|root|delete|345|invoice_sell|
+
+22/11/2017 11:09:49|root|delete|346|invoice_sell|
+
+22/11/2017 11:09:49|root|delete|347|invoice_sell|
+
+22/11/2017 11:09:49|root|delete|348|invoice_sell|
+
+22/11/2017 11:10:16|root|edit|1|house|HH-Kho hàng-Trụ sở công ty
+
+22/11/2017 11:10:48|root|delete|247|customer|
+
+22/11/2017 11:10:48|root|delete|248|customer|
+
+22/11/2017 11:10:48|root|delete|249|customer|
+
+22/11/2017 11:10:48|root|delete|250|customer|
+
+22/11/2017 11:10:48|root|delete|251|customer|
+
+22/11/2017 11:10:48|root|delete|252|customer|
+
+22/11/2017 11:10:48|root|delete|253|customer|
+
+22/11/2017 11:10:48|root|delete|254|customer|
+
+22/11/2017 11:10:48|root|delete|255|customer|
+
+22/11/2017 11:10:49|root|delete|256|customer|
+
+22/11/2017 11:10:49|root|delete|257|customer|
+
+22/11/2017 11:10:49|root|delete|258|customer|
+
+22/11/2017 11:10:49|root|delete|259|customer|
+
+22/11/2017 11:10:49|root|delete|260|customer|
+
+22/11/2017 11:10:49|root|delete|261|customer|
+
+22/11/2017 11:10:49|root|delete|262|customer|
+
+22/11/2017 11:10:49|root|delete|263|customer|
+
+22/11/2017 11:10:49|root|delete|264|customer|
+
+22/11/2017 11:10:49|root|delete|265|customer|
+
+22/11/2017 11:10:50|root|delete|266|customer|
+
+22/11/2017 11:10:50|root|delete|267|customer|
+
+22/11/2017 11:10:50|root|delete|268|customer|
+
+22/11/2017 11:10:50|root|delete|269|customer|
+
+22/11/2017 11:10:50|root|delete|270|customer|
+
+22/11/2017 11:10:50|root|delete|271|customer|
+
+22/11/2017 11:10:50|root|delete|272|customer|
+
+22/11/2017 11:11:03|root|delete|138|customer|
+
+22/11/2017 11:11:03|root|delete|139|customer|
+
+22/11/2017 11:11:03|root|delete|140|customer|
+
+22/11/2017 11:11:04|root|delete|141|customer|
+
+22/11/2017 11:11:04|root|delete|142|customer|
+
+22/11/2017 11:11:04|root|delete|143|customer|
+
+22/11/2017 11:11:04|root|delete|144|customer|
+
+22/11/2017 11:11:04|root|delete|145|customer|
+
+22/11/2017 11:11:04|root|delete|146|customer|
+
+22/11/2017 11:11:04|root|delete|147|customer|
+
+22/11/2017 11:11:04|root|delete|148|customer|
+
+22/11/2017 11:11:04|root|delete|149|customer|
+
+22/11/2017 11:11:04|root|delete|150|customer|
+
+22/11/2017 11:11:05|root|delete|151|customer|
+
+22/11/2017 11:11:05|root|delete|152|customer|
+
+22/11/2017 11:11:05|root|delete|153|customer|
+
+22/11/2017 11:11:05|root|delete|154|customer|
+
+22/11/2017 11:11:05|root|delete|155|customer|
+
+22/11/2017 11:11:05|root|delete|156|customer|
+
+22/11/2017 11:11:05|root|delete|157|customer|
+
+22/11/2017 11:11:05|root|delete|158|customer|
+
+22/11/2017 11:11:05|root|delete|159|customer|
+
+22/11/2017 11:11:05|root|delete|160|customer|
+
+22/11/2017 11:11:06|root|delete|161|customer|
+
+22/11/2017 11:11:06|root|delete|162|customer|
+
+22/11/2017 11:11:06|root|delete|163|customer|
+
+22/11/2017 11:11:06|root|delete|164|customer|
+
+22/11/2017 11:11:06|root|delete|165|customer|
+
+22/11/2017 11:11:06|root|delete|166|customer|
+
+22/11/2017 11:11:06|root|delete|167|customer|
+
+22/11/2017 11:11:06|root|delete|168|customer|
+
+22/11/2017 11:11:06|root|delete|169|customer|
+
+22/11/2017 11:11:06|root|delete|170|customer|
+
+22/11/2017 11:11:07|root|delete|171|customer|
+
+22/11/2017 11:11:07|root|delete|172|customer|
+
+22/11/2017 11:11:07|root|delete|173|customer|
+
+22/11/2017 11:11:07|root|delete|174|customer|
+
+22/11/2017 11:11:07|root|delete|175|customer|
+
+22/11/2017 11:11:07|root|delete|176|customer|
+
+22/11/2017 11:11:07|root|delete|177|customer|
+
+22/11/2017 11:11:07|root|delete|178|customer|
+
+22/11/2017 11:11:07|root|delete|179|customer|
+
+22/11/2017 11:11:07|root|delete|180|customer|
+
+22/11/2017 11:11:07|root|delete|181|customer|
+
+22/11/2017 11:11:07|root|delete|182|customer|
+
+22/11/2017 11:11:08|root|delete|183|customer|
+
+22/11/2017 11:11:08|root|delete|184|customer|
+
+22/11/2017 11:11:08|root|delete|185|customer|
+
+22/11/2017 11:11:08|root|delete|186|customer|
+
+22/11/2017 11:11:08|root|delete|187|customer|
+
+22/11/2017 11:11:08|root|delete|188|customer|
+
+22/11/2017 11:11:08|root|delete|189|customer|
+
+22/11/2017 11:11:08|root|delete|190|customer|
+
+22/11/2017 11:11:08|root|delete|191|customer|
+
+22/11/2017 11:11:08|root|delete|192|customer|
+
+22/11/2017 11:11:08|root|delete|193|customer|
+
+22/11/2017 11:11:09|root|delete|194|customer|
+
+22/11/2017 11:11:09|root|delete|195|customer|
+
+22/11/2017 11:11:09|root|delete|196|customer|
+
+22/11/2017 11:11:09|root|delete|197|customer|
+
+22/11/2017 11:11:09|root|delete|198|customer|
+
+22/11/2017 11:11:09|root|delete|199|customer|
+
+22/11/2017 11:11:09|root|delete|200|customer|
+
+22/11/2017 11:11:09|root|delete|201|customer|
+
+22/11/2017 11:11:09|root|delete|202|customer|
+
+22/11/2017 11:11:10|root|delete|203|customer|
+
+22/11/2017 11:11:10|root|delete|204|customer|
+
+22/11/2017 11:11:10|root|delete|205|customer|
+
+22/11/2017 11:11:10|root|delete|206|customer|
+
+22/11/2017 11:11:10|root|delete|207|customer|
+
+22/11/2017 11:11:10|root|delete|208|customer|
+
+22/11/2017 11:11:10|root|delete|209|customer|
+
+22/11/2017 11:11:10|root|delete|210|customer|
+
+22/11/2017 11:11:10|root|delete|211|customer|
+
+22/11/2017 11:11:11|root|delete|212|customer|
+
+22/11/2017 11:11:11|root|delete|213|customer|
+
+22/11/2017 11:11:11|root|delete|214|customer|
+
+22/11/2017 11:11:11|root|delete|215|customer|
+
+22/11/2017 11:11:11|root|delete|216|customer|
+
+22/11/2017 11:11:11|root|delete|217|customer|
+
+22/11/2017 11:11:11|root|delete|218|customer|
+
+22/11/2017 11:11:11|root|delete|219|customer|
+
+22/11/2017 11:11:11|root|delete|220|customer|
+
+22/11/2017 11:11:12|root|delete|221|customer|
+
+22/11/2017 11:11:12|root|delete|222|customer|
+
+22/11/2017 11:11:12|root|delete|223|customer|
+
+22/11/2017 11:11:12|root|delete|224|customer|
+
+22/11/2017 11:11:12|root|delete|225|customer|
+
+22/11/2017 11:11:13|root|delete|226|customer|
+
+22/11/2017 11:11:13|root|delete|227|customer|
+
+22/11/2017 11:11:13|root|delete|228|customer|
+
+22/11/2017 11:11:13|root|delete|229|customer|
+
+22/11/2017 11:11:13|root|delete|230|customer|
+
+22/11/2017 11:11:13|root|delete|231|customer|
+
+22/11/2017 11:11:13|root|delete|232|customer|
+
+22/11/2017 11:11:13|root|delete|233|customer|
+
+22/11/2017 11:11:13|root|delete|234|customer|
+
+22/11/2017 11:11:13|root|delete|235|customer|
+
+22/11/2017 11:11:13|root|delete|236|customer|
+
+22/11/2017 11:11:13|root|delete|237|customer|
+
+22/11/2017 11:11:14|root|delete|238|customer|
+
+22/11/2017 11:11:14|root|delete|239|customer|
+
+22/11/2017 11:11:14|root|delete|240|customer|
+
+22/11/2017 11:11:14|root|delete|241|customer|
+
+22/11/2017 11:11:14|root|delete|242|customer|
+
+22/11/2017 11:11:14|root|delete|243|customer|
+
+22/11/2017 11:11:14|root|delete|244|customer|
+
+22/11/2017 11:11:14|root|delete|245|customer|
+
+22/11/2017 11:11:14|root|delete|246|customer|
+
+22/11/2017 11:11:26|root|delete|28|items|
+
+22/11/2017 11:11:26|root|delete|29|items|
+
+22/11/2017 11:11:27|root|delete|30|items|
+
+22/11/2017 11:11:27|root|delete|31|items|
+
+22/11/2017 11:11:27|root|delete|32|items|
+
+22/11/2017 11:11:27|root|delete|33|items|
+
+22/11/2017 11:11:28|root|delete|34|items|
+
+22/11/2017 11:11:28|root|delete|35|items|
+
+22/11/2017 11:11:28|root|delete|36|items|
+
+22/11/2017 11:11:28|root|delete|37|items|
+
+22/11/2017 11:11:28|root|delete|38|items|
+
+22/11/2017 11:11:29|root|delete|39|items|
+
+22/11/2017 11:11:29|root|delete|40|items|
+
+22/11/2017 11:11:29|root|delete|41|items|
+
+22/11/2017 11:11:29|root|delete|42|items|
+
+22/11/2017 11:11:29|root|delete|43|items|
+
+22/11/2017 11:11:29|root|delete|44|items|
+
+22/11/2017 11:11:30|root|delete|45|items|
+
+22/11/2017 11:11:30|root|delete|46|items|
+
+22/11/2017 11:11:30|root|delete|47|items|
+
+22/11/2017 11:11:30|root|delete|48|items|
+
+22/11/2017 11:11:30|root|delete|49|items|
+
+22/11/2017 11:11:30|root|delete|50|items|
+
+22/11/2017 11:11:30|root|delete|64|items|
+
+22/11/2017 11:11:30|root|delete|51|items|
+
+22/11/2017 11:11:30|root|delete|52|items|
+
+22/11/2017 11:11:30|root|delete|53|items|
+
+22/11/2017 11:11:31|root|delete|54|items|
+
+22/11/2017 11:11:31|root|delete|55|items|
+
+22/11/2017 11:11:31|root|delete|56|items|
+
+22/11/2017 11:11:31|root|delete|57|items|
+
+22/11/2017 11:11:31|root|delete|58|items|
+
+22/11/2017 11:11:31|root|delete|59|items|
+
+22/11/2017 11:11:31|root|delete|60|items|
+
+22/11/2017 11:11:31|root|delete|61|items|
+
+22/11/2017 11:11:32|root|delete|62|items|
+
+22/11/2017 11:11:32|root|delete|63|items|
+
+22/11/2017 11:11:32|root|delete|65|items|
+
+22/11/2017 11:11:32|root|delete|66|items|
+
+22/11/2017 11:11:32|root|delete|67|items|
+
+22/11/2017 11:11:32|root|delete|68|items|
+
+22/11/2017 11:11:32|root|delete|69|items|
+
+22/11/2017 11:11:33|root|delete|70|items|
+
+22/11/2017 11:11:33|root|delete|71|items|
+
+22/11/2017 11:11:33|root|delete|72|items|
+
+22/11/2017 11:11:33|root|delete|73|items|
+
+22/11/2017 11:11:33|root|delete|74|items|
+
+22/11/2017 11:11:33|root|delete|75|items|
+
+22/11/2017 11:11:33|root|delete|76|items|
+
+22/11/2017 11:11:33|root|delete|77|items|
+
+22/11/2017 11:11:33|root|delete|78|items|
+
+22/11/2017 11:11:33|root|delete|79|items|
+
+22/11/2017 11:11:33|root|delete|80|items|
+
+22/11/2017 11:11:34|root|delete|81|items|
+
+22/11/2017 11:11:34|root|delete|82|items|
+
+22/11/2017 11:11:34|root|delete|83|items|
+
+22/11/2017 11:11:34|root|delete|84|items|
+
+22/11/2017 11:11:34|root|delete|85|items|
+
+22/11/2017 11:11:34|root|delete|86|items|
+
+22/11/2017 11:11:34|root|delete|87|items|
+
+22/11/2017 11:11:34|root|delete|88|items|
+
+22/11/2017 11:11:34|root|delete|89|items|
+
+22/11/2017 11:11:35|root|delete|90|items|
+
+22/11/2017 11:11:35|root|delete|91|items|
+
+22/11/2017 11:11:35|root|delete|92|items|
+
+22/11/2017 11:11:35|root|delete|93|items|
+
+22/11/2017 11:11:36|root|delete|94|items|
+
+22/11/2017 11:11:36|root|delete|95|items|
+
+22/11/2017 11:11:36|root|delete|96|items|
+
+22/11/2017 11:11:36|root|delete|97|items|
+
+22/11/2017 11:11:36|root|delete|98|items|
+
+22/11/2017 11:11:36|root|delete|99|items|
+
+22/11/2017 11:11:36|root|delete|100|items|
+
+22/11/2017 11:11:36|root|delete|101|items|
+
+22/11/2017 11:11:36|root|delete|102|items|
+
+22/11/2017 11:11:36|root|delete|103|items|
+
+22/11/2017 11:11:37|root|delete|104|items|
+
+22/11/2017 11:11:37|root|delete|105|items|
+
+22/11/2017 11:11:37|root|delete|106|items|
+
+22/11/2017 11:11:37|root|delete|107|items|
+
+22/11/2017 11:11:37|root|delete|108|items|
+
+22/11/2017 11:11:37|root|delete|109|items|
+
+22/11/2017 11:11:37|root|delete|110|items|
+
+22/11/2017 11:11:37|root|delete|111|items|
+
+22/11/2017 11:11:37|root|delete|112|items|
+
+22/11/2017 11:11:37|root|delete|113|items|
+
+22/11/2017 11:11:37|root|delete|114|items|
+
+22/11/2017 11:11:38|root|delete|115|items|
+
+22/11/2017 11:11:38|root|delete|27|items|
+
+22/11/2017 11:11:38|root|delete|116|items|
+
+22/11/2017 11:11:38|root|delete|117|items|
+
+22/11/2017 11:11:38|root|delete|118|items|
+
+22/11/2017 11:11:38|root|delete|119|items|
+
+22/11/2017 11:11:38|root|delete|120|items|
+
+22/11/2017 11:11:38|root|delete|121|items|
+
+22/11/2017 11:11:39|root|delete|122|items|
+
+22/11/2017 11:11:39|root|delete|123|items|
+
+22/11/2017 11:11:39|root|delete|124|items|
+
+22/11/2017 11:11:39|root|delete|127|items|
+
+22/11/2017 11:11:39|root|delete|128|items|
+
+22/11/2017 11:11:39|root|delete|125|items|
+
+22/11/2017 11:11:40|root|delete|126|items|
+
+22/11/2017 11:15:04|root|delete|19|additional|
+
+22/11/2017 11:15:04|root|delete|25|additional|
+
+22/11/2017 11:15:04|root|delete|26|additional|
+
+22/11/2017 11:15:05|root|delete|27|additional|
+
+22/11/2017 11:15:05|root|delete|28|additional|
+
+22/11/2017 11:15:05|root|delete|13|additional|
+
+22/11/2017 11:15:05|root|delete|34|additional|
+
+22/11/2017 11:15:06|root|delete|7|additional|
+
+22/11/2017 11:15:06|root|delete|33|additional|
+
+22/11/2017 11:15:06|root|delete|18|additional|
+
+22/11/2017 11:15:06|root|delete|24|additional|
+
+22/11/2017 11:15:06|root|delete|6|additional|
+
+22/11/2017 11:15:07|root|delete|12|additional|
+
+22/11/2017 11:15:07|root|delete|5|additional|
+
+22/11/2017 11:15:07|root|delete|11|additional|
+
+22/11/2017 11:15:07|root|delete|17|additional|
+
+22/11/2017 11:15:08|root|delete|23|additional|
+
+22/11/2017 11:15:08|root|delete|32|additional|
+
+22/11/2017 11:15:08|root|delete|22|additional|
+
+22/11/2017 11:15:08|root|delete|4|additional|
+
+22/11/2017 11:15:08|root|delete|31|additional|
+
+22/11/2017 11:15:08|root|delete|10|additional|
+
+22/11/2017 11:15:09|root|delete|16|additional|
+
+22/11/2017 11:15:09|root|delete|35|additional|
+
+22/11/2017 11:15:09|root|delete|21|additional|
+
+22/11/2017 11:15:09|root|delete|3|additional|
+
+22/11/2017 11:15:09|root|delete|9|additional|
+
+22/11/2017 11:15:09|root|delete|30|additional|
+
+22/11/2017 11:15:09|root|delete|15|additional|
+
+22/11/2017 11:15:10|root|delete|29|additional|
+
+22/11/2017 11:15:10|root|delete|14|additional|
+
+22/11/2017 11:15:10|root|delete|8|additional|
+
+22/11/2017 11:15:10|root|delete|20|additional|
+
+22/11/2017 11:15:10|root|delete|2|additional|
+
+22/11/2017 13:24:48|root|delete|22|invoice_buy|
+
+22/11/2017 13:24:49|root|delete|23|invoice_buy|
+
+22/11/2017 13:24:51|root|delete|24|invoice_buy|
+
+22/11/2017 13:24:52|root|delete|25|invoice_buy|
+
+22/11/2017 13:24:54|root|delete|26|invoice_buy|
+
+22/11/2017 13:24:55|root|delete|27|invoice_buy|
+
+22/11/2017 13:24:56|root|delete|28|invoice_buy|
+
+22/11/2017 13:24:57|root|delete|29|invoice_buy|
+
+22/11/2017 13:24:57|root|delete|30|invoice_buy|
+
+22/11/2017 13:24:59|root|delete|31|invoice_buy|
+
+22/11/2017 13:25:00|root|delete|32|invoice_buy|
+
+22/11/2017 13:25:01|root|delete|33|invoice_buy|
+
+22/11/2017 13:25:03|root|delete|34|invoice_buy|
+
+22/11/2017 13:25:03|root|delete|35|invoice_buy|
+
+22/11/2017 13:25:04|root|delete|36|invoice_buy|
+
+22/11/2017 13:25:06|root|delete|37|invoice_buy|
+
+22/11/2017 13:25:07|root|delete|38|invoice_buy|
+
+22/11/2017 13:25:07|root|delete|39|invoice_buy|
+
+22/11/2017 13:25:08|root|delete|40|invoice_buy|
+
+22/11/2017 13:25:09|root|delete|41|invoice_buy|
+
+22/11/2017 13:25:50|root|delete|10|invoice_purchase|
+
+22/11/2017 13:25:52|root|delete|11|invoice_purchase|
+
+22/11/2017 13:25:54|root|delete|12|invoice_purchase|
+
+22/11/2017 13:25:55|root|delete|13|invoice_purchase|
+
+22/11/2017 13:25:56|root|delete|14|invoice_purchase|
+
+22/11/2017 13:25:56|root|delete|15|invoice_purchase|
+
+22/11/2017 13:25:57|root|delete|16|invoice_purchase|
+
+22/11/2017 13:26:21|root|delete|512|invoice_sell|
+
+22/11/2017 13:26:21|root|delete|513|invoice_sell|
+
+22/11/2017 13:26:21|root|delete|514|invoice_sell|
+
+22/11/2017 13:26:22|root|delete|515|invoice_sell|
+
+22/11/2017 13:26:22|root|delete|516|invoice_sell|
+
+22/11/2017 13:26:22|root|delete|517|invoice_sell|
+
+22/11/2017 13:26:23|root|delete|518|invoice_sell|
+
+22/11/2017 13:26:23|root|delete|519|invoice_sell|
+
+22/11/2017 13:26:23|root|delete|520|invoice_sell|
+
+22/11/2017 13:26:24|root|delete|521|invoice_sell|
+
+22/11/2017 13:26:24|root|delete|522|invoice_sell|
+
+22/11/2017 13:26:24|root|delete|523|invoice_sell|
+
+22/11/2017 13:26:24|root|delete|524|invoice_sell|
+
+22/11/2017 13:26:25|root|delete|525|invoice_sell|
+
+22/11/2017 13:26:25|root|delete|526|invoice_sell|
+
+22/11/2017 13:26:25|root|delete|527|invoice_sell|
+
+22/11/2017 13:26:25|root|delete|528|invoice_sell|
+
+22/11/2017 13:26:26|root|delete|529|invoice_sell|
+
+22/11/2017 13:26:26|root|delete|530|invoice_sell|
+
+22/11/2017 13:26:26|root|delete|531|invoice_sell|
+
+22/11/2017 13:26:27|root|delete|532|invoice_sell|
+
+22/11/2017 13:26:27|root|delete|533|invoice_sell|
+
+22/11/2017 13:26:27|root|delete|534|invoice_sell|
+
+22/11/2017 13:26:28|root|delete|535|invoice_sell|
+
+22/11/2017 13:26:28|root|delete|536|invoice_sell|
+
+22/11/2017 13:26:28|root|delete|537|invoice_sell|
+
+22/11/2017 13:26:29|root|delete|538|invoice_sell|
+
+22/11/2017 13:26:30|root|delete|539|invoice_sell|
+
+22/11/2017 13:26:30|root|delete|540|invoice_sell|
+
+22/11/2017 13:26:30|root|delete|541|invoice_sell|
+
+22/11/2017 13:26:31|root|delete|542|invoice_sell|
+
+22/11/2017 13:26:31|root|delete|543|invoice_sell|
+
+22/11/2017 13:26:31|root|delete|544|invoice_sell|
+
+22/11/2017 13:26:32|root|delete|545|invoice_sell|
+
+22/11/2017 13:26:32|root|delete|546|invoice_sell|
+
+22/11/2017 13:26:32|root|delete|547|invoice_sell|
+
+22/11/2017 13:26:33|root|delete|548|invoice_sell|
+
+22/11/2017 13:26:33|root|delete|549|invoice_sell|
+
+22/11/2017 13:26:33|root|delete|550|invoice_sell|
+
+22/11/2017 13:26:33|root|delete|551|invoice_sell|
+
+22/11/2017 13:26:34|root|delete|552|invoice_sell|
+
+22/11/2017 13:26:34|root|delete|553|invoice_sell|
+
+22/11/2017 13:26:34|root|delete|554|invoice_sell|
+
+22/11/2017 13:26:35|root|delete|555|invoice_sell|
+
+22/11/2017 13:26:35|root|delete|556|invoice_sell|
+
+22/11/2017 13:26:35|root|delete|557|invoice_sell|
+
+22/11/2017 13:26:36|root|delete|558|invoice_sell|
+
+22/11/2017 13:26:37|root|delete|559|invoice_sell|
+
+22/11/2017 13:26:37|root|delete|560|invoice_sell|
+
+22/11/2017 13:26:37|root|delete|561|invoice_sell|
+
+22/11/2017 13:26:38|root|delete|562|invoice_sell|
+
+22/11/2017 13:26:38|root|delete|563|invoice_sell|
+
+22/11/2017 13:26:38|root|delete|564|invoice_sell|
+
+22/11/2017 13:26:38|root|delete|565|invoice_sell|
+
+22/11/2017 13:26:39|root|delete|566|invoice_sell|
+
+22/11/2017 13:26:39|root|delete|567|invoice_sell|
+
+22/11/2017 13:26:40|root|delete|568|invoice_sell|
+
+22/11/2017 13:26:40|root|delete|569|invoice_sell|
+
+22/11/2017 13:26:41|root|delete|570|invoice_sell|
+
+22/11/2017 13:26:41|root|delete|571|invoice_sell|
+
+22/11/2017 13:26:41|root|delete|572|invoice_sell|
+
+22/11/2017 13:26:41|root|delete|573|invoice_sell|
+
+22/11/2017 13:26:42|root|delete|574|invoice_sell|
+
+22/11/2017 13:26:42|root|delete|575|invoice_sell|
+
+22/11/2017 13:26:43|root|delete|576|invoice_sell|
+
+22/11/2017 13:26:43|root|delete|577|invoice_sell|
+
+22/11/2017 13:26:43|root|delete|578|invoice_sell|
+
+22/11/2017 13:26:44|root|delete|579|invoice_sell|
+
+22/11/2017 13:26:44|root|delete|580|invoice_sell|
+
+22/11/2017 13:26:44|root|delete|581|invoice_sell|
+
+22/11/2017 13:26:45|root|delete|582|invoice_sell|
+
+22/11/2017 13:26:45|root|delete|583|invoice_sell|
+
+22/11/2017 13:26:45|root|delete|584|invoice_sell|
+
+22/11/2017 13:26:45|root|delete|585|invoice_sell|
+
+22/11/2017 13:26:46|root|delete|586|invoice_sell|
+
+22/11/2017 13:26:46|root|delete|587|invoice_sell|
+
+22/11/2017 13:26:46|root|delete|588|invoice_sell|
+
+22/11/2017 13:26:46|root|delete|589|invoice_sell|
+
+22/11/2017 13:26:47|root|delete|590|invoice_sell|
+
+22/11/2017 13:26:47|root|delete|591|invoice_sell|
+
+22/11/2017 13:26:47|root|delete|592|invoice_sell|
+
+22/11/2017 13:26:48|root|delete|593|invoice_sell|
+
+22/11/2017 13:26:48|root|delete|594|invoice_sell|
+
+22/11/2017 13:26:48|root|delete|595|invoice_sell|
+
+22/11/2017 13:26:49|root|delete|596|invoice_sell|
+
+22/11/2017 13:26:49|root|delete|597|invoice_sell|
+
+22/11/2017 13:26:50|root|delete|598|invoice_sell|
+
+22/11/2017 13:26:50|root|delete|599|invoice_sell|
+
+22/11/2017 13:26:50|root|delete|600|invoice_sell|
+
+22/11/2017 13:26:51|root|delete|601|invoice_sell|
+
+22/11/2017 13:32:47|root|delete|492|invoice_sell|
+
+22/11/2017 13:32:48|root|delete|493|invoice_sell|
+
+22/11/2017 13:32:48|root|delete|494|invoice_sell|
+
+22/11/2017 13:32:48|root|delete|495|invoice_sell|
+
+22/11/2017 13:32:49|root|delete|496|invoice_sell|
+
+22/11/2017 13:32:49|root|delete|497|invoice_sell|
+
+22/11/2017 13:32:49|root|delete|498|invoice_sell|
+
+22/11/2017 13:32:50|root|delete|499|invoice_sell|
+
+22/11/2017 13:32:50|root|delete|500|invoice_sell|
+
+22/11/2017 13:32:50|root|delete|501|invoice_sell|
+
+22/11/2017 13:32:51|root|delete|502|invoice_sell|
+
+22/11/2017 13:32:51|root|delete|503|invoice_sell|
+
+22/11/2017 13:32:51|root|delete|504|invoice_sell|
+
+22/11/2017 13:32:51|root|delete|505|invoice_sell|
+
+22/11/2017 13:32:52|root|delete|506|invoice_sell|
+
+22/11/2017 13:32:52|root|delete|507|invoice_sell|
+
+22/11/2017 13:32:52|root|delete|508|invoice_sell|
+
+22/11/2017 13:32:53|root|delete|509|invoice_sell|
+
+22/11/2017 13:32:53|root|delete|510|invoice_sell|
+
+22/11/2017 13:32:53|root|delete|511|invoice_sell|
+
+22/11/2017 13:32:53|root|delete|621|invoice_sell|
+
+22/11/2017 13:32:54|root|delete|622|invoice_sell|
+
+22/11/2017 13:32:54|root|delete|623|invoice_sell|
+
+22/11/2017 13:32:54|root|delete|624|invoice_sell|
+
+22/11/2017 13:32:55|root|delete|625|invoice_sell|
+
+22/11/2017 13:32:55|root|delete|626|invoice_sell|
+
+22/11/2017 13:32:56|root|delete|627|invoice_sell|
+
+22/11/2017 13:32:56|root|delete|628|invoice_sell|
+
+22/11/2017 13:32:57|root|delete|629|invoice_sell|
+
+22/11/2017 13:32:57|root|delete|630|invoice_sell|
+
+22/11/2017 13:32:58|root|delete|631|invoice_sell|
+
+22/11/2017 13:32:58|root|delete|632|invoice_sell|
+
+22/11/2017 13:32:58|root|delete|633|invoice_sell|
+
+22/11/2017 13:32:59|root|delete|634|invoice_sell|
+
+22/11/2017 13:32:59|root|delete|635|invoice_sell|
+
+22/11/2017 13:32:59|root|delete|636|invoice_sell|
+
+22/11/2017 13:32:59|root|delete|637|invoice_sell|
+
+22/11/2017 13:33:00|root|delete|638|invoice_sell|
+
+22/11/2017 13:33:01|root|delete|639|invoice_sell|
+
+22/11/2017 13:33:01|root|delete|640|invoice_sell|
+
+22/11/2017 13:33:01|root|delete|641|invoice_sell|
+
+22/11/2017 13:33:01|root|delete|642|invoice_sell|
+
+22/11/2017 13:33:01|root|delete|643|invoice_sell|
+
+22/11/2017 13:33:02|root|delete|644|invoice_sell|
+
+22/11/2017 13:33:02|root|delete|645|invoice_sell|
+
+22/11/2017 13:33:03|root|delete|646|invoice_sell|
+
+22/11/2017 13:33:03|root|delete|647|invoice_sell|
+
+22/11/2017 13:33:03|root|delete|648|invoice_sell|
+
+22/11/2017 13:33:04|root|delete|649|invoice_sell|
+
+22/11/2017 13:33:04|root|delete|650|invoice_sell|
+
+22/11/2017 13:33:05|root|delete|651|invoice_sell|
+
+22/11/2017 13:33:05|root|delete|652|invoice_sell|
+
+22/11/2017 13:33:05|root|delete|653|invoice_sell|
+
+22/11/2017 13:33:06|root|delete|654|invoice_sell|
+
+22/11/2017 13:33:06|root|delete|655|invoice_sell|
+
+22/11/2017 13:33:06|root|delete|656|invoice_sell|
+
+22/11/2017 13:33:07|root|delete|657|invoice_sell|
+
+22/11/2017 13:33:07|root|delete|658|invoice_sell|
+
+22/11/2017 13:33:07|root|delete|659|invoice_sell|
+
+22/11/2017 13:33:07|root|delete|660|invoice_sell|
+
+22/11/2017 13:33:08|root|delete|661|invoice_sell|
+
+22/11/2017 13:33:08|root|delete|662|invoice_sell|
+
+22/11/2017 13:33:08|root|delete|663|invoice_sell|
+
+22/11/2017 13:33:10|root|delete|664|invoice_sell|
+
+22/11/2017 13:33:10|root|delete|665|invoice_sell|
+
+22/11/2017 13:33:10|root|delete|666|invoice_sell|
+
+22/11/2017 13:33:11|root|delete|667|invoice_sell|
+
+22/11/2017 13:33:11|root|delete|668|invoice_sell|
+
+22/11/2017 13:33:11|root|delete|669|invoice_sell|
+
+22/11/2017 13:33:11|root|delete|670|invoice_sell|
+
+22/11/2017 13:33:11|root|delete|671|invoice_sell|
+
+22/11/2017 13:33:12|root|delete|672|invoice_sell|
+
+22/11/2017 13:33:12|root|delete|673|invoice_sell|
+
+22/11/2017 13:33:13|root|delete|674|invoice_sell|
+
+22/11/2017 13:33:13|root|delete|675|invoice_sell|
+
+22/11/2017 13:33:13|root|delete|676|invoice_sell|
+
+22/11/2017 13:33:14|root|delete|677|invoice_sell|
+
+22/11/2017 13:33:14|root|delete|678|invoice_sell|
+
+22/11/2017 13:33:15|root|delete|679|invoice_sell|
+
+22/11/2017 13:33:15|root|delete|680|invoice_sell|
+
+22/11/2017 13:33:16|root|delete|681|invoice_sell|
+
+22/11/2017 13:33:16|root|delete|682|invoice_sell|
+
+22/11/2017 13:33:17|root|delete|683|invoice_sell|
+
+22/11/2017 13:33:41|root|delete|130|items|
+
+22/11/2017 13:33:41|root|delete|131|items|
+
+22/11/2017 13:33:41|root|delete|132|items|
+
+22/11/2017 13:33:41|root|delete|133|items|
+
+22/11/2017 13:33:42|root|delete|134|items|
+
+22/11/2017 13:33:42|root|delete|135|items|
+
+22/11/2017 13:33:42|root|delete|136|items|
+
+22/11/2017 13:33:43|root|delete|137|items|
+
+22/11/2017 13:33:43|root|delete|138|items|
+
+22/11/2017 13:33:43|root|delete|139|items|
+
+22/11/2017 13:33:43|root|delete|140|items|
+
+22/11/2017 13:33:43|root|delete|141|items|
+
+22/11/2017 13:33:44|root|delete|142|items|
+
+22/11/2017 13:33:44|root|delete|143|items|
+
+22/11/2017 13:33:44|root|delete|144|items|
+
+22/11/2017 13:33:44|root|delete|145|items|
+
+22/11/2017 13:33:44|root|delete|146|items|
+
+22/11/2017 13:33:45|root|delete|147|items|
+
+22/11/2017 13:33:45|root|delete|148|items|
+
+22/11/2017 13:33:45|root|delete|149|items|
+
+22/11/2017 13:33:45|root|delete|150|items|
+
+22/11/2017 13:33:45|root|delete|151|items|
+
+22/11/2017 13:33:45|root|delete|152|items|
+
+22/11/2017 13:33:45|root|delete|166|items|
+
+22/11/2017 13:33:45|root|delete|153|items|
+
+22/11/2017 13:33:45|root|delete|154|items|
+
+22/11/2017 13:33:46|root|delete|155|items|
+
+22/11/2017 13:33:46|root|delete|156|items|
+
+22/11/2017 13:33:46|root|delete|157|items|
+
+22/11/2017 13:33:46|root|delete|158|items|
+
+22/11/2017 13:33:46|root|delete|159|items|
+
+22/11/2017 13:33:46|root|delete|160|items|
+
+22/11/2017 13:33:46|root|delete|161|items|
+
+22/11/2017 13:33:46|root|delete|162|items|
+
+22/11/2017 13:33:47|root|delete|163|items|
+
+22/11/2017 13:33:47|root|delete|164|items|
+
+22/11/2017 13:33:47|root|delete|165|items|
+
+22/11/2017 13:33:47|root|delete|167|items|
+
+22/11/2017 13:33:47|root|delete|168|items|
+
+22/11/2017 13:33:47|root|delete|169|items|
+
+22/11/2017 13:33:47|root|delete|170|items|
+
+22/11/2017 13:33:47|root|delete|171|items|
+
+22/11/2017 13:33:47|root|delete|172|items|
+
+22/11/2017 13:33:48|root|delete|173|items|
+
+22/11/2017 13:33:48|root|delete|174|items|
+
+22/11/2017 13:33:48|root|delete|175|items|
+
+22/11/2017 13:33:48|root|delete|176|items|
+
+22/11/2017 13:33:49|root|delete|177|items|
+
+22/11/2017 13:33:49|root|delete|178|items|
+
+22/11/2017 13:33:49|root|delete|179|items|
+
+22/11/2017 13:33:49|root|delete|180|items|
+
+22/11/2017 13:33:49|root|delete|181|items|
+
+22/11/2017 13:33:49|root|delete|182|items|
+
+22/11/2017 13:33:49|root|delete|183|items|
+
+22/11/2017 13:33:49|root|delete|184|items|
+
+22/11/2017 13:33:49|root|delete|185|items|
+
+22/11/2017 13:33:50|root|delete|186|items|
+
+22/11/2017 13:33:50|root|delete|187|items|
+
+22/11/2017 13:33:50|root|delete|188|items|
+
+22/11/2017 13:33:50|root|delete|189|items|
+
+22/11/2017 13:33:50|root|delete|190|items|
+
+22/11/2017 13:33:50|root|delete|191|items|
+
+22/11/2017 13:33:50|root|delete|192|items|
+
+22/11/2017 13:33:50|root|delete|193|items|
+
+22/11/2017 13:33:51|root|delete|194|items|
+
+22/11/2017 13:33:51|root|delete|195|items|
+
+22/11/2017 13:33:51|root|delete|196|items|
+
+22/11/2017 13:33:51|root|delete|197|items|
+
+22/11/2017 13:33:51|root|delete|198|items|
+
+22/11/2017 13:33:51|root|delete|199|items|
+
+22/11/2017 13:33:51|root|delete|200|items|
+
+22/11/2017 13:33:51|root|delete|201|items|
+
+22/11/2017 13:33:52|root|delete|202|items|
+
+22/11/2017 13:33:52|root|delete|203|items|
+
+22/11/2017 13:33:52|root|delete|204|items|
+
+22/11/2017 13:33:52|root|delete|205|items|
+
+22/11/2017 13:33:52|root|delete|206|items|
+
+22/11/2017 13:33:52|root|delete|207|items|
+
+22/11/2017 13:33:52|root|delete|208|items|
+
+22/11/2017 13:33:52|root|delete|209|items|
+
+22/11/2017 13:33:52|root|delete|210|items|
+
+22/11/2017 13:33:52|root|delete|211|items|
+
+22/11/2017 13:33:53|root|delete|212|items|
+
+22/11/2017 13:33:53|root|delete|213|items|
+
+22/11/2017 13:33:53|root|delete|214|items|
+
+22/11/2017 13:33:53|root|delete|215|items|
+
+22/11/2017 13:33:53|root|delete|216|items|
+
+22/11/2017 13:33:53|root|delete|217|items|
+
+22/11/2017 13:33:53|root|delete|129|items|
+
+22/11/2017 13:33:53|root|delete|218|items|
+
+22/11/2017 13:33:53|root|delete|219|items|
+
+22/11/2017 13:33:54|root|delete|220|items|
+
+22/11/2017 13:33:54|root|delete|221|items|
+
+22/11/2017 13:33:54|root|delete|222|items|
+
+22/11/2017 13:33:54|root|delete|223|items|
+
+22/11/2017 13:33:55|root|delete|224|items|
+
+22/11/2017 13:33:55|root|delete|225|items|
+
+22/11/2017 13:33:55|root|delete|226|items|
+
+22/11/2017 13:33:55|root|delete|229|items|
+
+22/11/2017 13:33:55|root|delete|230|items|
+
+22/11/2017 13:33:55|root|delete|227|items|
+
+22/11/2017 13:33:56|root|delete|228|items|
+
+22/11/2017 13:34:33|root|delete|47|additional|
+
+22/11/2017 13:34:33|root|delete|59|additional|
+
+22/11/2017 13:34:33|root|delete|41|additional|
+
+22/11/2017 13:34:33|root|delete|53|additional|
+
+22/11/2017 13:34:33|root|delete|65|additional|
+
+22/11/2017 13:34:34|root|delete|40|additional|
+
+22/11/2017 13:34:34|root|delete|64|additional|
+
+22/11/2017 13:34:34|root|delete|52|additional|
+
+22/11/2017 13:34:34|root|delete|58|additional|
+
+22/11/2017 13:34:34|root|delete|46|additional|
+
+22/11/2017 13:34:34|root|delete|57|additional|
+
+22/11/2017 13:34:35|root|delete|51|additional|
+
+22/11/2017 13:34:35|root|delete|45|additional|
+
+22/11/2017 13:34:35|root|delete|63|additional|
+
+22/11/2017 13:34:35|root|delete|39|additional|
+
+22/11/2017 13:34:35|root|delete|62|additional|
+
+22/11/2017 13:34:35|root|delete|50|additional|
+
+22/11/2017 13:34:36|root|delete|44|additional|
+
+22/11/2017 13:34:36|root|delete|38|additional|
+
+22/11/2017 13:34:36|root|delete|56|additional|
+
+22/11/2017 13:34:36|root|delete|66|additional|
+
+22/11/2017 13:34:37|root|delete|55|additional|
+
+22/11/2017 13:34:37|root|delete|37|additional|
+
+22/11/2017 13:34:37|root|delete|43|additional|
+
+22/11/2017 13:34:37|root|delete|61|additional|
+
+22/11/2017 13:34:37|root|delete|49|additional|
+
+22/11/2017 13:34:38|root|delete|60|additional|
+
+22/11/2017 13:34:38|root|delete|48|additional|
+
+22/11/2017 13:34:38|root|delete|42|additional|
+
+22/11/2017 13:34:38|root|delete|54|additional|
+
+22/11/2017 13:34:38|root|delete|36|additional|
+
+22/11/2017 13:35:08|root|delete|273|customer|
+
+22/11/2017 13:35:08|root|delete|274|customer|
+
+22/11/2017 13:35:08|root|delete|275|customer|
+
+22/11/2017 13:35:08|root|delete|276|customer|
+
+22/11/2017 13:35:08|root|delete|277|customer|
+
+22/11/2017 13:35:08|root|delete|278|customer|
+
+22/11/2017 13:35:08|root|delete|279|customer|
+
+22/11/2017 13:35:08|root|delete|280|customer|
+
+22/11/2017 13:35:08|root|delete|281|customer|
+
+22/11/2017 13:35:09|root|delete|282|customer|
+
+22/11/2017 13:35:09|root|delete|283|customer|
+
+22/11/2017 13:35:09|root|delete|284|customer|
+
+22/11/2017 13:35:09|root|delete|285|customer|
+
+22/11/2017 13:35:09|root|delete|286|customer|
+
+22/11/2017 13:35:09|root|delete|287|customer|
+
+22/11/2017 13:35:09|root|delete|288|customer|
+
+22/11/2017 13:35:10|root|delete|289|customer|
+
+22/11/2017 13:35:10|root|delete|290|customer|
+
+22/11/2017 13:35:10|root|delete|291|customer|
+
+22/11/2017 13:35:10|root|delete|292|customer|
+
+22/11/2017 13:35:10|root|delete|293|customer|
+
+22/11/2017 13:35:11|root|delete|294|customer|
+
+22/11/2017 13:35:11|root|delete|295|customer|
+
+22/11/2017 13:35:11|root|delete|296|customer|
+
+22/11/2017 13:35:11|root|delete|297|customer|
+
+22/11/2017 13:35:11|root|delete|298|customer|
+
+22/11/2017 13:35:11|root|delete|299|customer|
+
+22/11/2017 13:35:11|root|delete|300|customer|
+
+22/11/2017 13:35:11|root|delete|301|customer|
+
+22/11/2017 13:35:12|root|delete|302|customer|
+
+22/11/2017 13:35:12|root|delete|303|customer|
+
+22/11/2017 13:35:12|root|delete|304|customer|
+
+22/11/2017 13:35:12|root|delete|305|customer|
+
+22/11/2017 13:35:12|root|delete|306|customer|
+
+22/11/2017 13:35:13|root|delete|307|customer|
+
+22/11/2017 13:35:13|root|delete|308|customer|
+
+22/11/2017 13:35:13|root|delete|309|customer|
+
+22/11/2017 13:35:13|root|delete|310|customer|
+
+22/11/2017 13:35:13|root|delete|311|customer|
+
+22/11/2017 13:35:14|root|delete|312|customer|
+
+22/11/2017 13:35:14|root|delete|313|customer|
+
+22/11/2017 13:35:14|root|delete|314|customer|
+
+22/11/2017 13:35:14|root|delete|315|customer|
+
+22/11/2017 13:35:14|root|delete|316|customer|
+
+22/11/2017 13:35:14|root|delete|317|customer|
+
+22/11/2017 13:35:15|root|delete|318|customer|
+
+22/11/2017 13:35:15|root|delete|319|customer|
+
+22/11/2017 13:35:15|root|delete|320|customer|
+
+22/11/2017 13:35:15|root|delete|321|customer|
+
+22/11/2017 13:35:15|root|delete|322|customer|
+
+22/11/2017 13:35:15|root|delete|323|customer|
+
+22/11/2017 13:35:15|root|delete|324|customer|
+
+22/11/2017 13:35:15|root|delete|325|customer|
+
+22/11/2017 13:35:15|root|delete|326|customer|
+
+22/11/2017 13:35:16|root|delete|327|customer|
+
+22/11/2017 13:35:16|root|delete|328|customer|
+
+22/11/2017 13:35:16|root|delete|329|customer|
+
+22/11/2017 13:35:16|root|delete|330|customer|
+
+22/11/2017 13:35:16|root|delete|331|customer|
+
+22/11/2017 13:35:16|root|delete|332|customer|
+
+22/11/2017 13:35:16|root|delete|333|customer|
+
+22/11/2017 13:35:16|root|delete|334|customer|
+
+22/11/2017 13:35:17|root|delete|335|customer|
+
+22/11/2017 13:35:17|root|delete|336|customer|
+
+22/11/2017 13:35:17|root|delete|337|customer|
+
+22/11/2017 13:35:17|root|delete|338|customer|
+
+22/11/2017 13:35:17|root|delete|339|customer|
+
+22/11/2017 13:35:17|root|delete|340|customer|
+
+22/11/2017 13:35:17|root|delete|341|customer|
+
+22/11/2017 13:35:18|root|delete|342|customer|
+
+22/11/2017 13:35:18|root|delete|343|customer|
+
+22/11/2017 13:35:18|root|delete|344|customer|
+
+22/11/2017 13:35:18|root|delete|345|customer|
+
+22/11/2017 13:35:18|root|delete|346|customer|
+
+22/11/2017 13:35:18|root|delete|347|customer|
+
+22/11/2017 13:35:18|root|delete|348|customer|
+
+22/11/2017 13:35:18|root|delete|349|customer|
+
+22/11/2017 13:35:19|root|delete|350|customer|
+
+22/11/2017 13:35:19|root|delete|351|customer|
+
+22/11/2017 13:35:19|root|delete|352|customer|
+
+22/11/2017 13:35:19|root|delete|353|customer|
+
+22/11/2017 13:35:20|root|delete|354|customer|
+
+22/11/2017 13:35:20|root|delete|355|customer|
+
+22/11/2017 13:35:20|root|delete|356|customer|
+
+22/11/2017 13:35:20|root|delete|357|customer|
+
+22/11/2017 13:35:21|root|delete|358|customer|
+
+22/11/2017 13:35:22|root|delete|359|customer|
+
+22/11/2017 13:35:22|root|delete|360|customer|
+
+22/11/2017 13:35:23|root|delete|361|customer|
+
+22/11/2017 13:35:23|root|delete|362|customer|
+
+22/11/2017 13:35:23|root|delete|363|customer|
+
+22/11/2017 13:35:23|root|delete|364|customer|
+
+22/11/2017 13:35:23|root|delete|365|customer|
+
+22/11/2017 13:35:23|root|delete|366|customer|
+
+22/11/2017 13:35:24|root|delete|367|customer|
+
+22/11/2017 13:35:24|root|delete|368|customer|
+
+22/11/2017 13:35:24|root|delete|369|customer|
+
+22/11/2017 13:35:24|root|delete|370|customer|
+
+22/11/2017 13:35:24|root|delete|371|customer|
+
+22/11/2017 13:35:24|root|delete|372|customer|
+
+22/11/2017 13:35:25|root|delete|373|customer|
+
+22/11/2017 13:35:25|root|delete|374|customer|
+
+22/11/2017 13:35:25|root|delete|375|customer|
+
+22/11/2017 13:35:25|root|delete|376|customer|
+
+22/11/2017 13:35:25|root|delete|377|customer|
+
+22/11/2017 13:35:25|root|delete|378|customer|
+
+22/11/2017 13:35:25|root|delete|379|customer|
+
+22/11/2017 13:35:25|root|delete|380|customer|
+
+22/11/2017 13:35:26|root|delete|381|customer|
+
+22/11/2017 13:36:02|root|delete|382|customer|
+
+22/11/2017 13:36:02|root|delete|383|customer|
+
+22/11/2017 13:36:02|root|delete|384|customer|
+
+22/11/2017 13:36:02|root|delete|385|customer|
+
+22/11/2017 13:36:03|root|delete|386|customer|
+
+22/11/2017 13:36:03|root|delete|387|customer|
+
+22/11/2017 13:36:03|root|delete|388|customer|
+
+22/11/2017 13:36:03|root|delete|389|customer|
+
+22/11/2017 13:36:03|root|delete|390|customer|
+
+22/11/2017 13:36:03|root|delete|391|customer|
+
+22/11/2017 13:36:03|root|delete|392|customer|
+
+22/11/2017 13:36:04|root|delete|393|customer|
+
+22/11/2017 13:36:04|root|delete|394|customer|
+
+22/11/2017 13:36:04|root|delete|395|customer|
+
+22/11/2017 13:36:04|root|delete|396|customer|
+
+22/11/2017 13:36:04|root|delete|397|customer|
+
+22/11/2017 13:36:04|root|delete|398|customer|
+
+22/11/2017 13:36:04|root|delete|399|customer|
+
+22/11/2017 13:36:04|root|delete|400|customer|
+
+22/11/2017 13:36:04|root|delete|401|customer|
+
+22/11/2017 13:36:05|root|delete|402|customer|
+
+22/11/2017 13:36:05|root|delete|403|customer|
+
+22/11/2017 13:36:05|root|delete|404|customer|
+
+22/11/2017 13:36:05|root|delete|405|customer|
+
+22/11/2017 13:36:05|root|delete|406|customer|
+
+22/11/2017 13:36:05|root|delete|407|customer|
+
+22/11/2017 13:36:26|root|delete|2|bank|
+
+22/11/2017 13:36:26|root|delete|5|bank|
+
+22/11/2017 13:36:26|root|delete|3|bank|
+
+22/11/2017 13:36:26|root|delete|6|bank|
+
+22/11/2017 13:36:26|root|delete|4|bank|
+
+22/11/2017 13:36:26|root|delete|7|bank|
+
+22/11/2017 16:57:12|root|delete|768|invoice_sell|
+
+22/11/2017 16:57:13|root|delete|769|invoice_sell|
+
+22/11/2017 16:57:15|root|delete|770|invoice_sell|
+
+22/11/2017 16:57:15|root|delete|771|invoice_sell|
+
+22/11/2017 16:57:16|root|delete|772|invoice_sell|
+
+22/11/2017 16:57:17|root|delete|773|invoice_sell|
+
+22/11/2017 16:57:17|root|delete|774|invoice_sell|
+
+22/11/2017 16:57:17|root|delete|775|invoice_sell|
+
+22/11/2017 16:57:18|root|delete|776|invoice_sell|
+
+22/11/2017 16:57:18|root|delete|777|invoice_sell|
+
+22/11/2017 16:57:19|root|delete|778|invoice_sell|
+
+22/11/2017 16:57:21|root|delete|779|invoice_sell|
+
+22/11/2017 16:57:21|root|delete|780|invoice_sell|
+
+22/11/2017 16:57:22|root|delete|781|invoice_sell|
+
+22/11/2017 16:57:23|root|delete|782|invoice_sell|
+
+22/11/2017 16:57:23|root|delete|783|invoice_sell|
+
+22/11/2017 16:57:24|root|delete|784|invoice_sell|
+
+22/11/2017 16:57:24|root|delete|785|invoice_sell|
+
+22/11/2017 16:57:25|root|delete|786|invoice_sell|
+
+22/11/2017 16:57:26|root|delete|787|invoice_sell|
+
+22/11/2017 16:57:27|root|delete|788|invoice_sell|
+
+22/11/2017 16:57:27|root|delete|789|invoice_sell|
+
+22/11/2017 16:57:28|root|delete|790|invoice_sell|
+
+22/11/2017 16:57:29|root|delete|791|invoice_sell|
+
+22/11/2017 16:57:29|root|delete|792|invoice_sell|
+
+22/11/2017 16:57:30|root|delete|793|invoice_sell|
+
+22/11/2017 16:57:31|root|delete|794|invoice_sell|
+
+22/11/2017 16:57:31|root|delete|795|invoice_sell|
+
+22/11/2017 16:57:32|root|delete|796|invoice_sell|
+
+22/11/2017 16:57:32|root|delete|797|invoice_sell|
+
+22/11/2017 16:57:32|root|delete|798|invoice_sell|
+
+22/11/2017 16:57:33|root|delete|799|invoice_sell|
+
+22/11/2017 16:57:33|root|delete|800|invoice_sell|
+
+22/11/2017 16:57:34|root|delete|801|invoice_sell|
+
+22/11/2017 16:57:34|root|delete|802|invoice_sell|
+
+22/11/2017 16:57:34|root|delete|803|invoice_sell|
+
+22/11/2017 17:00:41|root|delete|42|invoice_buy|
+
+22/11/2017 17:00:42|root|delete|43|invoice_buy|
+
+22/11/2017 17:00:44|root|delete|44|invoice_buy|
+
+22/11/2017 17:00:45|root|delete|45|invoice_buy|
+
+22/11/2017 17:00:49|root|delete|46|invoice_buy|
+
+22/11/2017 17:00:50|root|delete|47|invoice_buy|
+
+22/11/2017 17:00:51|root|delete|48|invoice_buy|
+
+22/11/2017 17:00:52|root|delete|49|invoice_buy|
+
+22/11/2017 17:00:54|root|delete|50|invoice_buy|
+
+22/11/2017 17:00:55|root|delete|51|invoice_buy|
+
+22/11/2017 17:00:56|root|delete|52|invoice_buy|
+
+22/11/2017 17:00:57|root|delete|53|invoice_buy|
+
+22/11/2017 17:00:58|root|delete|54|invoice_buy|
+
+22/11/2017 17:00:59|root|delete|55|invoice_buy|
+
+22/11/2017 17:01:01|root|delete|56|invoice_buy|
+
+22/11/2017 17:01:02|root|delete|57|invoice_buy|
+
+22/11/2017 17:01:03|root|delete|58|invoice_buy|
+
+22/11/2017 17:01:04|root|delete|59|invoice_buy|
+
+22/11/2017 17:01:05|root|delete|60|invoice_buy|
+
+22/11/2017 17:01:06|root|delete|61|invoice_buy|
+
+22/11/2017 17:03:44|root|delete|11|payment|
+
+22/11/2017 17:03:44|root|delete|12|payment|
+
+22/11/2017 17:03:45|root|delete|64|payment|
+
+22/11/2017 17:03:45|root|delete|65|payment|
+
+22/11/2017 17:03:45|root|delete|13|payment|
+
+22/11/2017 17:03:46|root|delete|66|payment|
+
+22/11/2017 17:03:46|root|delete|14|payment|
+
+22/11/2017 17:03:46|root|delete|67|payment|
+
+22/11/2017 17:03:47|root|delete|15|payment|
+
+22/11/2017 17:03:47|root|delete|68|payment|
+
+22/11/2017 17:03:47|root|delete|16|payment|
+
+22/11/2017 17:03:48|root|delete|17|payment|
+
+22/11/2017 17:03:48|root|delete|69|payment|
+
+22/11/2017 17:03:49|root|delete|70|payment|
+
+22/11/2017 17:03:49|root|delete|18|payment|
+
+22/11/2017 17:03:49|root|delete|71|payment|
+
+22/11/2017 17:03:50|root|delete|19|payment|
+
+22/11/2017 17:03:50|root|delete|72|payment|
+
+22/11/2017 17:03:50|root|delete|20|payment|
+
+22/11/2017 17:03:51|root|delete|21|payment|
+
+22/11/2017 17:03:51|root|delete|73|payment|
+
+22/11/2017 17:03:52|root|delete|74|payment|
+
+22/11/2017 17:03:52|root|delete|22|payment|
+
+22/11/2017 17:03:52|root|delete|75|payment|
+
+22/11/2017 17:03:53|root|delete|23|payment|
+
+22/11/2017 17:03:53|root|delete|76|payment|
+
+22/11/2017 17:03:54|root|delete|24|payment|
+
+22/11/2017 17:03:54|root|delete|77|payment|
+
+22/11/2017 17:03:55|root|delete|25|payment|
+
+22/11/2017 17:03:55|root|delete|78|payment|
+
+22/11/2017 17:03:55|root|delete|26|payment|
+
+22/11/2017 17:03:56|root|delete|79|payment|
+
+22/11/2017 17:03:56|root|delete|27|payment|
+
+22/11/2017 17:03:57|root|delete|80|payment|
+
+22/11/2017 17:03:57|root|delete|28|payment|
+
+22/11/2017 17:03:57|root|delete|29|payment|
+
+22/11/2017 17:03:58|root|delete|30|payment|
+
+22/11/2017 17:03:58|root|delete|81|payment|
+
+22/11/2017 17:03:59|root|delete|82|payment|
+
+22/11/2017 17:03:59|root|delete|83|payment|
+
+22/11/2017 17:04:00|root|delete|31|payment|
+
+22/11/2017 17:04:00|root|delete|84|payment|
+
+22/11/2017 17:04:01|root|delete|32|payment|
+
+22/11/2017 17:04:01|root|delete|33|payment|
+
+22/11/2017 17:04:01|root|delete|85|payment|
+
+22/11/2017 17:04:02|root|delete|86|payment|
+
+22/11/2017 17:04:02|root|delete|34|payment|
+
+22/11/2017 17:04:02|root|delete|87|payment|
+
+22/11/2017 17:04:03|root|delete|35|payment|
+
+22/11/2017 17:04:03|root|delete|88|payment|
+
+22/11/2017 17:04:04|root|delete|36|payment|
+
+22/11/2017 17:04:04|root|delete|37|payment|
+
+22/11/2017 17:04:04|root|delete|89|payment|
+
+22/11/2017 17:04:05|root|delete|90|payment|
+
+22/11/2017 17:04:05|root|delete|38|payment|
+
+22/11/2017 17:04:05|root|delete|39|payment|
+
+22/11/2017 17:04:06|root|delete|91|payment|
+
+22/11/2017 17:04:06|root|delete|92|payment|
+
+22/11/2017 17:04:07|root|delete|40|payment|
+
+22/11/2017 17:04:07|root|delete|93|payment|
+
+22/11/2017 17:04:07|root|delete|41|payment|
+
+22/11/2017 17:04:08|root|delete|42|payment|
+
+22/11/2017 17:04:08|root|delete|94|payment|
+
+22/11/2017 17:04:09|root|delete|95|payment|
+
+22/11/2017 17:04:09|root|delete|43|payment|
+
+22/11/2017 17:04:09|root|delete|44|payment|
+
+22/11/2017 17:04:10|root|delete|96|payment|
+
+22/11/2017 17:04:11|root|delete|97|payment|
+
+22/11/2017 17:04:11|root|delete|45|payment|
+
+22/11/2017 17:04:11|root|delete|46|payment|
+
+22/11/2017 17:04:11|root|delete|98|payment|
+
+22/11/2017 17:04:12|root|delete|99|payment|
+
+22/11/2017 17:04:12|root|delete|47|payment|
+
+22/11/2017 17:04:13|root|delete|100|payment|
+
+22/11/2017 17:04:13|root|delete|48|payment|
+
+22/11/2017 17:04:52|root|delete|220|payment|
+
+22/11/2017 17:04:52|root|delete|122|payment|
+
+22/11/2017 17:04:52|root|delete|221|payment|
+
+22/11/2017 17:04:53|root|delete|123|payment|
+
+22/11/2017 17:04:53|root|delete|222|payment|
+
+22/11/2017 17:04:53|root|delete|223|payment|
+
+22/11/2017 17:04:53|root|delete|124|payment|
+
+22/11/2017 17:04:54|root|delete|224|payment|
+
+22/11/2017 17:04:54|root|delete|125|payment|
+
+22/11/2017 17:04:55|root|delete|225|payment|
+
+22/11/2017 17:04:55|root|delete|126|payment|
+
+22/11/2017 17:04:56|root|delete|226|payment|
+
+22/11/2017 17:04:56|root|delete|127|payment|
+
+22/11/2017 17:04:56|root|delete|128|payment|
+
+22/11/2017 17:04:57|root|delete|227|payment|
+
+22/11/2017 17:04:57|root|delete|228|payment|
+
+22/11/2017 17:04:57|root|delete|129|payment|
+
+22/11/2017 17:04:58|root|delete|229|payment|
+
+22/11/2017 17:04:58|root|delete|130|payment|
+
+22/11/2017 17:04:58|root|delete|230|payment|
+
+22/11/2017 17:04:59|root|delete|131|payment|
+
+22/11/2017 17:04:59|root|delete|231|payment|
+
+22/11/2017 17:04:59|root|delete|132|payment|
+
+22/11/2017 17:04:59|root|delete|133|payment|
+
+22/11/2017 17:05:00|root|delete|232|payment|
+
+22/11/2017 17:05:01|root|delete|233|payment|
+
+22/11/2017 17:05:01|root|delete|329|payment|
+
+22/11/2017 17:05:02|root|delete|330|payment|
+
+22/11/2017 17:05:02|root|delete|117|payment|
+
+22/11/2017 17:05:03|root|delete|134|payment|
+
+22/11/2017 17:05:03|root|delete|135|payment|
+
+22/11/2017 17:05:03|root|delete|136|payment|
+
+22/11/2017 17:05:06|root|delete|234|payment|
+
+22/11/2017 17:05:07|root|delete|235|payment|
+
+22/11/2017 17:05:08|root|delete|236|payment|
+
+22/11/2017 17:05:09|root|delete|137|payment|
+
+22/11/2017 17:05:10|root|delete|237|payment|
+
+22/11/2017 17:05:10|root|delete|331|payment|
+
+22/11/2017 17:05:10|root|delete|138|payment|
+
+22/11/2017 17:05:11|root|delete|139|payment|
+
+22/11/2017 17:05:11|root|delete|140|payment|
+
+22/11/2017 17:05:12|root|delete|238|payment|
+
+22/11/2017 17:05:12|root|delete|239|payment|
+
+22/11/2017 17:05:13|root|delete|240|payment|
+
+22/11/2017 17:05:13|root|delete|141|payment|
+
+22/11/2017 17:05:14|root|delete|241|payment|
+
+22/11/2017 17:05:14|root|delete|118|payment|
+
+22/11/2017 17:05:14|root|delete|332|payment|
+
+22/11/2017 17:05:15|root|delete|142|payment|
+
+22/11/2017 17:05:15|root|delete|143|payment|
+
+22/11/2017 17:05:15|root|delete|144|payment|
+
+22/11/2017 17:05:16|root|delete|242|payment|
+
+22/11/2017 17:05:17|root|delete|243|payment|
+
+22/11/2017 17:05:17|root|delete|244|payment|
+
+22/11/2017 17:05:17|root|delete|145|payment|
+
+22/11/2017 17:05:17|root|delete|146|payment|
+
+22/11/2017 17:05:18|root|delete|147|payment|
+
+22/11/2017 17:05:18|root|delete|245|payment|
+
+22/11/2017 17:05:19|root|delete|246|payment|
+
+22/11/2017 17:05:20|root|delete|247|payment|
+
+22/11/2017 17:05:20|root|delete|148|payment|
+
+22/11/2017 17:05:21|root|delete|248|payment|
+
+22/11/2017 17:05:21|root|delete|149|payment|
+
+22/11/2017 17:05:36|root|delete|397|payment|
+
+22/11/2017 17:05:37|root|delete|398|payment|
+
+22/11/2017 17:05:37|root|delete|400|payment|
+
+22/11/2017 17:05:38|root|delete|399|payment|
+
+22/11/2017 17:05:38|root|delete|401|payment|
+
+22/11/2017 17:05:39|root|delete|403|payment|
+
+22/11/2017 17:05:39|root|delete|359|payment|
+
+22/11/2017 17:05:39|root|delete|402|payment|
+
+22/11/2017 17:05:40|root|delete|404|payment|
+
+22/11/2017 17:05:40|root|delete|360|payment|
+
+22/11/2017 17:05:40|root|delete|405|payment|
+
+22/11/2017 17:05:41|root|delete|406|payment|
+
+22/11/2017 17:05:41|root|delete|362|payment|
+
+22/11/2017 17:05:42|root|delete|361|payment|
+
+22/11/2017 17:05:42|root|delete|364|payment|
+
+22/11/2017 17:05:43|root|delete|407|payment|
+
+22/11/2017 17:05:43|root|delete|363|payment|
+
+22/11/2017 17:05:43|root|delete|408|payment|
+
+22/11/2017 17:05:44|root|delete|410|payment|
+
+22/11/2017 17:05:44|root|delete|409|payment|
+
+22/11/2017 17:05:44|root|delete|411|payment|
+
+22/11/2017 17:05:44|root|delete|365|payment|
+
+22/11/2017 17:05:45|root|delete|412|payment|
+
+22/11/2017 17:05:46|root|delete|415|payment|
+
+22/11/2017 17:05:46|root|delete|414|payment|
+
+22/11/2017 17:05:46|root|delete|366|payment|
+
+22/11/2017 17:05:47|root|delete|413|payment|
+
+22/11/2017 17:05:47|root|delete|416|payment|
+
+22/11/2017 17:05:48|root|delete|367|payment|
+
+22/11/2017 17:05:48|root|delete|417|payment|
+
+22/11/2017 17:05:48|root|delete|420|payment|
+
+22/11/2017 17:05:49|root|delete|419|payment|
+
+22/11/2017 17:05:49|root|delete|418|payment|
+
+22/11/2017 17:05:50|root|delete|421|payment|
+
+22/11/2017 17:05:50|root|delete|368|payment|
+
+22/11/2017 17:05:50|root|delete|422|payment|
+
+22/11/2017 17:05:51|root|delete|369|payment|
+
+22/11/2017 17:05:51|root|delete|423|payment|
+
+22/11/2017 17:05:52|root|delete|424|payment|
+
+22/11/2017 17:05:52|root|delete|370|payment|
+
+22/11/2017 17:05:53|root|delete|425|payment|
+
+22/11/2017 17:05:53|root|delete|426|payment|
+
+22/11/2017 17:05:54|root|delete|371|payment|
+
+22/11/2017 17:05:54|root|delete|427|payment|
+
+22/11/2017 17:05:54|root|delete|428|payment|
+
+22/11/2017 17:05:55|root|delete|429|payment|
+
+22/11/2017 17:05:55|root|delete|372|payment|
+
+22/11/2017 17:05:55|root|delete|431|payment|
+
+22/11/2017 17:05:56|root|delete|430|payment|
+
+22/11/2017 17:05:56|root|delete|432|payment|
+
+22/11/2017 17:05:57|root|delete|433|payment|
+
+22/11/2017 17:05:57|root|delete|434|payment|
+
+22/11/2017 17:05:58|root|delete|435|payment|
+
+22/11/2017 17:05:58|root|delete|373|payment|
+
+22/11/2017 17:05:58|root|delete|436|payment|
+
+22/11/2017 17:05:59|root|delete|438|payment|
+
+22/11/2017 17:05:59|root|delete|437|payment|
+
+22/11/2017 17:06:00|root|delete|440|payment|
+
+22/11/2017 17:06:00|root|delete|439|payment|
+
+22/11/2017 17:06:01|root|delete|441|payment|
+
+22/11/2017 17:06:01|root|delete|374|payment|
+
+22/11/2017 17:06:02|root|delete|442|payment|
+
+22/11/2017 17:06:02|root|delete|443|payment|
+
+22/11/2017 17:06:02|root|delete|444|payment|
+
+22/11/2017 17:06:03|root|delete|445|payment|
+
+22/11/2017 17:06:03|root|delete|446|payment|
+
+22/11/2017 17:06:04|root|delete|375|payment|
+
+22/11/2017 17:06:04|root|delete|447|payment|
+
+22/11/2017 17:06:05|root|delete|448|payment|
+
+22/11/2017 17:06:05|root|delete|449|payment|
+
+22/11/2017 17:06:06|root|delete|450|payment|
+
+22/11/2017 17:06:06|root|delete|451|payment|
+
+22/11/2017 17:06:27|root|delete|579|payment|
+
+22/11/2017 17:06:28|root|delete|736|payment|
+
+22/11/2017 17:06:28|root|delete|875|payment|
+
+22/11/2017 17:06:28|root|delete|615|payment|
+
+22/11/2017 17:06:29|root|delete|630|payment|
+
+22/11/2017 17:06:30|root|delete|614|payment|
+
+22/11/2017 17:06:31|root|delete|629|payment|
+
+22/11/2017 17:06:31|root|delete|613|payment|
+
+22/11/2017 17:06:31|root|delete|600|payment|
+
+22/11/2017 17:06:32|root|delete|585|payment|
+
+22/11/2017 17:06:32|root|delete|737|payment|
+
+22/11/2017 17:06:32|root|delete|616|payment|
+
+22/11/2017 17:06:33|root|delete|631|payment|
+
+22/11/2017 17:06:33|root|delete|877|payment|
+
+22/11/2017 17:06:33|root|delete|608|payment|
+
+22/11/2017 17:06:34|root|delete|876|payment|
+
+22/11/2017 17:06:34|root|delete|586|payment|
+
+22/11/2017 17:06:35|root|delete|738|payment|
+
+22/11/2017 17:06:35|root|delete|733|payment|
+
+22/11/2017 17:06:36|root|delete|739|payment|
+
+22/11/2017 17:06:36|root|delete|681|payment|
+
+22/11/2017 17:06:36|root|delete|682|payment|
+
+22/11/2017 17:06:37|root|delete|617|payment|
+
+22/11/2017 17:06:37|root|delete|632|payment|
+
+22/11/2017 17:06:38|root|delete|618|payment|
+
+22/11/2017 17:06:38|root|delete|857|payment|
+
+22/11/2017 17:06:39|root|delete|740|payment|
+
+22/11/2017 17:06:39|root|delete|587|payment|
+
+22/11/2017 17:06:39|root|delete|601|payment|
+
+22/11/2017 17:06:40|root|delete|741|payment|
+
+22/11/2017 17:06:40|root|delete|683|payment|
+
+22/11/2017 17:06:40|root|delete|588|payment|
+
+22/11/2017 17:06:41|root|delete|609|payment|
+
+22/11/2017 17:06:41|root|delete|742|payment|
+
+22/11/2017 17:06:42|root|delete|743|payment|
+
+22/11/2017 17:06:42|root|delete|745|payment|
+
+22/11/2017 17:06:43|root|delete|833|payment|
+
+22/11/2017 17:06:43|root|delete|873|payment|
+
+22/11/2017 17:06:44|root|delete|744|payment|
+
+22/11/2017 17:06:44|root|delete|718|payment|
+
+22/11/2017 17:06:44|root|delete|746|payment|
+
+22/11/2017 17:06:44|root|delete|747|payment|
+
+22/11/2017 17:06:45|root|delete|734|payment|
+
+22/11/2017 17:06:46|root|delete|634|payment|
+
+22/11/2017 17:06:46|root|delete|633|payment|
+
+22/11/2017 17:06:47|root|delete|602|payment|
+
+22/11/2017 17:06:47|root|delete|589|payment|
+
+22/11/2017 17:06:47|root|delete|748|payment|
+
+22/11/2017 17:06:48|root|delete|635|payment|
+
+22/11/2017 17:06:48|root|delete|619|payment|
+
+22/11/2017 17:06:49|root|delete|858|payment|
+
+22/11/2017 17:06:49|root|delete|620|payment|
+
+22/11/2017 17:06:50|root|delete|621|payment|
+
+22/11/2017 17:06:51|root|delete|749|payment|
+
+22/11/2017 17:06:51|root|delete|878|payment|
+
+22/11/2017 17:06:51|root|delete|684|payment|
+
+22/11/2017 17:06:52|root|delete|750|payment|
+
+22/11/2017 17:06:52|root|delete|636|payment|
+
+22/11/2017 17:06:53|root|delete|622|payment|
+
+22/11/2017 17:06:53|root|delete|590|payment|
+
+22/11/2017 17:06:54|root|delete|582|payment|
+
+22/11/2017 17:06:54|root|delete|751|payment|
+
+22/11/2017 17:06:55|root|delete|859|payment|
+
+22/11/2017 17:06:55|root|delete|637|payment|
+
+22/11/2017 17:06:55|root|delete|752|payment|
+
+22/11/2017 17:06:56|root|delete|591|payment|
+
+22/11/2017 17:06:56|root|delete|611|payment|
+
+22/11/2017 17:06:56|root|delete|719|payment|
+
+22/11/2017 17:06:57|root|delete|879|payment|
+
+22/11/2017 17:07:30|root|delete|78|additional|
+
+22/11/2017 17:07:30|root|delete|90|additional|
+
+22/11/2017 17:07:30|root|delete|72|additional|
+
+22/11/2017 17:07:30|root|delete|84|additional|
+
+22/11/2017 17:07:31|root|delete|96|additional|
+
+22/11/2017 17:07:31|root|delete|71|additional|
+
+22/11/2017 17:07:31|root|delete|95|additional|
+
+22/11/2017 17:07:32|root|delete|83|additional|
+
+22/11/2017 17:07:32|root|delete|89|additional|
+
+22/11/2017 17:07:32|root|delete|77|additional|
+
+22/11/2017 17:07:32|root|delete|88|additional|
+
+22/11/2017 17:07:33|root|delete|82|additional|
+
+22/11/2017 17:07:33|root|delete|76|additional|
+
+22/11/2017 17:07:33|root|delete|94|additional|
+
+22/11/2017 17:07:33|root|delete|70|additional|
+
+22/11/2017 17:07:33|root|delete|93|additional|
+
+22/11/2017 17:07:33|root|delete|81|additional|
+
+22/11/2017 17:07:34|root|delete|75|additional|
+
+22/11/2017 17:07:34|root|delete|69|additional|
+
+22/11/2017 17:07:34|root|delete|87|additional|
+
+22/11/2017 17:07:34|root|delete|97|additional|
+
+22/11/2017 17:07:34|root|delete|86|additional|
+
+22/11/2017 17:07:35|root|delete|68|additional|
+
+22/11/2017 17:07:35|root|delete|74|additional|
+
+22/11/2017 17:07:35|root|delete|92|additional|
+
+22/11/2017 17:07:35|root|delete|80|additional|
+
+22/11/2017 17:07:35|root|delete|91|additional|
+
+22/11/2017 17:07:36|root|delete|79|additional|
+
+22/11/2017 17:07:36|root|delete|73|additional|
+
+22/11/2017 17:07:36|root|delete|85|additional|
+
+22/11/2017 17:07:37|root|delete|67|additional|
+
+22/11/2017 17:08:47|root|delete|517|customer|
+
+22/11/2017 17:08:47|root|delete|518|customer|
+
+22/11/2017 17:08:47|root|delete|519|customer|
+
+22/11/2017 17:08:47|root|delete|520|customer|
+
+22/11/2017 17:08:47|root|delete|521|customer|
+
+22/11/2017 17:08:48|root|delete|522|customer|
+
+22/11/2017 17:08:48|root|delete|523|customer|
+
+22/11/2017 17:08:48|root|delete|524|customer|
+
+22/11/2017 17:08:48|root|delete|525|customer|
+
+22/11/2017 17:08:48|root|delete|526|customer|
+
+22/11/2017 17:08:48|root|delete|527|customer|
+
+22/11/2017 17:08:48|root|delete|528|customer|
+
+22/11/2017 17:08:48|root|delete|529|customer|
+
+22/11/2017 17:08:48|root|delete|530|customer|
+
+22/11/2017 17:08:48|root|delete|531|customer|
+
+22/11/2017 17:08:48|root|delete|532|customer|
+
+22/11/2017 17:08:48|root|delete|533|customer|
+
+22/11/2017 17:08:48|root|delete|534|customer|
+
+22/11/2017 17:08:49|root|delete|535|customer|
+
+22/11/2017 17:08:49|root|delete|536|customer|
+
+22/11/2017 17:08:49|root|delete|537|customer|
+
+22/11/2017 17:08:49|root|delete|538|customer|
+
+22/11/2017 17:08:49|root|delete|539|customer|
+
+22/11/2017 17:08:49|root|delete|540|customer|
+
+22/11/2017 17:08:49|root|delete|541|customer|
+
+22/11/2017 17:08:49|root|delete|542|customer|
+
+22/11/2017 17:09:12|root|delete|408|customer|
+
+22/11/2017 17:09:12|root|delete|409|customer|
+
+22/11/2017 17:09:12|root|delete|410|customer|
+
+22/11/2017 17:09:12|root|delete|411|customer|
+
+22/11/2017 17:09:12|root|delete|412|customer|
+
+22/11/2017 17:09:12|root|delete|413|customer|
+
+22/11/2017 17:09:12|root|delete|414|customer|
+
+22/11/2017 17:09:13|root|delete|415|customer|
+
+22/11/2017 17:09:13|root|delete|416|customer|
+
+22/11/2017 17:09:13|root|delete|417|customer|
+
+22/11/2017 17:09:13|root|delete|418|customer|
+
+22/11/2017 17:09:13|root|delete|419|customer|
+
+22/11/2017 17:09:14|root|delete|420|customer|
+
+22/11/2017 17:09:14|root|delete|421|customer|
+
+22/11/2017 17:09:14|root|delete|422|customer|
+
+22/11/2017 17:09:14|root|delete|423|customer|
+
+22/11/2017 17:09:14|root|delete|424|customer|
+
+22/11/2017 17:09:14|root|delete|425|customer|
+
+22/11/2017 17:09:15|root|delete|426|customer|
+
+22/11/2017 17:09:15|root|delete|427|customer|
+
+22/11/2017 17:09:15|root|delete|428|customer|
+
+22/11/2017 17:09:15|root|delete|429|customer|
+
+22/11/2017 17:09:15|root|delete|430|customer|
+
+22/11/2017 17:09:15|root|delete|431|customer|
+
+22/11/2017 17:09:15|root|delete|432|customer|
+
+22/11/2017 17:09:16|root|delete|433|customer|
+
+22/11/2017 17:09:16|root|delete|434|customer|
+
+22/11/2017 17:09:16|root|delete|435|customer|
+
+22/11/2017 17:09:16|root|delete|436|customer|
+
+22/11/2017 17:09:16|root|delete|437|customer|
+
+22/11/2017 17:09:16|root|delete|438|customer|
+
+22/11/2017 17:09:16|root|delete|439|customer|
+
+22/11/2017 17:09:17|root|delete|440|customer|
+
+22/11/2017 17:09:17|root|delete|441|customer|
+
+22/11/2017 17:09:17|root|delete|442|customer|
+
+22/11/2017 17:09:17|root|delete|443|customer|
+
+22/11/2017 17:09:17|root|delete|444|customer|
+
+22/11/2017 17:09:17|root|delete|445|customer|
+
+22/11/2017 17:09:18|root|delete|446|customer|
+
+22/11/2017 17:09:18|root|delete|447|customer|
+
+22/11/2017 17:09:18|root|delete|448|customer|
+
+22/11/2017 17:09:18|root|delete|449|customer|
+
+22/11/2017 17:09:18|root|delete|450|customer|
+
+22/11/2017 17:09:19|root|delete|451|customer|
+
+22/11/2017 17:09:19|root|delete|452|customer|
+
+22/11/2017 17:09:19|root|delete|453|customer|
+
+22/11/2017 17:09:19|root|delete|454|customer|
+
+22/11/2017 17:09:19|root|delete|455|customer|
+
+22/11/2017 17:09:19|root|delete|456|customer|
+
+22/11/2017 17:09:20|root|delete|457|customer|
+
+22/11/2017 17:09:20|root|delete|458|customer|
+
+22/11/2017 17:09:20|root|delete|459|customer|
+
+22/11/2017 17:09:20|root|delete|460|customer|
+
+22/11/2017 17:09:20|root|delete|461|customer|
+
+22/11/2017 17:09:21|root|delete|462|customer|
+
+22/11/2017 17:09:21|root|delete|463|customer|
+
+22/11/2017 17:09:21|root|delete|464|customer|
+
+22/11/2017 17:09:21|root|delete|465|customer|
+
+22/11/2017 17:09:21|root|delete|466|customer|
+
+22/11/2017 17:09:21|root|delete|467|customer|
+
+22/11/2017 17:09:22|root|delete|468|customer|
+
+22/11/2017 17:09:22|root|delete|469|customer|
+
+22/11/2017 17:09:22|root|delete|470|customer|
+
+22/11/2017 17:09:22|root|delete|471|customer|
+
+22/11/2017 17:09:23|root|delete|472|customer|
+
+22/11/2017 17:09:23|root|delete|473|customer|
+
+22/11/2017 17:09:23|root|delete|474|customer|
+
+22/11/2017 17:09:23|root|delete|475|customer|
+
+22/11/2017 17:09:23|root|delete|476|customer|
+
+22/11/2017 17:09:23|root|delete|477|customer|
+
+22/11/2017 17:09:24|root|delete|478|customer|
+
+22/11/2017 17:09:24|root|delete|479|customer|
+
+22/11/2017 17:09:24|root|delete|480|customer|
+
+22/11/2017 17:09:25|root|delete|481|customer|
+
+22/11/2017 17:09:25|root|delete|482|customer|
+
+22/11/2017 17:09:25|root|delete|483|customer|
+
+22/11/2017 17:09:26|root|delete|484|customer|
+
+22/11/2017 17:09:26|root|delete|485|customer|
+
+22/11/2017 17:09:27|root|delete|486|customer|
+
+22/11/2017 17:09:27|root|delete|487|customer|
+
+22/11/2017 17:09:27|root|delete|488|customer|
+
+22/11/2017 17:09:28|root|delete|489|customer|
+
+22/11/2017 17:09:28|root|delete|490|customer|
+
+22/11/2017 17:09:29|root|delete|491|customer|
+
+22/11/2017 17:09:29|root|delete|492|customer|
+
+22/11/2017 17:09:29|root|delete|493|customer|
+
+22/11/2017 17:09:30|root|delete|494|customer|
+
+22/11/2017 17:09:30|root|delete|495|customer|
+
+22/11/2017 17:09:30|root|delete|496|customer|
+
+22/11/2017 17:09:30|root|delete|497|customer|
+
+22/11/2017 17:09:31|root|delete|498|customer|
+
+22/11/2017 17:09:31|root|delete|499|customer|
+
+22/11/2017 17:09:31|root|delete|500|customer|
+
+22/11/2017 17:09:31|root|delete|501|customer|
+
+22/11/2017 17:09:32|root|delete|502|customer|
+
+22/11/2017 17:09:32|root|delete|503|customer|
+
+22/11/2017 17:09:32|root|delete|504|customer|
+
+22/11/2017 17:09:32|root|delete|505|customer|
+
+22/11/2017 17:09:32|root|delete|506|customer|
+
+22/11/2017 17:09:32|root|delete|507|customer|
+
+22/11/2017 17:09:33|root|delete|508|customer|
+
+22/11/2017 17:09:33|root|delete|509|customer|
+
+22/11/2017 17:09:33|root|delete|510|customer|
+
+22/11/2017 17:09:33|root|delete|511|customer|
+
+22/11/2017 17:09:33|root|delete|512|customer|
+
+22/11/2017 17:09:33|root|delete|513|customer|
+
+22/11/2017 17:09:34|root|delete|514|customer|
+
+22/11/2017 17:09:34|root|delete|515|customer|
+
+22/11/2017 17:09:34|root|delete|516|customer|
+
+22/11/2017 20:13:40|root|delete|101|payment|
+
+22/11/2017 20:13:41|root|delete|49|payment|
+
+22/11/2017 20:13:41|root|delete|50|payment|
+
+22/11/2017 20:13:42|root|delete|102|payment|
+
+22/11/2017 20:13:43|root|delete|103|payment|
+
+22/11/2017 20:13:43|root|delete|51|payment|
+
+22/11/2017 20:13:43|root|delete|104|payment|
+
+22/11/2017 20:13:44|root|delete|52|payment|
+
+22/11/2017 20:13:44|root|delete|105|payment|
+
+22/11/2017 20:13:45|root|delete|53|payment|
+
+22/11/2017 20:13:46|root|delete|106|payment|
+
+22/11/2017 20:13:47|root|delete|54|payment|
+
+22/11/2017 20:13:47|root|delete|107|payment|
+
+22/11/2017 20:13:47|root|delete|55|payment|
+
+22/11/2017 20:13:48|root|delete|108|payment|
+
+22/11/2017 20:13:48|root|delete|56|payment|
+
+22/11/2017 20:13:49|root|delete|109|payment|
+
+22/11/2017 20:13:49|root|delete|57|payment|
+
+22/11/2017 20:13:50|root|delete|110|payment|
+
+22/11/2017 20:13:50|root|delete|58|payment|
+
+22/11/2017 20:13:51|root|delete|111|payment|
+
+22/11/2017 20:13:52|root|delete|59|payment|
+
+22/11/2017 20:13:52|root|delete|112|payment|
+
+22/11/2017 20:13:53|root|delete|60|payment|
+
+22/11/2017 20:13:53|root|delete|113|payment|
+
+22/11/2017 20:13:54|root|delete|61|payment|
+
+22/11/2017 20:13:54|root|delete|62|payment|
+
+22/11/2017 20:13:54|root|delete|114|payment|
+
+22/11/2017 20:13:55|root|delete|115|payment|
+
+22/11/2017 20:13:56|root|delete|63|payment|
+
+22/11/2017 20:13:56|root|delete|116|payment|
+
+22/11/2017 20:14:11|root|delete|249|payment|
+
+22/11/2017 20:14:11|root|delete|119|payment|
+
+22/11/2017 20:14:12|root|delete|333|payment|
+
+22/11/2017 20:14:12|root|delete|150|payment|
+
+22/11/2017 20:14:12|root|delete|151|payment|
+
+22/11/2017 20:14:12|root|delete|152|payment|
+
+22/11/2017 20:14:13|root|delete|250|payment|
+
+22/11/2017 20:14:14|root|delete|251|payment|
+
+22/11/2017 20:14:15|root|delete|252|payment|
+
+22/11/2017 20:14:15|root|delete|153|payment|
+
+22/11/2017 20:14:15|root|delete|253|payment|
+
+22/11/2017 20:14:17|root|delete|254|payment|
+
+22/11/2017 20:14:17|root|delete|154|payment|
+
+22/11/2017 20:14:17|root|delete|255|payment|
+
+22/11/2017 20:14:18|root|delete|256|payment|
+
+22/11/2017 20:14:19|root|delete|257|payment|
+
+22/11/2017 20:14:20|root|delete|258|payment|
+
+22/11/2017 20:14:20|root|delete|155|payment|
+
+22/11/2017 20:14:20|root|delete|156|payment|
+
+22/11/2017 20:14:21|root|delete|157|payment|
+
+22/11/2017 20:14:22|root|delete|259|payment|
+
+22/11/2017 20:14:23|root|delete|120|payment|
+
+22/11/2017 20:14:23|root|delete|158|payment|
+
+22/11/2017 20:14:24|root|delete|260|payment|
+
+22/11/2017 20:14:24|root|delete|159|payment|
+
+22/11/2017 20:14:25|root|delete|334|payment|
+
+22/11/2017 20:14:26|root|delete|261|payment|
+
+22/11/2017 20:14:27|root|delete|262|payment|
+
+22/11/2017 20:14:27|root|delete|263|payment|
+
+22/11/2017 20:14:28|root|delete|335|payment|
+
+22/11/2017 20:14:28|root|delete|160|payment|
+
+22/11/2017 20:14:28|root|delete|161|payment|
+
+22/11/2017 20:14:29|root|delete|162|payment|
+
+22/11/2017 20:14:29|root|delete|336|payment|
+
+22/11/2017 20:14:30|root|delete|337|payment|
+
+22/11/2017 20:14:30|root|delete|264|payment|
+
+22/11/2017 20:14:31|root|delete|265|payment|
+
+22/11/2017 20:14:31|root|delete|266|payment|
+
+22/11/2017 20:14:31|root|delete|163|payment|
+
+22/11/2017 20:14:32|root|delete|164|payment|
+
+22/11/2017 20:14:32|root|delete|165|payment|
+
+22/11/2017 20:14:32|root|delete|267|payment|
+
+22/11/2017 20:14:33|root|delete|166|payment|
+
+22/11/2017 20:14:33|root|delete|338|payment|
+
+22/11/2017 20:14:34|root|delete|339|payment|
+
+22/11/2017 20:14:34|root|delete|268|payment|
+
+22/11/2017 20:14:35|root|delete|340|payment|
+
+22/11/2017 20:14:35|root|delete|341|payment|
+
+22/11/2017 20:14:35|root|delete|167|payment|
+
+22/11/2017 20:14:36|root|delete|269|payment|
+
+22/11/2017 20:14:36|root|delete|168|payment|
+
+22/11/2017 20:14:37|root|delete|121|payment|
+
+22/11/2017 20:14:38|root|delete|270|payment|
+
+22/11/2017 20:14:38|root|delete|169|payment|
+
+22/11/2017 20:14:40|root|delete|271|payment|
+
+22/11/2017 20:15:14|root|delete|376|payment|
+
+22/11/2017 20:15:14|root|delete|453|payment|
+
+22/11/2017 20:15:15|root|delete|452|payment|
+
+22/11/2017 20:15:15|root|delete|454|payment|
+
+22/11/2017 20:15:16|root|delete|378|payment|
+
+22/11/2017 20:15:16|root|delete|377|payment|
+
+22/11/2017 20:15:17|root|delete|455|payment|
+
+22/11/2017 20:15:17|root|delete|456|payment|
+
+22/11/2017 20:15:18|root|delete|458|payment|
+
+22/11/2017 20:15:18|root|delete|457|payment|
+
+22/11/2017 20:15:19|root|delete|459|payment|
+
+22/11/2017 20:15:19|root|delete|379|payment|
+
+22/11/2017 20:15:20|root|delete|461|payment|
+
+22/11/2017 20:15:20|root|delete|460|payment|
+
+22/11/2017 20:15:20|root|delete|463|payment|
+
+22/11/2017 20:15:21|root|delete|462|payment|
+
+22/11/2017 20:15:21|root|delete|464|payment|
+
+22/11/2017 20:15:22|root|delete|465|payment|
+
+22/11/2017 20:15:23|root|delete|466|payment|
+
+22/11/2017 20:15:23|root|delete|467|payment|
+
+22/11/2017 20:15:24|root|delete|468|payment|
+
+22/11/2017 20:15:24|root|delete|471|payment|
+
+22/11/2017 20:15:25|root|delete|470|payment|
+
+22/11/2017 20:15:25|root|delete|469|payment|
+
+22/11/2017 20:15:26|root|delete|473|payment|
+
+22/11/2017 20:15:26|root|delete|472|payment|
+
+22/11/2017 20:15:27|root|delete|475|payment|
+
+22/11/2017 20:15:27|root|delete|474|payment|
+
+22/11/2017 20:15:28|root|delete|477|payment|
+
+22/11/2017 20:15:28|root|delete|476|payment|
+
+22/11/2017 20:15:29|root|delete|478|payment|
+
+22/11/2017 20:15:30|root|delete|479|payment|
+
+22/11/2017 20:15:30|root|delete|480|payment|
+
+22/11/2017 20:15:31|root|delete|380|payment|
+
+22/11/2017 20:15:32|root|delete|481|payment|
+
+22/11/2017 20:15:32|root|delete|483|payment|
+
+22/11/2017 20:15:33|root|delete|482|payment|
+
+22/11/2017 20:15:33|root|delete|381|payment|
+
+22/11/2017 20:15:33|root|delete|485|payment|
+
+22/11/2017 20:15:34|root|delete|382|payment|
+
+22/11/2017 20:15:34|root|delete|484|payment|
+
+22/11/2017 20:15:35|root|delete|486|payment|
+
+22/11/2017 20:15:36|root|delete|383|payment|
+
+22/11/2017 20:15:36|root|delete|487|payment|
+
+22/11/2017 20:15:37|root|delete|488|payment|
+
+22/11/2017 20:15:38|root|delete|384|payment|
+
+22/11/2017 20:15:38|root|delete|489|payment|
+
+22/11/2017 20:15:39|root|delete|491|payment|
+
+22/11/2017 20:15:39|root|delete|490|payment|
+
+22/11/2017 20:15:40|root|delete|492|payment|
+
+22/11/2017 20:15:40|root|delete|493|payment|
+
+22/11/2017 20:15:41|root|delete|494|payment|
+
+22/11/2017 20:15:41|root|delete|495|payment|
+
+22/11/2017 20:15:42|root|delete|497|payment|
+
+22/11/2017 20:15:43|root|delete|496|payment|
+
+22/11/2017 20:15:43|root|delete|385|payment|
+
+22/11/2017 20:16:00|root|delete|834|payment|
+
+22/11/2017 20:16:01|root|delete|592|payment|
+
+22/11/2017 20:16:01|root|delete|603|payment|
+
+22/11/2017 20:16:03|root|delete|623|payment|
+
+22/11/2017 20:16:03|root|delete|753|payment|
+
+22/11/2017 20:16:04|root|delete|850|payment|
+
+22/11/2017 20:16:05|root|delete|685|payment|
+
+22/11/2017 20:16:05|root|delete|754|payment|
+
+22/11/2017 20:16:06|root|delete|687|payment|
+
+22/11/2017 20:16:07|root|delete|756|payment|
+
+22/11/2017 20:16:07|root|delete|686|payment|
+
+22/11/2017 20:16:08|root|delete|755|payment|
+
+22/11/2017 20:16:09|root|delete|593|payment|
+
+22/11/2017 20:16:10|root|delete|610|payment|
+
+22/11/2017 20:16:11|root|delete|757|payment|
+
+22/11/2017 20:16:12|root|delete|860|payment|
+
+22/11/2017 20:16:13|root|delete|758|payment|
+
+22/11/2017 20:16:14|root|delete|880|payment|
+
+22/11/2017 20:16:14|root|delete|688|payment|
+
+22/11/2017 20:16:15|root|delete|689|payment|
+
+22/11/2017 20:16:15|root|delete|690|payment|
+
+22/11/2017 20:16:16|root|delete|759|payment|
+
+22/11/2017 20:16:18|root|delete|760|payment|
+
+22/11/2017 20:16:19|root|delete|761|payment|
+
+22/11/2017 20:16:20|root|delete|861|payment|
+
+22/11/2017 20:16:20|root|delete|638|payment|
+
+22/11/2017 20:16:21|root|delete|762|payment|
+
+22/11/2017 20:16:22|root|delete|835|payment|
+
+22/11/2017 20:16:23|root|delete|882|payment|
+
+22/11/2017 20:16:23|root|delete|720|payment|
+
+22/11/2017 20:16:24|root|delete|763|payment|
+
+22/11/2017 20:16:25|root|delete|624|payment|
+
+22/11/2017 20:16:25|root|delete|639|payment|
+
+22/11/2017 20:16:26|root|delete|735|payment|
+
+22/11/2017 20:16:26|root|delete|764|payment|
+
+22/11/2017 20:16:27|root|delete|625|payment|
+
+22/11/2017 20:16:29|root|delete|641|payment|
+
+22/11/2017 20:17:59|root|delete|498|payment|
+
+22/11/2017 20:24:38|root|delete|232|items|
+
+22/11/2017 20:24:39|root|delete|233|items|
+
+22/11/2017 20:24:39|root|delete|234|items|
+
+22/11/2017 20:24:39|root|delete|235|items|
+
+22/11/2017 20:24:39|root|delete|236|items|
+
+22/11/2017 20:24:40|root|delete|237|items|
+
+22/11/2017 20:24:40|root|delete|238|items|
+
+22/11/2017 20:24:40|root|delete|239|items|
+
+22/11/2017 20:24:41|root|delete|240|items|
+
+22/11/2017 20:24:41|root|delete|241|items|
+
+22/11/2017 20:24:42|root|delete|242|items|
+
+22/11/2017 20:24:42|root|delete|243|items|
+
+22/11/2017 20:24:42|root|delete|244|items|
+
+22/11/2017 20:24:43|root|delete|245|items|
+
+22/11/2017 20:24:43|root|delete|246|items|
+
+22/11/2017 20:24:43|root|delete|247|items|
+
+22/11/2017 20:24:44|root|delete|248|items|
+
+22/11/2017 20:24:44|root|delete|249|items|
+
+22/11/2017 20:24:44|root|delete|250|items|
+
+22/11/2017 20:24:44|root|delete|251|items|
+
+22/11/2017 20:24:44|root|delete|252|items|
+
+22/11/2017 20:24:44|root|delete|253|items|
+
+22/11/2017 20:24:44|root|delete|254|items|
+
+22/11/2017 20:24:44|root|delete|268|items|
+
+22/11/2017 20:24:45|root|delete|255|items|
+
+22/11/2017 20:24:45|root|delete|256|items|
+
+22/11/2017 20:24:45|root|delete|257|items|
+
+22/11/2017 20:24:45|root|delete|258|items|
+
+22/11/2017 20:24:46|root|delete|259|items|
+
+22/11/2017 20:24:46|root|delete|260|items|
+
+22/11/2017 20:24:46|root|delete|261|items|
+
+22/11/2017 20:24:46|root|delete|262|items|
+
+22/11/2017 20:24:46|root|delete|263|items|
+
+22/11/2017 20:24:47|root|delete|264|items|
+
+22/11/2017 20:24:47|root|delete|265|items|
+
+22/11/2017 20:24:47|root|delete|266|items|
+
+22/11/2017 20:24:48|root|delete|267|items|
+
+22/11/2017 20:24:48|root|delete|269|items|
+
+22/11/2017 20:24:48|root|delete|270|items|
+
+22/11/2017 20:24:48|root|delete|271|items|
+
+22/11/2017 20:24:48|root|delete|272|items|
+
+22/11/2017 20:24:48|root|delete|273|items|
+
+22/11/2017 20:24:48|root|delete|274|items|
+
+22/11/2017 20:24:48|root|delete|275|items|
+
+22/11/2017 20:24:49|root|delete|276|items|
+
+22/11/2017 20:24:49|root|delete|277|items|
+
+22/11/2017 20:24:49|root|delete|278|items|
+
+22/11/2017 20:24:49|root|delete|279|items|
+
+22/11/2017 20:24:49|root|delete|280|items|
+
+22/11/2017 20:24:49|root|delete|281|items|
+
+22/11/2017 20:24:49|root|delete|282|items|
+
+22/11/2017 20:24:50|root|delete|283|items|
+
+22/11/2017 20:24:50|root|delete|284|items|
+
+22/11/2017 20:24:50|root|delete|285|items|
+
+22/11/2017 20:24:50|root|delete|286|items|
+
+22/11/2017 20:24:50|root|delete|287|items|
+
+22/11/2017 20:24:50|root|delete|288|items|
+
+22/11/2017 20:24:50|root|delete|289|items|
+
+22/11/2017 20:24:50|root|delete|290|items|
+
+22/11/2017 20:24:51|root|delete|291|items|
+
+22/11/2017 20:24:51|root|delete|292|items|
+
+22/11/2017 20:24:51|root|delete|293|items|
+
+22/11/2017 20:24:52|root|delete|294|items|
+
+22/11/2017 20:24:52|root|delete|295|items|
+
+22/11/2017 20:24:52|root|delete|296|items|
+
+22/11/2017 20:24:52|root|delete|297|items|
+
+22/11/2017 20:24:52|root|delete|298|items|
+
+22/11/2017 20:24:53|root|delete|299|items|
+
+22/11/2017 20:24:53|root|delete|300|items|
+
+22/11/2017 20:24:53|root|delete|301|items|
+
+22/11/2017 20:24:53|root|delete|302|items|
+
+22/11/2017 20:24:53|root|delete|303|items|
+
+22/11/2017 20:24:53|root|delete|304|items|
+
+22/11/2017 20:24:53|root|delete|305|items|
+
+22/11/2017 20:24:53|root|delete|306|items|
+
+22/11/2017 20:24:54|root|delete|307|items|
+
+22/11/2017 20:24:54|root|delete|308|items|
+
+22/11/2017 20:24:54|root|delete|309|items|
+
+22/11/2017 20:24:54|root|delete|310|items|
+
+22/11/2017 20:24:54|root|delete|311|items|
+
+22/11/2017 20:24:54|root|delete|312|items|
+
+22/11/2017 20:24:55|root|delete|313|items|
+
+22/11/2017 20:24:55|root|delete|314|items|
+
+22/11/2017 20:24:55|root|delete|315|items|
+
+22/11/2017 20:24:55|root|delete|316|items|
+
+22/11/2017 20:24:55|root|delete|317|items|
+
+22/11/2017 20:24:55|root|delete|318|items|
+
+22/11/2017 20:24:55|root|delete|319|items|
+
+22/11/2017 20:24:56|root|delete|231|items|
+
+22/11/2017 20:24:56|root|delete|320|items|
+
+22/11/2017 20:24:56|root|delete|321|items|
+
+22/11/2017 20:24:56|root|delete|322|items|
+
+22/11/2017 20:24:56|root|delete|323|items|
+
+22/11/2017 20:24:57|root|delete|324|items|
+
+22/11/2017 20:24:57|root|delete|325|items|
+
+22/11/2017 20:24:57|root|delete|326|items|
+
+22/11/2017 20:24:57|root|delete|327|items|
+
+22/11/2017 20:24:58|root|delete|328|items|
+
+22/11/2017 20:24:58|root|delete|331|items|
+
+22/11/2017 20:24:58|root|delete|332|items|
+
+22/11/2017 20:24:58|root|delete|329|items|
+
+22/11/2017 20:24:59|root|delete|330|items|
+
+22/11/2017 20:29:55|root|delete|8|bank|
+
+22/11/2017 20:29:55|root|delete|9|bank|
+
+22/11/2017 20:29:56|root|delete|10|bank|
+
+22/11/2017 22:06:55|root|delete|1281|invoice_sell|
+
+22/11/2017 22:06:57|root|delete|1282|invoice_sell|
+
+22/11/2017 22:06:57|root|delete|1283|invoice_sell|
+
+22/11/2017 22:06:58|root|delete|1284|invoice_sell|
+
+22/11/2017 22:06:58|root|delete|1285|invoice_sell|
+
+22/11/2017 22:06:59|root|delete|1286|invoice_sell|
+
+22/11/2017 22:06:59|root|delete|1287|invoice_sell|
+
+22/11/2017 22:06:59|root|delete|1288|invoice_sell|
+
+22/11/2017 22:07:00|root|delete|1289|invoice_sell|
+
+22/11/2017 22:07:00|root|delete|1290|invoice_sell|
+
+22/11/2017 22:07:01|root|delete|1291|invoice_sell|
+
+22/11/2017 22:07:01|root|delete|1292|invoice_sell|
+
+22/11/2017 22:07:02|root|delete|1293|invoice_sell|
+
+22/11/2017 22:07:02|root|delete|1294|invoice_sell|
+
+22/11/2017 22:07:02|root|delete|1295|invoice_sell|
+
+22/11/2017 22:07:03|root|delete|1296|invoice_sell|
+
+22/11/2017 22:07:03|root|delete|1297|invoice_sell|
+
+22/11/2017 22:07:03|root|delete|1298|invoice_sell|
+
+22/11/2017 22:07:04|root|delete|1299|invoice_sell|
+
+22/11/2017 22:07:04|root|delete|1300|invoice_sell|
+
+22/11/2017 22:07:05|root|delete|1301|invoice_sell|
+
+22/11/2017 22:07:05|root|delete|1302|invoice_sell|
+
+22/11/2017 22:07:05|root|delete|1303|invoice_sell|
+
+22/11/2017 22:07:06|root|delete|1304|invoice_sell|
+
+22/11/2017 22:07:06|root|delete|1305|invoice_sell|
+
+22/11/2017 22:07:07|root|delete|1306|invoice_sell|
+
+22/11/2017 22:07:07|root|delete|1307|invoice_sell|
+
+22/11/2017 22:07:07|root|delete|1308|invoice_sell|
+
+22/11/2017 22:07:08|root|delete|1309|invoice_sell|
+
+22/11/2017 22:07:08|root|delete|1310|invoice_sell|
+
+22/11/2017 22:07:09|root|delete|1311|invoice_sell|
+
+22/11/2017 22:07:09|root|delete|1312|invoice_sell|
+
+22/11/2017 22:07:09|root|delete|1313|invoice_sell|
+
+22/11/2017 22:07:10|root|delete|1314|invoice_sell|
+
+22/11/2017 22:07:11|root|delete|1063|invoice_sell|
+
+22/11/2017 22:07:11|root|delete|1064|invoice_sell|
+
+22/11/2017 22:07:12|root|delete|1065|invoice_sell|
+
+22/11/2017 22:07:12|root|delete|1066|invoice_sell|
+
+22/11/2017 22:07:13|root|delete|1067|invoice_sell|
+
+22/11/2017 22:07:14|root|delete|1068|invoice_sell|
+
+22/11/2017 22:07:14|root|delete|1069|invoice_sell|
+
+22/11/2017 22:07:15|root|delete|1079|invoice_sell|
+
+22/11/2017 22:07:16|root|delete|1080|invoice_sell|
+
+22/11/2017 22:07:16|root|delete|1081|invoice_sell|
+
+22/11/2017 22:07:17|root|delete|1082|invoice_sell|
+
+22/11/2017 22:07:18|root|delete|1083|invoice_sell|
+
+22/11/2017 22:07:18|root|delete|1087|invoice_sell|
+
+22/11/2017 22:07:18|root|delete|1088|invoice_sell|
+
+22/11/2017 22:07:19|root|delete|1089|invoice_sell|
+
+22/11/2017 22:07:19|root|delete|1090|invoice_sell|
+
+22/11/2017 22:07:20|root|delete|1091|invoice_sell|
+
+22/11/2017 22:07:21|root|delete|1092|invoice_sell|
+
+22/11/2017 22:07:22|root|delete|1093|invoice_sell|
+
+22/11/2017 22:07:22|root|delete|1094|invoice_sell|
+
+22/11/2017 22:07:22|root|delete|1095|invoice_sell|
+
+22/11/2017 22:07:23|root|delete|1096|invoice_sell|
+
+22/11/2017 22:07:23|root|delete|1097|invoice_sell|
+
+22/11/2017 22:07:24|root|delete|1098|invoice_sell|
+
+27/11/2017 08:16:39|root|edit|20|bank|NH01-1121_ACB----
+
+27/11/2017 09:12:16|root|edit|20|bank|NH01-1121_ACB----1000
+
+28/11/2017 08:48:13|root|delete|406|customer|
+
+28/11/2017 08:48:13|root|delete|717|customer|
+
+28/11/2017 08:48:22|root|delete|407|customer|
+
+28/11/2017 08:48:22|root|delete|718|customer|
+
+29/11/2017 13:17:17|root|add|2242|payment|1511910000-PC-06/17-15-1511910000-A-a-Mua-0-1-2-1-1-1-1511910000
+
+29/11/2017 13:36:13|root|edit|2242|payment|1511910000-PC-06/17-15-1511910000-A-a-Mua-0-1-2-1-1
+
+29/11/2017 13:37:39|root|edit|2242|payment|1511910000-PC-06/17-15-1511910000-A-a-Mua-0-1-2-1-1
+
+07/12/2017 08:33:11|root|delete|2621|payment|
+
+07/12/2017 08:33:12|root|delete|2894|payment|
+
+07/12/2017 08:33:12|root|delete|2770|payment|
+
+07/12/2017 08:33:13|root|delete|2672|payment|
+
+07/12/2017 08:33:13|root|delete|2671|payment|
+
+07/12/2017 08:33:13|root|delete|2657|payment|
+
+07/12/2017 08:33:14|root|delete|2656|payment|
+
+07/12/2017 08:33:14|root|delete|2655|payment|
+
+07/12/2017 08:33:15|root|delete|2642|payment|
+
+07/12/2017 08:33:15|root|delete|2627|payment|
+
+07/12/2017 08:33:16|root|delete|2658|payment|
+
+07/12/2017 08:33:17|root|delete|2771|payment|
+
+07/12/2017 08:33:18|root|delete|2673|payment|
+
+07/12/2017 08:33:18|root|delete|2896|payment|
+
+07/12/2017 08:33:19|root|delete|2772|payment|
+
+07/12/2017 08:33:20|root|delete|2895|payment|
+
+07/12/2017 08:33:21|root|delete|2628|payment|
+
+07/12/2017 08:33:22|root|delete|2650|payment|
+
+07/12/2017 08:33:23|root|delete|2773|payment|
+
+07/12/2017 08:33:24|root|delete|2767|payment|
+
+07/12/2017 08:33:25|root|delete|2723|payment|
+
+07/12/2017 08:33:25|root|delete|2724|payment|
+
+07/12/2017 08:33:26|root|delete|2659|payment|
+
+07/12/2017 08:33:26|root|delete|2674|payment|
+
+07/12/2017 08:33:27|root|delete|2660|payment|
+
+07/12/2017 08:33:27|root|delete|2882|payment|
+
+07/12/2017 08:33:28|root|delete|2643|payment|
+
+07/12/2017 08:33:28|root|delete|2629|payment|
+
+07/12/2017 08:33:29|root|delete|2774|payment|
+
+07/12/2017 08:33:30|root|delete|2725|payment|
+
+07/12/2017 08:33:31|root|delete|2775|payment|
+
+07/12/2017 08:33:31|root|delete|2630|payment|
+
+07/12/2017 08:33:32|root|delete|2651|payment|
+
+07/12/2017 08:33:32|root|delete|2776|payment|
+
+07/12/2017 08:33:33|root|delete|2777|payment|
+
+07/12/2017 08:33:33|root|delete|2892|payment|
+
+07/12/2017 08:33:34|root|delete|2752|payment|
+
+07/12/2017 08:33:35|root|delete|2779|payment|
+
+07/12/2017 08:33:35|root|delete|2778|payment|
+
+07/12/2017 08:33:36|root|delete|2780|payment|
+
+07/12/2017 08:33:36|root|delete|2768|payment|
+
+07/12/2017 08:33:37|root|delete|2781|payment|
+
+07/12/2017 08:33:37|root|delete|2676|payment|
+
+07/12/2017 08:33:38|root|delete|2675|payment|
+
+07/12/2017 08:33:38|root|delete|2631|payment|
+
+07/12/2017 08:33:39|root|delete|2644|payment|
+
+07/12/2017 08:33:40|root|delete|2782|payment|
+
+07/12/2017 08:33:41|root|delete|2621|payment|
+
+07/12/2017 08:33:41|root|delete|2894|payment|
+
+07/12/2017 08:33:41|root|delete|2770|payment|
+
+07/12/2017 08:33:41|root|delete|2672|payment|
+
+07/12/2017 08:33:41|root|delete|2671|payment|
+
+07/12/2017 08:33:41|root|delete|2657|payment|
+
+07/12/2017 08:33:41|root|delete|2656|payment|
+
+07/12/2017 08:33:41|root|delete|2655|payment|
+
+07/12/2017 08:33:41|root|delete|2642|payment|
+
+07/12/2017 08:33:41|root|delete|2627|payment|
+
+07/12/2017 08:33:41|root|delete|2658|payment|
+
+07/12/2017 08:33:42|root|delete|2771|payment|
+
+07/12/2017 08:33:42|root|delete|2673|payment|
+
+07/12/2017 08:33:42|root|delete|2896|payment|
+
+07/12/2017 08:33:42|root|delete|2772|payment|
+
+07/12/2017 08:33:42|root|delete|2895|payment|
+
+07/12/2017 08:33:42|root|delete|2628|payment|
+
+07/12/2017 08:33:42|root|delete|2650|payment|
+
+07/12/2017 08:33:42|root|delete|2773|payment|
+
+07/12/2017 08:33:42|root|delete|2767|payment|
+
+07/12/2017 08:33:42|root|delete|2723|payment|
+
+07/12/2017 08:33:43|root|delete|2724|payment|
+
+07/12/2017 08:33:43|root|delete|2659|payment|
+
+07/12/2017 08:33:43|root|delete|2674|payment|
+
+07/12/2017 08:33:43|root|delete|2660|payment|
+
+07/12/2017 08:33:43|root|delete|2882|payment|
+
+07/12/2017 08:33:43|root|delete|2643|payment|
+
+07/12/2017 08:33:43|root|delete|2629|payment|
+
+07/12/2017 08:33:43|root|delete|2774|payment|
+
+07/12/2017 08:33:43|root|delete|2725|payment|
+
+07/12/2017 08:33:43|root|delete|2775|payment|
+
+07/12/2017 08:33:43|root|delete|2630|payment|
+
+07/12/2017 08:33:43|root|delete|2651|payment|
+
+07/12/2017 08:33:43|root|delete|2776|payment|
+
+07/12/2017 08:33:43|root|delete|2777|payment|
+
+07/12/2017 08:33:44|root|delete|2892|payment|
+
+07/12/2017 08:33:44|root|delete|2752|payment|
+
+07/12/2017 08:33:44|root|delete|2779|payment|
+
+07/12/2017 08:33:44|root|delete|2778|payment|
+
+07/12/2017 08:33:44|root|delete|2780|payment|
+
+07/12/2017 08:33:44|root|delete|2768|payment|
+
+07/12/2017 08:33:44|root|delete|2781|payment|
+
+07/12/2017 08:33:44|root|delete|2676|payment|
+
+07/12/2017 08:33:44|root|delete|2675|payment|
+
+07/12/2017 08:33:44|root|delete|2631|payment|
+
+07/12/2017 08:33:44|root|delete|2644|payment|
+
+07/12/2017 08:33:44|root|delete|2782|payment|
+
+07/12/2017 08:33:44|root|delete|2661|payment|
+
+07/12/2017 08:33:45|root|delete|2883|payment|
+
+07/12/2017 08:33:46|root|delete|2677|payment|
+
+07/12/2017 08:33:46|root|delete|2662|payment|
+
+07/12/2017 08:33:47|root|delete|2663|payment|
+
+07/12/2017 08:33:48|root|delete|2783|payment|
+
+07/12/2017 08:33:48|root|delete|2897|payment|
+
+07/12/2017 08:33:49|root|delete|2726|payment|
+
+07/12/2017 08:33:49|root|delete|2784|payment|
+
+07/12/2017 08:33:50|root|delete|2678|payment|
+
+07/12/2017 08:33:51|root|delete|2664|payment|
+
+07/12/2017 08:33:51|root|delete|2624|payment|
+
+07/12/2017 08:33:52|root|delete|2632|payment|
+
+07/12/2017 08:33:53|root|delete|2785|payment|
+
+07/12/2017 08:33:53|root|delete|2679|payment|
+
+07/12/2017 08:33:54|root|delete|2786|payment|
+
+07/12/2017 08:33:54|root|delete|2653|payment|
+
+07/12/2017 08:33:55|root|delete|2753|payment|
+
+07/12/2017 08:33:56|root|delete|2633|payment|
+
+07/12/2017 08:33:56|root|delete|2898|payment|
+
+07/12/2017 08:33:57|root|delete|2634|payment|
+
+07/12/2017 08:33:58|root|delete|2665|payment|
+
+07/12/2017 08:33:58|root|delete|2645|payment|
+
+07/12/2017 08:33:59|root|delete|2876|payment|
+
+07/12/2017 08:33:59|root|delete|2787|payment|
+
+07/12/2017 08:34:00|root|delete|2727|payment|
+
+07/12/2017 08:34:01|root|delete|2790|payment|
+
+07/12/2017 08:34:01|root|delete|2789|payment|
+
+07/12/2017 08:34:02|root|delete|2729|payment|
+
+07/12/2017 08:34:03|root|delete|2788|payment|
+
+07/12/2017 08:34:03|root|delete|2728|payment|
+
+07/12/2017 08:34:04|root|delete|2635|payment|
+
+07/12/2017 08:34:05|root|delete|2652|payment|
+
+07/12/2017 08:34:05|root|delete|2791|payment|
+
+07/12/2017 08:34:06|root|delete|2884|payment|
+
+07/12/2017 08:45:59|root|delete|2962|payment|
+
+07/12/2017 08:45:59|root|delete|3235|payment|
+
+07/12/2017 08:45:59|root|delete|3111|payment|
+
+07/12/2017 08:46:00|root|delete|3013|payment|
+
+07/12/2017 08:46:00|root|delete|3012|payment|
+
+07/12/2017 08:46:01|root|delete|2998|payment|
+
+07/12/2017 08:46:01|root|delete|2997|payment|
+
+07/12/2017 08:46:01|root|delete|2996|payment|
+
+07/12/2017 08:46:02|root|delete|2968|payment|
+
+07/12/2017 08:46:03|root|delete|2983|payment|
+
+07/12/2017 08:46:03|root|delete|2999|payment|
+
+07/12/2017 08:46:04|root|delete|3112|payment|
+
+07/12/2017 08:46:04|root|delete|3014|payment|
+
+07/12/2017 08:46:05|root|delete|3237|payment|
+
+07/12/2017 08:46:05|root|delete|3113|payment|
+
+07/12/2017 08:46:06|root|delete|3236|payment|
+
+07/12/2017 08:46:07|root|delete|2969|payment|
+
+07/12/2017 08:46:08|root|delete|2991|payment|
+
+07/12/2017 08:46:08|root|delete|3064|payment|
+
+07/12/2017 08:46:09|root|delete|3114|payment|
+
+07/12/2017 08:46:09|root|delete|3108|payment|
+
+07/12/2017 08:46:10|root|delete|3000|payment|
+
+07/12/2017 08:46:10|root|delete|3065|payment|
+
+07/12/2017 08:46:10|root|delete|3015|payment|
+
+07/12/2017 08:46:11|root|delete|3001|payment|
+
+07/12/2017 08:46:12|root|delete|3223|payment|
+
+07/12/2017 08:46:13|root|delete|2984|payment|
+
+07/12/2017 08:46:13|root|delete|2970|payment|
+
+07/12/2017 08:46:14|root|delete|3115|payment|
+
+07/12/2017 08:46:14|root|delete|3066|payment|
+
+07/12/2017 08:46:15|root|delete|3116|payment|
+
+07/12/2017 08:46:16|root|delete|2971|payment|
+
+07/12/2017 08:46:16|root|delete|2992|payment|
+
+07/12/2017 08:46:17|root|delete|3117|payment|
+
+07/12/2017 08:46:17|root|delete|3118|payment|
+
+07/12/2017 08:46:18|root|delete|3119|payment|
+
+07/12/2017 08:46:19|root|delete|3233|payment|
+
+07/12/2017 08:46:20|root|delete|3093|payment|
+
+07/12/2017 08:46:20|root|delete|3120|payment|
+
+07/12/2017 08:46:21|root|delete|3121|payment|
+
+07/12/2017 08:46:21|root|delete|3109|payment|
+
+07/12/2017 08:46:22|root|delete|3122|payment|
+
+07/12/2017 08:46:22|root|delete|3017|payment|
+
+07/12/2017 08:46:23|root|delete|3016|payment|
+
+07/12/2017 08:46:23|root|delete|2972|payment|
+
+07/12/2017 08:46:24|root|delete|2985|payment|
+
+07/12/2017 08:46:25|root|delete|3018|payment|
+
+07/12/2017 08:46:25|root|delete|3224|payment|
+
+07/12/2017 08:46:25|root|delete|3123|payment|
+
+07/12/2017 08:46:26|root|delete|3002|payment|
+
+07/12/2017 08:46:26|root|delete|3003|payment|
+
+07/12/2017 08:46:27|root|delete|3004|payment|
+
+07/12/2017 08:46:27|root|delete|3124|payment|
+
+07/12/2017 09:04:14|root|delete|3238|payment|
+
+07/12/2017 09:06:17|root|delete|3020|payment|
+
+07/12/2017 09:06:36|root|delete|2994|payment|
+
+07/12/2017 09:06:58|root|delete|3301|payment|
+
+07/12/2017 09:07:46|root|delete|3067|payment|
+
+07/12/2017 09:07:46|root|delete|3125|payment|
+
+07/12/2017 09:07:46|root|delete|3005|payment|
+
+07/12/2017 09:07:47|root|delete|3019|payment|
+
+07/12/2017 09:07:47|root|delete|2965|payment|
+
+07/12/2017 09:07:48|root|delete|2973|payment|
+
+07/12/2017 09:07:48|root|delete|3126|payment|
+
+07/12/2017 09:07:49|root|delete|3094|payment|
+
+07/12/2017 09:07:49|root|delete|3127|payment|
+
+07/12/2017 09:07:49|root|delete|2974|payment|
+
+07/12/2017 09:07:50|root|delete|3239|payment|
+
+07/12/2017 09:07:50|root|delete|3006|payment|
+
+07/12/2017 09:07:50|root|delete|2975|payment|
+
+07/12/2017 09:07:51|root|delete|2986|payment|
+
+07/12/2017 09:07:51|root|delete|3217|payment|
+
+07/12/2017 09:07:52|root|delete|3128|payment|
+
+07/12/2017 09:07:52|root|delete|3130|payment|
+
+07/12/2017 09:07:53|root|delete|3129|payment|
+
+07/12/2017 09:07:53|root|delete|3070|payment|
+
+07/12/2017 09:07:53|root|delete|3069|payment|
+
+07/12/2017 09:07:54|root|delete|3131|payment|
+
+07/12/2017 09:07:54|root|delete|3068|payment|
+
+07/12/2017 09:07:54|root|delete|2976|payment|
+
+07/12/2017 09:07:55|root|delete|2993|payment|
+
+07/12/2017 09:07:55|root|delete|3132|payment|
+
+07/12/2017 09:07:56|root|delete|3225|payment|
+
+07/12/2017 09:07:56|root|delete|3071|payment|
+
+07/12/2017 09:07:57|root|delete|3133|payment|
+
+07/12/2017 09:07:57|root|delete|3240|payment|
+
+07/12/2017 09:07:57|root|delete|2730|payment|
+
+07/12/2017 09:07:58|root|delete|2792|payment|
+
+07/12/2017 09:07:58|root|delete|2899|payment|
+
+07/12/2017 09:07:59|root|delete|2732|payment|
+
+07/12/2017 09:07:59|root|delete|3134|payment|
+
+07/12/2017 09:08:00|root|delete|2731|payment|
+
+07/12/2017 09:08:01|root|delete|2793|payment|
+
+07/12/2017 09:08:01|root|delete|3073|payment|
+
+07/12/2017 09:08:01|root|delete|3072|payment|
+
+07/12/2017 09:08:02|root|delete|2794|payment|
+
+07/12/2017 09:08:02|root|delete|3135|payment|
+
+07/12/2017 09:08:03|root|delete|2680|payment|
+
+07/12/2017 09:08:03|root|delete|2795|payment|
+
+07/12/2017 09:08:04|root|delete|3021|payment|
+
+07/12/2017 09:08:04|root|delete|3136|payment|
+
+07/12/2017 09:08:05|root|delete|3242|payment|
+
+07/12/2017 09:08:05|root|delete|3095|payment|
+
+07/12/2017 09:08:06|root|delete|3138|payment|
+
+07/12/2017 09:08:06|root|delete|2901|payment|
+
+07/12/2017 09:08:06|root|delete|3137|payment|
+
+07/12/2017 09:08:07|root|delete|2797|payment|
+
+07/12/2017 09:08:07|root|delete|2754|payment|
+
+07/12/2017 09:08:08|root|delete|2796|payment|
+
+07/12/2017 09:08:08|root|delete|3139|payment|
+
+07/12/2017 09:08:09|root|delete|2666|payment|
+
+07/12/2017 09:08:09|root|delete|3022|payment|
+
+07/12/2017 09:08:10|root|delete|3110|payment|
+
+07/12/2017 09:08:10|root|delete|2798|payment|
+
+07/12/2017 09:08:10|root|delete|3008|payment|
+
+07/12/2017 09:08:11|root|delete|2681|payment|
+
+07/12/2017 09:08:11|root|delete|3007|payment|
+
+07/12/2017 09:08:11|root|delete|2667|payment|
+
+07/12/2017 09:08:12|root|delete|2769|payment|
+
+07/12/2017 09:08:13|root|delete|3023|payment|
+
+07/12/2017 09:08:13|root|delete|2683|payment|
+
+07/12/2017 09:08:14|root|delete|2682|payment|
+
+07/12/2017 09:08:14|root|delete|3024|payment|
+
+07/12/2017 09:08:14|root|delete|2963|payment|
+
+07/12/2017 09:08:15|root|delete|2622|payment|
+
+07/12/2017 09:08:40|root|delete|2800|payment|
+
+07/12/2017 09:08:40|root|delete|2623|payment|
+
+07/12/2017 09:08:41|root|delete|3025|payment|
+
+07/12/2017 09:08:42|root|delete|2799|payment|
+
+07/12/2017 09:08:42|root|delete|3141|payment|
+
+07/12/2017 09:08:42|root|delete|3140|payment|
+
+07/12/2017 09:08:43|root|delete|2964|payment|
+
+07/12/2017 09:08:43|root|delete|2733|payment|
+
+07/12/2017 09:08:43|root|delete|3142|payment|
+
+07/12/2017 09:08:44|root|delete|3074|payment|
+
+07/12/2017 09:08:44|root|delete|2801|payment|
+
+07/12/2017 09:08:45|root|delete|3143|payment|
+
+07/12/2017 09:08:46|root|delete|2875|payment|
+
+07/12/2017 09:08:46|root|delete|3216|payment|
+
+07/12/2017 09:08:46|root|delete|2803|payment|
+
+07/12/2017 09:08:47|root|delete|3096|payment|
+
+07/12/2017 09:08:47|root|delete|2802|payment|
+
+07/12/2017 09:08:48|root|delete|2755|payment|
+
+07/12/2017 09:08:48|root|delete|3144|payment|
+
+07/12/2017 09:08:48|root|delete|2804|payment|
+
+07/12/2017 09:08:50|root|delete|2685|payment|
+
+07/12/2017 09:08:50|root|delete|3145|payment|
+
+07/12/2017 09:08:51|root|delete|3026|payment|
+
+07/12/2017 09:08:52|root|delete|3097|payment|
+
+07/12/2017 09:08:52|root|delete|3147|payment|
+
+07/12/2017 09:08:52|root|delete|3146|payment|
+
+07/12/2017 09:08:53|root|delete|2756|payment|
+
+07/12/2017 09:08:53|root|delete|2806|payment|
+
+07/12/2017 09:08:54|root|delete|2805|payment|
+
+07/12/2017 09:08:54|root|delete|2902|payment|
+
+07/12/2017 09:08:55|root|delete|3243|payment|
+
+07/12/2017 09:08:55|root|delete|3148|payment|
+
+07/12/2017 09:08:55|root|delete|2807|payment|
+
+07/12/2017 09:08:56|root|delete|3076|payment|
+
+07/12/2017 09:08:56|root|delete|2808|payment|
+
+07/12/2017 09:08:56|root|delete|3075|payment|
+
+07/12/2017 09:08:57|root|delete|2735|payment|
+
+07/12/2017 09:08:58|root|delete|2734|payment|
+
+07/12/2017 09:08:58|root|delete|3149|payment|
+
+07/12/2017 09:08:58|root|delete|2809|payment|
+
+07/12/2017 09:08:59|root|delete|3150|payment|
+
+07/12/2017 09:08:59|root|delete|2885|payment|
+
+07/12/2017 09:09:00|root|delete|3226|payment|
+
+07/12/2017 09:09:00|root|delete|3152|payment|
+
+07/12/2017 09:09:01|root|delete|2736|payment|
+
+07/12/2017 09:09:01|root|delete|3151|payment|
+
+07/12/2017 09:09:01|root|delete|2811|payment|
+
+07/12/2017 09:09:02|root|delete|2810|payment|
+
+07/12/2017 09:09:02|root|delete|3077|payment|
+
+07/12/2017 09:09:03|root|delete|2874|payment|
+
+07/12/2017 09:09:03|root|delete|3215|payment|
+
+07/12/2017 09:09:03|root|delete|2737|payment|
+
+07/12/2017 09:09:04|root|delete|2977|payment|
+
+07/12/2017 09:09:04|root|delete|2636|payment|
+
+07/12/2017 09:09:04|root|delete|2812|payment|
+
+07/12/2017 09:09:05|root|delete|2966|payment|
+
+07/12/2017 09:09:05|root|delete|3078|payment|
+
+07/12/2017 09:09:06|root|delete|2625|payment|
+
+07/12/2017 09:09:06|root|delete|3153|payment|
+
+07/12/2017 09:09:06|root|delete|2813|payment|
+
+07/12/2017 09:09:07|root|delete|3154|payment|
+
+07/12/2017 09:09:07|root|delete|3155|payment|
+
+07/12/2017 09:09:07|root|delete|2814|payment|
+
+07/12/2017 09:09:08|root|delete|3157|payment|
+
+07/12/2017 09:09:08|root|delete|2686|payment|
+
+07/12/2017 09:09:09|root|delete|3156|payment|
+
+07/12/2017 09:09:26|root|delete|2815|payment|
+
+07/12/2017 09:09:27|root|delete|2886|payment|
+
+07/12/2017 09:09:27|root|delete|3027|payment|
+
+07/12/2017 09:09:28|root|delete|3227|payment|
+
+07/12/2017 09:09:28|root|delete|2816|payment|
+
+07/12/2017 09:09:28|root|delete|3160|payment|
+
+07/12/2017 09:09:29|root|delete|2820|payment|
+
+07/12/2017 09:09:29|root|delete|3159|payment|
+
+07/12/2017 09:09:29|root|delete|2819|payment|
+
+07/12/2017 09:09:31|root|delete|2757|payment|
+
+07/12/2017 09:09:31|root|delete|2738|payment|
+
+07/12/2017 09:09:32|root|delete|3158|payment|
+
+07/12/2017 09:09:32|root|delete|2818|payment|
+
+07/12/2017 09:09:32|root|delete|2877|payment|
+
+07/12/2017 09:09:33|root|delete|3098|payment|
+
+07/12/2017 09:09:33|root|delete|3079|payment|
+
+07/12/2017 09:09:33|root|delete|2817|payment|
+
+07/12/2017 09:09:34|root|delete|3161|payment|
+
+07/12/2017 09:09:34|root|delete|3218|payment|
+
+07/12/2017 09:09:34|root|delete|2739|payment|
+
+07/12/2017 09:09:36|root|delete|3080|payment|
+
+07/12/2017 09:09:36|root|delete|3162|payment|
+
+07/12/2017 09:09:36|root|delete|2821|payment|
+
+07/12/2017 09:09:37|root|delete|2646|payment|
+
+07/12/2017 09:09:37|root|delete|2688|payment|
+
+07/12/2017 09:09:38|root|delete|3030|payment|
+
+07/12/2017 09:09:38|root|delete|3164|payment|
+
+07/12/2017 09:09:38|root|delete|2637|payment|
+
+07/12/2017 09:09:39|root|delete|2758|payment|
+
+07/12/2017 09:09:40|root|delete|2654|payment|
+
+07/12/2017 09:09:40|root|delete|2887|payment|
+
+07/12/2017 09:09:41|root|delete|2687|payment|
+
+07/12/2017 09:09:41|root|delete|3029|payment|
+
+07/12/2017 09:09:41|root|delete|3163|payment|
+
+07/12/2017 09:09:42|root|delete|3099|payment|
+
+07/12/2017 09:09:42|root|delete|2691|payment|
+
+07/12/2017 09:09:43|root|delete|2823|payment|
+
+07/12/2017 09:09:43|root|delete|2987|payment|
+
+07/12/2017 09:09:43|root|delete|3028|payment|
+
+07/12/2017 09:09:44|root|delete|2978|payment|
+
+07/12/2017 09:09:45|root|delete|2995|payment|
+
+07/12/2017 09:09:45|root|delete|3228|payment|
+
+07/12/2017 09:09:45|root|delete|2690|payment|
+
+07/12/2017 09:09:46|root|delete|2822|payment|
+
+07/12/2017 09:09:46|root|delete|3032|payment|
+
+07/12/2017 09:09:46|root|delete|2689|payment|
+
+07/12/2017 09:09:46|root|delete|3031|payment|
+
+07/12/2017 09:09:47|root|delete|2740|payment|
+
+07/12/2017 09:09:47|root|delete|2825|payment|
+
+07/12/2017 09:09:48|root|delete|3100|payment|
+
+07/12/2017 09:09:49|root|delete|2692|payment|
+
+07/12/2017 09:09:49|root|delete|2824|payment|
+
+07/12/2017 09:09:50|root|delete|3081|payment|
+
+07/12/2017 09:09:50|root|delete|3168|payment|
+
+07/12/2017 09:09:50|root|delete|2909|payment|
+
+07/12/2017 09:09:51|root|delete|3033|payment|
+
+07/12/2017 09:09:52|root|delete|3167|payment|
+
+07/12/2017 09:09:52|root|delete|2827|payment|
+
+07/12/2017 09:09:53|root|delete|3166|payment|
+
+07/12/2017 09:09:53|root|delete|2826|payment|
+
+07/12/2017 09:09:53|root|delete|3250|payment|
+
+07/12/2017 09:09:54|root|delete|3165|payment|
+
+07/12/2017 09:09:54|root|delete|2759|payment|
+
+07/12/2017 09:09:55|root|delete|3082|payment|
+
+07/12/2017 09:09:55|root|delete|2741|payment|
+
+07/12/2017 09:09:55|root|delete|3009|payment|
+
+07/12/2017 09:09:56|root|delete|2668|payment|
+
+07/12/2017 09:10:14|root|delete|3220|payment|
+
+07/12/2017 09:10:14|root|delete|2879|payment|
+
+07/12/2017 09:10:15|root|delete|3169|payment|
+
+07/12/2017 09:10:15|root|delete|2828|payment|
+
+07/12/2017 09:10:15|root|delete|3252|payment|
+
+07/12/2017 09:10:16|root|delete|3171|payment|
+
+07/12/2017 09:10:16|root|delete|2911|payment|
+
+07/12/2017 09:10:17|root|delete|2830|payment|
+
+07/12/2017 09:10:17|root|delete|3083|payment|
+
+07/12/2017 09:10:18|root|delete|3170|payment|
+
+07/12/2017 09:10:19|root|delete|2742|payment|
+
+07/12/2017 09:10:19|root|delete|2829|payment|
+
+07/12/2017 09:10:20|root|delete|3172|payment|
+
+07/12/2017 09:10:20|root|delete|2831|payment|
+
+07/12/2017 09:10:21|root|delete|3229|payment|
+
+07/12/2017 09:10:21|root|delete|2888|payment|
+
+07/12/2017 09:10:21|root|delete|2832|payment|
+
+07/12/2017 09:10:22|root|delete|3173|payment|
+
+07/12/2017 09:10:23|root|delete|3245|payment|
+
+07/12/2017 09:10:23|root|delete|2904|payment|
+
+07/12/2017 09:10:23|root|delete|3174|payment|
+
+07/12/2017 09:10:24|root|delete|2833|payment|
+
+07/12/2017 09:10:24|root|delete|3208|payment|
+
+07/12/2017 09:10:24|root|delete|3101|payment|
+
+07/12/2017 09:10:25|root|delete|2867|payment|
+
+07/12/2017 09:10:25|root|delete|2760|payment|
+
+07/12/2017 09:10:26|root|delete|3175|payment|
+
+07/12/2017 09:10:27|root|delete|2834|payment|
+
+07/12/2017 09:10:27|root|delete|3034|payment|
+
+07/12/2017 09:10:27|root|delete|2698|payment|
+
+07/12/2017 09:10:28|root|delete|2693|payment|
+
+07/12/2017 09:10:28|root|delete|3038|payment|
+
+07/12/2017 09:10:28|root|delete|3176|payment|
+
+07/12/2017 09:10:29|root|delete|2697|payment|
+
+07/12/2017 09:10:29|root|delete|2835|payment|
+
+07/12/2017 09:10:29|root|delete|3037|payment|
+
+07/12/2017 09:10:30|root|delete|2696|payment|
+
+07/12/2017 09:10:30|root|delete|3036|payment|
+
+07/12/2017 09:10:31|root|delete|3230|payment|
+
+07/12/2017 09:10:32|root|delete|2695|payment|
+
+07/12/2017 09:10:32|root|delete|3040|payment|
+
+07/12/2017 09:10:32|root|delete|2889|payment|
+
+07/12/2017 09:10:33|root|delete|3035|payment|
+
+07/12/2017 09:10:33|root|delete|2699|payment|
+
+07/12/2017 09:10:33|root|delete|2694|payment|
+
+07/12/2017 09:10:34|root|delete|3039|payment|
+
+07/12/2017 09:10:34|root|delete|2979|payment|
+
+07/12/2017 09:10:35|root|delete|3177|payment|
+
+07/12/2017 09:10:35|root|delete|2638|payment|
+
+07/12/2017 09:10:36|root|delete|2988|payment|
+
+07/12/2017 09:10:36|root|delete|2836|payment|
+
+07/12/2017 09:10:36|root|delete|2647|payment|
+
+07/12/2017 09:10:37|root|delete|3231|payment|
+
+07/12/2017 09:10:37|root|delete|2890|payment|
+
+07/12/2017 09:10:38|root|delete|3209|payment|
+
+07/12/2017 09:10:38|root|delete|3102|payment|
+
+07/12/2017 09:10:39|root|delete|2868|payment|
+
+07/12/2017 09:10:40|root|delete|2761|payment|
+
+07/12/2017 09:10:40|root|delete|3178|payment|
+
+07/12/2017 09:10:41|root|delete|2837|payment|
+
+07/12/2017 09:10:41|root|delete|3251|payment|
+
+07/12/2017 09:10:42|root|delete|2910|payment|
+
+07/12/2017 09:10:42|root|delete|3179|payment|
+
+07/12/2017 09:10:42|root|delete|2838|payment|
+
+07/12/2017 09:10:43|root|delete|2762|payment|
+
+07/12/2017 09:10:58|root|delete|3210|payment|
+
+07/12/2017 09:10:58|root|delete|3180|payment|
+
+07/12/2017 09:10:58|root|delete|2869|payment|
+
+07/12/2017 09:10:59|root|delete|3103|payment|
+
+07/12/2017 09:10:59|root|delete|2839|payment|
+
+07/12/2017 09:10:59|root|delete|3181|payment|
+
+07/12/2017 09:10:59|root|delete|2840|payment|
+
+07/12/2017 09:11:00|root|delete|3182|payment|
+
+07/12/2017 09:11:00|root|delete|2841|payment|
+
+07/12/2017 09:11:01|root|delete|2743|payment|
+
+07/12/2017 09:11:01|root|delete|3084|payment|
+
+07/12/2017 09:11:01|root|delete|3253|payment|
+
+07/12/2017 09:11:02|root|delete|2842|payment|
+
+07/12/2017 09:11:03|root|delete|2912|payment|
+
+07/12/2017 09:11:03|root|delete|2639|payment|
+
+07/12/2017 09:11:03|root|delete|2980|payment|
+
+07/12/2017 09:11:04|root|delete|2648|payment|
+
+07/12/2017 09:11:04|root|delete|2989|payment|
+
+07/12/2017 09:11:05|root|delete|2700|payment|
+
+07/12/2017 09:11:05|root|delete|3041|payment|
+
+07/12/2017 09:11:05|root|delete|3183|payment|
+
+07/12/2017 09:11:07|root|delete|2905|payment|
+
+07/12/2017 09:11:07|root|delete|3185|payment|
+
+07/12/2017 09:11:08|root|delete|2844|payment|
+
+07/12/2017 09:11:08|root|delete|3247|payment|
+
+07/12/2017 09:11:08|root|delete|3184|payment|
+
+07/12/2017 09:11:09|root|delete|2906|payment|
+
+07/12/2017 09:11:09|root|delete|2843|payment|
+
+07/12/2017 09:11:09|root|delete|3246|payment|
+
+07/12/2017 09:11:10|root|delete|3186|payment|
+
+07/12/2017 09:11:11|root|delete|2845|payment|
+
+07/12/2017 09:11:11|root|delete|3248|payment|
+
+07/12/2017 09:11:12|root|delete|2907|payment|
+
+07/12/2017 09:11:12|root|delete|3187|payment|
+
+07/12/2017 09:11:13|root|delete|2846|payment|
+
+07/12/2017 09:11:13|root|delete|3044|payment|
+
+07/12/2017 09:11:13|root|delete|2707|payment|
+
+07/12/2017 09:11:14|root|delete|2702|payment|
+
+07/12/2017 09:11:14|root|delete|3048|payment|
+
+07/12/2017 09:11:14|root|delete|3043|payment|
+
+07/12/2017 09:11:15|root|delete|2706|payment|
+
+07/12/2017 09:11:16|root|delete|2701|payment|
+
+07/12/2017 09:11:16|root|delete|3047|payment|
+
+07/12/2017 09:11:16|root|delete|3042|payment|
+
+07/12/2017 09:11:17|root|delete|2705|payment|
+
+07/12/2017 09:11:17|root|delete|3046|payment|
+
+07/12/2017 09:11:18|root|delete|2704|payment|
+
+07/12/2017 09:11:18|root|delete|3045|payment|
+
+07/12/2017 09:11:19|root|delete|2708|payment|
+
+07/12/2017 09:11:20|root|delete|2703|payment|
+
+07/12/2017 09:11:21|root|delete|3049|payment|
+
+07/12/2017 09:11:21|root|delete|2847|payment|
+
+07/12/2017 09:11:21|root|delete|3188|payment|
+
+07/12/2017 09:11:22|root|delete|2709|payment|
+
+07/12/2017 09:11:22|root|delete|3189|payment|
+
+07/12/2017 09:11:22|root|delete|3050|payment|
+
+07/12/2017 09:11:23|root|delete|3254|payment|
+
+07/12/2017 09:11:23|root|delete|2848|payment|
+
+07/12/2017 09:11:23|root|delete|2913|payment|
+
+07/12/2017 09:11:24|root|delete|3211|payment|
+
+07/12/2017 09:11:24|root|delete|2870|payment|
+
+07/12/2017 09:11:25|root|delete|3190|payment|
+
+07/12/2017 09:11:25|root|delete|3104|payment|
+
+07/12/2017 09:11:26|root|delete|2849|payment|
+
+07/12/2017 09:11:26|root|delete|2763|payment|
+
+07/12/2017 09:11:26|root|delete|2744|payment|
+
+07/12/2017 09:11:27|root|delete|3085|payment|
+
+07/12/2017 09:11:40|root|delete|2914|payment|
+
+07/12/2017 09:11:41|root|delete|3051|payment|
+
+07/12/2017 09:11:41|root|delete|3255|payment|
+
+07/12/2017 09:11:41|root|delete|2851|payment|
+
+07/12/2017 09:11:42|root|delete|3105|payment|
+
+07/12/2017 09:11:42|root|delete|2850|payment|
+
+07/12/2017 09:11:43|root|delete|3192|payment|
+
+07/12/2017 09:11:43|root|delete|2745|payment|
+
+07/12/2017 09:11:43|root|delete|2871|payment|
+
+07/12/2017 09:11:44|root|delete|3191|payment|
+
+07/12/2017 09:11:44|root|delete|3086|payment|
+
+07/12/2017 09:11:45|root|delete|3212|payment|
+
+07/12/2017 09:11:45|root|delete|2764|payment|
+
+07/12/2017 09:11:46|root|delete|3193|payment|
+
+07/12/2017 09:11:46|root|delete|2640|payment|
+
+07/12/2017 09:11:46|root|delete|2626|payment|
+
+07/12/2017 09:11:47|root|delete|2981|payment|
+
+07/12/2017 09:11:47|root|delete|2903|payment|
+
+07/12/2017 09:11:47|root|delete|2853|payment|
+
+07/12/2017 09:11:48|root|delete|2967|payment|
+
+07/12/2017 09:11:48|root|delete|2880|payment|
+
+07/12/2017 09:11:49|root|delete|2852|payment|
+
+07/12/2017 09:11:50|root|delete|3244|payment|
+
+07/12/2017 09:11:50|root|delete|3194|payment|
+
+07/12/2017 09:11:50|root|delete|3221|payment|
+
+07/12/2017 09:11:51|root|delete|2746|payment|
+
+07/12/2017 09:11:51|root|delete|3087|payment|
+
+07/12/2017 09:11:51|root|delete|2854|payment|
+
+07/12/2017 09:11:52|root|delete|3195|payment|
+
+07/12/2017 09:11:52|root|delete|2747|payment|
+
+07/12/2017 09:11:53|root|delete|2855|payment|
+
+07/12/2017 09:11:54|root|delete|2891|payment|
+
+07/12/2017 09:11:54|root|delete|3088|payment|
+
+07/12/2017 09:11:55|root|delete|3196|payment|
+
+07/12/2017 09:11:55|root|delete|3232|payment|
+
+07/12/2017 09:11:55|root|delete|3106|payment|
+
+07/12/2017 09:11:56|root|delete|3197|payment|
+
+07/12/2017 09:11:56|root|delete|2872|payment|
+
+07/12/2017 09:11:57|root|delete|3213|payment|
+
+07/12/2017 09:11:57|root|delete|2765|payment|
+
+07/12/2017 09:11:58|root|delete|2856|payment|
+
+07/12/2017 09:11:59|root|delete|3198|payment|
+
+07/12/2017 09:11:59|root|delete|3089|payment|
+
+07/12/2017 09:12:00|root|delete|2857|payment|
+
+07/12/2017 09:12:00|root|delete|2748|payment|
+
+07/12/2017 09:12:01|root|delete|2982|payment|
+
+07/12/2017 09:12:01|root|delete|2908|payment|
+
+07/12/2017 09:12:01|root|delete|2858|payment|
+
+07/12/2017 09:12:02|root|delete|3249|payment|
+
+07/12/2017 09:12:02|root|delete|2649|payment|
+
+07/12/2017 09:12:02|root|delete|3199|payment|
+
+07/12/2017 09:12:03|root|delete|2641|payment|
+
+07/12/2017 09:12:04|root|delete|2990|payment|
+
+07/12/2017 09:12:04|root|delete|3058|payment|
+
+07/12/2017 09:12:05|root|delete|2711|payment|
+
+07/12/2017 09:12:05|root|delete|2720|payment|
+
+07/12/2017 09:12:05|root|delete|3052|payment|
+
+07/12/2017 09:12:06|root|delete|2715|payment|
+
+07/12/2017 09:12:06|root|delete|3056|payment|
+
+07/12/2017 09:12:06|root|delete|3057|payment|
+
+07/12/2017 09:12:07|root|delete|2719|payment|
+
+07/12/2017 09:12:08|root|delete|3061|payment|
+
+07/12/2017 09:12:09|root|delete|2714|payment|
+
+07/12/2017 09:12:09|root|delete|3055|payment|
+
+07/12/2017 09:12:09|root|delete|2718|payment|
+
+07/12/2017 09:13:13|root|delete|3053|payment|
+
+07/12/2017 09:13:14|root|delete|2717|payment|
+
+07/12/2017 09:13:14|root|delete|2716|payment|
+
+07/12/2017 09:13:14|root|delete|3060|payment|
+
+07/12/2017 09:13:15|root|delete|2713|payment|
+
+07/12/2017 09:13:16|root|delete|3059|payment|
+
+07/12/2017 09:13:16|root|delete|2712|payment|
+
+07/12/2017 09:13:17|root|delete|3054|payment|
+
+07/12/2017 09:13:17|root|delete|3200|payment|
+
+07/12/2017 09:13:17|root|delete|3219|payment|
+
+07/12/2017 09:13:18|root|delete|2721|payment|
+
+07/12/2017 09:13:18|root|delete|2862|payment|
+
+07/12/2017 09:13:19|root|delete|2900|payment|
+
+07/12/2017 09:13:19|root|delete|3256|payment|
+
+07/12/2017 09:13:20|root|delete|2861|payment|
+
+07/12/2017 09:13:21|root|delete|3062|payment|
+
+07/12/2017 09:13:21|root|delete|3203|payment|
+
+07/12/2017 09:13:22|root|delete|3241|payment|
+
+07/12/2017 09:13:22|root|delete|2860|payment|
+
+07/12/2017 09:13:22|root|delete|3202|payment|
+
+07/12/2017 09:13:23|root|delete|2881|payment|
+
+07/12/2017 09:13:23|root|delete|2859|payment|
+
+07/12/2017 09:13:24|root|delete|2878|payment|
+
+07/12/2017 09:13:24|root|delete|3201|payment|
+
+07/12/2017 09:13:25|root|delete|3222|payment|
+
+07/12/2017 09:13:26|root|delete|2915|payment|
+
+07/12/2017 09:13:26|root|delete|2873|payment|
+
+07/12/2017 09:13:26|root|delete|3204|payment|
+
+07/12/2017 09:13:27|root|delete|3107|payment|
+
+07/12/2017 09:13:27|root|delete|3214|payment|
+
+07/12/2017 09:13:27|root|delete|2893|payment|
+
+07/12/2017 09:13:28|root|delete|2750|payment|
+
+07/12/2017 09:13:28|root|delete|2865|payment|
+
+07/12/2017 09:13:29|root|delete|3234|payment|
+
+07/12/2017 09:13:30|root|delete|2749|payment|
+
+07/12/2017 09:13:30|root|delete|2864|payment|
+
+07/12/2017 09:13:31|root|delete|3091|payment|
+
+07/12/2017 09:13:31|root|delete|3206|payment|
+
+07/12/2017 09:13:31|root|delete|2863|payment|
+
+07/12/2017 09:13:32|root|delete|3090|payment|
+
+07/12/2017 09:13:32|root|delete|3205|payment|
+
+07/12/2017 09:13:33|root|delete|2766|payment|
+
+07/12/2017 09:13:33|root|delete|3063|payment|
+
+07/12/2017 09:13:34|root|delete|2670|payment|
+
+07/12/2017 09:13:35|root|delete|2751|payment|
+
+07/12/2017 09:13:35|root|delete|2866|payment|
+
+07/12/2017 09:13:36|root|delete|2669|payment|
+
+07/12/2017 09:13:36|root|delete|3011|payment|
+
+07/12/2017 09:13:37|root|delete|3092|payment|
+
+07/12/2017 09:13:37|root|delete|3207|payment|
+
+07/12/2017 09:13:38|root|delete|3010|payment|
+
+07/12/2017 09:13:39|root|delete|2722|payment|
+
+07/12/2017 09:13:39|root|delete|2919|payment|
+
+07/12/2017 09:13:40|root|delete|3261|payment|
+
+07/12/2017 09:13:40|root|delete|2923|payment|
+
+07/12/2017 09:13:41|root|delete|2918|payment|
+
+07/12/2017 09:13:41|root|delete|3260|payment|
+
+07/12/2017 09:13:42|root|delete|2922|payment|
+
+07/12/2017 09:13:42|root|delete|3264|payment|
+
+07/12/2017 09:13:43|root|delete|2917|payment|
+
+07/12/2017 09:13:54|root|delete|2920|payment|
+
+07/12/2017 09:13:55|root|delete|3258|payment|
+
+07/12/2017 09:13:55|root|delete|2916|payment|
+
+07/12/2017 09:13:56|root|delete|3257|payment|
+
+07/12/2017 09:13:56|root|delete|3263|payment|
+
+07/12/2017 09:13:56|root|delete|3262|payment|
+
+07/12/2017 09:13:57|root|delete|2921|payment|
+
+07/12/2017 09:13:57|root|delete|3259|payment|
+
+07/12/2017 09:13:58|root|delete|3270|payment|
+
+07/12/2017 09:13:58|root|delete|2926|payment|
+
+07/12/2017 09:13:59|root|delete|3265|payment|
+
+07/12/2017 09:14:00|root|delete|2930|payment|
+
+07/12/2017 09:14:00|root|delete|3269|payment|
+
+07/12/2017 09:14:00|root|delete|2925|payment|
+
+07/12/2017 09:14:01|root|delete|2929|payment|
+
+07/12/2017 09:14:01|root|delete|3268|payment|
+
+07/12/2017 09:14:02|root|delete|2924|payment|
+
+07/12/2017 09:14:02|root|delete|2928|payment|
+
+07/12/2017 09:14:03|root|delete|3267|payment|
+
+07/12/2017 09:14:03|root|delete|3271|payment|
+
+07/12/2017 09:14:04|root|delete|2927|payment|
+
+07/12/2017 09:14:05|root|delete|3266|payment|
+
+07/12/2017 09:14:05|root|delete|2931|payment|
+
+07/12/2017 09:14:05|root|delete|3273|payment|
+
+07/12/2017 09:14:06|root|delete|3272|payment|
+
+07/12/2017 09:14:06|root|delete|2932|payment|
+
+07/12/2017 09:14:06|root|delete|3275|payment|
+
+07/12/2017 09:14:07|root|delete|2935|payment|
+
+07/12/2017 09:14:07|root|delete|3274|payment|
+
+07/12/2017 09:14:08|root|delete|2934|payment|
+
+07/12/2017 09:14:09|root|delete|3277|payment|
+
+07/12/2017 09:14:09|root|delete|2933|payment|
+
+07/12/2017 09:14:09|root|delete|3276|payment|
+
+07/12/2017 09:14:10|root|delete|2936|payment|
+
+07/12/2017 09:14:10|root|delete|3278|payment|
+
+07/12/2017 09:14:11|root|delete|2937|payment|
+
+07/12/2017 09:14:11|root|delete|3279|payment|
+
+07/12/2017 09:14:12|root|delete|2938|payment|
+
+07/12/2017 09:14:12|root|delete|2940|payment|
+
+07/12/2017 09:14:12|root|delete|2939|payment|
+
+07/12/2017 09:14:13|root|delete|3281|payment|
+
+07/12/2017 09:14:14|root|delete|3280|payment|
+
+07/12/2017 09:14:15|root|delete|2945|payment|
+
+07/12/2017 09:14:15|root|delete|3284|payment|
+
+07/12/2017 09:14:15|root|delete|2944|payment|
+
+07/12/2017 09:14:16|root|delete|3283|payment|
+
+07/12/2017 09:14:16|root|delete|3287|payment|
+
+07/12/2017 09:14:16|root|delete|2943|payment|
+
+07/12/2017 09:14:17|root|delete|3282|payment|
+
+07/12/2017 09:14:17|root|delete|3286|payment|
+
+07/12/2017 09:14:18|root|delete|2942|payment|
+
+07/12/2017 09:14:19|root|delete|2946|payment|
+
+07/12/2017 09:14:19|root|delete|3285|payment|
+
+07/12/2017 09:14:19|root|delete|2941|payment|
+
+07/12/2017 09:14:20|root|delete|3288|payment|
+
+07/12/2017 09:14:20|root|delete|2948|payment|
+
+07/12/2017 09:14:21|root|delete|2947|payment|
+
+07/12/2017 09:14:22|root|delete|3289|payment|
+
+07/12/2017 09:14:22|root|delete|2954|payment|
+
+07/12/2017 09:14:23|root|delete|3293|payment|
+
+07/12/2017 09:14:23|root|delete|2949|payment|
+
+07/12/2017 09:14:24|root|delete|2958|payment|
+
+07/12/2017 09:14:36|root|delete|3294|payment|
+
+07/12/2017 09:14:37|root|delete|3298|payment|
+
+07/12/2017 09:14:37|root|delete|2953|payment|
+
+07/12/2017 09:14:38|root|delete|3292|payment|
+
+07/12/2017 09:14:38|root|delete|3297|payment|
+
+07/12/2017 09:14:38|root|delete|2952|payment|
+
+07/12/2017 09:14:39|root|delete|3291|payment|
+
+07/12/2017 09:14:40|root|delete|2957|payment|
+
+07/12/2017 09:14:40|root|delete|3296|payment|
+
+07/12/2017 09:14:41|root|delete|2951|payment|
+
+07/12/2017 09:14:41|root|delete|3290|payment|
+
+07/12/2017 09:14:42|root|delete|2956|payment|
+
+07/12/2017 09:14:42|root|delete|3295|payment|
+
+07/12/2017 09:14:43|root|delete|2950|payment|
+
+07/12/2017 09:14:43|root|delete|3299|payment|
+
+07/12/2017 09:14:44|root|delete|2955|payment|
+
+07/12/2017 09:14:44|root|delete|2960|payment|
+
+07/12/2017 09:14:45|root|delete|2959|payment|
+
+07/12/2017 09:14:46|root|delete|3300|payment|
+
+07/12/2017 09:14:46|root|delete|3302|payment|
+
+07/12/2017 09:14:46|root|delete|2961|payment|
+

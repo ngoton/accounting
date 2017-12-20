@@ -1,0 +1,533 @@
+<?php
+$url_order = 'ASC';
+if ($order_by == 'account_id')
+    $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+elseif ($order_by == 'account_number')
+    $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+elseif ($order_by == 'account_name')
+    $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+
+    $i = $sonews*$page-($sonews-1);
+
+?>
+<div id="loading"></div>
+<div id="winpopup"></div>
+<section class="content-header">
+    <h1>BÁO CÁO KẾT QUẢ HOẠT ĐỘNG KINH DOANH</h1>
+  <ol class="breadcrumb">
+    <li><a href="<?php echo $this->url('admin') ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li class="active"><a href="<?php echo $this->url('balanceresult') ?>">Kết quả hoạt động kinh doanh</a></li>
+  </ol>
+</section>
+<div id="content" style="padding:5px;">
+
+    <div class="search-box">
+        
+        <input type="search" id="search-input" name="s" value="<?php echo isset($keyword)?$keyword:null; ?>" placeholder="Tìm kiếm">
+        <input type="button" name="" id="search-submit" class="button-search" value="Tìm kiếm" onclick="searchall('<?php echo $page ?>','<?php echo $order_by ?>','<?php echo $order ?>');">
+        <?php if(!isset($disable_control)){ ?>
+        <div class="add-box"><a class="add_button" id="btnExport" ><i class="fa fa-download"></i> Xuất</a></div>
+        <?php } ?>
+    </div>
+    <div class="tablenav top">
+        <div class="add-box">
+                  
+            Từ  <input style="width:100px" type="search" name="batdau" id="batdau" placeholder="Chọn ngày" <?php if(isset($batdau)) echo "value='$batdau'"; ?> >  
+            Đến  <input style="width:100px" type="search" name="ketthuc" id="ketthuc" placeholder="Chọn ngày" <?php if(isset($ketthuc)) echo "value='$ketthuc'"; ?> >  
+             <input type="button" name="xem" id="xem" value="Xem" onclick="searchall('<?php echo $page ?>','<?php echo $order_by ?>','<?php echo $order ?>');">  
+            
+        </div>
+        <div class="add-box">
+            Từ tháng <input class="monthPicker" style="width:90px" type="search" name="chonngaytao" id="chonngaytao" placeholder="Chọn tháng" <?php if(isset($ngaytao)) echo "value='$ngaytao'"; ?> >    
+            Đến tháng <input class="monthPicker" style="width:90px" type="search" name="chonngaytaobatdau" id="chonngaytaobatdau" placeholder="Chọn tháng" <?php if(isset($ngaytaobatdau)) echo "value='$ngaytaobatdau'"; ?> >  
+
+            <input type="button" name="chon" id="chon" class="button" value="Chọn" onclick="searchall('<?php echo $page ?>','<?php echo $order_by ?>','<?php echo $order ?>');">        
+                                        
+        </div>
+        
+        <div class="alignleft actions">
+        <select name="m" id="chonloc">
+          <option  value="18446744073709">Hiển thị tất cả</option>
+          <option value="50">Hiển thị 50 giá trị</option>
+                <option value="100">Hiển thị 100 giá trị</option>
+                <option value="150">Hiển thị 150 giá trị</option>
+                <option selected="selected" value="200">Hiển thị 200 giá trị</option>
+        </select>
+        <input type="button" name="" id="post-query-submit" class="button" value="Chọn lọc" onclick="searchall('<?php echo $page ?>','<?php echo $order_by ?>','<?php echo $order ?>');">                               
+        </div>
+
+      </div>
+
+</div>
+
+<table class="table_data" id="tblExport">
+<thead>
+    <tr>
+        <th class="fix">
+            <a class="sort">STT</a>
+        </th>
+        <th class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','account_name','<?php echo $url_order ?>')">Chỉ tiêu <?php if ($order_by == 'account_name'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','account_code','<?php echo $url_order ?>')">Mã <?php if ($order_by == 'account_code'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th class="fix">
+            <a class="sort">Thuyết minh</a>
+        </th>
+        <th class="fix">
+            <a class="sort">Số cuối kỳ</a>
+        </th>
+        <th class="fix">
+            <a class="sort">Số đầu kỳ</a>
+        </th>
+        
+    </tr>
+    <tr>
+        <th class="fix">
+            <a class="sort">(1)</a>
+        </th>
+        <th class="fix">
+            <a class="sort">(2)</a>
+        </th>
+        <th class="fix">
+            <a class="sort">(3)</a>
+        </th>
+        <th class="fix">
+            <a class="sort">(4)</a>
+        </th>
+        <th class="fix">
+            <a class="sort">(5)</a>
+        </th>
+        <th class="fix">
+            <a class="sort">(6)</a>
+        </th>
+    </tr>
+    
+   </thead>
+   <?php
+   $dauky_1=0;$cuoiky_1=0;
+   $dauky_2=0;$cuoiky_2=0;
+   $dauky_4=0;$cuoiky_4=0;
+   $dauky_6=0;$cuoiky_6=0;
+   $dauky_7=0;$cuoiky_7=0;
+   $dauky_8=0;$cuoiky_8=0;
+   $dauky_10=0;$cuoiky_10=0;
+   $dauky_11=0;$cuoiky_11=0;
+   $dauky_14=0;$cuoiky_14=0;
+
+   foreach ($accounts as $account) {
+       $nodauky[$account->account_id]=isset($data_additional[$account->account_id]['no']['dauky'])?$data_additional[$account->account_id]['no']['dauky']:0;
+        $codauky[$account->account_id]=isset($data_additional[$account->account_id]['co']['dauky'])?$data_additional[$account->account_id]['co']['dauky']:0;
+        $nophatsinh[$account->account_id]=isset($data_additional[$account->account_id]['no']['phatsinh'])?$data_additional[$account->account_id]['no']['phatsinh']:0;
+        $cophatsinh[$account->account_id]=isset($data_additional[$account->account_id]['co']['phatsinh'])?$data_additional[$account->account_id]['co']['phatsinh']:0;
+
+        $hieu=$nodauky[$account->account_id]-$codauky[$account->account_id];
+        $tongnodauky[$account->account_id] = $hieu>0?$hieu:null;
+        $tongcodauky[$account->account_id] = $hieu<0?abs($hieu):null;
+
+        $tong=$nodauky[$account->account_id]+$nophatsinh[$account->account_id]-$codauky[$account->account_id]-$cophatsinh[$account->account_id];
+        $tongnocuoiky[$account->account_id] = $tong>0?$tong:null;
+        $tongcocuoiky[$account->account_id] = $tong<0?abs($tong):null;
+
+        if ($account->account_number=='511') {
+            $dauky_1=0;
+            $cuoiky_1=$cophatsinh[$account->account_id];
+        }
+        if ($account->account_number=='632') {
+            $dauky_4=0;
+            $cuoiky_4=$cophatsinh[$account->account_id];
+        }
+        if ($account->account_number=='515') {
+            $dauky_6=0;
+            $cuoiky_6=$cophatsinh[$account->account_id];
+        }
+        if ($account->account_number=='635') {
+            $dauky_7=0;
+            $cuoiky_7=$cophatsinh[$account->account_id];
+        }
+        if ($account->account_number=='642') {
+            $dauky_8=0;
+            $cuoiky_8=$cophatsinh[$account->account_id];
+        }
+        if ($account->account_number=='711') {
+            $dauky_10=0;
+            $cuoiky_10=$cophatsinh[$account->account_id];
+        }
+        if ($account->account_number=='811') {
+            $dauky_11=0;
+            $cuoiky_11=$cophatsinh[$account->account_id];
+        }
+        if ($account->account_number=='821') {
+            $dauky_14=0;
+            $cuoiky_14=$cophatsinh[$account->account_id];
+        }
+   }
+
+   $dauky_3=$dauky_1-$dauky_2;
+   $cuoiky_3=$cuoiky_1-$cuoiky_2;
+   $dauky_5=$dauky_3-$dauky_4;
+   $cuoiky_5=$cuoiky_3-$cuoiky_4;
+   $dauky_9=$dauky_5+$dauky_6-$dauky_7-$dauky_8;
+   $cuoiky_9=$cuoiky_5+$cuoiky_6-$cuoiky_7-$cuoiky_8;
+   $dauky_12=$dauky_10-$dauky_11;
+   $cuoiky_12=$cuoiky_10-$cuoiky_11;
+   $dauky_13=$dauky_9+$dauky_12;
+   $cuoiky_13=$cuoiky_9+$cuoiky_12;
+   $dauky_15=$dauky_13-$dauky_14;
+   $cuoiky_15=$cuoiky_13-$cuoiky_14;
+
+   ?>
+   <tbody>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix text-center">1</td>
+            <td class="fix">Doanh thu bán hàng và cung cấp dịch vụ</td>
+            <td class="fix text-center">01</td>
+            <td class="fix text-center"></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($cuoiky_1) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($dauky_1) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix text-center">2</td>
+            <td class="fix">Các khoản giảm trừ doanh thu</td>
+            <td class="fix text-center">02</td>
+            <td class="fix text-center"></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($cuoiky_2) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($dauky_2) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr" style="font-weight:bold">
+            <td class="fix text-center">3</td>
+            <td class="fix">Doanh thu thuần về bán hàng và cung cấp dịch vụ (10 = 01 - 02)</td>
+            <td class="fix text-center">10</td>
+            <td class="fix text-center"></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($cuoiky_3) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($dauky_3) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix text-center">4</td>
+            <td class="fix">Giá vốn hàng bán</td>
+            <td class="fix text-center">11</td>
+            <td class="fix text-center"></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($cuoiky_4) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($dauky_4) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr" style="font-weight:bold">
+            <td class="fix text-center">5</td>
+            <td class="fix">Lợi nhuận gộp về bán hàng và cung cấp dịch vụ (20 = 10 - 11)</td>
+            <td class="fix text-center">20</td>
+            <td class="fix text-center"></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($cuoiky_5) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($dauky_5) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix text-center">6</td>
+            <td class="fix">Doanh thu hoạt động tài chính</td>
+            <td class="fix text-center">21</td>
+            <td class="fix text-center"></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($cuoiky_6) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($dauky_6) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix text-center">7</td>
+            <td class="fix">Chi phí tài chính</td>
+            <td class="fix text-center">22</td>
+            <td class="fix text-center"></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($cuoiky_7) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($dauky_7) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix text-center"></td>
+            <td class="fix">     - Trong đó: Chi phí lãi vay</td>
+            <td class="fix text-center">23</td>
+            <td class="fix text-center"></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($cuoiky_7) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($dauky_7) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix text-center">8</td>
+            <td class="fix">Chi phí quản lý kinh doanh</td>
+            <td class="fix text-center">24</td>
+            <td class="fix text-center"></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($cuoiky_8) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($dauky_8) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr" style="font-weight:bold">
+            <td class="fix text-center">9</td>
+            <td class="fix">Lợi nhuận thuần từ hoạt động kinh doanh (30 = 20 + 21 - 22 – 24)</td>
+            <td class="fix text-center">30</td>
+            <td class="fix text-center"></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($cuoiky_9) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($dauky_9) ?></td>
+        </tr>    
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix text-center">10</td>
+            <td class="fix">Thu nhập khác</td>
+            <td class="fix text-center">31</td>
+            <td class="fix text-center"></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($cuoiky_10) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($dauky_10) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix text-center">11</td>
+            <td class="fix">Chi phí khác</td>
+            <td class="fix text-center">32</td>
+            <td class="fix text-center"></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($cuoiky_11) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($dauky_11) ?></td>
+        </tr>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr" style="font-weight:bold">
+            <td class="fix text-center">12</td>
+            <td class="fix">Lợi nhuận khác (40 = 31 - 32)</td>
+            <td class="fix text-center">40</td>
+            <td class="fix text-center"></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($cuoiky_12) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($dauky_12) ?></td>
+        </tr>  
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr" style="font-weight:bold">
+            <td class="fix text-center">13</td>
+            <td class="fix">Tổng lợi nhuận kế toán trước thuế  (50 = 30 + 40)</td>
+            <td class="fix text-center">50</td>
+            <td class="fix text-center"></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($cuoiky_13) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($dauky_13) ?></td>
+        </tr>  
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr">
+            <td class="fix text-center">14</td>
+            <td class="fix">Chi phí thuế TNDN</td>
+            <td class="fix text-center">51</td>
+            <td class="fix text-center"></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($cuoiky_14) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($dauky_14) ?></td>
+        </tr>    
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" class="edit_tr" style="font-weight:bold">
+            <td class="fix text-center">15</td>
+            <td class="fix">Lợi nhuận sau thuế thu nhập doanh nghiệp (60 = 50 – 51)</td>
+            <td class="fix text-center">60</td>
+            <td class="fix text-center"></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($cuoiky_15) ?></td>
+            <td class="fix text-right"><?php echo $lib->formatMoney($dauky_15) ?></td>
+        </tr>
+          
+   </tbody>
+</table>
+<?php
+$this->helper('slidePaginator');
+?>
+
+<script type="text/javascript">
+
+var x = "<?php echo $limit ?>";
+$('#chonloc option[value='+x+']').attr('selected','selected');
+
+
+</script>
+
+
+<script type="text/javascript">
+
+var pickerOpay2 = {
+        closeText: "Đóng",
+        currentText: "Hiện tại",
+        nextText: "Tiếp",
+        prevText: "Quay lại",
+        monthNames: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        monthNamesShort: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        dayNames: ["Chủ nhật", "Thứ hai", "Thứ ba", "Thứ tư", "Thứ năm", "Thứ sáu", "Thứ bảy"],
+        dayNamesShort: ["CN", "T2", "T3", "T4", "T5", "T6", "T7"],
+        dayNamesMin: ["CN", "T2", "T3", "T4", "T5", "T6", "T7"],
+        dateFormat: 'dd-mm-yy',
+        changeMonth: true,
+        changeYear: true,
+        yearRange: "-100:+0",
+        firstDay: 1,
+        isRTL: false,
+        showButtonPanel: true
+    }; 
+    $(".ngay").datepicker(pickerOpay2);
+
+
+var pickerOpts3 = {
+        closeText: "Đóng",
+        currentText: "Hiện tại",
+        nextText: "Tiếp",
+        prevText: "Quay lại",
+        monthNames: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+        "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        monthNamesShort: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+        "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        dayNames: ["Chủ nhật", "Thứ hai", "Thứ ba", "Thứ tư", "Thứ năm",
+        "Thứ sáu", "Thứ bảy"],
+        dayNamesShort: ["CN", "T2", "T3", "T4", "T5",
+        "T6", "T7"],
+        dayNamesMin: ["CN", "T2", "T3", "T4", "T5",
+        "T6", "T7"],
+        //defaultDate: "+1w",
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: 'dd-mm-yy',
+        firstDay: 1,
+        showWeek: true,
+        weekHeader: 'Tuần',
+        isRTL: false,
+        showButtonPanel: true,
+        onClose: function(selectedDate) {
+                
+                $( "#ketthuc" ).datepicker( "option", "minDate", selectedDate );
+
+         },
+         
+    };  
+    $("#batdau").datepicker(pickerOpts3);
+
+    var pickerOpts4 = {
+        closeText: "Đóng",
+        currentText: "Hiện tại",
+        nextText: "Tiếp",
+        prevText: "Quay lại",
+        monthNames: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+        "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        monthNamesShort: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+        "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        dayNames: ["Chủ nhật", "Thứ hai", "Thứ ba", "Thứ tư", "Thứ năm",
+        "Thứ sáu", "Thứ bảy"],
+        dayNamesShort: ["CN", "T2", "T3", "T4", "T5",
+        "T6", "T7"],
+        dayNamesMin: ["CN", "T2", "T3", "T4", "T5",
+        "T6", "T7"],
+        //defaultDate: "+1w",
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: 'dd-mm-yy',
+        firstDay: 1,
+        showWeek: true,
+        weekHeader: 'Tuần',
+        isRTL: false,
+        showButtonPanel: true,
+        onClose: function(selectedDate) {
+                
+                $( "#batdau" ).datepicker( "option", "maxDate", selectedDate );
+                
+         },
+         
+    };  
+    $("#ketthuc").datepicker(pickerOpts4);
+
+    var pickerOpts = {
+        closeText: "Đóng",
+        currentText: "Hiện tại",
+        nextText: "Tiếp",
+        prevText: "Quay lại",
+        monthNames: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+        "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        monthNamesShort: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+        "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        dayNames: ["Chủ nhật", "Thứ hai", "Thứ ba", "Thứ tư", "Thứ năm",
+        "Thứ sáu", "Thứ bảy"],
+        dayNamesShort: ["CN", "T2", "T3", "T4", "T5",
+        "T6", "T7"],
+        dayNamesMin: ["CN", "T2", "T3", "T4", "T5",
+        "T6", "T7"],
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: 'mm/yy',
+        firstDay: 1,
+        isRTL: false,
+        showButtonPanel: true,
+        onClose: function() {
+                $("#chonngaytao").change();
+         },
+         
+    };  
+    $("#chonngaytao").datepicker(pickerOpts);
+
+    $("#chonngaytao").change(function(){
+        var month = parseInt($("#ui-datepicker-div .ui-datepicker-month :selected").val());
+        var year = parseInt($("#ui-datepicker-div .ui-datepicker-year :selected").val());
+        $(this).datepicker('setDate', new Date(year, month, 1));
+
+        var firstDay = new Date(year, month, 1);
+
+        $('#batdau').datepicker("setDate", firstDay );
+    });
+
+    var pickerOpts5 = {
+        closeText: "Đóng",
+        currentText: "Hiện tại",
+        nextText: "Tiếp",
+        prevText: "Quay lại",
+        monthNames: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+        "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        monthNamesShort: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+        "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        dayNames: ["Chủ nhật", "Thứ hai", "Thứ ba", "Thứ tư", "Thứ năm",
+        "Thứ sáu", "Thứ bảy"],
+        dayNamesShort: ["CN", "T2", "T3", "T4", "T5",
+        "T6", "T7"],
+        dayNamesMin: ["CN", "T2", "T3", "T4", "T5",
+        "T6", "T7"],
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: 'mm/yy',
+        firstDay: 1,
+        isRTL: false,
+        showButtonPanel: true,
+        onClose: function() {
+                $("#chonngaytaobatdau").change();
+         },
+         
+    };  
+    $("#chonngaytaobatdau").datepicker(pickerOpts5);
+
+    $("#chonngaytaobatdau").change(function(){
+        var month = parseInt($("#ui-datepicker-div .ui-datepicker-month :selected").val());
+        var year = parseInt($("#ui-datepicker-div .ui-datepicker-year :selected").val());
+        $(this).datepicker('setDate', new Date(year, month, 1));
+
+        var lastDay = new Date(year, month+1, 0);
+        $('#ketthuc').datepicker("setDate", lastDay );
+    });
+
+
+    var pickerOpts4 = {
+        closeText: "Đóng",
+        currentText: "Hiện tại",
+        nextText: "Tiếp",
+        prevText: "Quay lại",
+        monthNames: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+        "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        monthNamesShort: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+        "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        dayNames: ["Chủ nhật", "Thứ hai", "Thứ ba", "Thứ tư", "Thứ năm",
+        "Thứ sáu", "Thứ bảy"],
+        dayNamesShort: ["CN", "T2", "T3", "T4", "T5",
+        "T6", "T7"],
+        dayNamesMin: ["CN", "T2", "T3", "T4", "T5",
+        "T6", "T7"],
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: 'mm/yy',
+        firstDay: 1,
+        isRTL: false,
+        showButtonPanel: true,
+        onClose: function() {
+            var month = parseInt($("#ui-datepicker-div .ui-datepicker-month :selected").val());
+            var year = parseInt($("#ui-datepicker-div .ui-datepicker-year :selected").val());
+            $(this).datepicker('setDate', new Date(year, month, 1));
+         },
+         
+    };  
+    $("#ngaycapnhat").datepicker(pickerOpts4);
+
+
+    $(".monthPicker").focus(function () {
+        $(".ui-datepicker-calendar").hide();
+        $("#ui-datepicker-div").position({
+            my: "center top",
+            at: "center bottom",
+            of: $(this)
+        });    
+    });
+
+
+</script>
+

@@ -1,0 +1,2415 @@
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
+
+<?php
+$url_order = 'ASC';
+if ($order_by == 'service_buy_id')
+    $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+elseif ($order_by == 'service_buy_number')
+    $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+elseif ($order_by == 'service_buy_date')
+    $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+elseif ($order_by == 'service_buy_document_date')
+    $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+elseif ($order_by == 'service_buy_document_number')
+  $url_order = $order == 'ASC' ? 'DESC' : 'ASC';
+
+    $i = $sonews*$page-($sonews-1);
+
+?>
+
+<div id="loading"></div>
+<div id="winpopup"></div>
+<section class="content-header">
+    <h1>MUA HÀNG DỊCH VỤ</h1>
+  <ol class="breadcrumb">
+    <li><a href="<?php echo $this->url('admin') ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li class="active"><a href="<?php echo $this->url('servicebuy') ?>">Mua hàng dịch vụ</a></li>
+  </ol>
+</section>
+<div id="content" style="padding:5px;">
+
+    <div class="search-box">
+        
+        <input type="search" id="search-input" name="s" value="<?php echo isset($keyword)?$keyword:null; ?>" placeholder="Tìm kiếm">
+        <input type="button" name="" id="search-submit" class="button-search" value="Tìm kiếm" onclick="searchall('<?php echo $page ?>','<?php echo $order_by ?>','<?php echo $order ?>');">
+        <?php if(!isset($disable_control)){ ?>
+        <div class="add-box"><a class="add_button" id="btnExport" ><i class="fa fa-download"></i> Xuất</a></div>
+        <div class="add-box"><a class="add_button" id="import_excel" href="<?= $this->url('servicebuy/import')?>"><i class="fa fa-upload"></i> Nhập</a></div>
+        <div class="add-box"><a class="add_button" onClick="add_click();"><i class="fa fa-plus"></i> Thêm mới</a></div>
+        <?php } ?>
+    </div>
+    <div class="tablenav top">
+        <?php if(!isset($disable_control)){ ?>
+        <div class="alignleft actions">
+            <select name="action" id="action">
+                <option value="-1" selected="selected">Chọn</option>
+                
+                <option value="delete">Xóa</option>
+            </select>
+            <input type="button" name="" id="doaction" class="button action" value="Áp dụng" onclick="action();">
+        </div>
+        <?php } ?>
+        <div class="alignleft actions">
+        <select name="m" id="chonloc">
+          <option  value="18446744073709">Hiển thị tất cả</option>
+          <option value="50">Hiển thị 50 giá trị</option>
+                <option value="100">Hiển thị 100 giá trị</option>
+                <option value="150">Hiển thị 150 giá trị</option>
+                <option selected="selected" value="200">Hiển thị 200 giá trị</option>
+        </select>
+        <input type="button" name="" id="post-query-submit" class="button" value="Chọn lọc" onclick="searchall('<?php echo $page ?>','<?php echo $order_by ?>','<?php echo $order ?>');">                               
+        </div>
+
+      </div>
+
+</div>
+
+
+<table class="table_data" id="tblExport">
+<thead>
+    <tr>
+        <th class="fix"><input type="checkbox" onclick="checkall('checkbox', this)" name="checkall"/></th>
+        <th  class="fix" >
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','service_buy_id','<?php echo $url_order ?>')">STT <?php if ($order_by == 'service_buy_id'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th  class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','service_buy_document_number','<?php echo $url_order ?>')">Số CT <?php if ($order_by == 'service_buy_document_number'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th  class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','service_buy_document_date','<?php echo $url_order ?>')">Ngày CT <?php if ($order_by == 'service_buy_document_date'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th  class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','service_buy_number','<?php echo $url_order ?>')">Số HĐ <?php if ($order_by == 'service_buy_number'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th  class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','service_buy_date','<?php echo $url_order ?>')">Ngày HĐ <?php if ($order_by == 'service_buy_date'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th  class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','service_buy_comment','<?php echo $url_order ?>')">Nội dung <?php if ($order_by == 'service_buy_comment'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th  class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','customer_name','<?php echo $url_order ?>')">NCC <?php if ($order_by == 'customer_name'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th  class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','service_buy_money','<?php echo $url_order ?>')">Tiền hàng <?php if ($order_by == 'service_buy_money'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th  class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','service_buy_discount','<?php echo $url_order ?>')">Chiết khấu <?php if ($order_by == 'service_buy_discount'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <th  class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','service_buy_tax_vat','<?php echo $url_order ?>')">Thuế GTGT <?php if ($order_by == 'service_buy_tax_vat'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        
+        <th  class="fix">
+            <a class="sort <?php echo $order ?>" onclick="sapxep('<?php echo $page ?>','service_buy_money','<?php echo $url_order ?>')">Tổng cộng <?php if ($order_by == 'service_buy_money'): ?><i class="icon-chevron-<?php echo $url_order == 'ASC' ? 'down' : 'up' ?>"></i><?php endif; ?></a>
+        </th>
+        <?php if(!isset($disable_control)){ ?>
+        <th class="fix"></th>
+        <?php } ?>
+    </tr>
+    
+   </thead>
+   <tbody>
+    <?php $tong=0; $tongtien=0; $tongck=0; $tongvat=0; 
+    foreach ($service_buys as $service_buy) : 
+      $tien = $service_buy->service_buy_money-$service_buy->service_buy_discount+$service_buy->service_buy_tax_vat;
+      $tongtien += $service_buy->service_buy_money;
+      $tongck += $service_buy->service_buy_discount;
+      $tongvat += $service_buy->service_buy_tax_vat;
+      $tong += $tien;
+    ?>
+        <tr onClick="HighLightTR(this,'#4d90fe','cc3333');" id="<?php echo $service_buy->service_buy_id ?>" class="edit_tr" >
+            
+            <td>
+                <input name="check[]" type="checkbox" class="checkbox" value="<?php echo $service_buy->service_buy_id ?>">
+            </td>
+            
+            <td  class="fix"><?php echo $i++; ?></td>
+            <td class="fix" id="service_buy_document_number_<?php echo $service_buy->service_buy_id; ?>"><?php echo $service_buy->service_buy_document_number; ?></td>
+            <td class="fix" id="service_buy_document_date2_<?php echo $service_buy->service_buy_id; ?>"><?php echo $lib->hien_thi_ngay_thang($service_buy->service_buy_document_date); ?></td>
+            <td class="fix" id="service_buy_number_<?php echo $service_buy->service_buy_id; ?>"><?php echo $service_buy->service_buy_number; ?></td>
+            <td class="fix" id="service_buy_date2_<?php echo $service_buy->service_buy_id; ?>"><?php echo $lib->hien_thi_ngay_thang($service_buy->service_buy_date); ?></td>
+            <td class="fix" id="service_buy_comment_<?php echo $service_buy->service_buy_id; ?>"><?php echo $service_buy->service_buy_comment; ?></td>
+            <td class="fix" data="<?php echo $service_buy->service_buy_customer; ?>" id="service_buy_customer_<?php echo $service_buy->service_buy_id; ?>"><?php echo $service_buy->customer_name; ?></td>
+            <td class="fix text-right" id="service_buy_money_<?php echo $service_buy->service_buy_id; ?>"><?php echo $lib->formatMoney($service_buy->service_buy_money); ?></td>
+            <td class="fix text-right" id="service_buy_discount_<?php echo $service_buy->service_buy_id; ?>"><?php echo $lib->formatMoney($service_buy->service_buy_discount); ?></td>
+            <td class="fix text-right" id="service_buy_tax_vat_<?php echo $service_buy->service_buy_id; ?>"><?php echo $lib->formatMoney($service_buy->service_buy_tax_vat); ?></td>
+            <td class="fix text-right" id="service_buy_total_<?php echo $service_buy->service_buy_id; ?>"><?php echo $lib->formatMoney($tien); ?></td>
+
+            <td style="display:none" class="fix" id="customer_company_<?php echo $service_buy->service_buy_id; ?>"><?php echo $service_buy->customer_company; ?></td>
+            <td style="display:none" class="fix" id="customer_mst_<?php echo $service_buy->service_buy_id; ?>"><?php echo $service_buy->customer_mst; ?></td>
+            <td style="display:none" class="fix" id="customer_address_<?php echo $service_buy->service_buy_id; ?>"><?php echo $service_buy->customer_address; ?></td>
+            <td style="display:none" class="fix" id="service_buy_document_date_<?php echo $service_buy->service_buy_id; ?>"><?php echo date('Y-m-d',$service_buy->service_buy_document_date); ?></td>
+            <td style="display:none" class="fix" id="service_buy_date_<?php echo $service_buy->service_buy_id; ?>"><?php echo date('Y-m-d',$service_buy->service_buy_date); ?></td>
+            <td style="display:none" class="fix" id="service_buy_additional_date_<?php echo $service_buy->service_buy_id; ?>"><?php echo date('Y-m-d',$service_buy->service_buy_additional_date); ?></td>
+            <td style="display:none" class="fix" id="service_buy_bill_number_<?php echo $service_buy->service_buy_id; ?>"><?php echo $service_buy->service_buy_bill_number; ?></td>
+            <td style="display:none" class="fix" id="service_buy_contract_number_<?php echo $service_buy->service_buy_id; ?>"><?php echo $service_buy->service_buy_contract_number; ?></td>
+            <td style="display:none" class="fix" id="service_buy_origin_doc_<?php echo $service_buy->service_buy_id; ?>"><?php echo $service_buy->service_buy_origin_doc; ?></td>
+            <td style="display:none" class="fix" id="service_buy_money_type_<?php echo $service_buy->service_buy_id; ?>"><?php echo $service_buy->service_buy_money_type; ?></td>
+            <td style="display:none" class="fix" id="service_buy_money_rate_<?php echo $service_buy->service_buy_id; ?>"><?php echo $service_buy->service_buy_money_rate; ?></td>
+            <td style="display:none" class="fix" id="service_buy_symbol_<?php echo $service_buy->service_buy_id; ?>"><?php echo $service_buy->service_buy_symbol; ?></td>
+            <td style="display:none" class="fix" id="service_buy_type_<?php echo $service_buy->service_buy_id; ?>"><?php echo $service_buy->service_buy_type; ?></td>
+            
+            <?php if(!isset($disable_control)){ ?>
+            <td class="fix text-right">
+                <i class="fa fa-edit edit_service" title="Sửa" data="<?php echo $service_buy->service_buy_id ?>"></i>
+                <i class="fa fa-trash" title="Xóa" onclick="del(<?php echo $service_buy->service_buy_id ?>)"></i>
+            </td>
+            <?php } ?>
+        </tr>
+
+
+    <?php endforeach; ?>
+        <tr style="font-weight:bold">
+          <td colspan="8" class="fix">Tổng cộng</td>
+          <td  class="fix text-right"><?php echo $lib->formatMoney($tongtien); ?></td>
+          <td  class="fix text-right"><?php echo $lib->formatMoney($tongck); ?></td>
+          <td  class="fix text-right"><?php echo $lib->formatMoney($tongvat); ?></td>
+          <td  class="fix text-right"><?php echo $lib->formatMoney($tong); ?></td>
+          <td  class="fix text-right"></td>
+        </tr>
+     
+   </tbody>
+</table>
+<?php
+$this->helper('slidePaginator');
+?>
+<div id="add_new_item">
+  <table>
+    <tr>
+      <td>Danh mục</td>
+      <td>
+        <select id="items_type"  name="items_type" >
+          <option value="2">Dịch vụ</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>Mã dịch vụ</td>
+      <td><input  type="text" id="items_code"  name="items_code"></td>
+    </tr>
+    <tr>
+      <td>Tên dịch vụ</td>
+      <td><input  type="text" id="items_name"  name="items_name"></td>
+    </tr>
+    <tr>
+      <td>Đơn vị tính</td>
+      <td><input   type="text" id="items_unit"  name="items_unit"></td>
+    </tr>
+    <tr>
+      <td>Thuế suất</td>
+      <td><input   type="text" id="items_tax"  name="items_tax"></td>
+    </tr>
+  </table>
+  <input   type="text" id="items_stuff"  name="items_stuff">
+  <input type="hidden" id="rowIndex_item">
+</div>
+<div id="show_item"></div>
+<div class="add-field">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+          <!-- general form elements -->
+          <div class="box box-primary">
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form id="add_service_buy" role="form" method="post" action="" enctype="multipart/form-data">
+              <div class="row">
+                <div class="col-md-8 col-xs-6">
+                  <fieldset class="groupbox">
+                    <legend class="nopadding"><span><h6>Thông tin chung</h3></span></legend>
+                    <div class="box-body nopadding">
+                      <div class="form-group col-xs-3 nopadding">
+                        <select id="service_buy_type" name="service_buy_type">
+                          <option value="1">Chi phí mua hàng</option>
+                          <option value="2">Khác</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="box-body nopadding">
+                      <div class="form-group col-xs-3 nopadding">
+                        <label for="service_buy_bill_number">Đơn hàng số</label>
+                        <button type="button" style="margin-top: -10px;" class="btn" id="get_bill_number"><i class="fa fa-search"></i></button>
+                        <input style="width:100px" type="text" id="service_buy_bill_number"  name="service_buy_bill_number" tabindex="1" autocomplete="off" autofocus >
+                        
+                      </div>
+                      <div class="form-group col-xs-3 nopadding">
+                        <label for="service_buy_contract_number">Hợp đồng số</label>
+                        <button type="button" style="margin-top: -10px;" class="btn" id="get_contract_number"><i class="fa fa-search"></i></button>
+                        <input style="width:100px" type="text" id="service_buy_contract_number"  name="service_buy_contract_number" tabindex="2" autocomplete="off" >
+                        
+                      </div>
+                    </div>
+                    <div class="box-body nopadding">
+                      <div class="form-group nopadding">
+                        <label for="service_buy_customer">Nhà cung cấp </label>
+                        <button type="button" style="margin-top: -10px;" class="btn" id="get_customer" onClick="javascript:window.open('<?php echo $this->url('supplier') ?>','_blank','location=yes,height=600,width=750,scrollbars=yes,status=yes')"><i class="fa fa-search"></i></button>
+                        <input style="width:20%" type="text" id="service_buy_customer"  name="service_buy_customer" tabindex="3"  required="required" placeholder="Mã NCC" autocomplete="off" >
+                        <ul id="customer_list_id"></ul>
+                        <input style="width:65%" type="text" id="customer_company"  name="customer_company" tabindex="4"  required="required" placeholder="Tên NCC" autocomplete="off" >
+                      </div>
+                    </div>
+                    <div class="box-body nopadding">
+                      <div class="form-group col-xs-3 nopadding">
+                        <label for="customer_mst">Mã số thuế </label>
+                        <input style="width:90%" type="text" id="customer_mst"  name="customer_mst" tabindex="5" autocomplete="off" >
+                      </div>
+                      <div class="form-group col-xs-9 nopadding">
+                        <label for="customer_address">Địa chỉ </label>
+                        <input style="width:90%" type="text" id="customer_address"  name="customer_address" tabindex="6" autocomplete="off" >
+                      </div>
+                    </div>
+                    <div class="box-body nopadding">
+                      <div class="form-group nopadding">
+                        <label for="service_buy_comment">Diễn giải </label>
+                        <input style="width:93%" type="text" id="service_buy_comment"  name="service_buy_comment" tabindex="7"  required="required" autocomplete="off" >
+                      </div>
+                    </div>
+                    <div class="box-body nopadding">
+                      <div class="form-group nopadding">
+                        <label for="service_buy_comment">Kèm theo </label>
+                        <input style="width:70%" type="text" id="service_buy_origin_doc"  name="service_buy_origin_doc" tabindex="8"autocomplete="off" > chứng từ gốc
+                      </div>
+                    </div>
+                  </fieldset>
+                  
+                  <!-- /.box-body -->
+                  
+                </div>
+                <div class="col-md-4 col-xs-6">
+                  <fieldset class="groupbox">
+                    <legend class="nopadding"><span><h6>Chứng từ</h3></span></legend>
+                    <div class="box-body nopadding">
+                      <div class="form-group col-xs-4 nopadding">
+                        <label for="service_buy_document_date">Ngày chứng từ </label>
+                      </div>
+                      <div class="form-group col-xs-8 nopadding">
+                        <input type="date" id="service_buy_document_date"  name="service_buy_document_date" tabindex="9" required="required" autocomplete="off" >
+                      </div>
+                    </div>
+                    <div class="box-body nopadding">
+                      <div class="form-group col-xs-4 nopadding">
+                        <label for="service_buy_additional_date">Ngày hạch toán </label>
+                      </div>
+                      <div class="form-group col-xs-8 nopadding">
+                        <input type="date" id="service_buy_additional_date"  name="service_buy_additional_date" tabindex="10" required="required" autocomplete="off" >
+                      </div>
+                    </div>
+                    <div class="box-body nopadding">
+                      <div class="form-group col-xs-4 nopadding">
+                        <label for="service_buy_document_number">Số chứng từ </label>
+                      </div>
+                      <div class="form-group col-xs-8 nopadding">
+                        <input type="text" id="service_buy_document_number"  name="service_buy_document_number" tabindex="11" required="required" autocomplete="off" >
+                      </div>
+                    </div>
+                    <div class="box-body nopadding">
+                      <div class="form-group col-xs-4 nopadding">
+                        <label for="service_buy_date">Ngày hóa đơn </label>
+                      </div>
+                      <div class="form-group col-xs-8 nopadding">
+                        <input type="date" id="service_buy_date"  name="service_buy_date" tabindex="12" autocomplete="off" >
+                      </div>
+                    </div>
+                    <div class="box-body nopadding">
+                      <div class="form-group col-xs-4 nopadding">
+                        <label for="service_buy_symbol">Ký hiệu HĐ </label>
+                      </div>
+                      <div class="form-group col-xs-8 nopadding">
+                        <input type="text" id="service_buy_symbol"  name="service_buy_symbol" tabindex="13" autocomplete="off" >
+                      </div>
+                    </div>
+                    <div class="box-body nopadding">
+                      <div class="form-group col-xs-4 nopadding">
+                        <label for="service_buy_number">Số hóa đơn </label>
+                      </div>
+                      <div class="form-group col-xs-8 nopadding">
+                        <input type="text" id="service_buy_number"  name="service_buy_number" tabindex="14" autocomplete="off" >
+                      </div>
+                    </div>
+                  </fieldset>
+                  <!-- /.box-body -->
+                  <div class="col-md-12">
+                    <div class="box-body col-md-6">
+                    </div>
+                    <div class="box-body col-md-6 nopadding">
+                      <div class="form-group col-xs-6 nopadding">
+                        <label for="service_buy_money_type">Loại tiền </label>
+                        <select id="service_buy_money_type" name="service_buy_money_type">
+                          <option value="1">VNĐ</option>
+                          <option value="2">USD</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-xs-6 nopadding">
+                        <label for="service_buy_money_rate">Tỷ giá </label>
+                        <input style="width:100%" type="text" class="numbers" id="service_buy_money_rate"  name="service_buy_money_rate" tabindex="15" required="required" autocomplete="off" >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+              <div class="col-md-12">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                  <li class="nav-item active">
+                    <a class="nav-link active" data-toggle="tab" href="#item" role="tab">1. Hàng hóa</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#tax" role="tab">2. Thuế</a>
+                  </li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                  <div class="tab-pane active" id="item" role="tabpanel">
+                    <div class="table-container">
+                      <table id="dataTable0" class="dataTable">
+                        <thead>
+                          <tr>
+                            <th class="width-3">STT</th>
+                            <th class="width-10">Mã dịch vụ</th>
+                            <th>Tên dịch vụ</th>
+                            <th class="width-7">TK nợ</th>
+                            <th class="width-7">TK có</th>
+                            <th class="width-7">ĐVT</th>
+                            <th class="width-7">Số lượng</th>
+                            <th class="width-10">Đơn giá</th>
+                            <th>Thành tiền</th>
+                            <th>Tổng giá trị</th>
+                            <th style="width:10px"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="width-3">1</td>
+                            <td class="width-10">
+                              <input type="text" name="service_buy_item[]" class="service_buy_item left" required="required" placeholder="Nhập mã hoặc tên" autocomplete="off">
+                              <button type="button" class="find_item right" title="Danh mục"><i class="fa fa-search"></i></button>
+                            </td>
+                            <td>
+                              <input type="text" name="service_buy_item_name[]" class="service_buy_item_name" required="required" autocomplete="off">
+                              <ul class="name_list_id"></ul>
+                            </td>
+                            
+                            <td class="width-7">
+                              <input type="text" name="service_buy_item_debit[]" class="service_buy_item_debit  keep-val" required="required" autocomplete="off">
+                              <ul class="name_list_id_2"></ul>
+                            </td>
+                            <td class="width-7">
+                              <input type="text" name="service_buy_item_credit[]" class="service_buy_item_credit keep-val" required="required" autocomplete="off">
+                              <ul class="name_list_id_3"></ul>
+                            </td>
+                            <td class="width-7"><input type="text" name="service_buy_item_unit[]" class="service_buy_item_unit" required="required" autocomplete="off"></td>
+                            <td class="width-7"><input type="text" name="service_buy_item_number[]" class="service_buy_item_number text-right" required="required" autocomplete="off"></td>
+                            <td class="width-10"><input type="text" name="service_buy_item_price[]" class="service_buy_item_price numbers text-right" required="required" autocomplete="off"></td>
+                            <td><input type="text" name="service_buy_item_money[]" class="service_buy_item_money numbers text-right" required="required" autocomplete="off"></td>
+                            <td><input disabled type="text" name="service_buy_item_total[]" class="service_buy_item_total numbers text-right" required="required" autocomplete="off"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <i class="fa fa-plus" title="Thêm dòng mới"></i> F2: Thêm dòng
+                    <i class="fa fa-minus" title="Xóa dòng cuối cùng"></i> F3: Xóa dòng
+                    
+                  </div>
+                  <div class="tab-pane" id="tax" role="tabpanel">
+                    <div class="table-container">
+                      <table id="dataTable1" class="dataTable">
+                        <thead>
+                          <tr>
+                            <th class="width-3">STT</th>
+                            <th class="width-10">Mã dịch vụ</th>
+                            <th>Tên dịch vụ</th>
+                            <th>Thuế GTGT</th>
+                            <th>Tiền thuế GTGT</th>
+                            <th>TK thuế GTGT</th>
+                            <th style="width:10px"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="width-3">1</td>
+                            <td class="width-10"><input type="text" name="service_buy_item2[]" class="service_buy_item2" disabled required="required" autocomplete="off"></td>
+                            <td><input type="text" name="service_buy_item_name2[]" class="service_buy_item_name2" disabled required="required" autocomplete="off"></td>
+                            <td><input type="text" name="service_buy_item_tax_vat_percent[]" class="service_buy_item_tax_vat_percent text-right"  autocomplete="off"></td>
+                            <td><input type="text" name="service_buy_item_tax_vat[]" class="service_buy_item_tax_vat numbers text-right"  autocomplete="off"></td>
+                            <td>
+                              <input type="text" name="service_buy_item_tax_vat_debit[]" class="service_buy_item_tax_vat_debit"  autocomplete="off">
+                              <ul class="name_list_id_4"></ul>
+                            </td>
+                            
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <i class="fa fa-plus" title="Thêm dòng mới"></i> F2: Thêm dòng
+                    <i class="fa fa-minus" title="Xóa dòng cuối cùng"></i> F3: Xóa dòng
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="right">
+                  <table class="table_data">
+                    <tr>
+                      <td>Tổng tiền hàng</td>
+                      <th class="text-right"><span id="money">0</span></th>
+                      <td>Tiền thuế GTGT</td>
+                      <th class="text-right"><span id="vat">0</span></th>
+                      <td>Tổng thanh toán</td>
+                      <th class="text-right"><span id="total">0</span></th>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              <?php if(!isset($disable_control)){ ?>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="box-footer">
+                    <input type="hidden" readonly id="yes" name="yes" required="required" >
+                    <button type="submit" class="btn btn-primary" tabindex="16"><i class="fa fa-save"></i> Hoàn thành</button>
+                    <button type="reset" class="btn" tabindex="17"><i class="fa fa-undo"></i>  Nhập lại</button>
+                  </div>
+                  <div class="box-footer">
+                    <div id="error" class="error"><?php echo isset($error) ? $error : null; ?></div>
+                  </div>
+                </div>
+              </div>
+              <?php } ?>
+            </form>
+          </div>
+          <!-- /.box -->
+
+        </div>
+        <!--/.col (left) -->
+        
+      </div>
+      <!-- /.row -->
+       
+</div>
+
+<div style="display:none" id="lasted"></div>
+
+<script type="text/javascript">
+$('.add-field').hide();  
+
+$('html').click(function(e) {
+  $('.name_list_id').slideUp(200);
+  $('.name_list_id_2').slideUp(200);
+  $('.name_list_id_3').slideUp(200);
+  $('.name_list_id_4').slideUp(200);
+  $('#customer_list_id').slideUp(200);
+
+  $('.service_buy_item').each(function(){
+      if ($(this).attr('data')=="" || $(this).attr('data')==undefined) {
+          $(this).val("");
+          $('.service_buy_item2:eq('+$(this).closest('tr').index()+')').val("");
+      }
+  });
+
+});
+
+$('.edit_service').click(function(e){
+    var id = $(this).attr('data');
+
+    $('.add-field input').each(function(){
+      var name = $(this).attr('id');
+      $(this).val($('#'+name+'_'+id).text());
+      $(this).attr('data',$('#'+name+'_'+id).attr('data'));
+    });
+
+    $('.add-field select').each(function(){
+      var name = $(this).attr('id');
+      var sl = $('#'+name+'_'+id).text();
+      $("#"+name+" option[value=" + sl + "]").attr('selected', 'selected');
+    });
+
+    $('#money').html($('#service_buy_money_'+id).text());
+    $('#vat').html($('#service_buy_tax_vat_'+id).text());
+    $('#total').html($('#service_buy_total_'+id).text());
+    //alert(cost_code);
+    $('#yes').val(id);
+
+    $('#dataTable0 tbody tr').remove();
+    $('#dataTable1 tbody tr').remove();
+    $.ajax({
+      url: '<?php echo BASE_URL ?>/servicebuy/getitemadd',
+      type: 'POST',
+      data: {service_buy:id},
+      success:function(answer){
+          //alert(data);
+          var data = JSON.parse(answer);
+          $('#dataTable0 tbody').append(data.hang);
+          $('#dataTable1 tbody').append(data.thue);
+
+          $('input').keyup(function (e) {
+              if (e.which == 39) { // right arrow
+                $(this).closest('td').next().find('input').focus();
+
+              } else if (e.which == 37) { // left arrow
+                $(this).closest('td').prev().find('input').focus();
+
+              } else if (e.which == 40) { // down arrow
+                $(this).closest('tr').next().find('td:eq(' + $(this).closest('td').index() + ')').find('input').focus();
+
+              } else if (e.which == 38) { // up arrow
+                $(this).closest('tr').prev().find('td:eq(' + $(this).closest('td').index() + ')').find('input').focus();
+              }
+            });
+          $('#dataTable0 tbody tr td:nth-child(2) input').keyup(function(){
+            var val = $(this).val();
+            var trIndex = $(this).closest('tr').index();
+            $('#dataTable1 tbody tr:eq('+trIndex+') td:nth-child(2) input').val(val);
+          });
+          $('#dataTable0 tbody tr td:nth-child(3) input').keyup(function(){
+            var val = $(this).val();
+            var trIndex = $(this).closest('tr').index();
+            $('#dataTable1 tbody tr:eq('+trIndex+') td:nth-child(3) input').val(val);
+          });
+
+          $('.numbers').keyup(function(event) {
+              // skip for arrow keys
+            if(event.which >= 37 && event.which <= 40) return;
+            // format number
+            $(this).val(function(index, value) {
+              return value
+                .replace(/[^0-9-.]/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+              ;
+            });
+          });
+
+          $("#service_buy_money_rate").keyup(function(){
+            var rate = parseFloat(get_number(this)) || 0;
+            var tongtienhang = 0;
+            var tongtienthue = 0;
+            $('.service_buy_item_money').each(function(){
+              var rowIndex=$(this).closest('tr').index();
+
+              var price = parseFloat(get_number('.service_buy_item_price:eq('+rowIndex+')')) || 0;
+              var val = parseFloat(get_number('.service_buy_item_number:eq('+rowIndex+')')) || 0;
+              var vat = parseFloat(get_number('.service_buy_item_tax_vat_percent:eq('+rowIndex+')')) || 0;
+
+              $(this).val(roundDecimal(val*price*rate,0));
+              $('.service_buy_item_tax_vat:eq('+rowIndex+')').val(roundDecimal(vat/100*price*val*rate,0));
+              $('.service_buy_item_total:eq('+rowIndex+')').val(roundDecimal(vat/100*price*val*rate,0)+roundDecimal(price*val*rate,0));
+
+              tongtienhang += roundDecimal(val*price*rate,0);
+              tongtienthue += roundDecimal(vat/100*price*val*rate,0);
+            });
+
+            $('#money').html(tongtienhang);
+            $('#vat').html(tongtienthue);
+            $('#total').html(tongtienhang+tongtienthue);
+
+            $('#total').html(function(index, value) {
+              return value
+                .replace(/[^0-9-.]/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+              ;
+            });
+
+            $('#vat').html(function(index, value) {
+              return value
+                .replace(/[^0-9-.]/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+              ;
+            });
+            
+            $('#money').html(function(index, value) {
+              return value
+                .replace(/[^0-9-.]/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+              ;
+            });
+
+            $('.numbers').val(function(index, value) {
+              return value
+                .replace(/[^0-9-.]/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+              ;
+            });
+          });
+
+          $(".service_buy_item_number").keyup(function(){
+            var rowIndex=$(this).closest('tr').index();
+            var price = parseFloat(get_number('.service_buy_item_price:eq('+rowIndex+')')) || 0;
+            var val = parseFloat($(this).val()) || 0;
+            var rate = parseFloat(get_number('#service_buy_money_rate')) || 0;
+            
+            $('.service_buy_item_money:eq('+rowIndex+')').val(roundDecimal(val*price*rate,0));
+
+            var tongtienhang = 0;
+            $('.service_buy_item_money').each(function(){
+              tongtienhang += parseFloat(get_number(this)) || 0;
+            });
+
+            $('#money').html(tongtienhang);
+
+            var vat = parseFloat(get_number('.service_buy_item_tax_vat_percent:eq('+rowIndex+')')) || 0;
+            
+            $('.service_buy_item_tax_vat:eq('+rowIndex+')').val(roundDecimal(vat/100*price*val*rate,0));
+
+            $('.service_buy_item_total:eq('+rowIndex+')').val(roundDecimal(vat/100*price*val*rate,0)+roundDecimal(price*val*rate,0));
+
+            var tongtienthue = 0;
+            $('.service_buy_item_tax_vat').each(function(){
+              tongtienthue += parseFloat(get_number(this)) || 0;
+            });
+
+            $('#vat').html(tongtienthue);
+
+            $('#total').html(tongtienthue+tongtienhang);
+
+            $('#total').html(function(index, value) {
+              return value
+                .replace(/[^0-9-.]/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+              ;
+            });
+
+            $('#vat').html(function(index, value) {
+              return value
+                .replace(/[^0-9-.]/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+              ;
+            });
+            
+            $('#money').html(function(index, value) {
+              return value
+                .replace(/[^0-9-.]/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+              ;
+            });
+
+            $('.numbers').val(function(index, value) {
+              return value
+                .replace(/[^0-9-.]/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+              ;
+            });
+          });
+          $(".service_buy_item_price").keyup(function(){
+            var rowIndex=$(this).closest('tr').index();
+            var val = parseFloat($('.service_buy_item_number:eq('+rowIndex+')').val()) || 0;
+            var price = parseFloat(get_number(this)) || 0;
+            var rate = parseFloat(get_number('#service_buy_money_rate')) || 0;
+            
+            $('.service_buy_item_money:eq('+rowIndex+')').val(roundDecimal(val*price*rate,0));
+
+            var tongtienhang = 0;
+            $('.service_buy_item_money').each(function(){
+              tongtienhang += parseFloat(get_number(this)) || 0;
+            });
+
+            $('#money').html(tongtienhang);
+
+            var vat = parseFloat(get_number('.service_buy_item_tax_vat_percent:eq('+rowIndex+')')) || 0;
+            
+            $('.service_buy_item_tax_vat:eq('+rowIndex+')').val(roundDecimal(vat/100*price*val*rate,0));
+
+            $('.service_buy_item_total:eq('+rowIndex+')').val(roundDecimal(vat/100*price*val*rate,0)+roundDecimal(price*val*rate,0));
+
+            var tongtienthue = 0;
+            $('.service_buy_item_tax_vat').each(function(){
+              tongtienthue += parseFloat(get_number(this)) || 0;
+            });
+
+            $('#vat').html(tongtienthue);
+
+            $('#total').html(tongtienthue+tongtienhang);
+
+            $('#total').html(function(index, value) {
+              return value
+                .replace(/[^0-9-.]/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+              ;
+            });
+
+            $('#vat').html(function(index, value) {
+              return value
+                .replace(/[^0-9-.]/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+              ;
+            });
+            
+            $('#money').html(function(index, value) {
+              return value
+                .replace(/[^0-9-.]/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+              ;
+            });
+
+            $('.numbers').val(function(index, value) {
+              return value
+                .replace(/[^0-9-.]/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+              ;
+            });
+          });
+          $(".service_buy_item_tax_vat_percent").keyup(function(){
+            var rowIndex=$(this).closest('tr').index();
+            var price = parseFloat(get_number('.service_buy_item_price:eq('+rowIndex+')')) || 0;
+            var sl = parseFloat(get_number('.service_buy_item_number:eq('+rowIndex+')')) || 0;
+            var val = parseFloat($(this).val()) || 0;
+            var rate = parseFloat(get_number('#service_buy_money_rate')) || 0;
+            
+            $('.service_buy_item_tax_vat:eq('+rowIndex+')').val(roundDecimal(val/100*price*sl*rate,0));
+
+            $('.service_buy_item_total:eq('+rowIndex+')').val(roundDecimal(val/100*price*sl*rate,0)+roundDecimal(price*sl*rate,0));
+
+            var tongtienthue = 0;
+            $('.service_buy_item_tax_vat').each(function(){
+              tongtienthue += parseFloat(get_number(this)) || 0;
+            });
+
+            $('#vat').html(tongtienthue);
+
+            var tongtienhang = parseFloat($('#money').html().replace(/\,/g,''));
+
+            $('#total').html(tongtienthue+tongtienhang);
+
+            $('#total').html(function(index, value) {
+              return value
+                .replace(/[^0-9-.]/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+              ;
+            });
+            
+            $('#vat').html(function(index, value) {
+              return value
+                .replace(/[^0-9-.]/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+              ;
+            });
+
+            $('.numbers').val(function(index, value) {
+              return value
+                .replace(/[^0-9-.]/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+              ;
+            });
+          });
+
+          $('.service_buy_item').keyup(function(){
+            var row = $(this).parent().parent();
+            var rowIndex = (row[0].rowIndex)-1;
+            var keyword = $(this).val();
+            if(keyword != ""){
+              $.ajax({
+                  url: '<?php echo BASE_URL ?>/servicebuy/getItemName',
+                  type: 'POST',
+                  data: {keyword:keyword, offset:rowIndex},
+                  success:function(data){
+                      $('.name_list_id:eq('+rowIndex+')').slideDown(200);
+                      $('.name_list_id:eq('+rowIndex+')').html(data);
+                  }
+              });
+            }
+
+            if ($('.service_buy_item:eq('+rowIndex+')').val() == "" || $('.service_buy_item:eq('+rowIndex+')').attr('data') == "") {
+              $('.service_buy_item:eq('+rowIndex+')').attr('data',"");
+            }
+          });
+          $('.service_buy_item_debit').keyup(function(){
+              var row = $(this).parent().parent();
+              var rowIndex = (row[0].rowIndex)-1;
+              var keyword = $(this).val();
+              var name = ".service_buy_item_debit";
+              if(keyword != ""){
+                $.ajax({
+                    url: '<?php echo BASE_URL ?>/servicebuy/getAccount',
+                    type: 'POST',
+                    data: {keyword:keyword, offset:rowIndex, name:name},
+                    success:function(data){
+                        $('.name_list_id_2:eq('+rowIndex+')').slideDown(200);
+                        $('.name_list_id_2:eq('+rowIndex+')').html(data);
+                    }
+                });
+              }
+
+              if ($('.service_buy_item_debit:eq('+rowIndex+')').val() == "" || $('.service_buy_item_debit:eq('+rowIndex+')').attr('data') == "") {
+                $('.service_buy_item_debit:eq('+rowIndex+')').attr('data',"");
+              }
+          });
+          $('.service_buy_item_credit').keyup(function(){
+              var row = $(this).parent().parent();
+              var rowIndex = (row[0].rowIndex)-1;
+              var keyword = $(this).val();
+              var name = ".service_buy_item_credit";
+              if(keyword != ""){
+                $.ajax({
+                    url: '<?php echo BASE_URL ?>/servicebuy/getAccount',
+                    type: 'POST',
+                    data: {keyword:keyword, offset:rowIndex, name:name},
+                    success:function(data){
+                        $('.name_list_id_3:eq('+rowIndex+')').slideDown(200);
+                        $('.name_list_id_3:eq('+rowIndex+')').html(data);
+                    }
+                });
+              }
+
+              if ($('.service_buy_item_credit:eq('+rowIndex+')').val() == "" || $('.service_buy_item_credit:eq('+rowIndex+')').attr('data') == "") {
+                $('.service_buy_item_credit:eq('+rowIndex+')').attr('data',"");
+              }
+          });
+          $('.service_buy_item_tax_vat_debit').keyup(function(){
+              var row = $(this).parent().parent();
+              var rowIndex = (row[0].rowIndex)-1;
+              var keyword = $(this).val();
+              var name = ".service_buy_item_tax_vat_debit";
+              if(keyword != ""){
+                $.ajax({
+                    url: '<?php echo BASE_URL ?>/servicebuy/getAccount',
+                    type: 'POST',
+                    data: {keyword:keyword, offset:rowIndex, name:name},
+                    success:function(data){
+                        $('.name_list_id_4:eq('+rowIndex+')').slideDown(200);
+                        $('.name_list_id_4:eq('+rowIndex+')').html(data);
+                    }
+                });
+              }
+
+              if ($('.service_buy_item_tax_vat_debit:eq('+rowIndex+')').val() == "" || $('.service_buy_item_tax_vat_debit:eq('+rowIndex+')').attr('data') == "") {
+                $('.service_buy_item_tax_vat_debit:eq('+rowIndex+')').attr('data',"");
+              }
+          });
+          function set_item_account(value,code,name,vitri) {
+              $(name+':eq('+vitri+')').val(code);
+              $(name+':eq('+vitri+')').attr("data",value);
+              
+              $('.name_list_id_2').hide();
+              $('.name_list_id_3').hide();
+              $('.name_list_id_4').hide();
+              $(name+':eq('+vitri+')').focus();
+          }
+          function set_item(value,code,name,unit,tax,vitri) {
+              $('.service_buy_item:eq('+vitri+')').val(code);
+              $('.service_buy_item:eq('+vitri+')').attr("data",value);
+              $('.service_buy_item_name:eq('+vitri+')').val(name);
+              $('.service_buy_item_unit:eq('+vitri+')').val(unit);
+              $('.service_buy_item_tax_vat_percent:eq('+vitri+')').val(tax);
+              $('.service_buy_item2:eq('+vitri+')').val(code);
+              $('.service_buy_item_name2:eq('+vitri+')').val(name);
+              $('.name_list_id').hide();
+              $('.service_buy_item:eq('+vitri+')').focus();
+
+              var check = 0;
+              var val = value;
+              $('.service_buy_item').each(function(){
+                if (val == $(this).attr('data')) {
+                  check++
+                }
+              });
+
+              if (check>=2) {
+                alert('Mã đã tồn tại. Vui lòng chọn mã khác!');
+                $('.service_buy_item:eq('+vitri+')').val("");
+                $('.service_buy_item:eq('+vitri+')').attr("data","");
+                $('.service_buy_item_name:eq('+vitri+')').val("");
+                $('.service_buy_item_unit:eq('+vitri+')').val("");
+                $('.service_buy_item_tax_vat_percent:eq('+vitri+')').val("");
+                $('.service_buy_item2:eq('+vitri+')').val("");
+                $('.service_buy_item_name2:eq('+vitri+')').val("");
+              }
+          }
+
+
+          $(".find_item").click(function(){
+            var rowIndex=$(this).closest('tr').index();
+            $('#rowIndex_item').val(rowIndex);
+              $.ajax({
+                  url: '<?php echo BASE_URL ?>/servicebuy/getItem',
+                  type: 'POST',
+                  data: {rowIndex:rowIndex},
+                  success:function(data){
+                    $('#show_item').html(data);
+                    $("#show_item" ).dialog( "open" );
+
+                    $('#tblExport2').DataTable({
+                        "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Tất cả"]],
+                        "order": [[ 1, "asc" ], [ 2, "asc" ]],
+                        "columnDefs": [ {
+                          "targets": 0,
+                          "orderable": false
+                        } ],
+                        "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+                          var index = iDisplayIndex +1;
+                            $('.tr td:eq(0)',nRow).html(index);
+                            return nRow
+                        }
+                    });
+
+                    $('.tr').click(function(){
+                      $(this).find('input').each(function () {
+                        if ($(this).is(':checked')) {
+                          $(this).prop('checked',false);
+                        }
+                        else{
+                          $(this).prop('checked',true);
+                        }
+                      });
+                    });
+                  }
+
+              });
+          });
+        }
+    });
+
+
+    $( ".add-field" ).dialog( "open" );
+      
+});
+
+function add_click(){
+    $('#yes').val("");
+    $('.add-field').slideDown(500);
+     $("html, body").animate({ scrollTop: $('.add-field').offset().top }, 300);   
+     
+        $('.add-field input').val("");
+        $('.add-field input').attr("data","");
+        $('.add-field input').attr("alt","");
+        $('#service_buy_money_type option[value=1]').attr("selected","selected");
+        $('#service_buy_money_rate').val(1);
+        $('.add-field input[type=date]').val("<?php echo date('Y-m-d') ?>");
+        $('#service_buy_number').val('0000000');
+        $('#service_buy_document_number').val('<?php echo ++$lastID ?>');
+
+        $('#service_buy_bill_number').focus();
+                
+        $('.numbers').focus(function(){
+            if ( $(this).val() == '0') {
+               $(this).val(""); 
+            };
+            
+        });
+        $('.numbers').blur(function(){
+            if ( $(this).val() == "") {
+                $(this).val(0);
+            };
+            
+        });
+
+    $( ".add-field" ).dialog( "open" );
+}
+
+$(document).ready(function(){
+  // Validate form
+  $("#add_service_buy").validate({
+      errorElement: "span", // Định dạng cho thẻ HTML hiện thông báo lỗi
+      rules: {
+
+      },
+      submitHandler: function(form) {
+        var service_buy_bill_number = $('#service_buy_bill_number').val();
+        var service_buy_contract_number = $('#service_buy_contract_number').val();
+        var service_buy_customer = $('#service_buy_customer').attr('data');
+        var service_buy_comment = $('#service_buy_comment').val();
+        var service_buy_origin_doc = $('#service_buy_origin_doc').val();
+        var service_buy_document_date = $('#service_buy_document_date').val();
+        var service_buy_document_number = $('#service_buy_document_number').val();
+        var service_buy_additional_date = $('#service_buy_additional_date').val();
+        var service_buy_date = $('#service_buy_date').val();
+        var service_buy_number = $('#service_buy_number').val();
+        var service_buy_symbol = $('#service_buy_symbol').val();
+        var service_buy_money_type = $('#service_buy_money_type').val();
+        var service_buy_money_rate = $('#service_buy_money_rate').val();
+        var service_buy_type = $('#service_buy_type').val();
+
+        if (service_buy_customer == "") {
+          alert('Vui lòng chọn nhà cung cấp!');
+          $('#service_buy_customer').focus();
+          return false;
+        }
+
+        var item = [];
+        var service_buy_item = [];
+        var service_buy_item_debit = [];
+        var service_buy_item_credit = [];
+        var service_buy_item_unit = [];
+        var service_buy_item_number = [];
+        var service_buy_item_price = [];
+        var service_buy_item_money = [];
+        var service_buy_item_total = [];
+        var service_buy_item_tax_vat_percent = [];
+        var service_buy_item_tax_vat = [];
+        var service_buy_item_tax_vat_debit = [];
+
+        $('.service_buy_item').each(function(){
+          service_buy_item.push($(this).attr('data'));
+        });
+        $('.service_buy_item_debit').each(function(){
+          service_buy_item_debit.push($(this).attr('value'));
+        });
+        $('.service_buy_item_credit').each(function(){
+          service_buy_item_credit.push($(this).attr('value'));
+        });
+        $('.service_buy_item_unit').each(function(){
+          service_buy_item_unit.push($(this).attr('value'));
+        });
+        $('.service_buy_item_number').each(function(){
+          service_buy_item_number.push($(this).attr('value'));
+        });
+        $('.service_buy_item_price').each(function(){
+          service_buy_item_price.push($(this).attr('value'));
+        });
+        $('.service_buy_item_money').each(function(){
+          service_buy_item_money.push($(this).attr('value'));
+        });
+        $('.service_buy_item_total').each(function(){
+          service_buy_item_total.push($(this).attr('value'));
+        });
+        $('.service_buy_item_tax_vat_percent').each(function(){
+          service_buy_item_tax_vat_percent.push($(this).attr('value'));
+        });
+        $('.service_buy_item_tax_vat').each(function(){
+          service_buy_item_tax_vat.push($(this).attr('value'));
+        });
+        $('.service_buy_item_tax_vat_debit').each(function(){
+          service_buy_item_tax_vat_debit.push($(this).attr('value'));
+        });
+
+        for (var i = 0; i < service_buy_item.length; i++) {
+          item.push({'service_buy_item':service_buy_item[i], 'service_buy_item_debit':service_buy_item_debit[i], 'service_buy_item_credit':service_buy_item_credit[i], 'service_buy_item_unit':service_buy_item_unit[i], 'service_buy_item_number':service_buy_item_number[i], 'service_buy_item_price':service_buy_item_price[i], 'service_buy_item_money':service_buy_item_money[i], 'service_buy_item_total':service_buy_item_total[i], 'service_buy_item_tax_vat_percent':service_buy_item_tax_vat_percent[i], 'service_buy_item_tax_vat':service_buy_item_tax_vat[i], 'service_buy_item_tax_vat_debit':service_buy_item_tax_vat_debit[i]});
+                
+        };
+
+        var yes = $('#yes').val();
+
+        $.ajax({
+          url: '<?php echo BASE_URL ?>/servicebuy/add',
+          type: 'POST',
+          data: {
+            yes: yes,
+            service_buy_bill_number: service_buy_bill_number,
+            service_buy_contract_number: service_buy_contract_number,
+            service_buy_customer: service_buy_customer,
+            service_buy_comment: service_buy_comment,
+            service_buy_origin_doc: service_buy_origin_doc,
+            service_buy_document_date: service_buy_document_date,
+            service_buy_document_number: service_buy_document_number,
+            service_buy_additional_date: service_buy_additional_date,
+            service_buy_number: service_buy_number,
+            service_buy_symbol: service_buy_symbol,
+            service_buy_date: service_buy_date,
+            service_buy_money_type: service_buy_money_type,
+            service_buy_money_rate: service_buy_money_rate,
+            service_buy_type: service_buy_type,
+            item: item,
+          },
+          success:function(answer){
+              //alert(answer);
+              $('#error').hide();
+              $('#error').slideToggle(100); // hiển thị thẻ div success
+              $('#error').html('<div class="successbox">'+answer+'</div>'); // đặt kết quả trả về từ test.php vào thẻ div success
+              $('#error').fadeOut(10000);
+
+              if (yes != "") {
+                  if (answer.trim() == "Cập nhật thành công" ) {
+                      setTimeout(function() {
+                        sapxep('<?php echo $page ?>','<?php echo $order_by ?>','<?php echo $order ?>');
+                      }, 200);
+                      
+                  }
+              }
+              else{
+                  if (answer.trim() == "Thêm thành công" ) {
+                      setTimeout(function() {
+                        sapxep('<?php echo $page ?>','<?php echo $order_by ?>','<?php echo $order ?>');
+                      }, 200);
+                      
+                  }
+              }
+          }
+        });
+
+      }
+    });
+});
+</script>
+
+<script type="text/javascript">
+
+function get_number(id){
+  return $(id).val().replace(/\,/g,'');
+}
+
+$( ".add-field" ).dialog({
+    autoOpen: false,
+    modal: true,
+    width: "80%",
+    title: "Mua hàng dịch vụ",
+    hide: 'fold',
+    show: 'blind',
+    position: ['center',5],
+});
+
+
+$("#import_excel").click(function(){
+        $("#winpopup").dialog({
+            draggable:true,
+            modal: true,
+            autoOpen: false,
+            height:300,
+            width:400,
+            resizable: false,
+            title:'Import Excel',
+            
+        });
+        $("#winpopup").load($(this).attr('href'));
+        $("#winpopup").dialog("open");
+         
+        return false;
+    });
+
+
+ 
+var x = "<?php echo $limit ?>";
+$('#chonloc option[value='+x+']').attr('selected','selected');
+
+$('.numbers').keyup(function(event) {
+      // skip for arrow keys
+  if(event.which >= 37 && event.which <= 40) return;
+  // format number
+  $(this).val(function(index, value) {
+    return value
+      .replace(/[^0-9-.]/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    ;
+  });
+});
+
+$('#service_buy_number').keyup(function(){
+    var val = $(this).val();
+    $(this).val(val.substring(1, val.length));
+
+    var val_new = $(this).val();
+    if (val_new.length<7) {
+        $(this).val("0"+val_new);
+    }
+});
+$("#service_buy_money_rate").keyup(function(){
+  var rate = parseFloat(get_number(this)) || 0;
+  var tongtienhang = 0;
+  var tongtienthue = 0;
+  $('.service_buy_item_money').each(function(){
+    var rowIndex=$(this).closest('tr').index();
+
+    var price = parseFloat(get_number('.service_buy_item_price:eq('+rowIndex+')')) || 0;
+    var val = parseFloat(get_number('.service_buy_item_number:eq('+rowIndex+')')) || 0;
+    var vat = parseFloat(get_number('.service_buy_item_tax_vat_percent:eq('+rowIndex+')')) || 0;
+
+    $(this).val(roundDecimal(val*price*rate,0));
+    $('.service_buy_item_tax_vat:eq('+rowIndex+')').val(roundDecimal(vat/100*price*val*rate,0));
+    $('.service_buy_item_total:eq('+rowIndex+')').val(roundDecimal(vat/100*price*val*rate,0)+roundDecimal(price*val*rate,0));
+
+    tongtienhang += roundDecimal(val*price*rate,0);
+    tongtienthue += roundDecimal(vat/100*price*val*rate,0);
+  });
+
+  $('#money').html(tongtienhang);
+  $('#vat').html(tongtienthue);
+  $('#total').html(tongtienhang+tongtienthue);
+
+  $('#total').html(function(index, value) {
+    return value
+      .replace(/[^0-9-.]/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    ;
+  });
+
+  $('#vat').html(function(index, value) {
+    return value
+      .replace(/[^0-9-.]/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    ;
+  });
+  
+  $('#money').html(function(index, value) {
+    return value
+      .replace(/[^0-9-.]/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    ;
+  });
+
+  $('.numbers').val(function(index, value) {
+    return value
+      .replace(/[^0-9-.]/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    ;
+  });
+});
+
+$(".service_buy_item_number").keyup(function(){
+  var rowIndex=$(this).closest('tr').index();
+  var price = parseFloat(get_number('.service_buy_item_price:eq('+rowIndex+')')) || 0;
+  var val = parseFloat($(this).val()) || 0;
+  var rate = parseFloat(get_number('#service_buy_money_rate')) || 0;
+  
+  $('.service_buy_item_money:eq('+rowIndex+')').val(roundDecimal(val*price*rate,0));
+
+  var tongtienhang = 0;
+  $('.service_buy_item_money').each(function(){
+    tongtienhang += parseFloat(get_number(this)) || 0;
+  });
+
+  $('#money').html(tongtienhang);
+
+  var vat = parseFloat(get_number('.service_buy_item_tax_vat_percent:eq('+rowIndex+')')) || 0;
+  
+  $('.service_buy_item_tax_vat:eq('+rowIndex+')').val(roundDecimal(vat/100*price*val*rate,0));
+
+  $('.service_buy_item_total:eq('+rowIndex+')').val(roundDecimal(vat/100*price*val*rate,0)+roundDecimal(price*val*rate,0));
+
+  var tongtienthue = 0;
+  $('.service_buy_item_tax_vat').each(function(){
+    tongtienthue += parseFloat(get_number(this)) || 0;
+  });
+
+  $('#vat').html(tongtienthue);
+
+  $('#total').html(tongtienthue+tongtienhang);
+
+  $('#total').html(function(index, value) {
+    return value
+      .replace(/[^0-9-.]/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    ;
+  });
+
+  $('#vat').html(function(index, value) {
+    return value
+      .replace(/[^0-9-.]/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    ;
+  });
+  
+  $('#money').html(function(index, value) {
+    return value
+      .replace(/[^0-9-.]/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    ;
+  });
+
+  $('.numbers').val(function(index, value) {
+    return value
+      .replace(/[^0-9-.]/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    ;
+  });
+});
+$(".service_buy_item_price").keyup(function(){
+  var rowIndex=$(this).closest('tr').index();
+  var val = parseFloat($('.service_buy_item_number:eq('+rowIndex+')').val()) || 0;
+  var price = parseFloat(get_number(this)) || 0;
+  var rate = parseFloat(get_number('#service_buy_money_rate')) || 0;
+  
+  $('.service_buy_item_money:eq('+rowIndex+')').val(roundDecimal(val*price*rate,0));
+
+  var tongtienhang = 0;
+  $('.service_buy_item_money').each(function(){
+    tongtienhang += parseFloat(get_number(this)) || 0;
+  });
+
+  $('#money').html(tongtienhang);
+
+  var vat = parseFloat(get_number('.service_buy_item_tax_vat_percent:eq('+rowIndex+')')) || 0;
+  
+  $('.service_buy_item_tax_vat:eq('+rowIndex+')').val(roundDecimal(vat/100*price*val*rate,0));
+
+  $('.service_buy_item_total:eq('+rowIndex+')').val(roundDecimal(vat/100*price*val*rate,0)+roundDecimal(price*val*rate,0));
+
+  var tongtienthue = 0;
+  $('.service_buy_item_tax_vat').each(function(){
+    tongtienthue += parseFloat(get_number(this)) || 0;
+  });
+
+  $('#vat').html(tongtienthue);
+
+  $('#total').html(tongtienthue+tongtienhang);
+
+  $('#total').html(function(index, value) {
+    return value
+      .replace(/[^0-9-.]/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    ;
+  });
+
+  $('#vat').html(function(index, value) {
+    return value
+      .replace(/[^0-9-.]/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    ;
+  });
+  
+  $('#money').html(function(index, value) {
+    return value
+      .replace(/[^0-9-.]/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    ;
+  });
+
+  $('.numbers').val(function(index, value) {
+    return value
+      .replace(/[^0-9-.]/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    ;
+  });
+});
+$(".service_buy_item_tax_vat_percent").keyup(function(){
+  var rowIndex=$(this).closest('tr').index();
+  var price = parseFloat(get_number('.service_buy_item_price:eq('+rowIndex+')')) || 0;
+  var sl = parseFloat(get_number('.service_buy_item_number:eq('+rowIndex+')')) || 0;
+  var val = parseFloat($(this).val()) || 0;
+  var rate = parseFloat(get_number('#service_buy_money_rate')) || 0;
+  
+  $('.service_buy_item_tax_vat:eq('+rowIndex+')').val(roundDecimal(val/100*price*sl*rate,0));
+
+  $('.service_buy_item_total:eq('+rowIndex+')').val(roundDecimal(val/100*price*sl*rate,0)+roundDecimal(price*sl*rate,0));
+
+  var tongtienthue = 0;
+  $('.service_buy_item_tax_vat').each(function(){
+    tongtienthue += parseFloat(get_number(this)) || 0;
+  });
+
+  $('#vat').html(tongtienthue);
+
+  var tongtienhang = parseFloat($('#money').html().replace(/\,/g,''));
+
+  $('#total').html(tongtienthue+tongtienhang);
+
+  $('#total').html(function(index, value) {
+    return value
+      .replace(/[^0-9-.]/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    ;
+  });
+  
+  $('#vat').html(function(index, value) {
+    return value
+      .replace(/[^0-9-.]/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    ;
+  });
+
+  $('.numbers').val(function(index, value) {
+    return value
+      .replace(/[^0-9-.]/g, "")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    ;
+  });
+});
+
+$('#service_buy_customer').keyup(function(){
+    var rowIndex = 0;
+    var keyword = $(this).val();
+    if(keyword != ""){
+      $.ajax({
+          url: '<?php echo BASE_URL ?>/servicebuy/getCustomer',
+          type: 'POST',
+          data: {keyword:keyword, offset:rowIndex},
+          success:function(data){
+              $('#customer_list_id:eq('+rowIndex+')').slideDown(200);
+              $('#customer_list_id:eq('+rowIndex+')').html(data);
+          }
+      });
+    }
+
+    if ($('#service_buy_customer:eq('+rowIndex+')').val() == "" || $('#service_buy_customer:eq('+rowIndex+')').attr('data') == "") {
+      $('#service_buy_customer:eq('+rowIndex+')').attr('data',"");
+    }
+});
+$('.service_buy_item').keyup(function(){
+    var row = $(this).parent().parent();
+    var rowIndex = (row[0].rowIndex)-1;
+    var keyword = $(this).val();
+    if(keyword != ""){
+      $.ajax({
+          url: '<?php echo BASE_URL ?>/servicebuy/getItemName',
+          type: 'POST',
+          data: {keyword:keyword, offset:rowIndex},
+          success:function(data){
+              $('.name_list_id:eq('+rowIndex+')').slideDown(200);
+              $('.name_list_id:eq('+rowIndex+')').html(data);
+          }
+      });
+    }
+
+    if ($('.service_buy_item:eq('+rowIndex+')').val() == "" || $('.service_buy_item:eq('+rowIndex+')').attr('data') == "") {
+      $('.service_buy_item:eq('+rowIndex+')').attr('data',"");
+    }
+});
+$('.service_buy_item_debit').keyup(function(){
+    var row = $(this).parent().parent();
+    var rowIndex = (row[0].rowIndex)-1;
+    var keyword = $(this).val();
+    var name = ".service_buy_item_debit";
+    if(keyword != ""){
+      $.ajax({
+          url: '<?php echo BASE_URL ?>/servicebuy/getAccount',
+          type: 'POST',
+          data: {keyword:keyword, offset:rowIndex, name:name},
+          success:function(data){
+              $('.name_list_id_2:eq('+rowIndex+')').slideDown(200);
+              $('.name_list_id_2:eq('+rowIndex+')').html(data);
+          }
+      });
+    }
+
+    if ($('.service_buy_item_debit:eq('+rowIndex+')').val() == "" || $('.service_buy_item_debit:eq('+rowIndex+')').attr('data') == "") {
+      $('.service_buy_item_debit:eq('+rowIndex+')').attr('data',"");
+    }
+});
+$('.service_buy_item_credit').keyup(function(){
+    var row = $(this).parent().parent();
+    var rowIndex = (row[0].rowIndex)-1;
+    var keyword = $(this).val();
+    var name = ".service_buy_item_credit";
+    if(keyword != ""){
+      $.ajax({
+        url: '<?php echo BASE_URL ?>/servicebuy/getAccount',
+        type: 'POST',
+        data: {keyword:keyword, offset:rowIndex, name:name},
+        success:function(data){
+            $('.name_list_id_3:eq('+rowIndex+')').slideDown(200);
+            $('.name_list_id_3:eq('+rowIndex+')').html(data);
+        }
+      });
+    }
+    
+
+    if ($('.service_buy_item_credit:eq('+rowIndex+')').val() == "" || $('.service_buy_item_credit:eq('+rowIndex+')').attr('data') == "") {
+      $('.service_buy_item_credit:eq('+rowIndex+')').attr('data',"");
+    }
+});
+$('.service_buy_item_tax_vat_debit').keyup(function(){
+    var row = $(this).parent().parent();
+    var rowIndex = (row[0].rowIndex)-1;
+    var keyword = $(this).val();
+    var name = ".service_buy_item_tax_vat_debit";
+    if(keyword != ""){
+      $.ajax({
+          url: '<?php echo BASE_URL ?>/servicebuy/getAccount',
+          type: 'POST',
+          data: {keyword:keyword, offset:rowIndex, name:name},
+          success:function(data){
+              $('.name_list_id_4:eq('+rowIndex+')').slideDown(200);
+              $('.name_list_id_4:eq('+rowIndex+')').html(data);
+          }
+      });
+    }
+
+    if ($('.service_buy_item_tax_vat_debit:eq('+rowIndex+')').val() == "" || $('.service_buy_item_tax_vat_debit:eq('+rowIndex+')').attr('data') == "") {
+      $('.service_buy_item_tax_vat_debit:eq('+rowIndex+')').attr('data',"");
+    }
+});
+function set_item_account(value,code,name,vitri) {
+    $(name+':eq('+vitri+')').val(code);
+    $(name+':eq('+vitri+')').attr("data",value);
+    
+    $('.name_list_id_2').hide();
+    $('.name_list_id_3').hide();
+    $('.name_list_id_4').hide();
+    $(name+':eq('+vitri+')').focus();
+}
+function set_item(value,code,name,unit,tax,vitri) {
+    $('.service_buy_item:eq('+vitri+')').val(code);
+    $('.service_buy_item:eq('+vitri+')').attr("data",value);
+    $('.service_buy_item_name:eq('+vitri+')').val(name);
+    $('.service_buy_item_unit:eq('+vitri+')').val(unit);
+    $('.service_buy_item_tax_vat_percent:eq('+vitri+')').val(tax);
+    $('.service_buy_item2:eq('+vitri+')').val(code);
+    $('.service_buy_item_name2:eq('+vitri+')').val(name);
+    $('.name_list_id').hide();
+    $('.service_buy_item:eq('+vitri+')').focus();
+
+    var check = 0;
+    var val = value;
+    $('.service_buy_item').each(function(){
+      if (val == $(this).attr('data')) {
+        check++
+      }
+    });
+
+    if (check>=2) {
+      alert('Mã đã tồn tại. Vui lòng chọn mã khác!');
+      $('.service_buy_item:eq('+vitri+')').val("");
+      $('.service_buy_item:eq('+vitri+')').attr("data","");
+      $('.service_buy_item_name:eq('+vitri+')').val("");
+      $('.service_buy_item_unit:eq('+vitri+')').val("");
+      $('.service_buy_item_tax_vat_percent:eq('+vitri+')').val("");
+      $('.service_buy_item2:eq('+vitri+')').val("");
+      $('.service_buy_item_name2:eq('+vitri+')').val("");
+    }
+}
+function set_item_customer(value,code,name,company,mst,address,vitri) {
+    $('#service_buy_customer:eq('+vitri+')').val(code);
+    $('#service_buy_customer:eq('+vitri+')').attr("data",value);
+    $('#customer_company:eq('+vitri+')').val(company);
+    $('#customer_mst:eq('+vitri+')').val(mst);
+    $('#customer_address:eq('+vitri+')').val(address);
+    $('#customer_list_id').hide();
+    $('#service_buy_customer:eq('+vitri+')').focus();
+}
+
+
+$(".find_item").click(function(){
+  var rowIndex=$(this).closest('tr').index();
+  $('#rowIndex_item').val(rowIndex);
+    $.ajax({
+        url: '<?php echo BASE_URL ?>/servicebuy/getItem',
+        type: 'POST',
+        data: {rowIndex:rowIndex},
+        success:function(data){
+          $('#show_item').html(data);
+          $("#show_item" ).dialog( "open" );
+
+          $('#tblExport2').DataTable({
+              "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Tất cả"]],
+              "order": [[ 1, "asc" ], [ 2, "asc" ]],
+              "columnDefs": [ {
+                "targets": 0,
+                "orderable": false
+              } ],
+              "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+                var index = iDisplayIndex +1;
+                  $('.tr td:eq(0)',nRow).html(index);
+                  return nRow
+              }
+          });
+
+          $('.tr').click(function(){
+            $(this).find('input').each(function () {
+              if ($(this).is(':checked')) {
+                $(this).prop('checked',false);
+              }
+              else{
+                $(this).prop('checked',true);
+              }
+            });
+          });
+        }
+
+    });
+});
+
+$( "#show_item" ).dialog({
+    autoOpen: false,
+    modal: true,
+    width: "50%",
+    maxHeight: $(window).height()-50,
+    title: "Danh mục hàng hóa, dịch vụ",
+    hide: 'fold',
+    show: 'blind',
+    position: ['center',5],
+    buttons: 
+    [
+      {
+        text: "Chọn",
+        icons: { primary: "ui-icon-check" },
+        click: function(){
+          var i=1;
+          var rowIndex = -1;
+          $('input[name="check_i[]"]:checked').each(function () {
+            var index = $('.nav-tabs li.active').index();
+            if (rowIndex == -1) {
+              rowIndex = $(this).attr('data');
+            }
+            console.log(rowIndex);
+            
+            var check = 0;
+            $('.service_buy_item[data='+$(this).attr('value')+']').each(function(){
+              check ++;
+            });
+
+            if (check==0) {
+              if(i>1){
+                $('.dataTable').each(function(){
+                  addRow($(this).attr('id'));
+                });
+              }
+
+              $('.service_buy_item:eq('+rowIndex+')').val($(this).attr('data-code'));
+              $('.service_buy_item:eq('+rowIndex+')').attr('data',$(this).attr('value'));
+              $('.service_buy_item_name:eq('+rowIndex+')').val($(this).attr('data-name'));
+              $('.service_buy_item_unit:eq('+rowIndex+')').val($(this).attr('data-unit'));
+              $('.service_buy_item_tax_vat_percent:eq('+rowIndex+')').val($(this).attr('data-tax'));
+              $('.service_buy_item2:eq('+rowIndex+')').val($(this).attr('data-code'));
+              $('.service_buy_item_name2:eq('+rowIndex+')').val($(this).attr('data-name'));
+
+              i++;
+              rowIndex++;
+            }
+            
+          });
+          $( "#show_item" ).dialog( "close" );
+        }
+      },
+      {
+        text: "Thêm",
+        icons: { primary: "ui-icon-plus" },
+        click: function(){
+          $( "#add_new_item" ).dialog( "open" );
+        }
+      },
+      {
+        text: "Đóng",
+        icons: { primary: "ui-icon-close" },
+        click: function(){
+          $( "#show_item" ).dialog( "close" );
+        }
+      },
+
+    ]
+});
+
+$( "#add_new_item" ).dialog({
+    autoOpen: false,
+    modal: true,
+    width: "auto",
+    maxHeight: $(window).height()-50,
+    title: "Thêm hàng hóa, dịch vụ",
+    hide: 'fold',
+    show: 'blind',
+    position: ['center',5],
+    buttons: 
+    [
+      {
+        text: "Hoàn tất",
+        icons: { primary: "ui-icon-check" },
+        click: function(){
+          var items_code = $('#items_code').attr('value');
+          var items_name = $('#items_name').attr('value');
+          var items_unit = $('#items_unit').attr('value');
+          var items_type = $('#items_type').attr('value');
+          var items_tax = $('#items_tax').attr('value');
+          var items_stuff = $('#items_stuff').attr('value');
+
+          var rowIndex = $('#rowIndex_item').attr('value');
+
+          if (items_code == "" || items_name == "") {
+            alert('Vui lòng điền vào thông tin!');
+            return false;
+          }
+          
+          var yes = "";
+       
+          $.ajax({
+              type: "POST", // phương thức gởi đi
+              url: "<?php echo BASE_URL ?>/items/add", // nơi mà dữ liệu sẽ chuyển đến khi submit
+              data: {
+                  
+                  items_code: items_code,
+                  items_name: items_name,
+                  items_unit: items_unit,
+                  items_type: items_type,
+                  items_tax: items_tax,
+                  items_stuff: items_stuff,
+                  yes: yes,
+
+                  }, // giá trị post
+              success: function(answer){
+                $( "#add_new_item" ).dialog( "close" );
+                $( "#show_item" ).dialog( "close" );
+                
+                var rowIndex=$('#rowIndex_item').val();
+                
+                  $.ajax({
+                      url: '<?php echo BASE_URL ?>/servicebuy/getItem',
+                      type: 'POST',
+                      data: {rowIndex:rowIndex},
+                      success:function(data){
+                        $('#show_item').html(data);
+                        $("#show_item" ).dialog( "open" );
+
+                        $('#tblExport2').DataTable({
+                            "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Tất cả"]],
+                            "order": [[ 1, "asc" ], [ 2, "asc" ]],
+                            "columnDefs": [ {
+                              "targets": 0,
+                              "orderable": false
+                            } ],
+                            "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+                              var index = iDisplayIndex +1;
+                                $('.tr td:eq(0)',nRow).html(index);
+                                return nRow
+                            }
+                        });
+
+                        $('.tr').click(function(){
+                          $(this).find('input').each(function () {
+                            if ($(this).is(':checked')) {
+                              $(this).prop('checked',false);
+                            }
+                            else{
+                              $(this).prop('checked',true);
+                            }
+                          });
+                        });
+                      }
+
+                  });
+              }
+            });
+        }
+      },
+      {
+        text: "Đóng",
+        icons: { primary: "ui-icon-close" },
+        click: function(){
+          $( "#add_new_item" ).dialog( "close" );
+        }
+      },
+
+    ]
+});
+
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+ 
+      $('input').keyup(function (e) {
+        if (e.which == 39) { // right arrow
+          $(this).closest('td').next().find('input').focus();
+ 
+        } else if (e.which == 37) { // left arrow
+          $(this).closest('td').prev().find('input').focus();
+ 
+        } else if (e.which == 40) { // down arrow
+          $(this).closest('tr').next().find('td:eq(' + $(this).closest('td').index() + ')').find('input').focus();
+ 
+        } else if (e.which == 38) { // up arrow
+          $(this).closest('tr').prev().find('td:eq(' + $(this).closest('td').index() + ')').find('input').focus();
+        }
+      });
+ 
+    // un-comment to display key code
+    // $("input").keydown(function (e) {
+    //   console.log(e.which);
+    // });
+    });
+
+$('#dataTable0 tbody tr td:nth-child(2) input').keyup(function(){
+  var val = $(this).val();
+  var trIndex = $(this).closest('tr').index();
+  $('#dataTable1 tbody tr:eq('+trIndex+') td:nth-child(2) input').val(val);
+});
+$('#dataTable0 tbody tr td:nth-child(3) input').keyup(function(){
+  var val = $(this).val();
+  var trIndex = $(this).closest('tr').index();
+  $('#dataTable1 tbody tr:eq('+trIndex+') td:nth-child(3) input').val(val);
+});
+
+document.addEventListener("keydown", function(event) {
+  var index = $('.nav-tabs li.active').index();
+  var rowIndex=$('#dataTable'+index+' input:focus').closest('tr').index();
+  if ($('#dataTable'+index+' input').is(':focus')) {
+    if (event.keyCode == 113) { //F8
+      //addRow('dataTable'+index);
+      $('.dataTable').each(function(){
+        addRow($(this).attr('id'));
+      });
+    }
+    if (event.keyCode == 114) { //F9
+      //delRow('dataTable'+index);
+      $('.dataTable').each(function(){
+        delRow($(this).attr('id'),rowIndex);
+      });
+    }
+    if (event.keyCode == 13) {
+        
+        event.preventDefault();
+        return false;
+    }
+  }
+});
+
+function addRow(id){
+  var table=document.getElementById(id);
+  var rowCount=table.rows.length;
+  var row=table.insertRow(rowCount);
+  var colCount=table.rows[1].cells.length;
+  for(var i=0;i<colCount;i++){
+      var newcell=row.insertCell(i);
+      newcell.innerHTML=table.rows[1].cells[i].innerHTML;
+      newcell.className=table.rows[1].cells[i].className;
+      /*switch(newcell.childNodes[0].type){
+          case"text":newcell.childNodes[0].value="";
+          break;
+          case"checkbox":newcell.childNodes[0].checked=false;
+          break;
+          case"select-one":newcell.childNodes[0].selectedIndex=0;
+          break;
+      }*/
+  }
+  $('#'+id+' tr:last td input').val("");
+  $('#'+id+' tr:last td input.keep-val').each(function(){
+    $(this).val($(this).closest('tr').prev().find('td:eq(' + $(this).closest('td').index() + ')').find('input').val());
+  });
+  $('#'+id+' tr:last td input').attr("data","");
+  $('#'+id+' tr:last td input').attr("alt","");
+  $('#'+id+' tr:last td input:first').focus();
+  var i=1;
+  $('#'+id+' tbody tr td:first-child').each(function() {
+    $(this).text(i);
+    i++;
+  });
+  $('input').keyup(function (e) {
+      if (e.which == 39) { // right arrow
+        $(this).closest('td').next().find('input').focus();
+
+      } else if (e.which == 37) { // left arrow
+        $(this).closest('td').prev().find('input').focus();
+
+      } else if (e.which == 40) { // down arrow
+        $(this).closest('tr').next().find('td:eq(' + $(this).closest('td').index() + ')').find('input').focus();
+
+      } else if (e.which == 38) { // up arrow
+        $(this).closest('tr').prev().find('td:eq(' + $(this).closest('td').index() + ')').find('input').focus();
+      }
+    });
+  $('#dataTable0 tbody tr td:nth-child(2) input').keyup(function(){
+    var val = $(this).val();
+    var trIndex = $(this).closest('tr').index();
+    $('#dataTable1 tbody tr:eq('+trIndex+') td:nth-child(2) input').val(val);
+  });
+  $('#dataTable0 tbody tr td:nth-child(3) input').keyup(function(){
+    var val = $(this).val();
+    var trIndex = $(this).closest('tr').index();
+    $('#dataTable1 tbody tr:eq('+trIndex+') td:nth-child(3) input').val(val);
+  });
+
+  $('.numbers').keyup(function(event) {
+      // skip for arrow keys
+    if(event.which >= 37 && event.which <= 40) return;
+    // format number
+    $(this).val(function(index, value) {
+      return value
+        .replace(/[^0-9-.]/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      ;
+    });
+  });
+
+  $("#service_buy_money_rate").keyup(function(){
+    var rate = parseFloat(get_number(this)) || 0;
+    var tongtienhang = 0;
+    var tongtienthue = 0;
+    $('.service_buy_item_money').each(function(){
+      var rowIndex=$(this).closest('tr').index();
+
+      var price = parseFloat(get_number('.service_buy_item_price:eq('+rowIndex+')')) || 0;
+      var val = parseFloat(get_number('.service_buy_item_number:eq('+rowIndex+')')) || 0;
+      var vat = parseFloat(get_number('.service_buy_item_tax_vat_percent:eq('+rowIndex+')')) || 0;
+
+      $(this).val(roundDecimal(val*price*rate,0));
+      $('.service_buy_item_tax_vat:eq('+rowIndex+')').val(roundDecimal(vat/100*price*val*rate,0));
+      $('.service_buy_item_total:eq('+rowIndex+')').val(roundDecimal(vat/100*price*val*rate,0)+roundDecimal(price*val*rate,0));
+
+      tongtienhang += roundDecimal(val*price*rate,0);
+      tongtienthue += roundDecimal(vat/100*price*val*rate,0);
+    });
+
+    $('#money').html(tongtienhang);
+    $('#vat').html(tongtienthue);
+    $('#total').html(tongtienhang+tongtienthue);
+
+    $('#total').html(function(index, value) {
+      return value
+        .replace(/[^0-9-.]/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      ;
+    });
+
+    $('#vat').html(function(index, value) {
+      return value
+        .replace(/[^0-9-.]/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      ;
+    });
+    
+    $('#money').html(function(index, value) {
+      return value
+        .replace(/[^0-9-.]/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      ;
+    });
+
+    $('.numbers').val(function(index, value) {
+      return value
+        .replace(/[^0-9-.]/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      ;
+    });
+  });
+
+  $(".service_buy_item_number").keyup(function(){
+    var rowIndex=$(this).closest('tr').index();
+    var price = parseFloat(get_number('.service_buy_item_price:eq('+rowIndex+')')) || 0;
+    var val = parseFloat($(this).val()) || 0;
+    var rate = parseFloat(get_number('#service_buy_money_rate')) || 0;
+    
+    $('.service_buy_item_money:eq('+rowIndex+')').val(roundDecimal(val*price*rate,0));
+
+    var tongtienhang = 0;
+    $('.service_buy_item_money').each(function(){
+      tongtienhang += parseFloat(get_number(this)) || 0;
+    });
+
+    $('#money').html(tongtienhang);
+
+    var vat = parseFloat(get_number('.service_buy_item_tax_vat_percent:eq('+rowIndex+')')) || 0;
+    
+    $('.service_buy_item_tax_vat:eq('+rowIndex+')').val(roundDecimal(vat/100*price*val*rate,0));
+
+    $('.service_buy_item_total:eq('+rowIndex+')').val(roundDecimal(vat/100*price*val*rate,0)+roundDecimal(price*val*rate,0));
+
+    var tongtienthue = 0;
+    $('.service_buy_item_tax_vat').each(function(){
+      tongtienthue += parseFloat(get_number(this)) || 0;
+    });
+
+    $('#vat').html(tongtienthue);
+
+    $('#total').html(tongtienthue+tongtienhang);
+
+    $('#total').html(function(index, value) {
+      return value
+        .replace(/[^0-9-.]/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      ;
+    });
+
+    $('#vat').html(function(index, value) {
+      return value
+        .replace(/[^0-9-.]/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      ;
+    });
+    
+    $('#money').html(function(index, value) {
+      return value
+        .replace(/[^0-9-.]/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      ;
+    });
+
+    $('.numbers').val(function(index, value) {
+      return value
+        .replace(/[^0-9-.]/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      ;
+    });
+  });
+  $(".service_buy_item_price").keyup(function(){
+    var rowIndex=$(this).closest('tr').index();
+    var val = parseFloat($('.service_buy_item_number:eq('+rowIndex+')').val()) || 0;
+    var price = parseFloat(get_number(this)) || 0;
+    var rate = parseFloat(get_number('#service_buy_money_rate')) || 0;
+    
+    $('.service_buy_item_money:eq('+rowIndex+')').val(roundDecimal(val*price*rate,0));
+
+    var tongtienhang = 0;
+    $('.service_buy_item_money').each(function(){
+      tongtienhang += parseFloat(get_number(this)) || 0;
+    });
+
+    $('#money').html(tongtienhang);
+
+    var vat = parseFloat(get_number('.service_buy_item_tax_vat_percent:eq('+rowIndex+')')) || 0;
+    
+    $('.service_buy_item_tax_vat:eq('+rowIndex+')').val(roundDecimal(vat/100*price*val*rate,0));
+
+    $('.service_buy_item_total:eq('+rowIndex+')').val(roundDecimal(vat/100*price*val*rate,0)+roundDecimal(price*val*rate,0));
+
+    var tongtienthue = 0;
+    $('.service_buy_item_tax_vat').each(function(){
+      tongtienthue += parseFloat(get_number(this)) || 0;
+    });
+
+    $('#vat').html(tongtienthue);
+
+    $('#total').html(tongtienthue+tongtienhang);
+
+    $('#total').html(function(index, value) {
+      return value
+        .replace(/[^0-9-.]/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      ;
+    });
+
+    $('#vat').html(function(index, value) {
+      return value
+        .replace(/[^0-9-.]/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      ;
+    });
+    
+    $('#money').html(function(index, value) {
+      return value
+        .replace(/[^0-9-.]/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      ;
+    });
+
+    $('.numbers').val(function(index, value) {
+      return value
+        .replace(/[^0-9-.]/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      ;
+    });
+  });
+  $(".service_buy_item_tax_vat_percent").keyup(function(){
+    var rowIndex=$(this).closest('tr').index();
+    var price = parseFloat(get_number('.service_buy_item_price:eq('+rowIndex+')')) || 0;
+    var sl = parseFloat(get_number('.service_buy_item_number:eq('+rowIndex+')')) || 0;
+    var val = parseFloat($(this).val()) || 0;
+    var rate = parseFloat(get_number('#service_buy_money_rate')) || 0;
+    
+    $('.service_buy_item_tax_vat:eq('+rowIndex+')').val(roundDecimal(val/100*price*sl*rate,0));
+
+    $('.service_buy_item_total:eq('+rowIndex+')').val(roundDecimal(val/100*price*sl*rate,0)+roundDecimal(price*sl*rate,0));
+
+    var tongtienthue = 0;
+    $('.service_buy_item_tax_vat').each(function(){
+      tongtienthue += parseFloat(get_number(this)) || 0;
+    });
+
+    $('#vat').html(tongtienthue);
+
+    var tongtienhang = parseFloat($('#money').html().replace(/\,/g,''));
+
+    $('#total').html(tongtienthue+tongtienhang);
+
+    $('#total').html(function(index, value) {
+      return value
+        .replace(/[^0-9-.]/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      ;
+    });
+    
+    $('#vat').html(function(index, value) {
+      return value
+        .replace(/[^0-9-.]/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      ;
+    });
+
+    $('.numbers').val(function(index, value) {
+      return value
+        .replace(/[^0-9-.]/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      ;
+    });
+  });
+
+  $('.service_buy_item').keyup(function(){
+    var row = $(this).parent().parent();
+    var rowIndex = (row[0].rowIndex)-1;
+    var keyword = $(this).val();
+    if(keyword != ""){
+      $.ajax({
+          url: '<?php echo BASE_URL ?>/servicebuy/getItemName',
+          type: 'POST',
+          data: {keyword:keyword, offset:rowIndex},
+          success:function(data){
+              $('.name_list_id:eq('+rowIndex+')').slideDown(200);
+              $('.name_list_id:eq('+rowIndex+')').html(data);
+          }
+      });
+    }
+
+    if ($('.service_buy_item:eq('+rowIndex+')').val() == "" || $('.service_buy_item:eq('+rowIndex+')').attr('data') == "") {
+      $('.service_buy_item:eq('+rowIndex+')').attr('data',"");
+    }
+  });
+  $('.service_buy_item_debit').keyup(function(){
+      var row = $(this).parent().parent();
+      var rowIndex = (row[0].rowIndex)-1;
+      var keyword = $(this).val();
+      var name = ".service_buy_item_debit";
+      if(keyword != ""){
+        $.ajax({
+            url: '<?php echo BASE_URL ?>/servicebuy/getAccount',
+            type: 'POST',
+            data: {keyword:keyword, offset:rowIndex, name:name},
+            success:function(data){
+                $('.name_list_id_2:eq('+rowIndex+')').slideDown(200);
+                $('.name_list_id_2:eq('+rowIndex+')').html(data);
+            }
+        });
+      }
+
+      if ($('.service_buy_item_debit:eq('+rowIndex+')').val() == "" || $('.service_buy_item_debit:eq('+rowIndex+')').attr('data') == "") {
+        $('.service_buy_item_debit:eq('+rowIndex+')').attr('data',"");
+      }
+  });
+  $('.service_buy_item_credit').keyup(function(){
+      var row = $(this).parent().parent();
+      var rowIndex = (row[0].rowIndex)-1;
+      var keyword = $(this).val();
+      var name = ".service_buy_item_credit";
+      if(keyword != ""){
+        $.ajax({
+            url: '<?php echo BASE_URL ?>/servicebuy/getAccount',
+            type: 'POST',
+            data: {keyword:keyword, offset:rowIndex, name:name},
+            success:function(data){
+                $('.name_list_id_3:eq('+rowIndex+')').slideDown(200);
+                $('.name_list_id_3:eq('+rowIndex+')').html(data);
+            }
+        });
+      }
+
+      if ($('.service_buy_item_credit:eq('+rowIndex+')').val() == "" || $('.service_buy_item_credit:eq('+rowIndex+')').attr('data') == "") {
+        $('.service_buy_item_credit:eq('+rowIndex+')').attr('data',"");
+      }
+  });
+  $('.service_buy_item_tax_vat_debit').keyup(function(){
+      var row = $(this).parent().parent();
+      var rowIndex = (row[0].rowIndex)-1;
+      var keyword = $(this).val();
+      var name = ".service_buy_item_tax_vat_debit";
+      if(keyword != ""){
+        $.ajax({
+            url: '<?php echo BASE_URL ?>/servicebuy/getAccount',
+            type: 'POST',
+            data: {keyword:keyword, offset:rowIndex, name:name},
+            success:function(data){
+                $('.name_list_id_4:eq('+rowIndex+')').slideDown(200);
+                $('.name_list_id_4:eq('+rowIndex+')').html(data);
+            }
+        });
+      }
+
+      if ($('.service_buy_item_tax_vat_debit:eq('+rowIndex+')').val() == "" || $('.service_buy_item_tax_vat_debit:eq('+rowIndex+')').attr('data') == "") {
+        $('.service_buy_item_tax_vat_debit:eq('+rowIndex+')').attr('data',"");
+      }
+  });
+  function set_item_account(value,code,name,vitri) {
+      $(name+':eq('+vitri+')').val(code);
+      $(name+':eq('+vitri+')').attr("data",value);
+      
+      $('.name_list_id_2').hide();
+      $('.name_list_id_3').hide();
+      $('.name_list_id_4').hide();
+      $(name+':eq('+vitri+')').focus();
+  }
+  function set_item(value,code,name,unit,tax,vitri) {
+      $('.service_buy_item:eq('+vitri+')').val(code);
+      $('.service_buy_item:eq('+vitri+')').attr("data",value);
+      $('.service_buy_item_name:eq('+vitri+')').val(name);
+      $('.service_buy_item_unit:eq('+vitri+')').val(unit);
+      $('.service_buy_item_tax_vat_percent:eq('+vitri+')').val(tax);
+      $('.service_buy_item2:eq('+vitri+')').val(code);
+      $('.service_buy_item_name2:eq('+vitri+')').val(name);
+      $('.name_list_id').hide();
+      $('.service_buy_item:eq('+vitri+')').focus();
+
+      var check = 0;
+      var val = value;
+      $('.service_buy_item').each(function(){
+        if (val == $(this).attr('data')) {
+          check++
+        }
+      });
+
+      if (check>=2) {
+        alert('Mã đã tồn tại. Vui lòng chọn mã khác!');
+        $('.service_buy_item:eq('+vitri+')').val("");
+        $('.service_buy_item:eq('+vitri+')').attr("data","");
+        $('.service_buy_item_name:eq('+vitri+')').val("");
+        $('.service_buy_item_unit:eq('+vitri+')').val("");
+        $('.service_buy_item_tax_vat_percent:eq('+vitri+')').val("");
+        $('.service_buy_item2:eq('+vitri+')').val("");
+        $('.service_buy_item_name2:eq('+vitri+')').val("");
+      }
+  }
+
+
+  $(".find_item").click(function(){
+    var rowIndex=$(this).closest('tr').index();
+    $('#rowIndex_item').val(rowIndex);
+      $.ajax({
+          url: '<?php echo BASE_URL ?>/servicebuy/getItem',
+          type: 'POST',
+          data: {rowIndex:rowIndex},
+          success:function(data){
+            $('#show_item').html(data);
+            $("#show_item" ).dialog( "open" );
+
+            $('#tblExport2').DataTable({
+                "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Tất cả"]],
+                "order": [[ 1, "asc" ], [ 2, "asc" ]],
+                "columnDefs": [ {
+                  "targets": 0,
+                  "orderable": false
+                } ],
+                "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+                  var index = iDisplayIndex +1;
+                    $('.tr td:eq(0)',nRow).html(index);
+                    return nRow
+                }
+            });
+
+            $('.tr').click(function(){
+              $(this).find('input').each(function () {
+                if ($(this).is(':checked')) {
+                  $(this).prop('checked',false);
+                }
+                else{
+                  $(this).prop('checked',true);
+                }
+              });
+            });
+          }
+
+      });
+  });
+}
+function delRow(id,rowIndex){
+  try{
+      var table=document.getElementById(id);
+      var rowCount=table.rows.length;
+      if(rowCount<=2){
+        alert("Cannot delete all the rows.");
+      }
+      else{
+        table.deleteRow(rowIndex+1);
+      }
+      
+      $('#'+id+' tr:last td input:first').focus();
+      var i=1;
+      $('#'+id+' tbody tr td:first-child').each(function() {
+        $(this).text(i);
+        i++;
+      });
+
+      var rate = parseFloat(get_number('#service_buy_money_rate')) || 0;
+      var tongtienhang = 0;
+      var tongtienthue = 0;
+      $('.service_buy_item_money').each(function(){
+        var rowIndex=$(this).closest('tr').index();
+
+        var price = parseFloat(get_number('.service_buy_item_price:eq('+rowIndex+')')) || 0;
+        var val = parseFloat(get_number('.service_buy_item_number:eq('+rowIndex+')')) || 0;
+        var vat = parseFloat(get_number('.service_buy_item_tax_vat_percent:eq('+rowIndex+')')) || 0;
+
+        $(this).val(roundDecimal(val*price*rate,0));
+        $('.service_buy_item_tax_vat:eq('+rowIndex+')').val(roundDecimal(vat/100*price*val*rate,0));
+        $('.service_buy_item_total:eq('+rowIndex+')').val(roundDecimal(vat/100*price*val*rate,0)+roundDecimal(price*val*rate,0));
+
+        tongtienhang += roundDecimal(val*price*rate,0);
+        tongtienthue += roundDecimal(vat/100*price*val*rate,0);
+      });
+
+      $('#money').html(tongtienhang);
+      $('#vat').html(tongtienthue);
+      $('#total').html(tongtienhang+tongtienthue);
+
+      $('#total').html(function(index, value) {
+        return value
+          .replace(/[^0-9-.]/g, "")
+          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+        ;
+      });
+
+      $('#vat').html(function(index, value) {
+        return value
+          .replace(/[^0-9-.]/g, "")
+          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+        ;
+      });
+      
+      $('#money').html(function(index, value) {
+        return value
+          .replace(/[^0-9-.]/g, "")
+          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+        ;
+      });
+
+      $('.numbers').val(function(index, value) {
+        return value
+          .replace(/[^0-9-.]/g, "")
+          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+        ;
+      });
+      
+  }
+  catch(e){
+      alert(e);
+  }
+}
+</script>
+<style type="text/css">
+.table-container {
+    height: 10em;
+    font-size: 11px;
+}
+.table-container table {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    width: 100%;
+}
+.table-container table thead {
+    /* head takes the height it requires, 
+    and it's not scaled when table is resized */
+    flex: 0 0 auto;
+    width: calc(100% - 0.9em);
+}
+.table-container table tbody {
+    /* body takes all the remaining available space */
+    flex: 1 1 auto;
+    display: block;
+    overflow-y: scroll;
+}
+.table-container table tbody tr {
+    width: 100%;
+}
+.table-container table thead,
+.table-container table tbody tr {
+    display: table;
+    table-layout: fixed;
+}
+/* decorations */
+
+.table-container table {
+    border: 1px solid lightgrey;
+}
+.table-container table td, .table-container table th {
+    text-align: center;
+    padding: 0;
+    border: 1px solid lightgrey;
+}
+.table-container table th {
+    border: 1px solid grey;
+}
+.width-3 {
+    width: 3%;
+}
+.width-5 {
+    width: 5%;
+}
+.width-7 {
+    width: 7%;
+}
+.width-10 {
+    width: 10%;
+}
+.table-container table td input{
+  width: 90%;
+  margin: 0;
+}
+
+.right {
+    margin-left: -50px;
+    height: auto;
+    width: auto;
+    background: rgba(0, 0, 0, 0.08);
+    border: 0;
+}
+</style>
