@@ -109,12 +109,11 @@ elseif ($order_by == 'internal_transfer_document_number')
             
             <td  class="fix"><?php echo $i++; ?></td>
             <td class="fix" id="internal_transfer_document_number_<?php echo $internal_transfer->internal_transfer_id; ?>"><?php echo $internal_transfer->internal_transfer_document_number; ?></td>
-            <td class="fix" id="internal_transfer_document_date2_<?php echo $internal_transfer->internal_transfer_id; ?>"><?php echo $lib->hien_thi_ngay_thang($internal_transfer->internal_transfer_document_date); ?></td>
-            <td class="fix" id="internal_transfer_additional_date2_<?php echo $internal_transfer->internal_transfer_id; ?>"><?php echo $lib->hien_thi_ngay_thang($internal_transfer->internal_transfer_additional_date); ?></td>
+            <td class="fix" id="internal_transfer_document_date_<?php echo $internal_transfer->internal_transfer_id; ?>"><?php echo $lib->hien_thi_ngay_thang($internal_transfer->internal_transfer_document_date); ?></td>
+            <td class="fix" id="internal_transfer_additional_date_<?php echo $internal_transfer->internal_transfer_id; ?>"><?php echo $lib->hien_thi_ngay_thang($internal_transfer->internal_transfer_additional_date); ?></td>
             <td class="fix" id="internal_transfer_comment_<?php echo $internal_transfer->internal_transfer_id; ?>"><?php echo $internal_transfer->internal_transfer_comment; ?></td>
             <td class="fix text-right" id="internal_transfer_money_<?php echo $internal_transfer->internal_transfer_id; ?>"><?php echo $lib->formatMoney($internal_transfer->internal_transfer_money); ?></td>
-            <td style="display:none" class="fix" id="internal_transfer_document_date_<?php echo $internal_transfer->internal_transfer_id; ?>"><?php echo date('Y-m-d',$internal_transfer->internal_transfer_document_date); ?></td>
-            <td style="display:none" class="fix" id="internal_transfer_additional_date_<?php echo $internal_transfer->internal_transfer_id; ?>"><?php echo date('Y-m-d',$internal_transfer->internal_transfer_additional_date); ?></td>
+            
             
             <?php if(!isset($disable_control)){ ?>
             <td class="fix text-right">
@@ -172,7 +171,7 @@ $this->helper('slidePaginator');
                         <label for="internal_transfer_document_date">Ngày chứng từ </label>
                       </div>
                       <div class="form-group col-xs-8 nopadding">
-                        <input type="date" id="internal_transfer_document_date"  name="internal_transfer_document_date" tabindex="2" required="required" autocomplete="off" >
+                        <input type="text" class="date_mask" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask id="internal_transfer_document_date"  name="internal_transfer_document_date" tabindex="2" required="required" autocomplete="off" >
                       </div>
                     </div>
                     <div class="box-body nopadding">
@@ -180,7 +179,7 @@ $this->helper('slidePaginator');
                         <label for="internal_transfer_additional_date">Ngày hạch toán </label>
                       </div>
                       <div class="form-group col-xs-8 nopadding">
-                        <input type="date" id="internal_transfer_additional_date"  name="internal_transfer_additional_date" tabindex="3" required="required" autocomplete="off" >
+                        <input type="text" class="date_mask" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask id="internal_transfer_additional_date"  name="internal_transfer_additional_date" tabindex="3" required="required" autocomplete="off" >
                       </div>
                     </div>
                     <div class="box-body nopadding">
@@ -296,6 +295,7 @@ $this->helper('slidePaginator');
 
 <script type="text/javascript">
 $('.add-field').hide();  
+$(".date_mask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
 
 $('html').click(function(e) {
   $('.name_list_id').slideUp(200);

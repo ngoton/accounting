@@ -164,13 +164,12 @@ elseif ($order_by == 'additional_other_money')
             <td class="fix text-right" id="additional_other_tax_<?php echo $additional->additional_other_id; ?>"><?php echo $lib->formatMoney($additional->additional_other_tax); ?></td>
             <td style="display:none" class="fix" id="additional_other_tax_debit_<?php echo $additional->additional_other_id; ?>"><?php echo $additional->additional_other_tax_debit; ?></td>
             <td style="display:none" class="fix" id="additional_other_invoice_number_<?php echo $additional->additional_other_id; ?>"><?php echo $additional->additional_other_invoice_number; ?></td>
-            <td style="display:none" class="fix" id="additional_other_invoice_date_<?php echo $additional->additional_other_id; ?>"><?php echo $additional->additional_other_invoice_date>0?date('Y-m-d',$additional->additional_other_invoice_date):null; ?></td>
+            <td style="display:none" class="fix" id="additional_other_invoice_date_<?php echo $additional->additional_other_id; ?>"><?php echo $additional->additional_other_invoice_date>0?date('d/m/Y',$additional->additional_other_invoice_date):null; ?></td>
             <td style="display:none" class="fix" id="additional_other_invoice_symbol_<?php echo $additional->additional_other_id; ?>"><?php echo $additional->additional_other_invoice_symbol; ?></td>
             <td style="display:none" class="fix" id="additional_other_bank_<?php echo $additional->additional_other_id; ?>"><?php echo $additional->additional_other_bank; ?></td>
             <td style="display:none" class="fix" id="additional_other_bank_check_<?php echo $additional->additional_other_id; ?>"><?php echo $additional->additional_other_bank_check; ?></td>
             <td style="display:none" class="fix" data="<?php echo $additional->additional_other_customer; ?>" id="additional_other_customer_<?php echo $additional->additional_other_id; ?>"><?php echo isset($customer_data[$additional->additional_other_customer])?$customer_data[$additional->additional_other_customer]:null; ?></td>
-            <td style="display:none" class="fix" id="additional_other_document_date2_<?php echo $additional->additional_other_id; ?>"><?php echo date('Y-m-d',$additional->additional_other_document_date); ?></td>
-            <td style="display:none" class="fix" id="additional_other_additional_date2_<?php echo $additional->additional_other_id; ?>"><?php echo date('Y-m-d',$additional->additional_other_additional_date); ?></td>
+            
             
             <?php if(!isset($disable_control)){ ?>
             <td class="fix text-right">
@@ -219,12 +218,12 @@ $this->helper('slidePaginator');
                             </td>
                             <td>Ngày chứng từ</td>
                             <td>
-                                <input type="date" id="additional_other_document_date"  name="additional_other_document_date" tabindex="2"  required="required" >
+                                <input type="text" class="date_mask" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask id="additional_other_document_date"  name="additional_other_document_date" tabindex="2"  required="required" >
                                 
                             </td>
                             <td>Ngày phát sinh</td>
                             <td>
-                                <input type="date" id="additional_other_additional_date"  name="additional_other_additional_date" tabindex="3"  required="required" >
+                                <input type="text" class="date_mask" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask id="additional_other_additional_date"  name="additional_other_additional_date" tabindex="3"  required="required" >
                                 
                             </td>
                         </tr>
@@ -263,7 +262,7 @@ $this->helper('slidePaginator');
                             </td>
                             <td>Ngày HĐ</td>
                             <td>
-                                <input type="date" id="additional_other_invoice_date"  name="additional_other_invoice_date" tabindex="9"  >
+                                <input type="text" class="date_mask" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask id="additional_other_invoice_date"  name="additional_other_invoice_date" tabindex="9"  >
                                 
                             </td>
                             <td>Ký hiệu</td>
@@ -350,7 +349,7 @@ $this->helper('slidePaginator');
 
 <script type="text/javascript">
 
-
+$(".date_mask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
   
 $('.add-field').hide();  
 
@@ -369,8 +368,8 @@ $('html').click(function(e) {
             }
             
             var additional_other_document_number = $(this).find("#additional_other_document_number_"+$(this).attr('id')).text();
-            var additional_other_document_date = $(this).find("#additional_other_document_date2_"+$(this).attr('id')).text();
-            var additional_other_additional_date = $(this).find("#additional_other_additional_date2_"+$(this).attr('id')).text();
+            var additional_other_document_date = $(this).find("#additional_other_document_date_"+$(this).attr('id')).text();
+            var additional_other_additional_date = $(this).find("#additional_other_additional_date_"+$(this).attr('id')).text();
             var additional_other_comment = $(this).find("#additional_other_comment_"+$(this).attr('id')).text();
             var additional_other_debit = $(this).find("#additional_other_debit_"+$(this).attr('id')).attr('data');
             var additional_other_credit = $(this).find("#additional_other_credit_"+$(this).attr('id')).attr('data');
@@ -427,8 +426,8 @@ function add_click(){
      $("html, body").animate({ scrollTop: $('.add-field').offset().top }, 300);   
      
         $('#additional_other_document_number').val("");
-        $('#additional_other_document_date').val("<?php echo date('Y-m-d') ?>");
-        $('#additional_other_additional_date').val("<?php echo date('Y-m-d') ?>");
+        $('#additional_other_document_date').val("<?php echo date('d/m/Y') ?>");
+        $('#additional_other_additional_date').val("<?php echo date('d/m/Y') ?>");
         $('#additional_other_comment').val("");
         $('#additional_other_customer').val("");
         $('#additional_other_customer').attr("data","");

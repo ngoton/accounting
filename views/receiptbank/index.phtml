@@ -114,8 +114,8 @@ elseif ($order_by == 'bank_code')
             
             <td  class="fix"><?php echo $i++; ?></td>
             <td class="fix" id="payment_document_number_<?php echo $payment->payment_id; ?>"><?php echo $payment->payment_document_number; ?></td>
-            <td class="fix" id="payment_document_date2_<?php echo $payment->payment_id; ?>"><?php echo $lib->hien_thi_ngay_thang($payment->payment_document_date); ?></td>
-            <td class="fix" id="payment_additional_date2_<?php echo $payment->payment_id; ?>"><?php echo $lib->hien_thi_ngay_thang($payment->payment_additional_date); ?></td>
+            <td class="fix" id="payment_document_date_<?php echo $payment->payment_id; ?>"><?php echo $lib->hien_thi_ngay_thang($payment->payment_document_date); ?></td>
+            <td class="fix" id="payment_additional_date_<?php echo $payment->payment_id; ?>"><?php echo $lib->hien_thi_ngay_thang($payment->payment_additional_date); ?></td>
             <td class="fix" id="payment_comment_<?php echo $payment->payment_id; ?>"><?php echo $payment->payment_comment; ?></td>
             <td class="fix text-right" id="payment_money_<?php echo $payment->payment_id; ?>"><?php echo $lib->formatMoney($payment->payment_money); ?></td>
             <td class="fix" id="bank_code_<?php echo $payment->payment_id; ?>"><?php echo $payment->bank_code; ?></td>
@@ -124,8 +124,7 @@ elseif ($order_by == 'bank_code')
             <td style="display:none" class="fix" id="account_bank_<?php echo $payment->payment_id; ?>"><?php echo $payment->account_bank; ?></td>
             <td style="display:none" class="fix" id="payment_person_<?php echo $payment->payment_id; ?>"><?php echo $payment->payment_person; ?></td>
             <td style="display:none" class="fix" id="payment_origin_doc_<?php echo $payment->payment_id; ?>"><?php echo $payment->payment_origin_doc; ?></td>
-            <td style="display:none" class="fix" id="payment_document_date_<?php echo $payment->payment_id; ?>"><?php echo date('Y-m-d',$payment->payment_document_date); ?></td>
-            <td style="display:none" class="fix" id="payment_additional_date_<?php echo $payment->payment_id; ?>"><?php echo date('Y-m-d',$payment->payment_additional_date); ?></td>
+            
             
             <?php if(!isset($disable_control)){ ?>
             <td class="fix text-right">
@@ -204,7 +203,7 @@ $this->helper('slidePaginator');
                         <label for="payment_document_date">Ngày chứng từ </label>
                       </div>
                       <div class="form-group col-xs-8 nopadding">
-                        <input type="date" id="payment_document_date"  name="payment_document_date" tabindex="4" required="required" autocomplete="off" >
+                        <input type="text" class="date_mask" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask id="payment_document_date"  name="payment_document_date" tabindex="4" required="required" autocomplete="off" >
                       </div>
                     </div>
                     <div class="box-body nopadding">
@@ -212,7 +211,7 @@ $this->helper('slidePaginator');
                         <label for="payment_additional_date">Ngày hạch toán </label>
                       </div>
                       <div class="form-group col-xs-8 nopadding">
-                        <input type="date" id="payment_additional_date"  name="payment_additional_date" tabindex="5" required="required" autocomplete="off" >
+                        <input type="text" class="date_mask" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask id="payment_additional_date"  name="payment_additional_date" tabindex="5" required="required" autocomplete="off" >
                       </div>
                     </div>
                     <div class="box-body nopadding">
@@ -332,6 +331,7 @@ $this->helper('slidePaginator');
 
 <script type="text/javascript">
 $('.add-field').hide();  
+$(".date_mask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
 
 $('html').click(function(e) {
   $('.name_list_id').slideUp(200);

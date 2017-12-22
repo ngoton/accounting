@@ -132,9 +132,9 @@ elseif ($order_by == 'invoice_sell_document_number')
             
             <td  class="fix"><?php echo $i++; ?></td>
             <td class="fix" id="invoice_sell_document_number_<?php echo $invoice_sell->invoice_sell_id; ?>"><?php echo $invoice_sell->invoice_sell_document_number; ?></td>
-            <td class="fix" id="invoice_sell_document_date2_<?php echo $invoice_sell->invoice_sell_id; ?>"><?php echo $lib->hien_thi_ngay_thang($invoice_sell->invoice_sell_document_date); ?></td>
+            <td class="fix" id="invoice_sell_document_date_<?php echo $invoice_sell->invoice_sell_id; ?>"><?php echo $lib->hien_thi_ngay_thang($invoice_sell->invoice_sell_document_date); ?></td>
             <td class="fix" id="invoice_sell_number_<?php echo $invoice_sell->invoice_sell_id; ?>"><?php echo $invoice_sell->invoice_sell_number; ?></td>
-            <td class="fix" id="invoice_sell_date2_<?php echo $invoice_sell->invoice_sell_id; ?>"><?php echo $lib->hien_thi_ngay_thang($invoice_sell->invoice_sell_date); ?></td>
+            <td class="fix" id="invoice_sell_date_<?php echo $invoice_sell->invoice_sell_id; ?>"><?php echo $lib->hien_thi_ngay_thang($invoice_sell->invoice_sell_date); ?></td>
             <td class="fix" id="invoice_sell_comment_<?php echo $invoice_sell->invoice_sell_id; ?>"><?php echo $invoice_sell->invoice_sell_comment; ?></td>
             <td class="fix" data="<?php echo $invoice_sell->invoice_sell_customer; ?>" id="invoice_sell_customer_<?php echo $invoice_sell->invoice_sell_id; ?>"><?php echo $invoice_sell->customer_name; ?></td>
             <td class="fix text-right" id="invoice_sell_number_total_<?php echo $invoice_sell->invoice_sell_id; ?>"><?php echo $lib->formatMoney($invoice_sell->invoice_sell_number_total); ?></td>
@@ -146,9 +146,7 @@ elseif ($order_by == 'invoice_sell_document_number')
             <td style="display:none" class="fix" id="customer_company_<?php echo $invoice_sell->invoice_sell_id; ?>"><?php echo $invoice_sell->customer_company; ?></td>
             <td style="display:none" class="fix" id="customer_mst_<?php echo $invoice_sell->invoice_sell_id; ?>"><?php echo $invoice_sell->customer_mst; ?></td>
             <td style="display:none" class="fix" id="customer_address_<?php echo $invoice_sell->invoice_sell_id; ?>"><?php echo $invoice_sell->customer_address; ?></td>
-            <td style="display:none" class="fix" id="invoice_sell_document_date_<?php echo $invoice_sell->invoice_sell_id; ?>"><?php echo date('Y-m-d',$invoice_sell->invoice_sell_document_date); ?></td>
-            <td style="display:none" class="fix" id="invoice_sell_date_<?php echo $invoice_sell->invoice_sell_id; ?>"><?php echo date('Y-m-d',$invoice_sell->invoice_sell_date); ?></td>
-            <td style="display:none" class="fix" id="invoice_sell_additional_date_<?php echo $invoice_sell->invoice_sell_id; ?>"><?php echo date('Y-m-d',$invoice_sell->invoice_sell_additional_date); ?></td>
+            <td style="display:none" class="fix" id="invoice_sell_additional_date_<?php echo $invoice_sell->invoice_sell_id; ?>"><?php echo $lib->hien_thi_ngay_thang($invoice_sell->invoice_sell_additional_date); ?></td>
             <td style="display:none" class="fix" id="invoice_sell_bill_number_<?php echo $invoice_sell->invoice_sell_id; ?>"><?php echo $invoice_sell->invoice_sell_bill_number; ?></td>
             <td style="display:none" class="fix" id="invoice_sell_contract_number_<?php echo $invoice_sell->invoice_sell_id; ?>"><?php echo $invoice_sell->invoice_sell_contract_number; ?></td>
             <td style="display:none" class="fix" id="invoice_sell_origin_doc_<?php echo $invoice_sell->invoice_sell_id; ?>"><?php echo $invoice_sell->invoice_sell_origin_doc; ?></td>
@@ -287,7 +285,7 @@ $this->helper('slidePaginator');
                         <label for="invoice_sell_document_date">Ngày chứng từ </label>
                       </div>
                       <div class="form-group col-xs-8 nopadding">
-                        <input type="date" id="invoice_sell_document_date"  name="invoice_sell_document_date" tabindex="9" required="required" autocomplete="off" >
+                        <input type="text" class="date_mask" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask id="invoice_sell_document_date"  name="invoice_sell_document_date" tabindex="9" required="required" autocomplete="off" >
                       </div>
                     </div>
                     <div class="box-body nopadding">
@@ -295,7 +293,7 @@ $this->helper('slidePaginator');
                         <label for="invoice_sell_additional_date">Ngày hạch toán </label>
                       </div>
                       <div class="form-group col-xs-8 nopadding">
-                        <input type="date" id="invoice_sell_additional_date"  name="invoice_sell_additional_date" tabindex="10" required="required" autocomplete="off" >
+                        <input type="text" class="date_mask" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask id="invoice_sell_additional_date"  name="invoice_sell_additional_date" tabindex="10" required="required" autocomplete="off" >
                       </div>
                     </div>
                     <div class="box-body nopadding">
@@ -311,7 +309,7 @@ $this->helper('slidePaginator');
                         <label for="invoice_sell_date">Ngày hóa đơn </label>
                       </div>
                       <div class="form-group col-xs-8 nopadding">
-                        <input type="date" id="invoice_sell_date"  name="invoice_sell_date" tabindex="12" autocomplete="off" >
+                        <input type="text" class="date_mask" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask id="invoice_sell_date"  name="invoice_sell_date" tabindex="12" autocomplete="off" >
                       </div>
                     </div>
                     <div class="box-body nopadding">
@@ -540,6 +538,7 @@ $this->helper('slidePaginator');
 
 <script type="text/javascript">
 $('.add-field').hide();  
+$(".date_mask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
 
 $('html').click(function(e) {
   $('.name_list_id').slideUp(200);

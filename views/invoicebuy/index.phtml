@@ -139,9 +139,9 @@ elseif ($order_by == 'invoice_buy_date')
             
             <td  class="fix"><?php echo $i++; ?></td>
             <td class="fix" id="invoice_buy_document_number_<?php echo $invoice_buy->invoice_buy_id; ?>"><?php echo $invoice_buy->invoice_buy_document_number; ?></td>
-            <td class="fix" id="invoice_buy_document_date2_<?php echo $invoice_buy->invoice_buy_id; ?>"><?php echo $lib->hien_thi_ngay_thang($invoice_buy->invoice_buy_document_date); ?></td>
+            <td class="fix" id="invoice_buy_document_date_<?php echo $invoice_buy->invoice_buy_id; ?>"><?php echo $lib->hien_thi_ngay_thang($invoice_buy->invoice_buy_document_date); ?></td>
             <td class="fix" id="invoice_buy_number_<?php echo $invoice_buy->invoice_buy_id; ?>"><?php echo $invoice_buy->invoice_buy_number; ?></td>
-            <td class="fix" id="invoice_buy_date2_<?php echo $invoice_buy->invoice_buy_id; ?>"><?php echo $lib->hien_thi_ngay_thang($invoice_buy->invoice_buy_date); ?></td>
+            <td class="fix" id="invoice_buy_date_<?php echo $invoice_buy->invoice_buy_id; ?>"><?php echo $lib->hien_thi_ngay_thang($invoice_buy->invoice_buy_date); ?></td>
             <td class="fix" id="invoice_buy_comment_<?php echo $invoice_buy->invoice_buy_id; ?>"><?php echo $invoice_buy->invoice_buy_comment; ?></td>
             <td class="fix" data="<?php echo $invoice_buy->invoice_buy_customer; ?>" id="invoice_buy_customer_<?php echo $invoice_buy->invoice_buy_id; ?>"><?php echo $invoice_buy->customer_name; ?></td>
             <td class="fix text-right" id="invoice_buy_number_total_<?php echo $invoice_buy->invoice_buy_id; ?>"><?php echo $lib->formatMoney($invoice_buy->invoice_buy_number_total); ?></td>
@@ -155,9 +155,8 @@ elseif ($order_by == 'invoice_buy_date')
             <td style="display:none" class="fix" id="customer_company_<?php echo $invoice_buy->invoice_buy_id; ?>"><?php echo $invoice_buy->customer_company; ?></td>
             <td style="display:none" class="fix" id="customer_mst_<?php echo $invoice_buy->invoice_buy_id; ?>"><?php echo $invoice_buy->customer_mst; ?></td>
             <td style="display:none" class="fix" id="customer_address_<?php echo $invoice_buy->invoice_buy_id; ?>"><?php echo $invoice_buy->customer_address; ?></td>
-            <td style="display:none" class="fix" id="invoice_buy_document_date_<?php echo $invoice_buy->invoice_buy_id; ?>"><?php echo date('Y-m-d',$invoice_buy->invoice_buy_document_date); ?></td>
-            <td style="display:none" class="fix" id="invoice_buy_date_<?php echo $invoice_buy->invoice_buy_id; ?>"><?php echo date('Y-m-d',$invoice_buy->invoice_buy_date); ?></td>
-            <td style="display:none" class="fix" id="invoice_buy_additional_date_<?php echo $invoice_buy->invoice_buy_id; ?>"><?php echo date('Y-m-d',$invoice_buy->invoice_buy_additional_date); ?></td>
+            
+            <td style="display:none" class="fix" id="invoice_buy_additional_date_<?php echo $invoice_buy->invoice_buy_id; ?>"><?php echo date('d/m/Y',$invoice_buy->invoice_buy_additional_date); ?></td>
             <td style="display:none" class="fix" id="invoice_buy_bill_number_<?php echo $invoice_buy->invoice_buy_id; ?>"><?php echo $invoice_buy->invoice_buy_bill_number; ?></td>
             <td style="display:none" class="fix" id="invoice_buy_contract_number_<?php echo $invoice_buy->invoice_buy_id; ?>"><?php echo $invoice_buy->invoice_buy_contract_number; ?></td>
             <td style="display:none" class="fix" id="invoice_buy_origin_doc_<?php echo $invoice_buy->invoice_buy_id; ?>"><?php echo $invoice_buy->invoice_buy_origin_doc; ?></td>
@@ -303,7 +302,7 @@ $this->helper('slidePaginator');
                         <label for="invoice_buy_document_date">Ngày chứng từ </label>
                       </div>
                       <div class="form-group col-xs-8 nopadding">
-                        <input type="date" id="invoice_buy_document_date"  name="invoice_buy_document_date" tabindex="9" required="required" autocomplete="off" >
+                        <input type="text" class="date_mask" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask id="invoice_buy_document_date"  name="invoice_buy_document_date" tabindex="9" required="required" autocomplete="off" >
                       </div>
                     </div>
                     <div class="box-body nopadding">
@@ -311,7 +310,7 @@ $this->helper('slidePaginator');
                         <label for="invoice_buy_additional_date">Ngày hạch toán </label>
                       </div>
                       <div class="form-group col-xs-8 nopadding">
-                        <input type="date" id="invoice_buy_additional_date"  name="invoice_buy_additional_date" tabindex="10" required="required" autocomplete="off" >
+                        <input type="text" class="date_mask" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask id="invoice_buy_additional_date"  name="invoice_buy_additional_date" tabindex="10" required="required" autocomplete="off" >
                       </div>
                     </div>
                     <div class="box-body nopadding">
@@ -327,7 +326,7 @@ $this->helper('slidePaginator');
                         <label for="invoice_buy_date">Ngày hóa đơn </label>
                       </div>
                       <div class="form-group col-xs-8 nopadding">
-                        <input type="date" id="invoice_buy_date"  name="invoice_buy_date" tabindex="12" autocomplete="off" >
+                        <input type="text" class="date_mask" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask id="invoice_buy_date"  name="invoice_buy_date" tabindex="12" autocomplete="off" >
                       </div>
                     </div>
                     <div class="box-body nopadding">
@@ -607,7 +606,8 @@ $this->helper('slidePaginator');
 <div style="display:none" id="lasted"></div>
 
 <script type="text/javascript">
-$('.add-field').hide();  
+$('.add-field').hide();
+$(".date_mask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});  
 
 $('html').click(function(e) {
   $('.name_list_id').slideUp(200);

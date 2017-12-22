@@ -588,7 +588,7 @@ Class paycashController Extends baseController {
                   <ul class="name_list_id_4"></ul>
                 </td>';
                 $str2 .= '<td><input value="'.$item->payment_item_invoice_number.'" type="text" name="payment_item_invoice_number[]" class="payment_item_invoice_number"  autocomplete="off"></td>';
-                $str2 .= '<td><input value="'.($item->payment_item_invoice_date>0?date('Y-m-d',$item->payment_item_invoice_date):null).'" type="date" name="payment_item_invoice_date[]" class="payment_item_invoice_date"  autocomplete="off"></td>';
+                $str2 .= '<td><input value="'.($item->payment_item_invoice_date>0?date('d/m/Y',$item->payment_item_invoice_date):null).'" type="text" data-inputmask="\'alias\': \'dd/mm/yyyy\'" data-mask name="payment_item_invoice_date[]" class="payment_item_invoice_date date_mask"  autocomplete="off"></td>';
                 $str2 .= '<td><input value="'.$item->payment_item_invoice_symbol.'" type="text" name="payment_item_invoice_symbol[]" class="payment_item_invoice_symbol"  autocomplete="off"></td>';
                 $str2 .= '</tr>';
 
