@@ -424,11 +424,11 @@ $this->helper('slidePaginator');
                               <ul class="name_list_id_4"></ul>
                             </td>
                             <td class="width-5">
-                              <input type="text" name="invoice_buy_item_debit[]" class="invoice_buy_item_debit keep-val" required="required" autocomplete="off">
+                              <input type="text" name="invoice_buy_item_debit[]" class="invoice_buy_item_debit keep-val" required="required" autocomplete="off" value="156">
                               <ul class="name_list_id_2"></ul>
                             </td>
                             <td class="width-7">
-                              <input type="text" name="invoice_buy_item_credit[]" class="invoice_buy_item_credit keep-val" required="required" autocomplete="off">
+                              <input type="text" name="invoice_buy_item_credit[]" class="invoice_buy_item_credit keep-val" required="required" autocomplete="off" value="331">
                               <ul class="name_list_id_3"></ul>
                             </td>
                             <td class="width-5"><input type="text" name="invoice_buy_item_unit[]" class="invoice_buy_item_unit" required="required" autocomplete="off"></td>
@@ -476,17 +476,17 @@ $this->helper('slidePaginator');
                             <td class="width-7"><input type="text" name="invoice_buy_item_tax_import_percent[]" class="invoice_buy_item_tax_import_percent keep-val text-right" required="required" autocomplete="off"></td>
                             <td class="width-10"><input type="text" name="invoice_buy_item_tax_import[]" class="invoice_buy_item_tax_import numbers text-right" required="required" autocomplete="off"></td>
                             <td class="width-7">
-                              <input type="text" name="invoice_buy_item_tax_import_debit[]" class="invoice_buy_item_tax_import_debit keep-val" required="required" autocomplete="off">
+                              <input type="text" name="invoice_buy_item_tax_import_debit[]" class="invoice_buy_item_tax_import_debit keep-val" required="required" autocomplete="off" value="3333">
                               <ul class="name_list_id_5"></ul>
                             </td>
                             <td class="width-7"><input type="text" name="invoice_buy_item_tax_vat_percent[]" class="invoice_buy_item_tax_vat_percent keep-val text-right" required="required" autocomplete="off"></td>
                             <td class="width-10"><input type="text" name="invoice_buy_item_tax_vat[]" class="invoice_buy_item_tax_vat numbers text-right" required="required" autocomplete="off"></td>
                             <td class="width-10">
-                              <input type="text" name="invoice_buy_item_tax_vat_debit[]" class="invoice_buy_item_tax_vat_debit keep-val" required="required" autocomplete="off">
+                              <input type="text" name="invoice_buy_item_tax_vat_debit[]" class="invoice_buy_item_tax_vat_debit keep-val" required="required" autocomplete="off" value="33312">
                               <ul class="name_list_id_6"></ul>
                             </td>
                             <td class="width-7">
-                              <input type="text" name="invoice_buy_item_tax_vat_credit[]" class="invoice_buy_item_tax_vat_credit keep-val" required="required" autocomplete="off">
+                              <input type="text" name="invoice_buy_item_tax_vat_credit[]" class="invoice_buy_item_tax_vat_credit keep-val" required="required" autocomplete="off" value="33312">
                               <ul class="name_list_id_7"></ul>
                             </td>
                             <td><input type="text" name="invoice_buy_item_tax_total[]" class="invoice_buy_item_tax_total numbers text-right" disabled required="required" autocomplete="off"></td>
@@ -2401,7 +2401,7 @@ function add_click(){
     $('.add-field').slideDown(500);
      $("html, body").animate({ scrollTop: $('.add-field').offset().top }, 300);   
      
-        $('.add-field input[name!="invoice_buy_allocation"][name!="invoice_buy_allocation2"]').val("");
+        $('.add-field input[name!="invoice_buy_allocation"][name!="invoice_buy_allocation2"][name!="invoice_buy_item_debit[]"][name!="invoice_buy_item_credit[]"][name!="invoice_buy_item_tax_import_debit[]"][name!="invoice_buy_item_tax_vat_debit[]"][name!="invoice_buy_item_tax_vat_credit[]"]').val("");
         $('.add-field input').attr("data","");
         $('.add-field input').attr("alt","");
         $('#invoice_buy_money_type option[value=2]').attr("selected","selected");

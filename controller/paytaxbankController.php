@@ -66,6 +66,7 @@ Class paytaxbankController Extends baseController {
       
         if ($keyword != '') {
             $search = '( payment_document_number LIKE "%'.$keyword.'%"  
+            OR payment_comment LIKE "%'.$keyword.'%" 
                 )';
             
                 $data['where'] = $data['where'].' AND '.$search;
@@ -429,7 +430,7 @@ Class paytaxbankController Extends baseController {
                                 $credit = $credits->account_id;
                             }
                         }
-                        
+
                         
 
                         $data_item = array(
@@ -446,6 +447,8 @@ Class paytaxbankController Extends baseController {
                         );
 
                         $money += $data_item['payment_item_money']+$data_item['payment_item_money_2'];
+
+                        $invoice_model->updateInvoice(array('invoice_date'=>$payments->payment_document_date),array('invoice_buy'=>$data_item['payment_item_invoice']));
 
                         $payment_items = $payment_item_model->getPayment($v['payment_item_id']);
                         if ($payment_items) {

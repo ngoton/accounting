@@ -90,7 +90,7 @@
           $(".tblChange a").removeAttr("href");
           $(".tblChange td").each(function () {
             var new_val = $(this).html().replace(/\,/g,'');
-            if (isNaN(parseFloat(new_val)) == false) {
+            if (isNaN(new_val) == false) {
               $(this).html(new_val);
             }
             

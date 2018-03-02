@@ -394,11 +394,11 @@ $this->helper('slidePaginator');
                             </td>
                             
                             <td class="width-7">
-                              <input type="text" name="service_buy_item_debit[]" class="service_buy_item_debit  keep-val" required="required" autocomplete="off">
+                              <input type="text" name="service_buy_item_debit[]" class="service_buy_item_debit  keep-val" required="required" autocomplete="off" value="156">
                               <ul class="name_list_id_2"></ul>
                             </td>
                             <td class="width-7">
-                              <input type="text" name="service_buy_item_credit[]" class="service_buy_item_credit keep-val" required="required" autocomplete="off">
+                              <input type="text" name="service_buy_item_credit[]" class="service_buy_item_credit keep-val" required="required" autocomplete="off" value="331">
                               <ul class="name_list_id_3"></ul>
                             </td>
                             <td class="width-7"><input type="text" name="service_buy_item_unit[]" class="service_buy_item_unit" required="required" autocomplete="off"></td>
@@ -436,7 +436,7 @@ $this->helper('slidePaginator');
                             <td><input type="text" name="service_buy_item_tax_vat_percent[]" class="service_buy_item_tax_vat_percent text-right"  autocomplete="off"></td>
                             <td><input type="text" name="service_buy_item_tax_vat[]" class="service_buy_item_tax_vat numbers text-right"  autocomplete="off"></td>
                             <td>
-                              <input type="text" name="service_buy_item_tax_vat_debit[]" class="service_buy_item_tax_vat_debit"  autocomplete="off">
+                              <input type="text" name="service_buy_item_tax_vat_debit[]" class="service_buy_item_tax_vat_debit"  autocomplete="off" value="1331">
                               <ul class="name_list_id_4"></ul>
                             </td>
                             
@@ -969,7 +969,7 @@ function add_click(){
     $('.add-field').slideDown(500);
      $("html, body").animate({ scrollTop: $('.add-field').offset().top }, 300);   
      
-        $('.add-field input').val("");
+        $('.add-field input[name!="service_buy_item_debit[]"][name!="service_buy_item_credit[]"][name!="service_buy_item_tax_vat_debit[]"]').val("");
         $('.add-field input').attr("data","");
         $('.add-field input').attr("alt","");
         $('#service_buy_money_type option[value=1]').attr("selected","selected");

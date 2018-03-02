@@ -119,7 +119,7 @@ class Library{
 	        $number = sprintf('%.2f', $number);  
 	    }
 	    else{
-	    	$number = floor($number);
+	    	$number = round($number);
 	    }  
 	    while (true) {  
 	        $replaced = preg_replace('/(-?\d+)(\d\d\d)/', '$1,$2', $number);  

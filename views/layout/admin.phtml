@@ -730,6 +730,14 @@ $(window).load(function() {
 
 });
 
+
+$('.add_button').click(function(){
+  $('.date_mask').val("<?php echo date('d/m/Y') ?>");
+
+  $('.date_mask:first').keyup(function(){
+    $('.date_mask:not(:first)').val($(this).val());
+  });
+});
 </script>
 
 </body>

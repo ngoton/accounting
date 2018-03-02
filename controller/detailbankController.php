@@ -19,8 +19,9 @@ Class detailbankController Extends baseController {
             $limit = isset($_POST['limit']) ? $_POST['limit'] : 18446744073709;
             $batdau = isset($_POST['batdau']) ? $_POST['batdau'] : null;
             $ketthuc = isset($_POST['ketthuc']) ? $_POST['ketthuc'] : null;
-            $ngaytao = isset($_POST['ngaytao']) ? $_POST['ngaytao'] : null;
-            $ngaytaobatdau = isset($_POST['ngaytaobatdau']) ? $_POST['ngaytaobatdau'] : null;
+            $ngaytao = isset($_POST['ngaytao']) ? $_POST['nv'] : null;
+            $tha = isset($_POST['tha']) ? $_POST['tha'] : null;
+            $na = isset($_POST['na']) ? $_POST['na'] : null;
             $trangthai = isset($_POST['trangthai']) ? $_POST['trangthai'] : null;
             $code = "";
             $nv = isset($_POST['nv']) ? $_POST['nv'] : null;
@@ -33,8 +34,9 @@ Class detailbankController Extends baseController {
             $limit = 18446744073709;
             $batdau = '01-'.date('m-Y');
             $ketthuc = date('t-m-Y');
-            $ngaytao = date('m-Y');
-            $ngaytaobatdau = date('m-Y');
+            $ngaytao = 1;
+            $tha = date('m');
+            $na = date('Y');
             $trangthai = "";
             $code = $this->registry->router->addition;
             $nv = 0;
@@ -85,7 +87,7 @@ Class detailbankController Extends baseController {
         }
         
         if ($nv>0) {
-            $data['where'] .= ' AND (payment_item IN (SELECT payment_item_id FROM payment_item,payment WHERE payment=payment_id AND payment_bank='.$nv.' ) OR payment_cost IN (SELECT payment_cost_id FROM payment_cost,payment WHERE payment=payment_id AND payment_bank='.$nv.' ) OR internal_transfer_item IN (SELECT internal_transfer_item_id FROM internal_transfer_item WHERE internal_transfer_item_in='.$nv.' OR internal_transfer_item_out='.$nv.'))';
+            $data['where'] .= ' AND (payment_item IN (SELECT payment_item_id FROM payment_item,payment WHERE payment=payment_id AND (payment_bank='.$nv.' OR payment_bank_2='.$nv.') ) OR payment_cost IN (SELECT payment_cost_id FROM payment_cost,payment WHERE payment=payment_id AND (payment_bank='.$nv.' OR payment_bank_2='.$nv.') ) OR internal_transfer_item IN (SELECT internal_transfer_item_id FROM internal_transfer_item WHERE internal_transfer_item_in='.$nv.' OR internal_transfer_item_out='.$nv.'))';
         }
         
         $tongsodong = count($additional_model->getAllAdditional($data));
@@ -103,7 +105,8 @@ Class detailbankController Extends baseController {
         $this->view->data['batdau'] = $batdau;
         $this->view->data['ketthuc'] = $ketthuc;
         $this->view->data['ngaytao'] = $ngaytao;
-        $this->view->data['ngaytaobatdau'] = $ngaytaobatdau;
+        $this->view->data['tha'] = $tha;
+        $this->view->data['na'] = $na;
         $this->view->data['trangthai'] = $trangthai;
         $this->view->data['nv'] = $nv;
 
@@ -122,7 +125,7 @@ Class detailbankController Extends baseController {
             $data['where'] .= ' AND ((debit = '.$trangthai.' OR credit = '.$trangthai.') OR (debit IN (SELECT account_id FROM account WHERE account_parent='.$trangthai.') OR credit IN (SELECT account_id FROM account WHERE account_parent='.$trangthai.')))';
         }
         if ($nv>0) {
-            $data['where'] .= ' AND (payment_item IN (SELECT payment_item_id FROM payment_item,payment WHERE payment=payment_id AND payment_bank='.$nv.' ) OR payment_cost IN (SELECT payment_cost_id FROM payment_cost,payment WHERE payment=payment_id AND payment_bank='.$nv.' ) OR internal_transfer_item IN (SELECT internal_transfer_item_id FROM internal_transfer_item WHERE internal_transfer_item_in='.$nv.' OR internal_transfer_item_out='.$nv.'))';
+            $data['where'] .= ' AND (payment_item IN (SELECT payment_item_id FROM payment_item,payment WHERE payment=payment_id AND (payment_bank='.$nv.' OR payment_bank_2='.$nv.') ) OR payment_cost IN (SELECT payment_cost_id FROM payment_cost,payment WHERE payment=payment_id AND (payment_bank='.$nv.' OR payment_bank_2='.$nv.') ) OR internal_transfer_item IN (SELECT internal_transfer_item_id FROM internal_transfer_item WHERE internal_transfer_item_in='.$nv.' OR internal_transfer_item_out='.$nv.'))';
         }
         
       

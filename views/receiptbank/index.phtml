@@ -124,6 +124,7 @@ elseif ($order_by == 'bank_code')
             <td style="display:none" class="fix" id="account_bank_<?php echo $payment->payment_id; ?>"><?php echo $payment->account_bank; ?></td>
             <td style="display:none" class="fix" id="payment_person_<?php echo $payment->payment_id; ?>"><?php echo $payment->payment_person; ?></td>
             <td style="display:none" class="fix" id="payment_origin_doc_<?php echo $payment->payment_id; ?>"><?php echo $payment->payment_origin_doc; ?></td>
+            <td style="display:none" class="fix" id="payment_bank_2_<?php echo $payment->payment_id; ?>"><?php echo $payment->payment_bank_2; ?></td>
             
             
             <?php if(!isset($disable_control)){ ?>
@@ -172,6 +173,7 @@ $this->helper('slidePaginator');
                             <option value="<?php echo $bank->bank_id ?>" data="<?php echo $bank->account_number ?>" alt="<?php echo $bank->account_bank ?>" ><?php echo $bank->bank_code ?></option>
                           <?php } ?>
                         </select>
+                        <input type="checkbox" name="payment_bank_2" id="payment_bank_2" value="0"> Nộp tiền mặt
                       </div>
                       <div class="form-group nopadding">
                         <input style="width:30%" type="text" id="account_number"  name="account_number" tabindex="1"  required="required" autocomplete="off" >
@@ -356,6 +358,13 @@ $('.edit_service').click(function(e){
     });
 
     $('#money').html($('#payment_money_'+id).text());
+
+    if ($('#payment_bank_2_'+id).text()=="0") {
+      $('#payment_bank_2').prop('checked',true);
+    }
+    else{
+      $('#payment_bank_2').prop('checked',false);
+    }
     
     //alert(cost_code);
     $('#yes').val(id);
@@ -586,6 +595,7 @@ function add_click(){
         $('.add-field input').attr("alt","");
         $('.add-field input[type=date]').val("<?php echo date('Y-m-d') ?>");
         $('#payment_document_number').val('<?php echo ++$lastID ?>');
+        $('#payment_bank_2').prop('checked',false);
                 
         $('.numbers').focus(function(){
             if ( $(this).val() == '0') {
@@ -622,6 +632,13 @@ $(document).ready(function(){
         var payment_type = 1;
         var payment_check = 1;
         var payment_in_ex = 1;
+
+        if ($('#payment_bank_2').is(':checked')) {
+          var payment_bank_2 = 0;
+        }
+        else{
+          var payment_bank_2 = -1;
+        }
         
         var item = [];
         var payment_item_id = [];
@@ -679,6 +696,7 @@ $(document).ready(function(){
             payment_document_number: payment_document_number,
             payment_additional_date: payment_additional_date,
             payment_bank: payment_bank,
+            payment_bank_2: payment_bank_2,
             payment_bank_type: payment_bank_type,
             payment_type: payment_type,
             payment_check: payment_check,

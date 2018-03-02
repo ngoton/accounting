@@ -824,6 +824,7 @@ CREATE TABLE IF NOT EXISTS `payment` (
   `payment_additional_date` int(11) DEFAULT NULL,
   `payment_document_number` varchar(20) DEFAULT NULL,
   `payment_bank` int(11) DEFAULT NULL,
+  `payment_bank_2` int(11) DEFAULT NULL,
   `payment_comment` varchar(255) DEFAULT NULL,
   `payment_person` varchar(50) DEFAULT NULL,
   `payment_origin_doc` varchar(20) DEFAULT NULL,

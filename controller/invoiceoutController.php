@@ -19,8 +19,9 @@ Class invoiceoutController Extends baseController {
             $limit = isset($_POST['limit']) ? $_POST['limit'] : 18446744073709;
             $batdau = isset($_POST['batdau']) ? $_POST['batdau'] : null;
             $ketthuc = isset($_POST['ketthuc']) ? $_POST['ketthuc'] : null;
-            $ngaytao = isset($_POST['ngaytao']) ? $_POST['ngaytao'] : null;
-            $ngaytaobatdau = isset($_POST['ngaytaobatdau']) ? $_POST['ngaytaobatdau'] : null;
+            $nv = isset($_POST['nv']) ? $_POST['nv'] : null;
+            $tha = isset($_POST['tha']) ? $_POST['tha'] : null;
+            $na = isset($_POST['na']) ? $_POST['na'] : null;
         }
         else{
             $order_by = $this->registry->router->order_by ? $this->registry->router->order_by : 'invoice_date';
@@ -30,8 +31,9 @@ Class invoiceoutController Extends baseController {
             $limit = 18446744073709;
             $batdau = '01-'.date('m-Y');
             $ketthuc = date('t-m-Y');
-            $ngaytao = date('m-Y');
-            $ngaytaobatdau = date('m-Y');
+            $nv = 1;
+            $tha = date('m');
+            $na = date('Y');
         }
         $ngayketthuc = date('d-m-Y',strtotime('+1 day', strtotime($ketthuc)));
 
@@ -62,8 +64,9 @@ Class invoiceoutController Extends baseController {
         $this->view->data['sonews'] = $sonews;
         $this->view->data['batdau'] = $batdau;
         $this->view->data['ketthuc'] = $ketthuc;
-        $this->view->data['ngaytao'] = $ngaytao;
-        $this->view->data['ngaytaobatdau'] = $ngaytaobatdau;
+        $this->view->data['nv'] = $nv;
+        $this->view->data['tha'] = $tha;
+        $this->view->data['na'] = $na;
 
         $data = array(
             'order_by'=>$order_by,

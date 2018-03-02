@@ -115,6 +115,7 @@ elseif ($order_by == 'payment_document_number')
             <td class="fix text-right" id="payment_money_<?php echo $payment->payment_id; ?>"><?php echo $lib->formatMoney($payment->payment_money); ?></td>
             <td style="display:none" class="fix" id="payment_person_<?php echo $payment->payment_id; ?>"><?php echo $payment->payment_person; ?></td>
             <td style="display:none" class="fix" id="payment_origin_doc_<?php echo $payment->payment_id; ?>"><?php echo $payment->payment_origin_doc; ?></td>
+            <td style="display:none" class="fix" id="payment_bank_2_<?php echo $payment->payment_id; ?>"><?php echo $payment->payment_bank_2; ?></td>
             
             
             <?php if(!isset($disable_control)){ ?>
@@ -170,6 +171,17 @@ $this->helper('slidePaginator');
                       <div class="form-group nopadding">
                         <label for="payment_origin_doc">Kèm theo </label>
                         <input style="width:70%" type="text" id="payment_origin_doc"  name="payment_origin_doc" tabindex="3" autocomplete="off" > chứng từ gốc
+                      </div>
+                    </div>
+                    <div class="box-body nopadding">
+                      <div class="form-group nopadding">
+                        <label for="payment_origin_doc">Ngân hàng </label>
+                        <select style="width:20%" id="payment_bank_2"  name="payment_bank_2" tabindex="3">
+                          <option value="">Mã TK</option>
+                          <?php foreach ($banks as $bank) { ?>
+                            <option value="<?php echo $bank->bank_id ?>" data="<?php echo $bank->account_number ?>" alt="<?php echo $bank->account_bank ?>" ><?php echo $bank->bank_code ?></option>
+                          <?php } ?>
+                        </select>
                       </div>
                     </div>
                   </fieldset>
@@ -705,6 +717,7 @@ $(document).ready(function(){
         var payment_document_number = $('#payment_document_number').val();
         var payment_additional_date = $('#payment_additional_date').val();
         var payment_bank = 0;
+        var payment_bank_2 = $('#payment_bank_2').val();
         var payment_bank_type = 1;
         var payment_type = 2;
         var payment_check = 1;
@@ -790,6 +803,7 @@ $(document).ready(function(){
             payment_document_number: payment_document_number,
             payment_additional_date: payment_additional_date,
             payment_bank: payment_bank,
+            payment_bank_2: payment_bank_2,
             payment_bank_type: payment_bank_type,
             payment_type: payment_type,
             payment_check: payment_check,

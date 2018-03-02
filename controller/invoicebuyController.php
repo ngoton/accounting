@@ -831,12 +831,12 @@ Class invoicebuyController Extends baseController {
                 </td>';
                 $str .= '<td class="width-5"><input value="'.$item->invoice_buy_item_unit.'" type="text" name="invoice_buy_item_unit[]" class="invoice_buy_item_unit" required="required" autocomplete="off"></td>';
                 $str .= '<td class="width-5"><input alt="'.$item->items_stuff.'" value="'.$item->invoice_buy_item_number.'" type="text" name="invoice_buy_item_number[]" class="invoice_buy_item_number text-right" required="required" autocomplete="off"></td>';
-                $str .= '<td class="width-7"><input value="'.$this->lib->formatMoney($item->invoice_buy_item_price).'" type="text" name="invoice_buy_item_price[]" class="invoice_buy_item_price numbers text-right" required="required" autocomplete="off"></td>';
+                $str .= '<td class="width-7"><input value="'.$this->lib->formatMoney($item->invoice_buy_item_price,2).'" type="text" name="invoice_buy_item_price[]" class="invoice_buy_item_price numbers text-right" required="required" autocomplete="off"></td>';
                 $str .= '<td class="width-10"><input value="'.$this->lib->formatMoney($item->invoice_buy_item_money).'" type="text" name="invoice_buy_item_money[]" class="invoice_buy_item_money numbers text-right" required="required" autocomplete="off"></td>';
                 $str .= '<td class="width-5"><input value="'.$item->invoice_buy_item_custom_cost.'" type="text" name="invoice_buy_item_custom_cost[]" class="invoice_buy_item_custom_cost text-right" required="required" autocomplete="off"></td>';
-                $str .= '<td class="width-7"><input value="'.$this->lib->formatMoney($item->invoice_buy_item_custom_cost_money).'" type="text" name="invoice_buy_item_custom_cost_money[]" class="invoice_buy_item_custom_cost_money numbers text-right" required="required" autocomplete="off"></td>';
-                $str .= '<td class="width-7"><input value="'.$this->lib->formatMoney($item->invoice_buy_item_other_cost).'" type="text" name="invoice_buy_item_other_cost[]" class="invoice_buy_item_other_cost numbers text-right" required="required" autocomplete="off"></td>';
-                $str .= '<td class="width-10"><input value="'.$this->lib->formatMoney($item->invoice_buy_item_total).'" disabled type="text" name="invoice_buy_item_total[]" class="invoice_buy_item_total numbers text-right" required="required" autocomplete="off"></td>';
+                $str .= '<td class="width-7"><input value="'.$this->lib->formatMoney($item->invoice_buy_item_custom_cost_money,2).'" type="text" name="invoice_buy_item_custom_cost_money[]" class="invoice_buy_item_custom_cost_money numbers text-right" required="required" autocomplete="off"></td>';
+                $str .= '<td class="width-7"><input value="'.$this->lib->formatMoney($item->invoice_buy_item_other_cost,2).'" type="text" name="invoice_buy_item_other_cost[]" class="invoice_buy_item_other_cost numbers text-right" required="required" autocomplete="off"></td>';
+                $str .= '<td class="width-10"><input value="'.$this->lib->formatMoney($item->invoice_buy_item_total,2).'" disabled type="text" name="invoice_buy_item_total[]" class="invoice_buy_item_total numbers text-right" required="required" autocomplete="off"></td>';
               $str .= '</tr>';
 
               $str2 .= '<tr>';

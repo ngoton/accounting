@@ -19,21 +19,23 @@ Class additionalotherController Extends baseController {
             $limit = isset($_POST['limit']) ? $_POST['limit'] : 18446744073709;
             $batdau = isset($_POST['batdau']) ? $_POST['batdau'] : null;
             $ketthuc = isset($_POST['ketthuc']) ? $_POST['ketthuc'] : null;
-            $ngaytao = isset($_POST['ngaytao']) ? $_POST['ngaytao'] : null;
-            $ngaytaobatdau = isset($_POST['ngaytaobatdau']) ? $_POST['ngaytaobatdau'] : null;
+            $nv = isset($_POST['nv']) ? $_POST['nv'] : null;
+            $tha = isset($_POST['tha']) ? $_POST['tha'] : null;
+            $na = isset($_POST['na']) ? $_POST['na'] : null;
             $trangthai = isset($_POST['trangthai']) ? $_POST['trangthai'] : null;
             $code = "";
         }
         else{
             $order_by = $this->registry->router->order_by ? $this->registry->router->order_by : 'additional_other_document_date';
-            $order = $this->registry->router->order_by ? $this->registry->router->order : 'DESC';
+            $order = $this->registry->router->order_by ? $this->registry->router->order : 'ASC, additional_other_document_number ASC';
             $page = $this->registry->router->page ? (int) $this->registry->router->page : 1;
             $keyword = "";
             $limit = 18446744073709;
             $batdau = '01-'.date('m-Y');
             $ketthuc = date('t-m-Y');
-            $ngaytao = date('m-Y');
-            $ngaytaobatdau = date('m-Y');
+            $nv = 1;
+            $tha = date('m');
+            $na = date('Y');
             $trangthai = "";
             $code = $this->registry->router->addition;
         }
@@ -103,8 +105,9 @@ Class additionalotherController Extends baseController {
         $this->view->data['sonews'] = $sonews;
         $this->view->data['batdau'] = $batdau;
         $this->view->data['ketthuc'] = $ketthuc;
-        $this->view->data['ngaytao'] = $ngaytao;
-        $this->view->data['ngaytaobatdau'] = $ngaytaobatdau;
+        $this->view->data['nv'] = $nv;
+        $this->view->data['tha'] = $tha;
+        $this->view->data['na'] = $na;
         $this->view->data['trangthai'] = $trangthai;
 
         $data = array(
@@ -143,7 +146,7 @@ Class additionalotherController Extends baseController {
 
         
         $this->view->data['additionals'] = $additional_other_model->getAllAdditional($data);
-        $this->view->data['lastID'] = isset($additional_other_model->getLastAdditional()->additional_other_id)?$additional_other_model->getLastAdditional()->additional_other_id:0;
+        $this->view->data['lastID'] = isset($additional_other_model->getLastAdditional()->additional_other_id)?$additional_other_model->getLastAdditional()->additional_other_document_number:0;
 
         /* Lấy tổng doanh thu*/
         
@@ -199,12 +202,12 @@ Class additionalotherController Extends baseController {
                         'additional_other_customer' => trim($_POST['additional_other_customer']),
                         'additional_other_bank' => trim($_POST['additional_other_bank']),
                         'additional_other_bank_check' => trim($_POST['additional_other_bank_check']),
-                        'additional_other_tax_percent' => trim($v['additional_other_tax_percent']),
+                        'additional_other_tax_percent' => trim($_POST['additional_other_tax_percent']),
                         'additional_other_tax_debit' => trim($_POST['additional_other_tax_debit']),
-                        'additional_other_tax' => str_replace(',', '', $v['additional_other_tax']),
-                        'additional_other_invoice_number' => trim($v['additional_other_invoice_number']),
-                        'additional_other_invoice_date' => strtotime(str_replace('/','-',$v['additional_other_invoice_date'])),
-                        'additional_other_invoice_symbol' => trim($v['additional_other_invoice_symbol']),
+                        'additional_other_tax' => str_replace(',', '', $_POST['additional_other_tax']),
+                        'additional_other_invoice_number' => trim($_POST['additional_other_invoice_number']),
+                        'additional_other_invoice_date' => strtotime(str_replace('/','-',$_POST['additional_other_invoice_date'])),
+                        'additional_other_invoice_symbol' => trim($_POST['additional_other_invoice_symbol']),
                         );
             
             
@@ -342,7 +345,7 @@ Class additionalotherController Extends baseController {
 
                             $data_invoice = array(
                                 'additional_other'=>$id_additional,
-                                'invoice_date'=>$data['additional_other_document_number'],
+                                'invoice_date'=>$data['additional_other_invoice_date'],
                                 'invoice_number'=>$data['additional_other_invoice_number'],
                                 'invoice_customer'=>$data['additional_other_customer'],
                                 'invoice_money'=>$data['additional_other_money'],
@@ -369,7 +372,7 @@ Class additionalotherController Extends baseController {
 
                             $data_invoice = array(
                                 'additional_other'=>$id_additional,
-                                'invoice_date'=>$data['additional_other_document_date'],
+                                'invoice_date'=>$data['additional_other_invoice_date'],
                                 'invoice_symbol'=>$data['additional_other_invoice_symbol'],
                                 'invoice_number'=>$data['additional_other_invoice_number'],
                                 'invoice_customer'=>$data['additional_other_customer'],
@@ -469,7 +472,7 @@ Class additionalotherController Extends baseController {
 
                         $data_invoice = array(
                             'additional_other'=>$id_additional,
-                            'invoice_date'=>$data['additional_other_document_date'],
+                            'invoice_date'=>$data['additional_other_invoice_date'],
                             'invoice_symbol'=>$data['additional_other_invoice_symbol'],
                             'invoice_number'=>$data['additional_other_invoice_number'],
                             'invoice_customer'=>$data['additional_other_customer'],

@@ -66,6 +66,7 @@ Class paybankController Extends baseController {
       
         if ($keyword != '') {
             $search = '( payment_document_number LIKE "%'.$keyword.'%"  
+                    OR payment_comment LIKE "%'.$keyword.'%" 
                 )';
             
                 $data['where'] = $data['where'].' AND '.$search;
@@ -224,6 +225,7 @@ Class paybankController Extends baseController {
                         'payment_origin_doc' => trim($_POST['payment_origin_doc']),
                         'payment_comment' => trim($_POST['payment_comment']),
                         'payment_bank' => trim($_POST['payment_bank']),
+                        'payment_bank_2' => trim($_POST['payment_bank_2'])==0?0:null,
                         'payment_bank_type' => trim($_POST['payment_bank_type']),
                         'payment_type' => trim($_POST['payment_type']),
                         'payment_check' => trim($_POST['payment_check']),
@@ -238,6 +240,8 @@ Class paybankController Extends baseController {
                     return false;
                 }
                 else{
+                    $payment_old = $payment_model->getPayment($_POST['yes']);
+
                     $payment_model->updatePayment($data,array('payment_id' => trim($_POST['yes'])));
                     echo "Cập nhật thành công";
 
@@ -267,6 +271,8 @@ Class paybankController Extends baseController {
                     echo "Thêm thành công";
 
                 $id_payment = $payment_model->getLastPayment()->payment_id;
+
+                $payment_old = $payment_model->getPayment($id_payment);
 
                 date_default_timezone_set("Asia/Ho_Chi_Minh"); 
                     $filename = "action_logs.txt";
@@ -581,27 +587,61 @@ Class paybankController Extends baseController {
                                 $invoice_model->queryInvoice('DELETE FROM invoice WHERE payment_item='.$id_payment_item);
                             }
 
-                            $data_debit = array(
-                                'payment_item'=>$id_payment_item,
-                                'debit_date'=>$payments->payment_document_date,
-                                'debit_customer'=>$data_item['payment_item_customer'],
-                                'debit_money'=>(0-$data_item['payment_item_money']-$data_item['payment_item_tax']),
-                                'debit_comment'=>$data_item['payment_item_comment'],
-                                'service_buy'=>isset($data_item['payment_item_invoice'])?$data_item['payment_item_invoice']:null,
-                            );
+                            
+                            $debits = $debit_model->getDebitByWhere(array('payment_item'=>$id_payment_item));
+                            if(!$debits){
+                                if (trim($v['payment_item_debit']) == "131" || trim($v['payment_item_debit']) == "331" || trim($v['payment_item_credit']) == "131" || trim($v['payment_item_credit']) == "331") {
+                                    $data_debit = array(
+                                        'payment_item'=>$id_payment_item,
+                                        'debit_date'=>$payments->payment_document_date,
+                                        'debit_customer'=>$data_item['payment_item_customer'],
+                                        'debit_money'=>(0-$data_item['payment_item_money']-$data_item['payment_item_tax']),
+                                        'debit_comment'=>$data_item['payment_item_comment'],
+                                        'service_buy'=>isset($data_item['payment_item_invoice'])?$data_item['payment_item_invoice']:null,
+                                    );
 
-                            if ($v['payment_item_invoice_2']>0) {
-                                $data_debit = array(
-                                    'payment_item'=>$id_payment_item,
-                                    'debit_date'=>$payments->payment_document_date,
-                                    'debit_customer'=>$data_item['payment_item_customer'],
-                                    'debit_money'=>(0-$data_item['payment_item_money']-$data_item['payment_item_tax']),
-                                    'debit_comment'=>$data_item['payment_item_comment'],
-                                    'invoice_purchase'=>$data_item['payment_item_invoice_2'],
-                                );
+                                    if ($v['payment_item_invoice_2']>0) {
+                                        $data_debit = array(
+                                            'payment_item'=>$id_payment_item,
+                                            'debit_date'=>$payments->payment_document_date,
+                                            'debit_customer'=>$data_item['payment_item_customer'],
+                                            'debit_money'=>(0-$data_item['payment_item_money']-$data_item['payment_item_tax']),
+                                            'debit_comment'=>$data_item['payment_item_comment'],
+                                            'invoice_purchase'=>$data_item['payment_item_invoice_2'],
+                                        );
+                                    }
+
+                                    $debit_model->createDebit($data_debit);
+                                }
                             }
+                            else{
+                                if (trim($v['payment_item_debit']) == "131" || trim($v['payment_item_debit']) == "331" || trim($v['payment_item_credit']) == "131" || trim($v['payment_item_credit']) == "331") {
+                                    $data_debit = array(
+                                        'payment_item'=>$id_payment_item,
+                                        'debit_date'=>$payments->payment_document_date,
+                                        'debit_customer'=>$data_item['payment_item_customer'],
+                                        'debit_money'=>(0-$data_item['payment_item_money']-$data_item['payment_item_tax']),
+                                        'debit_comment'=>$data_item['payment_item_comment'],
+                                        'service_buy'=>isset($data_item['payment_item_invoice'])?$data_item['payment_item_invoice']:null,
+                                    );
 
-                            $debit_model->updateDebit($data_debit,array('payment_item'=>$id_payment_item));
+                                    if ($v['payment_item_invoice_2']>0) {
+                                        $data_debit = array(
+                                            'payment_item'=>$id_payment_item,
+                                            'debit_date'=>$payments->payment_document_date,
+                                            'debit_customer'=>$data_item['payment_item_customer'],
+                                            'debit_money'=>(0-$data_item['payment_item_money']-$data_item['payment_item_tax']),
+                                            'debit_comment'=>$data_item['payment_item_comment'],
+                                            'invoice_purchase'=>$data_item['payment_item_invoice_2'],
+                                        );
+                                    }
+
+                                    $debit_model->updateDebit($data_debit,array('payment_item'=>$id_payment_item));
+                                }
+                                else{
+                                    $debit_model->queryDebit('DELETE FROM debit WHERE payment_item='.$id_payment_item);
+                                }
+                            }
                         }
                         else{
                             $payment_item_model->createPayment($data_item);
@@ -646,27 +686,29 @@ Class paybankController Extends baseController {
                                 $invoice_model->createInvoice($data_invoice);
                             }
 
-                            $data_debit = array(
-                                'payment_item'=>$id_payment_item,
-                                'debit_date'=>$payments->payment_document_date,
-                                'debit_customer'=>$data_item['payment_item_customer'],
-                                'debit_money'=>(0-$data_item['payment_item_money']-$data_item['payment_item_tax']),
-                                'debit_comment'=>$data_item['payment_item_comment'],
-                                'service_buy'=>isset($data_item['payment_item_invoice'])?$data_item['payment_item_invoice']:null,
-                            );
-
-                            if ($v['payment_item_invoice_2']>0) {
+                            if (trim($v['payment_item_debit']) == "131" || trim($v['payment_item_debit']) == "331" || trim($v['payment_item_credit']) == "131" || trim($v['payment_item_credit']) == "331") {
                                 $data_debit = array(
                                     'payment_item'=>$id_payment_item,
                                     'debit_date'=>$payments->payment_document_date,
                                     'debit_customer'=>$data_item['payment_item_customer'],
                                     'debit_money'=>(0-$data_item['payment_item_money']-$data_item['payment_item_tax']),
                                     'debit_comment'=>$data_item['payment_item_comment'],
-                                    'invoice_purchase'=>$data_item['payment_item_invoice_2'],
+                                    'service_buy'=>isset($data_item['payment_item_invoice'])?$data_item['payment_item_invoice']:null,
                                 );
-                            }
 
-                            $debit_model->createDebit($data_debit);
+                                if ($v['payment_item_invoice_2']>0) {
+                                    $data_debit = array(
+                                        'payment_item'=>$id_payment_item,
+                                        'debit_date'=>$payments->payment_document_date,
+                                        'debit_customer'=>$data_item['payment_item_customer'],
+                                        'debit_money'=>(0-$data_item['payment_item_money']-$data_item['payment_item_tax']),
+                                        'debit_comment'=>$data_item['payment_item_comment'],
+                                        'invoice_purchase'=>$data_item['payment_item_invoice_2'],
+                                    );
+                                }
+
+                                $debit_model->createDebit($data_debit);
+                            }
                             
                         }
 
@@ -699,6 +741,13 @@ Class paybankController Extends baseController {
                         'bank'=>$payments->payment_bank,
                         'bank_balance_money'=>$data_pay['payment_money'],
                     );
+
+                    $data_bank_2 = array(
+                        'payment'=>$id_payment,
+                        'bank_balance_date'=>$payments->payment_document_date,
+                        'bank'=>$payments->payment_bank_2,
+                        'bank_balance_money'=>(0-$data_pay['payment_money']),
+                    );
                 }
                 else if ($data['payment_type'] == 2) {
                     $data_bank = array(
@@ -707,15 +756,38 @@ Class paybankController Extends baseController {
                         'bank'=>$payments->payment_bank,
                         'bank_balance_money'=>(0-$data_pay['payment_money']-$data_pay['payment_money_cost']),
                     );
+
+                    $data_bank_2 = array(
+                        'payment'=>$id_payment,
+                        'bank_balance_date'=>$payments->payment_document_date,
+                        'bank'=>$payments->payment_bank_2,
+                        'bank_balance_money'=>$data_pay['payment_money'],
+                    );
                 }
                 
 
-                $bank_balances = $bank_balance_model->getBankByWhere(array('payment'=>$id_payment));
+                $bank_balances = $bank_balance_model->getBankByWhere(array('bank'=>$payment_old->payment_bank,'payment'=>$id_payment));
                 if ($bank_balances) {
                     $bank_balance_model->updateBank($data_bank,array('bank_balance_id'=>$bank_balances->bank_balance_id));
                 }
                 else{
                     $bank_balance_model->createBank($data_bank);
+                }
+
+                $bank_balances2 = $bank_balance_model->getBankByWhere(array('bank'=>'0','payment'=>$id_payment));
+                if ($bank_balances2) {
+                    if ($payments->payment_bank_2=='0') {
+                        $bank_balance_model->updateBank($data_bank_2,array('bank_balance_id'=>$bank_balances2->bank_balance_id));
+                    }
+                    else{
+                        $bank_balance_model->queryBank('DELETE FROM bank_balance WHERE payment='.$id_payment.' AND bank='.$payment_old->payment_bank_2);
+                    }
+                }
+                else{
+                    if ($payments->payment_bank_2=='0') {
+                        $bank_balance_model->createBank($data_bank_2);
+                    }
+                    
                 }
             }
                     

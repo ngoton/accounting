@@ -410,11 +410,11 @@ $this->helper('slidePaginator');
                               <ul class="name_list_id_5"></ul>
                             </td>
                             <td class="width-7">
-                              <input type="text" name="invoice_purchase_item_debit[]" class="invoice_purchase_item_debit keep-val" required="required" autocomplete="off">
+                              <input type="text" name="invoice_purchase_item_debit[]" class="invoice_purchase_item_debit keep-val" required="required" autocomplete="off" value="156">
                               <ul class="name_list_id_2"></ul>
                             </td>
                             <td class="width-7">
-                              <input type="text" name="invoice_purchase_item_credit[]" class="invoice_purchase_item_credit keep-val" required="required" autocomplete="off">
+                              <input type="text" name="invoice_purchase_item_credit[]" class="invoice_purchase_item_credit keep-val" required="required" autocomplete="off" value="331">
                               <ul class="name_list_id_3"></ul>
                             </td>
                             <td class="width-7"><input type="text" name="invoice_purchase_item_unit[]" class="invoice_purchase_item_unit" required="required" autocomplete="off"></td>
@@ -453,7 +453,7 @@ $this->helper('slidePaginator');
                             <td><input type="text" name="invoice_purchase_item_tax_vat_percent[]" class="invoice_purchase_item_tax_vat_percent keep-val text-right" required="required" autocomplete="off"></td>
                             <td><input type="text" name="invoice_purchase_item_tax_vat[]" class="invoice_purchase_item_tax_vat numbers text-right" required="required" autocomplete="off"></td>
                             <td>
-                              <input type="text" name="invoice_purchase_item_tax_vat_debit[]" class="invoice_purchase_item_tax_vat_debit keep-val" required="required" autocomplete="off">
+                              <input type="text" name="invoice_purchase_item_tax_vat_debit[]" class="invoice_purchase_item_tax_vat_debit keep-val" required="required" autocomplete="off" value="1331">
                               <ul class="name_list_id_4"></ul>
                             </td>
                             
@@ -1230,7 +1230,7 @@ function add_click(){
     $('.add-field').slideDown(500);
      $("html, body").animate({ scrollTop: $('.add-field').offset().top }, 300);   
      
-        $('.add-field input[name!="invoice_purchase_allocation"]').val("");
+        $('.add-field input[name!="invoice_purchase_allocation"][name!="invoice_purchase_item_debit[]"][name!="invoice_purchase_item_credit[]"][name!="invoice_purchase_item_tax_vat_debit[]"]').val("");
         $('.add-field input').attr("data","");
         $('.add-field input').attr("alt","");
         $('#invoice_purchase_money_type option[value=1]').attr("selected","selected");

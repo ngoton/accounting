@@ -66,6 +66,7 @@ Class payexbankController Extends baseController {
       
         if ($keyword != '') {
             $search = '( payment_document_number LIKE "%'.$keyword.'%"  
+            OR payment_comment LIKE "%'.$keyword.'%" 
                 )';
             
                 $data['where'] = $data['where'].' AND '.$search;

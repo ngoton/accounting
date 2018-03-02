@@ -5619,3 +5619,37 @@
 
 22/12/2017 11:13:46|root|add|1|internal_transfer|1511305200-1-1511305200-a-1-1513897200
 
+18/01/2018 09:33:27|root|edit|780|payment|1496700000-BIDV-06/17-10-1496700000---Nộp tiền vào tài khoản-0-2-1-2-1-1
+
+18/01/2018 09:38:12|root|edit|780|payment|1496700000-BIDV-06/17-10-1496700000---Nộp tiền vào tài khoản-0-1-1-2-1-1
+
+18/01/2018 09:39:44|root|edit|780|payment|1496700000-BIDV-06/17-10-1496700000---Nộp tiền vào tài khoản-0-2-1-2-1-1
+
+18/01/2018 09:40:32|root|edit|780|payment|1496700000-BIDV-06/17-10-1496700000---Nộp tiền vào tài khoản-0-1-1-2-1-1
+
+18/01/2018 09:50:39|root|edit|14|payment|1489014000-BIDV-03/17-06-1489014000---Rút tiền nhập quỹ-0-3-1-1-1-1
+
+18/01/2018 10:17:16|root|edit|1|bank|NH01-1121_ACB-1-1--0
+
+18/01/2018 10:17:33|root|edit|1181|payment|1483398000-BIDV-01/17-02-1483398000---Thanh toán tiền hàng cho Nghị Thành Phát-1-0-2-2-1-1
+
+18/01/2018 10:21:42|root|edit|1181|payment|1483398000-BIDV-01/17-02-1483398000---Thanh toán tiền hàng cho Nghị Thành Phát-1-null-2-2-1-1
+
+18/01/2018 10:23:08|root|edit|1181|payment|1483398000-BIDV-01/17-02-1483398000---Thanh toán tiền hàng cho Nghị Thành Phát-1-null-2-2-1-1
+
+18/01/2018 10:26:06|root|edit|1181|payment|1483398000-BIDV-01/17-02-1483398000---Thanh toán tiền hàng cho Nghị Thành Phát-1--2-2-1-1
+
+18/01/2018 10:29:10|root|edit|1181|payment|1483398000-BIDV-01/17-02-1483398000---Thanh toán tiền hàng cho Nghị Thành Phát-1-0-2-2-1-1
+
+18/01/2018 10:29:25|root|edit|1181|payment|1483398000-BIDV-01/17-02-1483398000---Thanh toán tiền hàng cho Nghị Thành Phát-1--2-2-1-1
+
+18/01/2018 10:34:30|root|edit|239|payment|1484262000-BIDV-01/17-13-1484262000---Phi Long nộp tiền-1-0-2-1-1-1
+
+18/01/2018 10:34:55|root|edit|239|payment|1484262000-BIDV-01/17-13-1484262000---Phi Long nộp tiền-1--2-1-1-1
+
+18/01/2018 14:19:04|root|edit|1|bank|NH01-1121_ACB-1-1--10000000
+
+18/01/2018 14:19:26|root|edit|1|bank|NH01-1121_ACB-1-1--1000000000
+
+18/01/2018 14:19:56|root|edit|2|bank|NH02-1121_BIDV----2000000000
+
