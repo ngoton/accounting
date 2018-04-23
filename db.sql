@@ -473,7 +473,7 @@ INSERT INTO `house` (`house_id`, `house_code`, `house_name`, `house_place`) VALU
 CREATE TABLE IF NOT EXISTS `info` (
   `info_id` int(11) NOT NULL AUTO_INCREMENT,
   `info_company` varchar(100) DEFAULT NULL,
-  `info_mst` int(11) DEFAULT NULL,
+  `info_mst` varchar(20) DEFAULT NULL,
   `info_address` varchar(200) DEFAULT NULL,
   `info_phone` varchar(20) DEFAULT NULL,
   `info_email` varchar(50) DEFAULT NULL,
