@@ -12,6 +12,7 @@ class baseModel {
         $this->dbh = Db::dbConnection();
     }
 
+
     /*
     * Lấy tên Model
     */
@@ -60,7 +61,6 @@ class baseModel {
             $new_insert[":" . $key] = $value;
         }
         $query->execute($new_insert);
-        
         //to check that there is an id field before using it to get the last object
         if($this->dbh->lastInsertId())
         {
@@ -145,8 +145,9 @@ class baseModel {
     /*
     * Lấy tất cả
     */
-    public function fetchAll($table,$data = array('where','order_by','order','limit'),$join = array('table','where')){
+    public function fetchAll($table,$data = array('where','order_by','order','limit','field'),$join = array('table','where','join')){
         //var_dump($data['order_by']);die();
+        $fields = "*";
         $where = null;
         $order_by = null;
         $order = null;
@@ -155,6 +156,10 @@ class baseModel {
         $table_join = null;
         $join_where = null;
 
+        if (isset($data['field'])) {
+            $fields = $data['field'];
+            //
+        }
         if (isset($data['where'])) {
             $where = 'WHERE '.$data['where'];
             //
@@ -172,18 +177,23 @@ class baseModel {
             //
         }
         if (isset($join['table'])) {
-            if (!isset($data['where'])) {
-                $join_where = $join['where'];
-                $table_join = ', '.$join['table'].' WHERE ';
+            if (isset($join['join'])) {
+                $table_join = ' '.$join['join'].' '.$join['table'].' ON '.$join['where'];
             }
             else{
-                $table_join = ', '.$join['table'];
-                $join_where = ' AND '.$join['where'];
+               if (!isset($data['where'])) {
+                    $join_where = $join['where'];
+                    $table_join = ', '.$join['table'].' WHERE ';
+                }
+                else{
+                    $table_join = ', '.$join['table'];
+                    $join_where = ' AND '.$join['where'];
+                } 
             }
             
             //
         }
-        $sql = "SELECT * FROM $table $table_join $where $join_where $order_by $order $limit";
+        $sql = "SELECT $fields FROM $table $table_join $where $join_where $order_by $order $limit";
         //var_dump($sql);
         $query = $this->dbh->prepare($sql);
         $query->execute();
@@ -238,7 +248,7 @@ class baseModel {
             }
         }
         $str = implode(' AND ', $conditions);
-        $sql = "SELECT * FROM $table WHERE $str ORDER BY ".$table."_id DESC";
+        $sql = "SELECT * FROM $table WHERE $str";
         if($options)
         {
             $sql .= ' ' . $options;
@@ -310,4 +320,5 @@ class baseModel {
         return $res->Column_name;
     }
        
+    
 } 
