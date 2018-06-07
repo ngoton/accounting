@@ -116,11 +116,17 @@ class Library{
     */
     public function formatMoney($number, $fractional=false) {  
 	    if ($fractional) {  
-	        $number = sprintf('%.2f', $number);  
-	    }
+	    	if ($number == round($number)) {
+	    		$number = round($number);
+	    	}
+	    	else{
+	    		$number = rtrim(sprintf('%.2f', $number),"0");  
+	    	}
+	        
+	    } 
 	    else{
 	    	$number = round($number);
-	    }  
+	    } 
 	    while (true) {  
 	        $replaced = preg_replace('/(-?\d+)(\d\d\d)/', '$1,$2', $number);  
 	        if ($replaced != $number) {  
