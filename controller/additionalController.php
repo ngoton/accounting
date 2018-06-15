@@ -119,10 +119,58 @@ Class additionalController Extends baseController {
                 $data['where'] = $data['where'].' AND '.$search;
         }
 
-        
+        $additionals = $additional_model->getAllAdditional($data);
 
         
-        $this->view->data['additionals'] = $additional_model->getAllAdditional($data);
+        $this->view->data['additionals'] = $additionals;
+
+        $invoice_buy_item_model = $this->model->get('invoicebuyitemModel');
+        $service_buy_item_model = $this->model->get('servicebuyitemModel');
+        $invoice_purchase_item_model = $this->model->get('invoicepurchaseitemModel');
+        $invoice_sell_item_model = $this->model->get('invoicesellitemModel');
+        $invoice_buy_model = $this->model->get('invoicebuyModel');
+        $service_buy_model = $this->model->get('servicebuyModel');
+        $invoice_purchase_model = $this->model->get('invoicepurchaseModel');
+        $invoice_sell_model = $this->model->get('invoicesellModel');
+        $customer_model = $this->model->get('customerModel');
+        $payment_item_model = $this->model->get('paymentitemModel');
+        $additional_other_model = $this->model->get('additionalotherModel');
+
+        $customer_data = array();
+        foreach ($additionals as $additional) {
+            $cus = 0;
+            if ($additional->invoice_buy_item>0) {
+                $invoice_buy = $invoice_buy_model->getInvoice($invoice_buy_item_model->getInvoice($additional->invoice_buy_item)->invoice_buy);
+                $cus = $invoice_buy->invoice_buy_customer;
+            }
+            else if ($additional->service_buy_item>0) {
+                $service_buy = $service_buy_model->getService($service_buy_item_model->getService($additional->service_buy_item)->service_buy);
+                $cus = $service_buy->service_buy_customer;
+            }
+            else if ($additional->invoice_purchase_item>0) {
+                $invoice_purchase = $invoice_purchase_model->getInvoice($invoice_purchase_item_model->getInvoice($additional->invoice_purchase_item)->invoice_purchase);
+                $cus = $invoice_purchase->invoice_purchase_customer;
+            }
+            else if ($additional->invoice_sell_item>0) {
+                $invoice_sell = $invoice_sell_model->getInvoice($invoice_sell_item_model->getInvoice($additional->invoice_sell_item)->invoice_sell);
+                $cus = $invoice_sell->invoice_sell_customer;
+            }
+            else if ($additional->payment_item>0) {
+                $payment_item = $payment_item_model->getPayment($additional->payment_item);
+                $cus = $payment_item->payment_item_customer;
+            }
+            else if ($additional->additional_other>0) {
+                $additional_other = $additional_other_model->getAdditional($additional->additional_other);
+                $cus = $additional_other->additional_other_customer;
+            }
+
+            if ($cus>0) {
+                $customer_data[$additional->additional_id] = $customer_model->getCustomer($cus)->customer_code;
+            }
+            
+        }
+        $this->view->data['customer_data'] = $customer_data;
+
         $this->view->data['lastID'] = isset($additional_model->getLastAdditional()->additional_id)?$additional_model->getLastAdditional()->additional_id:0;
 
         /* Lấy tổng doanh thu*/
