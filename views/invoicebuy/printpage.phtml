@@ -1,0 +1,258 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link href="<?php echo BASE_URL ?>/public/js/editor/contents.css" type="text/css" rel="stylesheet" _cktemp="true">
+        <style type="text/css">
+        @media print {
+          @page { margin: 0; size: A4;}
+          body { margin: 1.5cm 1cm 0cm 1.5cm; width: 21cm; height: 29.6cm; -webkit-print-color-adjust: exact; font-size: 10pt; font-family: Arial, sans-serif;}
+        }
+        page {
+          background: white;
+          display: block;
+          margin: 0 auto;
+          margin-bottom: 0.5cm;
+          box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+        }
+        page[size="A4"] {  
+          width: 21cm;
+          height: 29.7cm; 
+        }
+        page[size="A4"][layout="landscape"] {
+          width: 29.7cm;
+          height: 21cm;  
+        }
+        page[size="A3"] {
+          width: 29.7cm;
+          height: 42cm;
+        }
+        page[size="A3"][layout="landscape"] {
+          width: 42cm;
+          height: 29.7cm;  
+        }
+        page[size="A5"] {
+          width: 14.8cm;
+          height: 21cm;
+        }
+        page[size="A5"][layout="landscape"] {
+          width: 21cm;
+          height: 14.8cm;  
+        }
+        td{
+        	padding: 5px;
+        }
+        </style>
+        <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+           window.print();
+        });
+        </script>
+    </head>
+    <body>
+        <table border="0" cellpadding="0" cellspacing="0" style="border-collapse:
+ collapse;width:505pt" width="671">
+	<colgroup>
+		<col style="width:30pt" width="40" />
+		<col style="mso-width-source:userset;mso-width-alt:9142;width:188pt" width="250" />
+		<col style="mso-width-source:userset;mso-width-alt:3254;width:67pt" width="89" />
+		<col style="mso-width-source:userset;mso-width-alt:1462;width:30pt" width="40" />
+		<col style="mso-width-source:userset;mso-width-alt:2706;width:56pt" width="74" />
+		<col style="mso-width-source:userset;mso-width-alt:2998;width:62pt" width="82" />
+		<col style="mso-width-source:userset;mso-width-alt:3510;width:72pt" width="96" />
+	</colgroup>
+	<tbody>
+		<tr height="17" style="height:12.75pt">
+			<td class="xl91" colspan="2" height="17" style="height:12.75pt;
+  mso-ignore:colspan;width:218pt" width="290">
+				<?php echo mb_strtoupper($infos->info_company, "UTF-8") ?></td>
+			<td class="xl91" style="width:67pt" width="89">
+				&nbsp;</td>
+			<td align="center" class="xl97" colspan="4" style="mso-ignore:colspan;
+  width:220pt" width="292">
+				Mẫu số 01 - VT</td>
+		</tr>
+		<tr height="17" style="height:12.75pt">
+			<td class="xl91" colspan="3" height="17" style="height:12.75pt;mso-ignore:colspan">
+				Địa chỉ : <?php echo $infos->info_address ?></td>
+			<td align="center" class="xl97" colspan="4">
+				(Ban hành theo TT số 133/2016/TT-BTC</td>
+		</tr>
+		<tr height="17" style="height:12.75pt">
+			<td class="xl91" colspan="2" height="17" style="height:12.75pt;mso-ignore:colspan">
+				Mã số thuế : <?php echo $infos->info_mst ?></td>
+			<td class="xl91">
+				&nbsp;</td>
+			<td align="center" class="xl97" colspan="4">
+				ngày 26/8/2016 của Bộ trưởng BTC)</td>
+		</tr>
+		<tr height="27" style="height:20.25pt">
+			<td class="xl91" height="27" style="height:20.25pt">
+				&nbsp;</td>
+			<td class="xl87" colspan="4">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>PHIẾU NHẬP KHO</b></td>
+			<td class="xl86">
+				<b>Số&nbsp; :&nbsp; <?php echo sprintf("%03s", $soct) ?></b></td>
+			<td class="xl86">
+				&nbsp;</td>
+		</tr>
+		<tr height="21" style="mso-height-source:userset;height:15.75pt">
+			<td class="xl91" height="21" style="height:15.75pt">
+				&nbsp;</td>
+			<td class="xl88" colspan="4">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ngày <?php echo $ngay ?> tháng <?php echo $thang ?> năm <?php echo $nam ?></td>
+			<td class="xl91">
+				&nbsp;</td>
+			<td class="xl91">
+				&nbsp;</td>
+		</tr>
+		<tr height="21" style="mso-height-source:userset;height:15.75pt">
+			<td class="xl91" height="21" style="height:15.75pt">
+				&nbsp;</td>
+			<td class="xl69">
+				&nbsp;</td>
+			<td class="xl69">
+				&nbsp;</td>
+			<td class="xl69">
+				&nbsp;</td>
+			<td class="xl98">
+				Nợ :</td>
+			<td class="xl70">
+				1561,1331</td>
+			<td class="xl91">
+				&nbsp;</td>
+		</tr>
+		<tr height="21" style="mso-height-source:userset;height:15.75pt">
+			<td class="xl91" height="21" style="height:15.75pt">
+				&nbsp;</td>
+			<td class="xl69">
+				&nbsp;</td>
+			<td class="xl69">
+				&nbsp;</td>
+			<td class="xl69">
+				&nbsp;</td>
+			<td class="xl98">
+				C&oacute; :</td>
+			<td class="xl70">
+				331,33312</td>
+			<td class="xl91">
+				&nbsp;</td>
+		</tr>
+		<tr height="24" style="mso-height-source:userset;height:18.0pt">
+			<td class="xl92" colspan="5" height="24" style="height:18.0pt;mso-ignore:colspan">
+				Họ tên người giao hàng : <?php echo mb_strtoupper($customers->customer_company, "UTF-8") ?></td>
+			<td class="xl70">
+				&nbsp;</td>
+			<td class="xl92">
+				&nbsp;</td>
+		</tr>
+		<tr height="20" style="height:15.0pt">
+			<td class="xl92" colspan="5" height="20" style="height:15.0pt;mso-ignore:colspan">
+				Theo HĐ số <?php echo $sohd ?> Ngày <?php echo $ngay.'/'.$thang.'/'.$nam ?></td>
+			
+			<td class="xl70">
+				&nbsp;</td>
+			<td class="xl92">
+				&nbsp;</td>
+		</tr>
+		<tr height="24" style="mso-height-source:userset;height:18.0pt">
+			<td class="xl92" colspan="5" height="24" style="height:18.0pt;mso-ignore:colspan">
+				Nhập tại kho công ty</td>
+			
+			<td class="xl92">
+				&nbsp;</td>
+			<td class="xl92">
+				&nbsp;</td>
+		</tr>
+		<tr height="24" style="mso-height-source:userset;height:18.0pt">
+			<td class="xl92" colspan="5" height="24" style="height:18.0pt;mso-ignore:colspan">
+				Diễn giải : Mua hàng nhập khẩu</td>
+			
+			<td class="xl92">
+				&nbsp;</td>
+			<td class="xl92">
+				&nbsp;</td>
+		</tr>
+		<tr height="38" style="height:28.5pt;border: solid 1px;text-align: center;font-weight: bold;">
+			<td class="xl82" height="38" style="height:28.5pt;border: solid 1px">
+				STT</td>
+			<td class="xl82" style="border-left:none;border: solid 1px">
+				Tên vật tư hàng hóa</td>
+			<td class="xl82" style="border-left:none;border: solid 1px">
+				Mã VTHH</td>
+			<td class="xl83" style="border-left:none;width:30pt;border: solid 1px" width="40">
+				ĐVT</td>
+			<td class="xl84" style="border-left:none;width:56pt;border: solid 1px" width="74">
+				Số lượng</td>
+			<td class="xl84" style="border-left:none;width:62pt;border: solid 1px" width="82">
+				Đơn giá</td>
+			<td class="xl84" style="border-left:none;width:72pt;border: solid 1px" width="96">
+				Thành tiền</td>
+		</tr>
+		<?php $i=1; $tongnum = 0; $tong = 0;
+         foreach ($invoice_buy_items as $row) :
+         $tongnum += $row->invoice_buy_item_number;
+         $tong += $row->invoice_buy_item_number*$row->invoice_buy_item_total;
+        ?>
+		<tr height="17" style="height:12.75pt;border: solid 1px;text-align: center;">
+			<td class="xl71" height="17" style="height:12.75pt;border: solid 1px">
+				<?php echo $i++ ?></td>
+			<td class="xl101" style="border-left:none;width:188pt;border: solid 1px;text-align: left;" width="250">
+				<?php echo $row->items_name ?></td>
+			<td class="xl102" style="border-left:none;border: solid 1px;text-align: left;">
+				<?php echo $row->items_code ?></td>
+			<td class="xl71" style="border-left:none;border: solid 1px">
+				<?php echo $row->invoice_buy_item_unit ?></td>
+			<td class="xl85" style="border-left:none;border: solid 1px;text-align: right;">
+				<?php echo $row->invoice_buy_item_number ?></td>
+			<td class="xl72" style="border-left:none;border: solid 1px; text-align: right;">
+				<?php echo $lib->formatMoney($row->invoice_buy_item_total) ?></td>
+			<td class="xl72" style="border-left:none;border: solid 1px; text-align: right;">
+				<?php echo $lib->formatMoney($row->invoice_buy_item_number*$row->invoice_buy_item_total) ?></td>
+		</tr>
+		<?php endforeach; ?>
+		<tr height="17" style="height:12.75pt;border: solid 1px;text-align: center;">
+			<td class="xl94" colspan="3" height="17" style="height:12.75pt;
+  mso-ignore:colspan;border-right:.5pt solid black;border: solid 1px">
+				Tổng Cộng</td>
+			<td class="xl78" style="border-left:none;border: solid 1px">
+				&nbsp;</td>
+			<td class="xl79" style="border-left:none;border: solid 1px">
+				&nbsp;</td>
+			<td class="xl79" style="border-left:none;border: solid 1px">
+				&nbsp;</td>
+			<td class="xl80" style="border-left:none;border: solid 1px;text-align: right;">
+				<?php echo $lib->formatMoney($tong) ?></td>
+		</tr>
+		<tr height="19" style="height:14.25pt">
+			<td class="xl77" colspan="7" height="19" style="height:14.25pt;mso-ignore:colspan">
+				- Tổng số tiền (Viết bằng chữ) : <?php echo $lib->convert_number_to_words(round($tong)) ?> đồng chẵn</td>
+		</tr>
+		<tr height="19" style="height:14.25pt">
+			<td class="xl77" height="19" style="height:14.25pt">
+				&nbsp;</td>
+			<td class="xl73">
+				&nbsp;</td>
+			<td class="xl74">
+				&nbsp;</td>
+			<td class="xl73">
+				&nbsp;</td>
+			<td class="xl75">
+				&nbsp;</td>
+			<td class="xl89" colspan="2">
+				Ngày <?php echo $ngay ?> tháng <?php echo $thang ?> năm <?php echo $nam ?></td>
+		</tr>
+		<tr height="22" style="mso-height-source:userset;height:16.9pt">
+			<td class="xl81" colspan="3" height="22" style="height:16.9pt;mso-ignore:colspan">
+				&nbsp;&nbsp;&nbsp;&nbsp; Người lập phiếu&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Người giao hàng</td>
+			<td class="xl81" colspan="2">
+				Thủ kho</td>
+			<td class="xl90" colspan="2">
+				Kế toán trưởng</td>
+		</tr>
+	</tbody>
+</table>
+
+  
+    </body>
+</html>

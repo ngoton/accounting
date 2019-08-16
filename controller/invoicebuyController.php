@@ -1301,6 +1301,44 @@ Class invoicebuyController Extends baseController {
         $this->view->show('invoicebuy/import');
     }
 
+    public function printpage() {
+        $this->view->disableLayout();
+        $this->view->data['lib'] = $this->lib;
+
+        if (!isset($_SESSION['userid_logined'])) {
+            return $this->view->redirect('user/login');
+        }
+        $id = $this->registry->router->param_id;
+
+        $invoice_buy_model = $this->model->get('invoicebuyModel');
+        $customer_model = $this->model->get('customerModel');
+        $account_model = $this->model->get('accountModel');
+        $house_model = $this->model->get('houseModel');
+        $invoice_buy_item_model = $this->model->get('invoicebuyitemModel');
+
+        $invoice_buys = $invoice_buy_model->getInvoice($id);
+        $customers = $customer_model->getCustomer($invoice_buys->invoice_buy_customer);
+
+        
+        $join = array('table'=>'items','where'=>'invoice_buy_item=items_id');
+        $invoice_buy_items = $invoice_buy_item_model->getAllInvoice(array('where'=>'invoice_buy='.$id),$join);
+
+        $ngay = date('d',$invoice_buys->invoice_buy_document_date);
+        $thang = date('m',$invoice_buys->invoice_buy_document_date);
+        $nam = date('Y',$invoice_buys->invoice_buy_document_date);
+
+        $info_model = $this->model->get('infoModel');
+        $this->view->data['infos'] = $info_model->getLastInfo();
+        $this->view->data['invoice_buy_items'] = $invoice_buy_items;
+        $this->view->data['customers'] = $customers;
+        $this->view->data['ngay'] = $ngay;
+        $this->view->data['thang'] = $thang;
+        $this->view->data['nam'] = $nam;
+        $this->view->data['soct'] = $invoice_buys->invoice_buy_document_number;
+        $this->view->data['sohd'] = $invoice_buys->invoice_buy_number;
+
+        $this->view->show('invoicebuy/printpage');
+    }
 
 }
 ?>

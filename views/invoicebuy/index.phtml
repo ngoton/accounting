@@ -169,6 +169,7 @@ elseif ($order_by == 'invoice_buy_date')
             
             <?php if(!isset($disable_control)){ ?>
             <td class="fix text-right">
+                <i class="fa fa-print" title="In" onClick="javascript:window.open('<?php echo $this->url('invoicebuy/printpage/'.$invoice_buy->invoice_buy_id) ?>','_blank')"></i>
                 <i class="fa fa-edit edit_invoice" title="Sửa" data="<?php echo $invoice_buy->invoice_buy_id ?>"></i>
                 <i class="fa fa-trash" onclick="del(<?php echo $invoice_buy->invoice_buy_id ?>)"></i>
             </td>
